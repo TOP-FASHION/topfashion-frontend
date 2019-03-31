@@ -1,6 +1,7 @@
 const path = require('path')
 const autoPrefixer = require('autoprefixer')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const WriteFilePlugin = require('write-file-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const cssnano = require('cssnano')
 const webpack = require('webpack')
@@ -25,8 +26,8 @@ const config = (env, options) => {
     output: {
       filename: '[name].js',
       chunkFilename: '[name].js',
-      path: path.resolve(__dirname, '../buildClient'),
-      publicPath: '/static/'
+      path: path.resolve(__dirname, '../tmp/client'),
+      publicPath: '/'
     },
     module: {
       rules: [
@@ -74,6 +75,7 @@ const config = (env, options) => {
       ]
     },
     plugins: [
+      new WriteFilePlugin(),
       new ExtractCssChunks(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({

@@ -1,5 +1,8 @@
 const path = require('path')
+const res = p => path.resolve(__dirname, p)
 const webpack = require('webpack')
+const WriteFilePlugin = require('write-file-webpack-plugin')
+const output = res('../tmp/server')
 
 const baseOptions = require('./base.options')
 
@@ -11,9 +14,13 @@ const config = (env, options) => {
     entry: path.resolve(__dirname, '../server', 'render.js'),
     resolve: baseOptions.resolve,
     output: {
-      libraryTarget: 'commonjs2'
+      path: output,
+      filename: '[name].js',
+      libraryTarget: 'commonjs2',
+      publicPath: '/'
     },
     plugins: [
+      new WriteFilePlugin(),
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1
       }),

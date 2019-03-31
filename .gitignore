@@ -1,7 +1,6 @@
 node_modules
 
-buildClient
-buildServer
+tmp
 
 static/*
 !static/.gitkeep
