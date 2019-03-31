@@ -1,11 +1,13 @@
 require('dotenv').config()
 const express = require('express')
+const httpProxy = require('http-proxy')
 const https = require('https')
 const path = require('path')
 const clientConfig = require('./../webpack/client.webpack')
 const serverConfig = require('./../webpack/server.webpack')
 
 const app = express()
+const proxy = httpProxy.createProxyServer()
 
 const NODE_ENV = process.env.NODE_ENV
 
@@ -47,6 +49,14 @@ DGWP+a5LNwBJWtY3RbbvUyYCm6912D3eSQ+vLq2u0NrgAIJyLOPxiVA38IPmox85
 /BnKUueiSFLxV9SONuXfZFR7R25hxcEFmxAaVARsZAGmuEeZHw==
 -----END CERTIFICATE-----
 `
+
+app.disable('x-powered-by')
+
+app.use('/tigran-api', (req, res) => {
+  proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true, secure: false }, proxyError => {
+    res.status(500).json({ error: 'ProxyException', details: proxyError })
+  })
+})
 
 let isBuilt = false
 
