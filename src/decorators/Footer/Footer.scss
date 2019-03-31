@@ -1,0 +1,296 @@
+.main-decorator__footer {
+  position: relative;
+  background: color(footer, background);
+}
+.footer {
+  position: relative;
+  margin: auto;
+  color: color(footer, text);
+
+  &__top-section {
+    border-bottom: 4px solid color(primary, main);
+    background-color: rgba(0, 0, 0, 0.10);
+  }
+  &__bottom-section {
+    padding-top: 25px;
+
+    .pay-and-play & {
+      padding-bottom: 85px;
+    }
+    #root:not([data-url='/']):not([data-url^='/group/']) & {
+      padding-bottom: 0;
+    }
+    @include media-sm {
+      padding-top: 15px;
+    }
+  }
+  &__license {
+    padding: 8px 14px;
+  }
+  &__license-logos {
+    margin: 5px 0 20px 0;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      align-self: center;
+      padding: 0 10px;
+      vertical-align: middle;
+    }
+    .curacao-license {
+      display: inline-block;
+      max-width: 90px;
+      vertical-align: middle;
+    }
+    .mga-license {
+      img {
+        max-width: 100px;
+      }
+    }
+    .uk-license {
+      img {
+        max-height: 50px;
+      }
+    }
+    @include media-md {
+      .curacao-license {
+        max-width: 80px;
+      }
+      .mga-license {
+        img {
+          max-width: 80px;
+        }
+      }
+      .uk-license {
+        img {
+          max-height: 40px;
+        }
+      }
+    }
+  }
+  .third-party-logos {
+    &__gambleaware {
+      img {
+        max-width: 150px;
+      }
+    }
+    &__ibas {
+      img {
+        max-width: 100px;
+      }
+    }
+    &__gamstop {
+      img {
+        width: 130px;
+      }
+    }
+    @include media-md {
+      &__gambleaware {
+        img {
+          max-width: 120px;
+        }
+      }
+      &__ibas {
+        img {
+          max-width: 80px;
+        }
+      }
+      &__gamstop {
+        img {
+          width: 100px;
+        }
+      }
+    }
+  }
+  &__license-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 12px;
+
+    @include media-sm {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  &__license-help {
+    p {
+      display: flex;
+      height: 100%;
+      margin: 0;
+      justify-content: center;
+      color: #fff;
+      line-height: 34px;
+
+      a {
+        display: flex;
+        height: 34px;
+        padding: 0;
+        color: #fff;
+        flex-direction: row;
+        align-items: center;
+        filter: brightness(0) invert(1);
+
+        &:hover {
+          text-decoration: none;
+        }
+        + a {
+          margin-left: 10px;
+        }
+      }
+      img {
+        width: 35px;
+        max-height: 22px;
+        margin-right: 6px;
+      }
+    }
+  }
+  .container {
+    max-width: 1020px;
+  }
+  .footer__messages--swe {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    margin-top: 10px;
+    flex-wrap: wrap;
+
+    p {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+    a {
+      color: #555;
+    }
+    @include media-sm {
+      font-size: 12px;
+    }
+  }
+  &__message {
+    &--spelinspektionen {
+      font-weight: 500;
+      padding: 0 10px;
+
+      &::before {
+        background: url('/cms/img/logos/spelinspektionen.svg') 40% 0 / 60px no-repeat;
+      }
+      em {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: normal;
+        color: color(text, main);
+      }
+    }
+    &--stodlinjen {
+      font-weight: 500;
+      padding: 0 10px;
+
+      &::before {
+        background: url('/cms/img/logos/stodlinjen.svg') 0 10px / 65% 30px no-repeat;
+      }
+      em {
+        font-style: normal;
+        font-weight: normal;
+      }
+    }
+    &--requisites {
+      padding: 0 0 0 10px;
+
+      &::before {
+        background: url('/cms/img/logos/viral.svg') 0 10px/50% 30px no-repeat;
+      }
+      em {
+        display: block;
+        margin: -5px 0 5px;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: normal;
+      }
+    }
+    &--responsibility,
+    &--spelinspektionen,
+    &--stodlinjen,
+    &--requisites {
+      width: 25%;
+      white-space: pre-line;
+      margin-bottom: 10px;
+
+      &::before {
+        content: '';
+        display: block;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      @include media-sm {
+        &::before {
+          background-position: center center;
+          background-size: contain;
+        }
+      }
+      @include media-xs {
+        width: 100%;
+        display: flex;
+        padding: 0;
+
+        &::before {
+          width: 35%;
+          margin-right: 5%;
+          margin-bottom: 0;
+        }
+        & > :first-child {
+          width: 60%;
+        }
+      }
+    }
+    &--responsibility {
+      padding: 0 10px 0 0;
+      font-weight: 500;
+
+      &::before {
+        content: '\0022';
+        @include svg-icon;
+        display: block;
+        font-size: 40px;
+        color: #F46262;
+        text-align: center;
+      }
+    }
+    &--responsible-gambling-message {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 15px 10px;
+      align-items: center;
+      font-size: 14px;
+      color: color(text, dark);
+
+      @include media-sm {
+        font-size: 12px;
+      }
+      &::before {
+        content: '\0022';
+        @include svg-icon;
+        font-size: 30px;
+        margin-right: 6px;
+      }
+      p {
+        margin: 0;
+      }
+      img {
+        width: 28px;
+        height: 28px;
+        margin-right: 5px;
+      }
+      a {
+        color: inherit;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.not-found-page {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: -70px;
+  background: url("/maintenance/bg.jpg") center no-repeat;
+  background-size: cover;
+
+  &__content {
+    max-width: 670px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+  }
+  &__title {
+    color: #fff;
+    font-size: 31px;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  &__text {
+    margin-bottom: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+  &__link {
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

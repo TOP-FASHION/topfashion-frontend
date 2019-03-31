@@ -1,0 +1,10 @@
+node_modules
+
+buildClient
+buildServer
+
+static/*
+!static/.gitkeep
+
+src/Styles/*
+!src/Styles/.gitkeep
