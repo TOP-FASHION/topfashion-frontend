@@ -92,7 +92,6 @@ if (NODE_ENV === 'production') {
   const webpackHotMiddleware = require('webpack-hot-middleware')
   const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
 
-
   const compiler = webpack(
     [
       clientWebpack,
@@ -108,4 +107,3 @@ if (NODE_ENV === 'production') {
 
   compiler.plugin('done', done)
 }
-

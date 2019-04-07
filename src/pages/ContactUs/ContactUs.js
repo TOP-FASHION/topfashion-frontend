@@ -19,4 +19,3 @@ class ContactUs extends Component {
 }
 
 export default ContactUs
-

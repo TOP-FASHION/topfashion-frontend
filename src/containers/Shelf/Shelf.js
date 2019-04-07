@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { fetchProducts } from '../../services/shelf/actions';
+import { fetchProducts } from '../../services/shelf/actions'
 
-import Spinner from '../../components/Spinner/index';
-import ShelfHeader from '../ShelfHeader/index';
-import ProductList from '../ProductList/index';
+import Spinner from '../../components/Spinner'
+import ShelfHeader from '../ShelfHeader'
+import ProductList from '../ProductList'
 
 import './Shelf.scss';
 
@@ -51,7 +51,7 @@ class Shelf extends Component {
   render() {
     const { products } = this.props;
     const { isLoading } = this.state;
-
+    console.log('products', products)
     return (
       <React.Fragment>
         {isLoading && <Spinner />}

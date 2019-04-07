@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-// ui components
 import Fragment from '../../components/Fragment'
-import Group from '../../components/Group'
 import Nav from '../../components/Nav'
+import Link from '../../components/Link'
 import './Header.scss';
 
 class Header extends Component {
@@ -15,17 +14,13 @@ class Header extends Component {
     scrollTop: 0
   }
 
-  get top() {
-    return document.documentElement.scrollTop || document.body.scrollTop
-  }
-
   mainRender = () => {
     return (
       <header className="header" role="banner">
         <div className="header__inner container">
-          <a className="brand" href="/" rel="home" aria-label="Go To Homepage">
-            Лого
-          </a>
+          <Link to='/' className='brand' rel="home" aria-label="Go To Homepage">
+            <img className='brand__logo' src={require(`../../static/logo.svg`)} alt="Лого"/>
+          </Link>
           <Nav/>
           <div className="menu-animation">
             <div id="animation-circle" className="menu-animation__circle"></div>

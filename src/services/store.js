@@ -1,42 +1,35 @@
-import { createInjectStore } from 'redux-injector'
-import { compose, createStore, applyMiddleware } from 'redux';
-import reducers from './reducers'
+import { compose, createStore, applyMiddleware } from 'redux'
+import rootReducers from './reducers'
 import logger from 'redux-logger'
-import rootReducer from "./reducers";
-import thunk from "redux-thunk";
-
+import thunkMiddleware from "redux-thunk"
 
 const createReduxStore = (initalState) => {
-  const middlewares = [thunk];
-
+  const middlewares = [thunkMiddleware]
 
   if (process.env.NODE_ENV === 'development') {
     middlewares.push(logger)
   }
 
   const store = createStore(
-    reducers,
+    rootReducers,
     initalState,
     compose(
       applyMiddleware(...middlewares)
-      /* window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__() */
     )
-  );
+  )
 
   store.subscribe(() => {
-    const state = store.getState();
+    const state = store.getState()
     const persist = {
       cart: state.cart,
       total: state.total
-    };
+    }
 
     window.localStorage.setItem('state', JSON.stringify(persist));
-  });
+  })
 
   if (module.hot) {
-    module.hot.accept(
-      './reducers',
+    module.hot.accept('./reducers',
       () => store.replaceReducer(require('./reducers').default)
     )
   }

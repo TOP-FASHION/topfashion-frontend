@@ -8,7 +8,7 @@
     padding: 2rem 0;
 
     @include mq(md) {
-      padding: 3.125rem 0;
+      padding: 1.5rem 0;
     }
   }
 }
@@ -18,7 +18,7 @@
   float: left;
   padding-top: 0.5rem;
 
-  svg {
+  &__logo {
     width: 5rem;
     height: 2rem;
   }

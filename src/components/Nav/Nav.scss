@@ -58,13 +58,13 @@
     position: relative;
     font-size: 2.75rem;
     font-weight: 200;
-    text-transform: lowercase;
+    text-transform: uppercase;
 
     &::after {
       content: '';
       display: block;
       height: 5px;
-      background-color: $gray-lighter;
+      background-color: $gray-dark;
       position: absolute;
       left: 1rem;
       right: 1rem;
@@ -82,7 +82,7 @@
     }
   }
 
-  &__item__num {
+  &__item-num {
     display: inline-block;
     font-weight: 700;
     margin-right: 0.5em;
@@ -120,7 +120,7 @@
       }
     }
 
-    &__item__num {
+    &__item-num {
       color: currentColor !important;
     }
 
@@ -194,7 +194,7 @@
   }
 
   @include mq(md) {
-    top: 52px;
+    top: 20px;
   }
 
   @include mq(lg) {

@@ -20,18 +20,33 @@ class Nav extends Component {
         <div className="nav__content">
           <ul className="nav__list" id="menu">
             <li className="nav__item">
+              <Link to='/' className='nav__link'>
+                <span className="nav__item-num" aria-hidden="true">Главная</span>
+              </Link>
+            </li>
+            <li className="nav__item">
               <Link to='/catalog' className='nav__link'>
-                <span className="nav__item__num" aria-hidden="true">0</span>Каталог
+                <span className="nav__item-num" aria-hidden="true">Каталог</span>
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link to='/technology' className='nav__link'>
+                <span className="nav__item-num" aria-hidden="true">Технология</span>
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link to='/promotions' className='nav__link'>
+                <span className="nav__item-num" aria-hidden="true">Акции</span>
               </Link>
             </li>
             <li className="nav__item">
               <Link to='/about' className='nav__link'>
-                <span className="nav__item__num" aria-hidden="true">0</span>О нас
+                <span className="nav__item-num" aria-hidden="true">О нас</span>
               </Link>
             </li>
             <li className="nav__item">
               <Link to='/contact-us' className='nav__link'>
-                <span className="nav__item__num" aria-hidden="true">0</span>Контакты
+                <span className="nav__item-num" aria-hidden="true">Контакты</span>
               </Link>
             </li>
           </ul>
