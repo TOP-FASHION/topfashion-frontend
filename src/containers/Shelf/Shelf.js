@@ -8,7 +8,7 @@ import Spinner from '../../components/Spinner'
 import ShelfHeader from '../ShelfHeader'
 import ProductList from '../ProductList'
 
-import './Shelf.scss';
+import './Shelf.scss'
 
 class Shelf extends Component {
   static propTypes = {

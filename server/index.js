@@ -52,7 +52,7 @@ DGWP+a5LNwBJWtY3RbbvUyYCm6912D3eSQ+vLq2u0NrgAIJyLOPxiVA38IPmox85
 
 app.disable('x-powered-by')
 
-app.use('/tigran-api', (req, res) => {
+app.use('/api', (req, res) => {
   proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true, secure: false }, proxyError => {
     res.status(500).json({ error: 'ProxyException', details: proxyError })
   })

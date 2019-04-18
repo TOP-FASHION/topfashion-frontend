@@ -1,11 +1,20 @@
-import React from 'react';
-
+import React, {Component} from 'react'
 import Product from '../Product'
+import PropTypes from "prop-types"
 
-const ProductList = ({ products }) => {
-  return products.map(p => {
-    return <Product product={p} key={p.id} />;
-  });
-};
+class ProductList extends Component {
+  static propTypes = {
+    products: PropTypes.array.isRequired,
+    category: PropTypes.string
+  }
 
-export default ProductList;
+  render() {
+    const { products, category } = this.props
+
+    return products.map(p => {
+      return <Product product={p} key={p.id} />
+    })
+  }
+}
+
+export default ProductList

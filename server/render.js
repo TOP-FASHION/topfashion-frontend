@@ -1,63 +1,56 @@
 import React from 'react'
-import ReactDom from 'react-dom/server'
-import { flushChunkNames } from 'react-universal-component/server'
-import { StaticRouter as Router } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import {useStaticRendering} from 'mobx-react'
+import {renderToStaticMarkup} from 'react-dom/server'
 import flushChunks from 'webpack-flush-chunks'
+import Head from '../src/helpers/Head'
+import Body from '../src/helpers/Body'
 
-import App from './../src/decorators'
-import createReduxStore from '../src/services/store'
+export default ({clientStats}) => {
+  useStaticRendering(true)
 
-const store = createReduxStore()
+  const {scripts, stylesheets, cssHashRaw} = flushChunks(clientStats)
+  const extendedStylesheets = stylesheets.slice(0)
+  const initiallyAwaitingPromises = []
 
-export default ({ clientStats }) => (req, res) => {
-  const initialState = JSON.stringify(store.getState())
-  const context = {}
-  const app = ReactDom.renderToString(
-    <Provider store={store}>
-      <Router
-        location={req.url}
-        context={context}
-      >
-        <App />
-      </Router>
-    </Provider>
-  )
-
-  if (context.url) {
-    res.redirect(301, context.url)
+  return async (req, res, next) => {
+    try {
+      await Promise.all(initiallyAwaitingPromises)
+      return renderMiddleware(req, res, next)
+    } catch (error) {
+      next(error)
+    }
   }
 
-  const chunkNames = flushChunkNames()
+  // FUNCTIONS
 
-  const {
-    js,
-    styles,
-    cssHash,
-    scripts,
-    stylesheets
-  } = flushChunks(clientStats, { chunkNames })
+  // The main application renderer
+  async function renderMiddleware (req, res) {
+    const headHtml = renderToStaticMarkup(
+      <Head />
+    )
 
-  console.log('Dynamic Chunk Names Rendered', chunkNames)
-  console.log('Scripts', scripts)
-  console.log('Styles', stylesheets)
+    // First bytes (ASAP)
+    res.setHeader('Content-Type', 'text/html')
+    res.write(`<!doctype html>\n<html>${headHtml}`)
 
-  res.send(
-    `<!doctype html>
-      <html>
-        <head>
-          <meta charset='utf-8'>
-          <title>React universal from scratch</title>
-          ${styles}
-        </head>
-        <body>
-          <script>
-            window.__INITIAL_STATE__ = ${initialState};
-          </script>
-          <div id='root'>${app}</div>
-          ${cssHash}
-          ${js}
-        </body>
-      </html>`
-  )
+    // Wait information about the user balance
+    const serverTime = Date.now()
+
+    const data = {
+      now: serverTime
+    }
+
+    const bodyHtml = renderToStaticMarkup(
+      <Body
+        scripts={scripts}
+        stylesheets={extendedStylesheets}
+        cssHash={cssHashRaw}
+        state={data}
+      />
+    )
+
+    // Last bytes
+    res.write(`${bodyHtml}</html>`)
+    res.end()
+  }
 }

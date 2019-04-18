@@ -3,8 +3,10 @@
   "plugins": [
     "universal-import",
     "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
     "lodash",
-    "@babel/plugin-proposal-class-properties"
+    ["@babel/plugin-proposal-decorators", { "legacy": true}],
+    ["@babel/plugin-proposal-class-properties", { "loose": true}]
   ],
   "env": {
     "production": {
