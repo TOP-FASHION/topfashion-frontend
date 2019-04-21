@@ -1,9 +1,3 @@
 node_modules
 
 tmp
-
-static/*
-!static/.gitkeep
-
-src/Styles/*
-!src/Styles/.gitkeep
