@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import { Provider } from 'mobx-react';
+import { Provider } from 'mobx-react'
 import App from './decorators'
 import { BrowserRouter, Route } from 'react-router-dom'
 import stores from './store'
-import './styles/main.scss';
+import './styles/main.scss'
 
 const supportsHistory = 'pushState' in window.history
 

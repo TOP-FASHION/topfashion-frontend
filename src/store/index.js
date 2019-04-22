@@ -1,7 +1,7 @@
-import ProductsStore from './Products';
+import ProductsStore from './Products'
 
 const stores = {
-  products: ProductsStore
-};
+  products: new ProductsStore()
+}
 
-export default stores;
+export default stores

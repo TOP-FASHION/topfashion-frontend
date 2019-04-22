@@ -1,7 +1,7 @@
-import Products from './Products';
+import Products from './Products'
 
 const Api = {
-  products: Products
+  products: new Products()
 }
 
-export default Api;
+export default Api

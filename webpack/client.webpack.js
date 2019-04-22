@@ -6,6 +6,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const cssnano = require('cssnano')
 const webpack = require('webpack')
 const webpackProgressBar = require('progress-bar-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -83,7 +84,8 @@ const config = (env, options) => {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
       }),
-      new LodashModuleReplacementPlugin()
+      new LodashModuleReplacementPlugin(),
+      new Dotenv()
     ]
   }
 
