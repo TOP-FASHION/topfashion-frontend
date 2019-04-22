@@ -1,23 +1,21 @@
 import { observable, action } from 'mobx';
 import Api from "../utils/Api/"
 
-class Products {
-  @observable currentUser;
-  @observable loadingUser;
-  @observable updatingUser;
-  @observable updatingUserErrors;
+class ProductsStore {
+  @observable products;
 
-  @action pullUser() {
-    Api.products(['fdsfsd', 'trtdg']).then((res)=>{
-      console.log("res", res)
+  constructor() {
+    this.products = {};
+  }
 
-      if (res && res.success) {
-        this.res = res;
+  @action getProducts(param) {
+    Api.products(param).then((res) => {
+      if (res) {
+        this.products = res;
       }
     })
-    return
   }
 
 }
 
-export default new Products();
+export default new ProductsStore();
