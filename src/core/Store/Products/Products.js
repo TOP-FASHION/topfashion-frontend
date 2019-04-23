@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-import Api from '../utils/Api/'
+import Api from '../../Api/'
 
 export default class ProductsStore {
   @observable products;

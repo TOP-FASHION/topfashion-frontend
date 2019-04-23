@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ProductList from '../ProductList'
-import { inject, observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react'
 
 import './Shelf.scss'
 
@@ -9,7 +9,7 @@ import './Shelf.scss'
 @observer
 class Shelf extends Component {
   componentDidMount() {
-    this.props.products.getProducts("category");
+    this.props.products.getProducts('category')
   }
 
   render() {
@@ -23,7 +23,7 @@ class Shelf extends Component {
           <ProductList products={products} />
         </div>
       </React.Fragment>
-    ) : null;
+    ) : null
   }
 }
 

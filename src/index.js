@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import { Provider } from 'mobx-react'
 import App from './decorators'
 import { BrowserRouter, Route } from 'react-router-dom'
-import stores from './store'
+import stores from './core/store'
 import './styles/main.scss'
 
 const supportsHistory = 'pushState' in window.history

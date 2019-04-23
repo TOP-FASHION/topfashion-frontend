@@ -4,15 +4,11 @@ export default class Products {
   async getProducts () {
     return await request('api/products?display=full', {})
   }
+
   getOneProduct (id) {
     return request(`api/products/${id}/`)
   }
-  selected (array) {
-    return get.selected(array)
-  }
-  getProductCategoryName (id) {
-    return getCategory.one(id)
-  }
+
   getFilterProductsList (limit = null, category = null, manufacturer = null, products = null) {
     if (Array.isArray(products)) {
       var productsRequestString = products.join('|')
