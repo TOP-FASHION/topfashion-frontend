@@ -1,7 +1,7 @@
 /* global history, location */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Fragment from '../components/Fragment'
 
 import sessionTabStorage from '../utils/sessionTabStorage'
@@ -94,10 +94,11 @@ class Decorators extends Component {
         {/*<Notifications />*/}
         {/*<Redirections />*/}
         {/*<Modals />*/}
-
-        <Route path='/blocked' component={EmptyDecorator} exact />
-        <Route path={`/products/:category/:id`} component={ProductDecorator} exact />
-        <Route component={MainDecorator} />
+        <Switch>
+          <Route path='/blocked' component={EmptyDecorator} exact />
+          <Route path={`/:category/:id`} component={ProductDecorator} exact />
+          <Route component={MainDecorator} />
+        </Switch>
       </Fragment>
     )
   }
