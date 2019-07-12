@@ -1,25 +1,22 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import ProductList from '../ProductList'
-import { inject, observer } from 'mobx-react'
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { inject, observer } from 'mobx-react';
+import ProductList from '../ProductList';
 import './Shelf.scss'
 
-@inject('products')
+@inject('productsStore')
 @observer
 class Shelf extends Component {
-  componentDidMount() {
-    this.props.products.getProducts('category')
+  componentDidMount () {
+    this.props.productsStore.getProducts()
   }
 
-  render() {
-    const {
-      products: { products }
-    } = this.props.products;
+  render () {
+    const { products } = this.props.productsStore
 
-    return products ?(
+    return products ? (
       <React.Fragment>
-        <div className="shelf-container">
+        <div className='shelf-container'>
           <ProductList products={products} />
         </div>
       </React.Fragment>

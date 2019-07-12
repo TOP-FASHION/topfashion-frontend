@@ -1,6 +1,3 @@
-import * as history from 'history'
-
-const myHistory = history.createHashHistory()
 
 const codeMessage = {
   200: 'ошибка'
@@ -27,12 +24,15 @@ function checkStatus (response) {
  */
 
 export default function request (url, options) {
-  console.log('url', url)
-  console.log('options', options)
   const defaultOptions = {
     credentials: 'include'
   }
   const newOptions = { ...defaultOptions, ...options }
+  console.log('process.env.API_KEY', process.env.API_KEY)
+  newOptions.headers = {
+    Authorization: 'Basic ' + btoa(`${process.env.API_KEY}:${process.env.API_SECRET}`),
+    'Content-Type': 'application/json'
+  }
   if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
     if (!(newOptions.body instanceof FormData)) {
       newOptions.headers = {
@@ -50,7 +50,7 @@ export default function request (url, options) {
     }
   }
 
-  return fetch (url + `&output_format=JSON&ws_key=${process.env.PRESTASHOP_KEY}`, newOptions)
+  return fetch ('/wp-json' + url, newOptions)
     .then(checkStatus)
     .then(response => {
       if (newOptions.method === 'DELETE' || response.status === 204) {
@@ -72,8 +72,6 @@ export default function request (url, options) {
         myHistory.push('/exception/500')
         return
       }
-      if (status >= 404 && status < 422) {
-        myHistory.push('/exception/404')
-      }
+
     })
 }

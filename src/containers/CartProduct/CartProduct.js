@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Thumb from '../../components/Thumb/index';
-import { formatPrice } from '../../services/util';
 
 class CartProduct extends Component {
   static propTypes = {
@@ -50,9 +49,6 @@ class CartProduct extends Component {
             {`${product.availableSizes[0]} | ${product.style}`} <br />
             Quantity: {product.quantity}
           </p>
-        </div>
-        <div className="shelf-item__price">
-          <p>{`${product.currencyFormat}  ${formatPrice(product.price)}`}</p>
         </div>
       </div>
     );

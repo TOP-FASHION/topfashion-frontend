@@ -22,7 +22,6 @@ class MainDecorator extends Component {
       <Fragment>
         <Group id='main'>
           <div className='main-decorator__wrapper'>
-            <Header />
             <Group className='main-decorator__content'>
               <Route path='/' component={Home} exact />
               <Route component={NotFound} />

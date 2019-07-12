@@ -1,35 +1,36 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import Api from '../../core/Api'
-
+import Button from '../../components/Button'
 import Thumb from '../../components/Thumb/index'
+
+
 
 class Product extends Component {
   static propTypes = {
-    product: PropTypes.object.isRequired
+    product: PropTypes.object.isRequired,
+    replace: PropTypes.bool
   }
 
-  render() {
+  render () {
     const { product } = this.props
+    let category = product.categories[0].slug
 
     return (
       <div
         className='shelf-item'
-        onClick={() => addProduct(product)}
         data-sku={product.sku}
       >
         <Thumb
           classes='shelf-item__thumb'
-          src={Api.productImages.getProductImage(product.id, product.id_default_image)}
-          alt={product.title}
+          src={product.images[0].src}
+          alt={product.name}
         />
-        <p className='shelf-item__title'>{product.title}</p>
+        <p className='shelf-item__title'>{product.name}</p>
         <div className='shelf-item__price'>
           <div className='val'>
-            <small>{product.currencyFormat}</small>
+            <small>{product.price}</small>
           </div>
         </div>
-        <div className='shelf-item__buy-btn'>Add to cart</div>
       </div>
     )
   }

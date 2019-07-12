@@ -18,9 +18,6 @@ class Header extends Component {
     return (
       <header className="header" role="banner">
         <div className="header__inner container">
-          <Link to='/' className='brand' rel="home" aria-label="Go To Homepage">
-            <img className='brand__logo' src={require(`../../static/logo.svg`)} alt="Лого"/>
-          </Link>
           <Nav/>
           <div className="menu-animation">
             <div id="animation-circle" className="menu-animation__circle"></div>

@@ -1,7 +1,7 @@
-import ProductsStore from './Products'
+import ProductsStore from './ProductsStore'
 
-const stores = {
-  products: new ProductsStore()
+const allStore = {
+  productsStore: new ProductsStore()
 }
 
-export default stores
+export default allStore

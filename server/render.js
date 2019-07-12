@@ -1,56 +1,52 @@
 import React from 'react'
-import {useStaticRendering} from 'mobx-react'
+import { Provider, useStaticRendering } from 'mobx-react'
 import {renderToStaticMarkup} from 'react-dom/server'
+import { StaticRouter } from 'react-router'
+import createHistory from 'history/createMemoryHistory'
+import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
-import Head from '../src/helpers/Head'
-import Body from '../src/helpers/Body'
+import App from '../src/decorators/Routes'
+import allStore from '../src/core/Store'
 
-export default ({clientStats}) => {
-  useStaticRendering(true)
+useStaticRendering(true)
 
-  const {scripts, stylesheets, cssHashRaw} = flushChunks(clientStats)
-  const extendedStylesheets = stylesheets.slice(0)
-  const initiallyAwaitingPromises = []
+export default ({ clientStats }) => (req, res) => {
+  const history = createHistory({ initialEntries: [req.path] })
+  const context = {};
 
-  return async (req, res, next) => {
-    try {
-      await Promise.all(initiallyAwaitingPromises)
-      return renderMiddleware(req, res, next)
-    } catch (error) {
-      next(error)
-    }
-  }
+  const app = renderToStaticMarkup(
+    <Provider {...allStore}>
+      <StaticRouter location={req.originalUrl} context={context}>
+        <App history={history} />
+      </StaticRouter>
+    </Provider>
+  )
 
-  // FUNCTIONS
+  const chunkNames = flushChunkNames()
 
-  // The main application renderer
-  async function renderMiddleware (req, res) {
-    const headHtml = renderToStaticMarkup(
-      <Head />
-    )
+  const {
+    js, styles, scripts, stylesheets
+  } = flushChunks(clientStats, {
+    chunkNames
+  })
 
-    // First bytes (ASAP)
-    res.setHeader('Content-Type', 'text/html')
-    res.write(`<!doctype html>\n<html>${headHtml}`)
+  console.log('PATH', req.path)
+  console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames)
+  console.log('SCRIPTS SERVED', scripts)
+  console.log('STYLESHEETS SERVED', stylesheets)
 
-    // Wait information about the user balance
-    const serverTime = Date.now()
-
-    const data = {
-      now: serverTime
-    }
-
-    const bodyHtml = renderToStaticMarkup(
-      <Body
-        scripts={scripts}
-        stylesheets={extendedStylesheets}
-        cssHash={cssHashRaw}
-        state={data}
-      />
-    )
-
-    // Last bytes
-    res.write(`${bodyHtml}</html>`)
-    res.end()
-  }
+  res.send(
+    `<!doctype html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>react-universal-component-boilerplate</title>
+          ${styles}
+        </head>
+        <body>
+          <div id="root">${app}</div>
+        </body>
+        ${js}
+      </html>`
+  )
 }

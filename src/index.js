@@ -1,26 +1,27 @@
 import React from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+import createHistory from 'history/createBrowserHistory'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'mobx-react'
 import App from './decorators'
-import { BrowserRouter, Route } from 'react-router-dom'
-import stores from './core/store'
-import './styles/main.scss'
+import allStore from './core/Store'
 
+const history = createHistory()
 const supportsHistory = 'pushState' in window.history
 
-const render = App => ReactDom.hydrate(
-  <Provider {...stores}>
-    <BrowserRouter forceRefresh={!supportsHistory}>
-      <Route component={App} />
-    </BrowserRouter>
-  </Provider>
-  ,
+const render = App => ReactDOM.hydrate(
+  <AppContainer>
+    <Provider {...allStore}>
+        <App history={history} />
+    </Provider>
+  </AppContainer>,
   document.getElementById('root')
 )
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
   module.hot.accept('./decorators', () => {
-    const App = require('./decorators').default
+    const App = require('./decorators').default // eslint-ignore-line
     render(App)
   })
 }

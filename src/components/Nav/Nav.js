@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Link from '../Link'
 
-import './Nav.scss';
+import './Nav.scss'
 
 class Nav extends Component {
 

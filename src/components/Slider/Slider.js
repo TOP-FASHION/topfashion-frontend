@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Swiper from "react-id-swiper";
 import generateData from "./data";
-import SlideItem from "./slideItem";
+import SlideItem from "./SlideItem";
 import { Pagination, Navigation, Autoplay } from "swiper/dist/js/swiper.esm";
 import "./Slider.scss";
 

@@ -1,5 +1,8 @@
 node_modules
-
-tmp
-
+*.log
+buildClient
+buildServer
+.vscode
 .idea
+.DS_Store
+.history
