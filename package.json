@@ -1,6 +1,6 @@
 {
-  "name": "flush-requires-boilerplate-webpack-chunknames",
-  "description": "A boilerplate showing how to achieve Universal Code-Splitting and Universal HMR with Webpack 4, react-universal-component, webpack-flush-chunks and extract-css-chunks-webpack-plugin",
+  "name": "React-Mobx-Woocomerce-Theme",
+  "description": "Frontend application for Woocomerce projects",
   "version": "1.0.0",
   "main": "server/index.js",
   "author": "Popov Evgeniy <1212evgen@gmail.com>",
@@ -63,6 +63,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-universal-import": "^4.0.0",
     "babel-watch": "^7.0.0",
+    "classnames": "2.2.6",
     "commitizen": "^3.1.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-import Fragment from '../../components/Fragment'
+import { Switch, Route } from 'react-router-dom'
 import Group from '../../components/Group'
 import isShowModalAction from '../../utils/isShowModalAction'
 
@@ -10,28 +9,31 @@ import Footer from '../Footer'
 
 // pages
 import Home from '../../pages/Home'
+import About from '../../pages/About'
 import NotFound from '../../pages/NotFound'
 
 class MainDecorator extends Component {
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return !isShowModalAction(nextProps, nextState)
   }
 
-  render () {
+  render() {
     return (
-      <Fragment>
-        <Group id='main'>
-          <div className='main-decorator__wrapper'>
-            <Group className='main-decorator__content'>
+      <Group id='main'>
+        <div className='main-decorator__wrapper'>
+          <Header />
+          <Group className='main-decorator__content'>
+            <Switch>
               <Route path='/' component={Home} exact />
+              <Route path='/about' component={About} exact />
               <Route component={NotFound} />
-            </Group>
-          </div>
-          <footer className='main-decorator__footer'>
-            <Footer />
-          </footer>
-        </Group>
-      </Fragment>
+            </Switch>
+          </Group>
+        </div>
+        <footer className='main-decorator__footer'>
+          <Footer />
+        </footer>
+      </Group>
     )
   }
 }
