@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider, useStaticRendering } from 'mobx-react'
-import {renderToStaticMarkup} from 'react-dom/server'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import createHistory from 'history/createMemoryHistory'
 import { flushChunkNames } from 'react-universal-component/server'
@@ -12,7 +12,7 @@ useStaticRendering(true)
 
 export default ({ clientStats }) => (req, res) => {
   const history = createHistory({ initialEntries: [req.path] })
-  const context = {};
+  const context = {}
 
   const app = renderToStaticMarkup(
     <Provider {...allStore}>

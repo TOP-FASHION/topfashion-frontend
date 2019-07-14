@@ -2,18 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import createHistory from 'history/createBrowserHistory'
-import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'mobx-react'
 import App from './decorators'
 import allStore from './core/Store'
 
 const history = createHistory()
-const supportsHistory = 'pushState' in window.history
 
 const render = App => ReactDOM.hydrate(
   <AppContainer>
     <Provider {...allStore}>
-        <App history={history} />
+      <App history={history} />
     </Provider>
   </AppContainer>,
   document.getElementById('root')

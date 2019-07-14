@@ -16,7 +16,7 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.json', '.css', '.styl']
+        extensions: ['.js', '.json', '.css', '.scss']
       }
     }
   },
@@ -43,7 +43,7 @@ module.exports = {
       {
         js: 'never',
         jsx: 'never',
-        styl: 'never',
+        scss: 'never',
         css: 'never'
       }
     ],
@@ -109,7 +109,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 80,
+        code: 100,
         tabWidth: 2,
         ignoreUrls: true,
         ignoreComments: true,
