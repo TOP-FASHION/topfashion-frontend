@@ -24,26 +24,26 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.styl$/,
+        test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              exportOnlyLocals: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+              exportOnlyLocals: true
             }
           },
           {
-            loader: 'stylus-loader'
+            loader: 'sass-loader'
           }
         ]
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.css', '.styl']
+    extensions: ['.js', '.css', '.scss']
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),

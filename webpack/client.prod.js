@@ -22,18 +22,24 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.styl$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          ExtractCssChunks.loader,
           {
-            loader: 'css-loader',
+            loader: ExtractCssChunks.loader,
             options: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
+              hot: true,
+              reloadAll: true
             }
           },
           {
-            loader: 'stylus-loader'
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       }
@@ -41,7 +47,7 @@ module.exports = {
   },
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.css', '.styl']
+    extensions: ['.js', '.css', '.scss']
   },
   plugins: [
     new ExtractCssChunks(),
