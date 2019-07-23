@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Fragment from '../../components/Fragment'
 import Nav from '../../components/Nav'
-import Link from '../../components/Link'
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 class Header extends Component {

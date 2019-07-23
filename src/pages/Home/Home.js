@@ -11,7 +11,6 @@ class Home extends Component {
   render () {
     return (
       <React.Fragment>
-        55
         <Shelf />
       </React.Fragment>
     )

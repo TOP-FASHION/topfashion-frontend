@@ -36,7 +36,13 @@
   "env": {
     "development": {
       "plugins": [
-        "react-hot-loader/babel"
+        "react-hot-loader/babel",
+        [
+          "react-intl",
+          {
+            "messagesDir": "./tmp/extractedMessages"
+          }
+        ]
       ]
     }
   }

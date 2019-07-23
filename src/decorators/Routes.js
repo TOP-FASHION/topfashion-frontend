@@ -1,7 +1,7 @@
 /* global history, location */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Switch, Route } from 'react-router'
+import { Switch, Route } from 'react-router-dom'
 import Fragment from '../components/Fragment'
 
 import sessionTabStorage from '../utils/sessionTabStorage'

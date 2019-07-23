@@ -1,3 +1,10 @@
+const fs = require('fs');
+const path = require('path');
+
+const prettierOptions = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'),
+);
+
 module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
@@ -8,8 +15,8 @@ module.exports = {
     sourceType: 'module',
     allowImportExportEverywhere: false
   },
-  plugins: ['flowtype'],
-  extends: ['airbnb', 'plugin:flowtype/recommended'],
+  plugins: ['flowtype', 'prettier'],
+  extends: ['airbnb', 'plugin:flowtype/recommended', 'prettier', 'prettier/react'],
   settings: {
     flowtype: {
       onlyFilesWithFlowAnnotation: true
@@ -37,6 +44,7 @@ module.exports = {
     alert: true
   },
   rules: {
+    'prettier/prettier': ['error', prettierOptions],
     'import/extensions': [
       'error',
       'always',

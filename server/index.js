@@ -1,5 +1,6 @@
 require('dotenv').config()
 require('colors')
+const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
 const noFavicon = require('express-no-favicons')
@@ -67,6 +68,11 @@ app.use('/wp-json/', (req, res) => {
     res.status(500).json({ error: 'ProxyException', details: proxyError })
   })
 })
+
+// Static files
+app.use(express.static(path.join(__dirname, '..', process.env.STATIC_PATH), {
+  maxAge: '2m' // 2 minutes
+}))
 
 const done = () => !isBuilt && https.createServer(options, app).listen(process.env.HTTPS_PORT, () => {
   isBuilt = true
