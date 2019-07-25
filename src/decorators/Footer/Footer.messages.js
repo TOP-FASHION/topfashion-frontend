@@ -109,4 +109,16 @@ export default defineMessages({
     id: 'app.footer.newsletter.social',
     defaultMessage: 'Follow us on social networks'
   },
+  'app.footer.newsletter.templates': {
+    id: 'app.footer.newsletter.templates',
+    defaultMessage: 'Templates Point'
+  },
+  'app.footer.newsletter.subscribe': {
+    id: 'app.footer.newsletter.subscribe',
+    defaultMessage: 'Subscribe'
+  },
+  'app.footer.newsletter.email': {
+    id: 'app.footer.newsletter.email',
+    defaultMessage: 'Email Address'
+  },
 })

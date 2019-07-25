@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {injectIntl} from 'react-intl'
+import { Link } from 'react-router-dom'
+import { injectIntl } from 'react-intl'
 import Fragment from '../../components/Fragment'
-import Grid from '@material-ui/core/Grid'
-import Container from '@material-ui/core/Container'
+import { Grid, Container, TextField, Button } from '@material-ui/core/'
 import setMessages from '../../utils/setMessages'
 import messages from './Footer.messages.js'
 import './Footer.scss'
@@ -15,7 +15,13 @@ class Footer extends Component {
       <Fragment>
         <div className="footer">
           <Container maxWidth="md">
-            <Grid className="site-footer__widgets" container item xs={12} spacing={3}>
+            <Grid
+              className="site-footer__widgets"
+              container
+              item
+              xs={12}
+              spacing={3}
+            >
               <Grid item xs={4}>
                 <div className="footer__widget footer-contacts">
                   <h5 className="footer-contacts__title">
@@ -26,24 +32,20 @@ class Footer extends Component {
                   </div>
                   <ul className="footer-contacts__contacts">
                     <li>
-                      <i className="footer-contacts__icon fas fa-globe-americas">
-                        {this.messages('contacts.address')}
-                      </i>
+                      <i className="footer-contacts__icon fas fa-globe-americas"></i>
+                      {this.messages('contacts.address')}
                     </li>
                     <li>
-                      <i className="footer-contacts__icon far fa-envelope">
-                        {this.messages('contacts.email')}
-                      </i>
+                      <i className="footer-contacts__icon far fa-envelope"></i>
+                      {this.messages('contacts.email')}
                     </li>
                     <li>
-                      <i className="footer-contacts__icon fas fa-mobile-alt">
-                        {this.messages('contacts.phone')}
-                      </i>
+                      <i className="footer-contacts__icon fas fa-mobile-alt"></i>
+                      {this.messages('contacts.phone')}
                     </li>
                     <li>
-                      <i className="footer-contacts__icon far fa-clock">
-                        {this.messages('contacts.time')}
-                      </i>
+                      <i className="footer-contacts__icon far fa-clock"></i>
+                      {this.messages('contacts.time')}
                     </li>
                   </ul>
                 </div>
@@ -55,44 +57,44 @@ class Footer extends Component {
                   </h5>
                   <ul className="footer-links__list">
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="/" className="footer-links__link">
                         {this.messages('information.aboutUs')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="/" className="footer-links__link">
                         {this.messages('information.delivery')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('information.information')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('information.policy')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('information.brands')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('information.contactUs')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('information.returns')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('information.siteMap')}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -104,39 +106,39 @@ class Footer extends Component {
                   </h5>
                   <ul className="footer-links__list">
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.storeLocation')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.orderHistory')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.wishList')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.newsletter')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.specials')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.certificates')}
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-links__item">
-                      <a href="#" className="footer-links__link">
+                      <Link to="#" className="footer-links__link">
                         {this.messages('myAccount.affiliate')}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -149,71 +151,74 @@ class Footer extends Component {
                   <div className="footer-newsletter__text">
                     {this.messages('newsletter.text')}
                   </div>
-                  {/*      <form action="#" className="footer-newsletter__form">
-                    <label className="sr-only" htmlFor="footer-newsletter-address">Email Address</label>
-                    <input type="text" className="footer-newsletter__form-input form-control" id="footer-newsletter-address" placeholder="Email Address...">
-                    <button className="footer-newsletter__form-button btn btn-primary">Subscribe</button>
-                  </form>*/}
+                  <form action="#" className="footer-newsletter__form">
+                    <label
+                      className="sr-only"
+                      htmlFor="footer-newsletter-address"
+                    >
+                      {this.messages('newsletter.email')}
+                    </label>
+                    <TextField
+                      id="footer-newsletter-address"
+                      label="With placeholder"
+                      placeholder="Placeholder"
+                      className="footer-newsletter__form-input form-control"
+                      margin="normal"
+                    />
+                    <Button
+                      variant="contained"
+                      className="footer-newsletter__form-button btn btn-primary"
+                    >
+                      {this.messages('newsletter.subscribe')}
+                    </Button>
+                  </form>
                   <div className="footer-newsletter__text footer-newsletter__text--social">
                     {this.messages('newsletter.social')}
                   </div>
                   <ul className="footer-newsletter__social-links">
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--facebook">
-                      <a
-                        href="https://themeforest.net/user/kos9"
-                        target="_blank"
-                      >
+                      <Link to="/" target="_blank">
                         <i className="fab fa-facebook-f"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--twitter">
-                      <a
-                        href="https://themeforest.net/user/kos9"
-                        target="_blank"
-                      >
+                      <Link to="/" target="_blank">
                         <i className="fab fa-twitter"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--youtube">
-                      <a
-                        href="https://themeforest.net/user/kos9"
-                        target="_blank"
-                      >
+                      <Link to="/" target="_blank">
                         <i className="fab fa-youtube"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--instagram">
-                      <a
-                        href="https://themeforest.net/user/kos9"
-                        target="_blank"
-                      >
+                      <Link to="/" target="_blank">
                         <i className="fab fa-instagram"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--rss">
-                      <a
-                        href="https://themeforest.net/user/kos9"
-                        target="_blank"
-                      >
+                      <Link to="/" target="_blank">
                         <i className="fas fa-rss"></i>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </Grid>
             </Grid>
-            <Grid className="site-footer__bottom" container item xs={12} spacing={3}>
-              <Grid item xs={6}>
-                <div className="site-footer__copyright">
-                  <a href="templatespoint.net" target="_blank">
-                    Templates Point
-                  </a>
-                </div>
+            <Grid
+              className="site-footer__bottom"
+              container
+              item
+              xs={12}
+              spacing={3}
+            >
+              <Grid item xs={6} className="site-footer__copyright">
+                <Link to="/" target="_blank">
+                  {this.messages('newsletter.templates')}
+                </Link>
               </Grid>
-              <Grid item xs={6}>
-                <div className="site-footer__payments">
-                  <img src="images/payments.png" alt="" />
-                </div>
+              <Grid item xs={6} className="site-footer__payments">
+                <img src="/static/img/payments.png" alt="" />
               </Grid>
             </Grid>
           </Container>

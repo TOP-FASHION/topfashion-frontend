@@ -69,10 +69,7 @@ app.use('/wp-json/', (req, res) => {
   })
 })
 
-// Static files
-app.use(express.static(path.join(__dirname, '..', process.env.STATIC_PATH), {
-  maxAge: '2m' // 2 minutes
-}))
+app.use('/static', express.static(path.resolve(__dirname, process.env.STATIC_PATH)));
 
 const done = () => !isBuilt && https.createServer(options, app).listen(process.env.HTTPS_PORT, () => {
   isBuilt = true

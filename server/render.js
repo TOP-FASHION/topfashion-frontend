@@ -49,7 +49,7 @@ export default ({ clientStats }) => (req, res) => {
   // Add "customer.css" file
   extendedStylesheets[customerCssIndex] = `static/customer.css`
   // Add "hotfixes.css" file
-  extendedStylesheets[hotfixesCssIndex] = `static/hotfixes.css`
+  extendedStylesheets[hotfixesCssIndex] = `static/fontawesome.css`
 
   console.log('PATH', req.path)
   console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames)

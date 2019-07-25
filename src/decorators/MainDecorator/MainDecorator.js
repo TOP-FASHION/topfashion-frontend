@@ -12,6 +12,8 @@ import Home from '../../pages/Home'
 import About from '../../pages/About'
 import NotFound from '../../pages/NotFound'
 
+import '../../styles/global.scss'
+
 class MainDecorator extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return !isShowModalAction(nextProps, nextState)
