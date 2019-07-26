@@ -35,9 +35,7 @@ export default ({ clientStats }) => (req, res) => {
 
   const chunkNames = flushChunkNames()
 
-  const {
-    js, styles, scripts, stylesheets
-  } = flushChunks(clientStats, {
+  const { js, styles, scripts, stylesheets } = flushChunks(clientStats, {
     chunkNames
   })
 
@@ -85,11 +83,11 @@ class AppStylesheets extends React.Component {
     list: []
   }
 
-  render() {
+  render () {
     return (
       <React.Fragment>
         {this.props.list.map(name => (
-          <link rel="stylesheet" href={`/${name}`} key={name} />
+          <link rel='stylesheet' href={`/${name}`} key={name} />
         ))}
       </React.Fragment>
     )

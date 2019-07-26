@@ -7,7 +7,7 @@ const SEARCH = /([^&=]+)=?([^&]*)/g
  * @param {String} prefix
  * @return {Object}
  * */
-export default function searchParse(search, prefix = '?') {
+export default function searchParse (search, prefix = '?') {
   if (search.startsWith(prefix)) {
     search = search.slice(prefix.length)
   }

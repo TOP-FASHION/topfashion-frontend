@@ -4,12 +4,12 @@ import Api from '../Api'
 export default class ProductsStore {
   @observable products
 
-  constructor() {
+  constructor () {
     this.products = null
     console.log('this.products', this.products)
   }
 
-  @action getProducts() {
+  @action getProducts () {
     Api.products.getProducts().then(res => {
       console.log('res', res)
       if (res) {

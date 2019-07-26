@@ -9,11 +9,11 @@ import Header from '../Header'
 import Footer from '../Footer'
 
 class ProductDecorator extends Component {
-  render() {
+  render () {
     return (
-      <Group id="product">
+      <Group id='product'>
         <Header />
-        <Group className="product-decorator__content">
+        <Group className='product-decorator__content'>
           <Shelf />
         </Group>
         <Footer />

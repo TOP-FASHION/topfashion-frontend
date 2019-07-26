@@ -30,7 +30,7 @@ class Button extends React.Component {
     MuiCircularProgressProps: {}
   }
 
-  render() {
+  render () {
     const {
       classNames,
       onClick,

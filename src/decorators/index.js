@@ -5,12 +5,12 @@ import Routes from './Routes'
 import ScrollToTop from '../components/ScrollToTop'
 
 class AppRoot extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {}
   }
 
-  render() {
+  render () {
     return (
       <Router>
         <ScrollToTop>

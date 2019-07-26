@@ -7,11 +7,11 @@ class FailedImport extends Component {
     className: PropTypes.string
   }
 
-  get className() {
+  get className () {
     return classNames('failed-import__root', this.props.className)
   }
 
-  render() {
+  render () {
     return <span className={this.className}>Нет файла</span>
   }
 }

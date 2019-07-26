@@ -2,7 +2,7 @@ import React from 'react'
 import AutoRedirect from '../AutoRedirect/index'
 
 export default class AutoRedirectToEmailModal extends React.Component {
-  loginType(core) {
+  loginType (core) {
     return core.item('loginByToken').item('t') ? 'loginByToken' : 'login'
   }
 
@@ -21,9 +21,9 @@ export default class AutoRedirectToEmailModal extends React.Component {
     core._api.billfold.login.subscribe(subscribe)
   }
 
-  render() {
+  render () {
     return (
-      <AutoRedirect if={this.if} reset={this.reset} search="modal=email" push />
+      <AutoRedirect if={this.if} reset={this.reset} search='modal=email' push />
     )
   }
 }

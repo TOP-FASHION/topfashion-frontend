@@ -2,7 +2,7 @@
 
 const GLOBAL_VARIABLES_SEARCH_PATTERN = /%[A-Z0-9_]+?%/g
 
-export default function setMessages(component, messages, prefix = '') {
+export default function setMessages (component, messages, prefix = '') {
   if (!component.props.intl) {
     throw Error(
       `${component.constructor.name} is not connected to react intl, use injectIntl for that`
@@ -58,7 +58,7 @@ export default function setMessages(component, messages, prefix = '') {
     )
 }
 
-function replaceGlobalVariables(translation = '', messages = {}) {
+function replaceGlobalVariables (translation = '', messages = {}) {
   return `${translation}`.replace(
     GLOBAL_VARIABLES_SEARCH_PATTERN,
     globalVariableRaw => {

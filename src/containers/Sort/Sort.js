@@ -21,9 +21,9 @@ class Sort extends Component {
     this.props.updateSort(value)
   }
 
-  render() {
+  render () {
     return (
-      <div className="sort">
+      <div className='sort'>
         Order by
         <Selectbox options={sortBy} handleOnChange={this.handleSort} />
       </div>

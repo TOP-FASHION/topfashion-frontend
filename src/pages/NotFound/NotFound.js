@@ -4,11 +4,11 @@ import Group from '../../components/Group'
 import './NotFound.scss'
 
 class NotFound extends Component {
-  render() {
+  render () {
     return (
       <Status code={404}>
-        <Group className="not-found-page">
-          <div className="not-found-page__content">Нет страницы</div>
+        <Group className='not-found-page'>
+          <div className='not-found-page__content'>Нет страницы</div>
         </Group>
       </Status>
     )
