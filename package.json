@@ -12,7 +12,8 @@
     "format": "prettier --single-quote --semi=false --write \"{src,server,webpack}/**/*.js\" && eslint --fix src server webpack",
     "lint:css": "stylelint src/**/*.scss",
     "lint:js": "eslint src src/**/*.js",
-    "lint:fix": "eslint src src/**/*.js --fix",
+    "lint-js:fix": "eslint src src/**/*.js --fix",
+    "lint-css:fix": "stylelint src/**/*.scss --fix",
     "clean": "rimraf buildClient buildServer",
     "cm": "git-cz"
   },
@@ -79,9 +80,9 @@
     "cz-conventional-changelog": "^2.1.0",
     "dotenv-webpack": "^1.5.4",
     "eslint": "^6.0.1",
+    "eslint-config-prettier": "4.1.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-config-standard-react": "^8.0.0",
-    "eslint-config-prettier": "4.1.0",
     "eslint-plugin-flowtype": "^3.9.1",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -101,6 +102,8 @@
     "rimraf": "^2.6.3",
     "sass-loader": "7.1.0",
     "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^3.0.1",
     "travis-github-status": "^1.6.3",
     "webpack": "4.33.0",
     "webpack-hot-middleware": "^2.25.0",
@@ -116,6 +119,10 @@
     "*.js": [
       "prettier --single-quote --semi=false --write",
       "eslint --fix",
+      "git add"
+    ],
+    "*.scss": [
+      "stylelint --fix",
       "git add"
     ]
   },
