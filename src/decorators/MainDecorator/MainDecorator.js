@@ -15,24 +15,24 @@ import NotFound from '../../pages/NotFound'
 import '../../styles/global.scss'
 
 class MainDecorator extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate (nextProps, nextState) {
     return !isShowModalAction(nextProps, nextState)
   }
 
-  render() {
+  render () {
     return (
-      <Group id="main">
-        <div className="main-decorator__wrapper">
+      <Group id='main'>
+        <div className='main-decorator__wrapper'>
           <Header />
-          <Group className="main-decorator__content">
+          <Group className='main-decorator__content'>
             <Switch>
-              <Route path="/" component={Home} exact />
-              <Route path="/about" component={About} exact />
+              <Route path='/' component={Home} exact />
+              <Route path='/about' component={About} exact />
               <Route component={NotFound} />
             </Switch>
           </Group>
         </div>
-        <footer className="main-decorator__footer">
+        <footer className='main-decorator__footer'>
           <Footer />
         </footer>
       </Group>

@@ -21,7 +21,7 @@ class CartProduct extends Component {
     this.setState({ isMouseOver: false })
   }
 
-  render() {
+  render () {
     const { product, removeProduct } = this.props
 
     const classes = ['shelf-item']
@@ -33,19 +33,19 @@ class CartProduct extends Component {
     return (
       <div className={classes.join(' ')}>
         <div
-          className="shelf-item__del"
+          className='shelf-item__del'
           onMouseOver={() => this.handleMouseOver()}
           onMouseOut={() => this.handleMouseOut()}
           onClick={() => removeProduct(product)}
         />
         <Thumb
-          classes="shelf-item__thumb"
+          classes='shelf-item__thumb'
           src={require(`../../static/products/${product.sku}_2.jpg`)}
           alt={product.title}
         />
-        <div className="shelf-item__details">
-          <p className="title">{product.title}</p>
-          <p className="desc">
+        <div className='shelf-item__details'>
+          <p className='title'>{product.title}</p>
+          <p className='desc'>
             {`${product.availableSizes[0]} | ${product.style}`} <br />
             Quantity: {product.quantity}
           </p>

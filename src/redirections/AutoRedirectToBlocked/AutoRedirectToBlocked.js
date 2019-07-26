@@ -14,7 +14,7 @@ export default class AutoRedirectToBlocked extends React.Component {
     )
   }
 
-  render() {
-    return <AutoRedirect if={this.if} to="/blocked" reset />
+  render () {
+    return <AutoRedirect if={this.if} to='/blocked' reset />
   }
 }

@@ -9,20 +9,20 @@ class Product extends Component {
     replace: PropTypes.bool
   }
 
-  render() {
+  render () {
     const { product } = this.props
     const category = product.categories[0].slug
 
     return (
-      <div className="shelf-item" data-sku={product.sku}>
+      <div className='shelf-item' data-sku={product.sku}>
         <Thumb
-          classes="shelf-item__thumb"
+          classes='shelf-item__thumb'
           src={product.images[0].src}
           alt={product.name}
         />
-        <p className="shelf-item__title">{product.name}</p>
-        <div className="shelf-item__price">
-          <div className="val">
+        <p className='shelf-item__title'>{product.name}</p>
+        <div className='shelf-item__price'>
+          <div className='val'>
             <small>{product.price}</small>
           </div>
         </div>

@@ -14,7 +14,7 @@ class ModalLink extends Component {
     location: PropTypes.object
   }
 
-  get link() {
+  get link () {
     if (onlyServer()) {
       return ''
     }
@@ -34,7 +34,7 @@ class ModalLink extends Component {
     return searchStringify(searchParsed)
   }
 
-  render() {
+  render () {
     const { id, location, options, ...props } = this.props
     return <Link {...props} to={this.link} />
   }

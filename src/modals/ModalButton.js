@@ -55,7 +55,7 @@ export default withRouter(
       })
     }
 
-    render() {
+    render () {
       const {
         children,
         id,

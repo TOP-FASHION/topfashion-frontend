@@ -7,16 +7,16 @@ import './Shelf.scss'
 @inject('productsStore')
 @observer
 class Shelf extends Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.productsStore.getProducts()
   }
 
-  render() {
+  render () {
     const { products } = this.props.productsStore
 
     return products ? (
       <React.Fragment>
-        <div className="shelf-container">
+        <div className='shelf-container'>
           <ProductList products={products} />
         </div>
       </React.Fragment>

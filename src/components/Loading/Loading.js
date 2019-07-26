@@ -9,15 +9,15 @@ export default class Loading extends Component {
     className: PropTypes.string
   }
 
-  get className() {
+  get className () {
     return classNames('seedLoading', this.props.className)
   }
 
-  render() {
+  render () {
     return (
       <CenterContent>
         <h4 className={this.className}>
-          <CircularProgress className="loading-spinner" />
+          <CircularProgress className='loading-spinner' />
         </h4>
       </CenterContent>
     )

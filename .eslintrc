@@ -3,8 +3,7 @@
   "extends": [
     "eslint:recommended",
     "standard",
-    "standard-react",
-    "prettier"
+    "standard-react"
   ],
   "env": {
     "jest": true

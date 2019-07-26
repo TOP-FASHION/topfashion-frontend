@@ -2,7 +2,7 @@ const codeMessage = {
   200: 'ошибка'
 }
 
-function checkStatus(response) {
+function checkStatus (response) {
   if (response.status >= 200 && response.status < 300) {
     return response
   }
@@ -22,7 +22,7 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 
-export default function request(url, options) {
+export default function request (url, options) {
   const defaultOptions = {
     credentials: 'include'
   }

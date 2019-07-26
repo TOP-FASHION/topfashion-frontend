@@ -7,12 +7,12 @@ class ShelfHeader extends Component {
     productsLength: PropTypes.number.isRequired
   }
 
-  render() {
+  render () {
     const { productsLength } = this.props
 
     return (
-      <div className="shelf-container-header">
-        <small className="products-found">
+      <div className='shelf-container-header'>
+        <small className='products-found'>
           <span>{productsLength} Product(s) found.</span>
         </small>
         <Sort />

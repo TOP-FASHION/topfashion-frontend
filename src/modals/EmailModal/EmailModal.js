@@ -11,11 +11,11 @@ import Redirect from '../../../../projects/finnplay/seed/src/components/Redirect
 class EmailModal extends Component {
   messages = setMessages(this, messages, 'modals.email.')
 
-  loginType(core) {
+  loginType (core) {
     return core.item('loginByToken').item('t') ? 'loginByToken' : 'login'
   }
 
-  render() {
+  render () {
     return (
       <Fragment>
         {$(c => {
@@ -26,7 +26,7 @@ class EmailModal extends Component {
           }
           return (
             <ModalUrl
-              id="email"
+              id='email'
               title={this.messages('title')}
               disableCloseIcon
             >
@@ -36,9 +36,9 @@ class EmailModal extends Component {
                   exception.errorCode === 222 &&
                   c.item('autoLogin').item('t') ? (
                     <EmailForm />
-                  ) : (
-                    <Redirect search={{ modal: undefined }} />
-                  )
+                    ) : (
+                      <Redirect search={{ modal: undefined }} />
+                    )
                 )}
               </Fragment>
             </ModalUrl>
