@@ -64,17 +64,30 @@ const options = {
 let isBuilt = false
 
 app.use('/wp-json/', (req, res) => {
-  proxy.web(req, res, { target: process.env.API_URL, changeOrigin: true, secure: false }, proxyError => {
-    res.status(500).json({ error: 'ProxyException', details: proxyError })
+  proxy.web(
+    req,
+    res,
+    { target: process.env.API_URL, changeOrigin: true, secure: false },
+    proxyError => {
+      res.status(500).json({ error: 'ProxyException', details: proxyError })
+    }
+  )
+})
+
+app.use(
+  '/static',
+  express.static(path.resolve(__dirname, process.env.STATIC_PATH))
+)
+
+const done = () =>
+  !isBuilt &&
+  https.createServer(options, app).listen(process.env.HTTPS_PORT, () => {
+    isBuilt = true
+    console.log(
+      `BUILD COMPLETE -- Listening @ https://localhost:${process.env.HTTPS_PORT}/`
+        .magenta
+    )
   })
-})
-
-app.use('/static', express.static(path.resolve(__dirname, process.env.STATIC_PATH)));
-
-const done = () => !isBuilt && https.createServer(options, app).listen(process.env.HTTPS_PORT, () => {
-  isBuilt = true
-  console.log(`BUILD COMPLETE -- Listening @ https://localhost:${process.env.HTTPS_PORT}/`.magenta)
-})
 
 if (DEV) {
   const compiler = webpack([clientConfig, serverConfig])
@@ -88,7 +101,10 @@ if (DEV) {
 
   devMiddleware.waitUntilValid(done)
 } else {
-  webpack([clientConfigProd, serverConfigProd]).run((err, stats) => {
+  webpack([clientConfigProd, serverConfigProd]).run((error, stats) => {
+    if (error) {
+      console.log(error.stack)
+    }
     const clientStats = stats.toJson().children[0]
     const serverRender = require('../buildServer/main.js').default
 
