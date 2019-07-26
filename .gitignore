@@ -6,3 +6,4 @@ buildServer
 .idea
 .DS_Store
 .history
+tmp

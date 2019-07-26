@@ -35,7 +35,9 @@ export default ({ clientStats }) => (req, res) => {
 
   const chunkNames = flushChunkNames()
 
-  const { js, styles, scripts, stylesheets } = flushChunks(clientStats, {
+  const {
+    js, styles, scripts, stylesheets
+  } = flushChunks(clientStats, {
     chunkNames
   })
 
