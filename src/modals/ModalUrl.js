@@ -35,7 +35,7 @@ class ModalUrl extends Component {
     open: true
   }
 
-  get idFromUrl () {
+  get idFromUrl() {
     return searchParse(this.props.location.search).modal
   }
 
@@ -54,14 +54,14 @@ class ModalUrl extends Component {
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     const { close } = this.props
     if (close) {
       close(this.close)
     }
   }
 
-  render () {
+  render() {
     const {
       id,
       open,
@@ -86,7 +86,7 @@ class ModalUrl extends Component {
         {children}
         <Fragment hidden={$(c => !c.item('ukRules').item('general'))}>
           <Markdown
-            className='modal__gambling-message'
+            className="modal__gambling-message"
             text={this.messages('gambling.message')}
           />
         </Fragment>

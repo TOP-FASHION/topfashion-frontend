@@ -2,7 +2,7 @@ import React from 'react'
 import gtmParts from 'react-google-tag-manager'
 
 class GoogleTagManager extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const dataLayerName = this.props.dataLayerName || 'dataLayer'
     const scriptId = this.props.scriptId || 'react-google-tag-manager-gtm'
 
@@ -13,7 +13,7 @@ class GoogleTagManager extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const gtm = gtmParts({
       id: this.props.gtmId,
       dataLayerName: this.props.dataLayerName || 'dataLayer',

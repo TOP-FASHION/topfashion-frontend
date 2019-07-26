@@ -21,7 +21,7 @@ class Checkbox extends Component {
     handleCheckboxChange(label)
   }
 
-  render () {
+  render() {
     const { label, classes } = this.props
     const { isChecked } = this.state
 
@@ -29,13 +29,13 @@ class Checkbox extends Component {
       <div className={classes}>
         <label>
           <input
-            type='checkbox'
+            type="checkbox"
             value={label}
             checked={isChecked}
             onChange={this.toggleCheckboxChange}
           />
 
-          <span className='checkmark'>{label}</span>
+          <span className="checkmark">{label}</span>
         </label>
       </div>
     )

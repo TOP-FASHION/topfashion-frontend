@@ -6,10 +6,10 @@ export default (Component, field, descriptor) => {
     return descriptor
   }
   let cache = UNDEFINED
-  function clear () {
+  function clear() {
     cache = UNDEFINED
   }
-  descriptor.get = function () {
+  descriptor.get = function() {
     if (cache !== UNDEFINED) return cache
     setTimeout(clear)
     return (cache = get.call(this))

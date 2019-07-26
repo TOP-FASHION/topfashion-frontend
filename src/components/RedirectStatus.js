@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
 
-export function RedirectWithStatus ({ from, to, status }) {
+export function RedirectWithStatus({ from, to, status }) {
   return (
     <Route
       render={({ staticContext }) => {

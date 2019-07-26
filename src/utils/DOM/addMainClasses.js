@@ -1,6 +1,6 @@
 import htmlClass from '../htmlClass'
 
-export default function addMainClasses (core) {
+export default function addMainClasses(core) {
   const deviceType = core
     .item('settings')
     .item('be')
@@ -9,10 +9,10 @@ export default function addMainClasses (core) {
     deviceType === 0
       ? 'desktop'
       : deviceType === 1
-        ? 'mobile'
-        : deviceType === 2
-          ? 'tablet'
-          : ''
+      ? 'mobile'
+      : deviceType === 2
+      ? 'tablet'
+      : ''
   core.item('$deviceType', deviceTypeName)
   if (deviceTypeName) {
     htmlClass.add(document.body, deviceTypeName)
@@ -26,9 +26,9 @@ export default function addMainClasses (core) {
 
   const registrationCountry = core.item('loggedIn')
     ? core
-      .item('profile')
-      .item('details')
-      .item('country')
+        .item('profile')
+        .item('details')
+        .item('country')
     : ''
   if (registrationCountry) {
     htmlClass.remove(document.body, /^rc-/)

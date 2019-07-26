@@ -30,7 +30,7 @@ class AutoRedirect extends React.Component {
     noStart: false
   }
 
-  static stream (core) {
+  static stream(core) {
     for (let i = 0; i < AutoRedirect.id; i++) {
       core.item('ui').item('$AutoRedirect.streamId', i)
     }
@@ -43,7 +43,7 @@ class AutoRedirect extends React.Component {
 
   id = AutoRedirect.id++
 
-  get if () {
+  get if() {
     let result = this.props.if
     if (typeof result === 'function') {
       result = result(this.core)
@@ -51,7 +51,7 @@ class AutoRedirect extends React.Component {
     return result
   }
 
-  get to () {
+  get to() {
     let { to } = this.props
     if (typeof to === 'function') {
       to = to(this.core)
@@ -59,7 +59,7 @@ class AutoRedirect extends React.Component {
     return to || this.pathname + this.search
   }
 
-  get pathname () {
+  get pathname() {
     let { pathname } = this.props
     if (typeof pathname === 'function') {
       pathname = pathname(this.core)
@@ -67,7 +67,7 @@ class AutoRedirect extends React.Component {
     return pathname || this.props.location.pathname
   }
 
-  get search () {
+  get search() {
     let { search = this.props.location.search } = this.props
     if (typeof search === 'function') {
       search = search(this.core)
@@ -86,7 +86,7 @@ class AutoRedirect extends React.Component {
     return search
   }
 
-  get push () {
+  get push() {
     let { push } = this.props
     if (typeof push === 'function') {
       push = push(this.core)
@@ -94,7 +94,7 @@ class AutoRedirect extends React.Component {
     return push
   }
 
-  reset (action) {
+  reset(action) {
     const { reset } = this.props
     if (reset === true) {
       action()
@@ -103,7 +103,7 @@ class AutoRedirect extends React.Component {
     }
   }
 
-  get checkCondition () {
+  get checkCondition() {
     const { to } = this
     const { pathname, search } = this.props.location
     const currentUrl = pathname + search
@@ -117,7 +117,7 @@ class AutoRedirect extends React.Component {
     return false
   }
 
-  get checkId () {
+  get checkId() {
     if (this.core.item('ui').item('$AutoRedirect.streamId') === undefined) {
       setTimeout(() => {
         if (this.core.item('ui').item('$AutoRedirect.streamId') === undefined) {
@@ -129,7 +129,7 @@ class AutoRedirect extends React.Component {
     return this.core.item('ui').item('$AutoRedirect.streamId') === this.id
   }
 
-  redirect () {
+  redirect() {
     this.core.item('ui').item(`$AutoRedirect.redirected.${this.id}`, true)
     this.reset(() =>
       this.core.item('ui').item(`$AutoRedirect.redirected.${this.id}`, false)
@@ -137,7 +137,7 @@ class AutoRedirect extends React.Component {
     return true
   }
 
-  get isRedirect () {
+  get isRedirect() {
     if (this.checkCondition && this.checkId) {
       this.redirect()
       return true
@@ -145,7 +145,7 @@ class AutoRedirect extends React.Component {
     return false
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (this.props.start) {
       this.props.start(this.start)
     }
@@ -168,7 +168,7 @@ class AutoRedirect extends React.Component {
     this.stop()
   }
 
-  render () {
+  render() {
     if (!this.core.item('ui').has(`$AutoRedirect.redirected.${this.id}`)) {
       this.core
         .item('ui')

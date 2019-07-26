@@ -8,10 +8,10 @@ import { setApiErrors } from '../../../../projects/finnplay/seed/src/translation
 class EmailNotification extends React.Component {
   apiErrors = setApiErrors(this)
 
-  render () {
+  render() {
     return (
       <Notification
-        type='error'
+        type="error"
         float
         autoHide
         closeDelay

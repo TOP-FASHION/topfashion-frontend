@@ -4,7 +4,7 @@
  * @param nextState
  * @returns {boolean}
  */
-export default function isShowModalAction (nextProps, nextState) {
+export default function isShowModalAction(nextProps, nextState) {
   if (nextProps && nextProps.history && nextProps.history.location) {
     return (
       nextProps.history.action === 'PUSH' &&

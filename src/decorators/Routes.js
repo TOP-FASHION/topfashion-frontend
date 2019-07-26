@@ -35,7 +35,7 @@ class Routes extends Component {
     sessionTabStorage.get('url') || '{"history": [], "position": -1}'
   )
 
-  getChildContext () {
+  getChildContext() {
     return {
       url: {
         ...this.url,
@@ -47,7 +47,7 @@ class Routes extends Component {
   save = (state = this.url) =>
     sessionTabStorage.set('url', JSON.stringify(state))
 
-  componentDidMount () {
+  componentDidMount() {
     const pushState = history.pushState.bind(history)
     if (!this.url.history.length) {
       this.url.history.push(location.pathname + location.search)
@@ -87,7 +87,7 @@ class Routes extends Component {
     }
   }
 
-  push (url) {
+  push(url) {
     this.url.position++
     if (this.url.position === this.url.history.length) {
       this.url.history.push(url)
@@ -100,15 +100,15 @@ class Routes extends Component {
     this.save()
   }
 
-  render () {
+  render() {
     return (
       <Fragment>
         {/* <Notifications /> */}
         {/* <Redirections /> */}
         {/* <Modals /> */}
         <Switch>
-          <Route path='/blocked' component={EmptyDecorator} exact />
-          <Route path='/:category/:id' component={ProductDecorator} exact />
+          <Route path="/blocked" component={EmptyDecorator} exact />
+          <Route path="/:category/:id" component={ProductDecorator} exact />
           <Route component={MainDecorator} />
         </Switch>
       </Fragment>

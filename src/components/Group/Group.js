@@ -11,7 +11,7 @@ class Group extends React.Component {
     classNames: {}
   }
 
-  render () {
+  render() {
     const { classNames, children, ...otherProps } = this.props
     return (
       <div className={classNames.root} {...otherProps}>

@@ -8,11 +8,11 @@ export default class CenterContent extends Component {
     children: PropTypes.any.isRequired
   }
 
-  get className () {
+  get className() {
     return classNames('center-content', this.props.className)
   }
 
-  render () {
+  render() {
     return <div className={this.className}>{this.props.children}</div>
   }
 }

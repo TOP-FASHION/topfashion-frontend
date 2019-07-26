@@ -21,15 +21,15 @@ export default class Redirections extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     window.addEventListener('message', this.listener)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     window.removeEventListener('message', this.listener)
   }
 
-  render () {
+  render() {
     return <Fragment>ewr</Fragment>
   }
 }

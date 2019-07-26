@@ -8,12 +8,12 @@ import SettingsMenu from '../../../../../projects/finnplay/seed/src/components/S
 class FooterMenu extends React.Component {
   messages = setMessages(this, messages, 'app.footerMenu.')
 
-  render () {
+  render() {
     return (
       <SettingsMenu
-        id='footerMenu'
+        id="footerMenu"
         messages={this.messages}
-        className='footer-menu'
+        className="footer-menu"
         scrollTo
       />
     )

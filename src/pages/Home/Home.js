@@ -7,7 +7,7 @@ import Shelf from '../../containers/Shelf/Shelf'
 
 @observer
 class Home extends Component {
-  render () {
+  render() {
     return (
       <React.Fragment>
         <Shelf />

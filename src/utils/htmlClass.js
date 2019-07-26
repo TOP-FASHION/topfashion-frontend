@@ -1,5 +1,5 @@
 export default {
-  has (elem, classNames) {
+  has(elem, classNames) {
     const classNamesArray = normalizeClassNamesArgument(
       classNames,
       elem.className
@@ -15,14 +15,14 @@ export default {
     }
     return true
 
-    function has (className) {
+    function has(className) {
       if (className) {
         return createClassNameRegexp(className).test(elem.className)
       }
       return false
     }
   },
-  add (elem, classNames) {
+  add(elem, classNames) {
     const classNamesArray = normalizeClassNamesArgument(
       classNames,
       elem.className
@@ -37,7 +37,7 @@ export default {
       }
     }
   },
-  remove (elem, classNames) {
+  remove(elem, classNames) {
     const classNamesArray = normalizeClassNamesArgument(
       classNames,
       elem.className
@@ -57,7 +57,7 @@ export default {
 }
 
 // Returns array of class names
-function normalizeClassNamesArgument (classNames, originClassNames) {
+function normalizeClassNamesArgument(classNames, originClassNames) {
   if (classNames instanceof RegExp) {
     const classNameRegexp = classNames
     classNames = []
@@ -77,6 +77,6 @@ function normalizeClassNamesArgument (classNames, originClassNames) {
   return classNames == null ? [] : `${classNames}`.split(/\s+/)
 }
 
-function createClassNameRegexp (className) {
+function createClassNameRegexp(className) {
   return new RegExp(`(\\s|^)${className}(\\s|$)`)
 }

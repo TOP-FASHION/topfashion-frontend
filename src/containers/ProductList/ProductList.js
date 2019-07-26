@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Product from '../Product'
 
 class ProductList extends Component {
-  render () {
+  render() {
     const { products } = this.props
 
     return products.map(p => {
