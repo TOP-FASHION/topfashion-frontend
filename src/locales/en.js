@@ -1,3 +1,3 @@
 export default {
-  pokedex: "Pokedex5+9595"
-};
+  pokedex: 'Pokedex5+9595'
+}

@@ -1,15 +1,16 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { Link } from 'react-router-dom'
 import Fragment from '../../components/Fragment'
 import Nav from '../../components/Nav'
-import { Link } from 'react-router-dom';
-import './Header.scss';
+import './Header.scss'
 
 class Header extends Component {
   static propTypes = {
     scrollTop: PropTypes.number
   }
+
   static defaultProps = {
     scrollTop: 0
   }
@@ -18,9 +19,9 @@ class Header extends Component {
     return (
       <header className="header" role="banner">
         <div className="header__inner container">
-          <Nav/>
+          <Nav />
           <div className="menu-animation">
-            <div id="animation-circle" className="menu-animation__circle"></div>
+            <div id="animation-circle" className="menu-animation__circle" />
           </div>
         </div>
       </header>

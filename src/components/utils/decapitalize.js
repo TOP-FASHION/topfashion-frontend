@@ -1,1 +1,1 @@
-export {default} from 'lodash/lowerFirst'
+export { default } from 'lodash/lowerFirst'

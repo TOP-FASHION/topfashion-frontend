@@ -1,1 +1,1 @@
-export {default} from './EmailModal'
+export { default } from './EmailModal'

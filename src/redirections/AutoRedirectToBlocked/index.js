@@ -1,1 +1,1 @@
-export {default} from './AutoRedirectToBlocked'
+export { default } from './AutoRedirectToBlocked'

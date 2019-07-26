@@ -1,33 +1,33 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import Thumb from '../../components/Thumb/index';
+import Thumb from '../../components/Thumb/index'
 
 class CartProduct extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
     removeProduct: PropTypes.func.isRequired
-  };
+  }
 
   state = {
     isMouseOver: false
-  };
+  }
 
   handleMouseOver = () => {
-    this.setState({ isMouseOver: true });
-  };
+    this.setState({ isMouseOver: true })
+  }
 
   handleMouseOut = () => {
-    this.setState({ isMouseOver: false });
-  };
+    this.setState({ isMouseOver: false })
+  }
 
   render() {
-    const { product, removeProduct } = this.props;
+    const { product, removeProduct } = this.props
 
-    const classes = ['shelf-item'];
+    const classes = ['shelf-item']
 
-    if (!!this.state.isMouseOver) {
-      classes.push('shelf-item--mouseover');
+    if (this.state.isMouseOver) {
+      classes.push('shelf-item--mouseover')
     }
 
     return (
@@ -51,8 +51,8 @@ class CartProduct extends Component {
           </p>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default CartProduct;
+export default CartProduct

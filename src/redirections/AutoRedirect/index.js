@@ -1,1 +1,1 @@
-export {default} from './AutoRedirect'
+export { default } from './AutoRedirect'

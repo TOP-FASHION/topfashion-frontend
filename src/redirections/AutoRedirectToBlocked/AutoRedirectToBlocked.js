@@ -8,16 +8,13 @@ export default class AutoRedirectToBlocked extends React.Component {
       ? settings.item('allowedCountries').items()
       : []
     return (
-      countries.length && !~countries.indexOf(core.item('settings').item('country')) &&
+      countries.length &&
+      !~countries.indexOf(core.item('settings').item('country')) &&
       !core.item('settings').itemLoading('country')
     )
   }
 
-  render () {
-    return <AutoRedirect
-      if={this.if}
-      to='/blocked'
-      reset
-    />
+  render() {
+    return <AutoRedirect if={this.if} to="/blocked" reset />
   }
 }

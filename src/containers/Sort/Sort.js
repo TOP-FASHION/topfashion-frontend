@@ -18,7 +18,7 @@ class Sort extends Component {
   }
 
   handleSort = value => {
-    this.props.updateSort(value);
+    this.props.updateSort(value)
   }
 
   render() {

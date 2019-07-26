@@ -21,18 +21,18 @@ class MainDecorator extends Component {
 
   render() {
     return (
-      <Group id='main'>
-        <div className='main-decorator__wrapper'>
+      <Group id="main">
+        <div className="main-decorator__wrapper">
           <Header />
-          <Group className='main-decorator__content'>
+          <Group className="main-decorator__content">
             <Switch>
-              <Route path='/' component={Home} exact />
-              <Route path='/about' component={About} exact />
+              <Route path="/" component={Home} exact />
+              <Route path="/about" component={About} exact />
               <Route component={NotFound} />
             </Switch>
           </Group>
         </div>
-        <footer className='main-decorator__footer'>
+        <footer className="main-decorator__footer">
           <Footer />
         </footer>
       </Group>

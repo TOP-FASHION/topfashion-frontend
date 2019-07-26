@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Product from '../Product'
-import PropTypes from "prop-types"
 
 class ProductList extends Component {
-
   render() {
     const { products } = this.props
 

@@ -10,24 +10,26 @@ export default class Redirections extends React.Component {
       })
     }).isRequired
   }
-  listener = ({data, source, origin}) => {
-    if (origin !== window.location.protocol + '//' + window.location.host) return
+
+  listener = ({ data, source, origin }) => {
+    if (origin !== `${window.location.protocol}//${window.location.host}`) {
+      return
+    }
     if (data.type === 'redirect') {
-      source.postMessage({type: 'redirect', value: true}, '*')
+      source.postMessage({ type: 'redirect', value: true }, '*')
       this.context.router.history.push(data.value)
     }
   }
-  componentDidMount () {
+
+  componentDidMount() {
     window.addEventListener('message', this.listener)
   }
-  componentWillUnmount () {
+
+  componentWillUnmount() {
     window.removeEventListener('message', this.listener)
   }
-  render () {
-    return (
-      <Fragment>
-      ewr
-      </Fragment>
-    )
+
+  render() {
+    return <Fragment>ewr</Fragment>
   }
 }

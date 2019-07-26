@@ -1,6 +1,9 @@
 export default {
-  has: function (elem, classNames) {
-    const classNamesArray = normalizeClassNamesArgument(classNames, elem.className)
+  has(elem, classNames) {
+    const classNamesArray = normalizeClassNamesArgument(
+      classNames,
+      elem.className
+    )
     if (!classNamesArray.length) {
       return false
     }
@@ -12,45 +15,54 @@ export default {
     }
     return true
 
-    function has (className) {
+    function has(className) {
       if (className) {
         return createClassNameRegexp(className).test(elem.className)
       }
       return false
     }
   },
-  add: function (elem, classNames) {
-    const classNamesArray = normalizeClassNamesArgument(classNames, elem.className)
+  add(elem, classNames) {
+    const classNamesArray = normalizeClassNamesArgument(
+      classNames,
+      elem.className
+    )
     if (!classNamesArray.length) {
       return
     }
     for (let i = 0, l = classNamesArray.length; i < l; i++) {
       const className = classNamesArray[i]
       if (!this.has(elem, className)) {
-        elem.className += elem.className ? ' ' + className : className
+        elem.className += elem.className ? ` ${className}` : className
       }
     }
   },
-  remove: function (elem, classNames) {
-    const classNamesArray = normalizeClassNamesArgument(classNames, elem.className)
+  remove(elem, classNames) {
+    const classNamesArray = normalizeClassNamesArgument(
+      classNames,
+      elem.className
+    )
     if (!classNamesArray.length) {
       return
     }
     for (let i = 0, l = classNamesArray.length; i < l; i++) {
       const className = classNamesArray[i]
       if (this.has(elem, className)) {
-        elem.className = elem.className.replace(createClassNameRegexp(className), '$1').trim()
+        elem.className = elem.className
+          .replace(createClassNameRegexp(className), '$1')
+          .trim()
       }
     }
   }
 }
 
 // Returns array of class names
-function normalizeClassNamesArgument (classNames, originClassNames) {
+function normalizeClassNamesArgument(classNames, originClassNames) {
   if (classNames instanceof RegExp) {
     const classNameRegexp = classNames
     classNames = []
-    const originClassNamesArray = originClassNames == null ? [] : ('' + originClassNames).split(/\s+/)
+    const originClassNamesArray =
+      originClassNames == null ? [] : `${originClassNames}`.split(/\s+/)
     if (!originClassNamesArray.length) {
       return []
     }
@@ -62,9 +74,9 @@ function normalizeClassNamesArgument (classNames, originClassNames) {
     }
     return classNames
   }
-  return classNames == null ? [] : ('' + classNames).split(/\s+/)
+  return classNames == null ? [] : `${classNames}`.split(/\s+/)
 }
 
-function createClassNameRegexp (className) {
-  return new RegExp('(\\s|^)' + className + '(\\s|$)')
+function createClassNameRegexp(className) {
+  return new RegExp(`(\\s|^)${className}(\\s|$)`)
 }

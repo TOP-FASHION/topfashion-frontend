@@ -1,19 +1,19 @@
 import React from 'react'
-import {injectIntl} from 'react-intl'
+import { injectIntl } from 'react-intl'
+import setMessages from '@finnplay/core/utils/setMessages'
 import messages from './FooterMenu.messages'
 
-import setMessages from '@finnplay/core/utils/setMessages'
 import SettingsMenu from '../../../../../projects/finnplay/seed/src/components/SettingsMenu/index'
 
 class FooterMenu extends React.Component {
   messages = setMessages(this, messages, 'app.footerMenu.')
 
-  render () {
+  render() {
     return (
       <SettingsMenu
-        id='footerMenu'
+        id="footerMenu"
         messages={this.messages}
-        className='footer-menu'
+        className="footer-menu"
         scrollTo
       />
     )

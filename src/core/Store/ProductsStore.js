@@ -1,16 +1,16 @@
 import { observable, action } from 'mobx'
-import Api from '../Api/'
+import Api from '../Api'
 
 export default class ProductsStore {
-  @observable products;
+  @observable products
 
-  constructor () {
+  constructor() {
     this.products = null
-    console.log('this.products',this.products)
+    console.log('this.products', this.products)
   }
 
-  @action getProducts () {
-    Api.products.getProducts().then((res) => {
+  @action getProducts() {
+    Api.products.getProducts().then(res => {
       console.log('res', res)
       if (res) {
         this.products = res

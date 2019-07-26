@@ -1,10 +1,12 @@
-/*import ApiError from './Api/ApiError'*/
+/* import ApiError from './Api/ApiError' */
 
 const GLOBAL_VARIABLES_SEARCH_PATTERN = /%[A-Z0-9_]+?%/g
 
-export default function setMessages (component, messages, prefix = '') {
+export default function setMessages(component, messages, prefix = '') {
   if (!component.props.intl) {
-    throw Error(`${component.constructor.name} is not connected to react intl, use injectIntl for that`)
+    throw Error(
+      `${component.constructor.name} is not connected to react intl, use injectIntl for that`
+    )
   }
 
   // TODO: Think about caching (the function is executed too many times)
@@ -17,7 +19,8 @@ export default function setMessages (component, messages, prefix = '') {
       postfix = props
       props = undefined
     }
-    const options = typeof key === 'object' && !(key instanceof Array) ? key : {key}
+    const options =
+      typeof key === 'object' && !(key instanceof Array) ? key : { key }
     key = options.key
     if (key instanceof Array) {
       const keys = []
@@ -31,7 +34,7 @@ export default function setMessages (component, messages, prefix = '') {
       return 'default' in options ? options.default : keys.join(' | ')
     }
     key = prefix + key + postfix
-/*    if (props instanceof ApiError) {
+    /*    if (props instanceof ApiError) {
       const errorKey = key + props.error
       if (!messages[errorKey]) {
         const codeKey = key + props.errorCode
@@ -43,18 +46,27 @@ export default function setMessages (component, messages, prefix = '') {
         key = errorKey
       }
       props = props.errorDetails
-    }*/
+    } */
     if (!messages[key]) return 'default' in options ? options.default : key
     return component.props.intl.formatMessage(messages[key], props)
   }
 
-  return (...args) => replaceGlobalVariables(getMessage.apply(null, args), component.props.intl.messages)
+  return (...args) =>
+    replaceGlobalVariables(
+      getMessage.apply(null, args),
+      component.props.intl.messages
+    )
 }
 
-function replaceGlobalVariables (translation = '', messages = {}) {
-  return ('' + translation).replace(GLOBAL_VARIABLES_SEARCH_PATTERN, globalVariableRaw => {
-    const globalVariable = globalVariableRaw.slice(1, -1)
-    const globalVariableValue = messages[`$${globalVariable}`]
-    return typeof globalVariableValue === 'string' ? globalVariableValue : globalVariableRaw
-  })
+function replaceGlobalVariables(translation = '', messages = {}) {
+  return `${translation}`.replace(
+    GLOBAL_VARIABLES_SEARCH_PATTERN,
+    globalVariableRaw => {
+      const globalVariable = globalVariableRaw.slice(1, -1)
+      const globalVariableValue = messages[`$${globalVariable}`]
+      return typeof globalVariableValue === 'string'
+        ? globalVariableValue
+        : globalVariableRaw
+    }
+  )
 }

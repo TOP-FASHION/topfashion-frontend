@@ -1,3 +1,3 @@
-import getLanguageMessages from './localization';
+import getLanguageMessages from './localization'
 
-export { getLanguageMessages };
+export { getLanguageMessages }

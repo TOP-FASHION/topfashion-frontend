@@ -7,7 +7,8 @@ export default defineMessages({
   },
   'app.footer.contacts.text': {
     id: 'app.footer.contacts.text',
-    defaultMessage: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat tellus.'
+    defaultMessage:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat tellus.'
   },
   'app.footer.contacts.address': {
     id: 'app.footer.contacts.address',
@@ -99,7 +100,8 @@ export default defineMessages({
   },
   'app.footer.newsletter.text': {
     id: 'app.footer.newsletter.text',
-    defaultMessage: 'Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at lacinia.'
+    defaultMessage:
+      'Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at lacinia.'
   },
   'app.footer.newsletter.button': {
     id: 'app.footer.newsletter.button',
@@ -120,5 +122,5 @@ export default defineMessages({
   'app.footer.newsletter.email': {
     id: 'app.footer.newsletter.email',
     defaultMessage: 'Email Address'
-  },
+  }
 })

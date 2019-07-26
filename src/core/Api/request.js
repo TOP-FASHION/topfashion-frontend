@@ -1,9 +1,8 @@
-
 const codeMessage = {
   200: 'ошибка'
 }
 
-function checkStatus (response) {
+function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
   }
@@ -23,14 +22,16 @@ function checkStatus (response) {
  * @return {object}           An object containing either "data" or "err"
  */
 
-export default function request (url, options) {
+export default function request(url, options) {
   const defaultOptions = {
     credentials: 'include'
   }
   const newOptions = { ...defaultOptions, ...options }
   console.log('process.env.API_KEY', process.env.API_KEY)
   newOptions.headers = {
-    Authorization: 'Basic ' + btoa(`${process.env.API_KEY}:${process.env.API_SECRET}`),
+    Authorization: `Basic ${btoa(
+      `${process.env.API_KEY}:${process.env.API_SECRET}`
+    )}`,
     'Content-Type': 'application/json'
   }
   if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
@@ -50,7 +51,7 @@ export default function request (url, options) {
     }
   }
 
-  return fetch ('/wp-json' + url, newOptions)
+  return fetch(`/wp-json${url}`, newOptions)
     .then(checkStatus)
     .then(response => {
       if (newOptions.method === 'DELETE' || response.status === 204) {
@@ -70,8 +71,6 @@ export default function request (url, options) {
       }
       if (status <= 504 && status >= 500) {
         myHistory.push('/exception/500')
-        return
       }
-
     })
 }

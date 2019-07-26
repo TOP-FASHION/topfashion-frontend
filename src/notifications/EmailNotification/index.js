@@ -1,1 +1,1 @@
-export {default} from './EmailNotification'
+export { default } from './EmailNotification'

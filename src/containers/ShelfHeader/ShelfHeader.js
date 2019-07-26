@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Sort from '../Sort/index'
 
@@ -7,7 +7,7 @@ class ShelfHeader extends Component {
     productsLength: PropTypes.number.isRequired
   }
 
-  render () {
+  render() {
     const { productsLength } = this.props
 
     return (
@@ -17,7 +17,7 @@ class ShelfHeader extends Component {
         </small>
         <Sort />
       </div>
-    );
+    )
   }
 }
 

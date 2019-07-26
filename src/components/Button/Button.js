@@ -30,8 +30,18 @@ class Button extends React.Component {
     MuiCircularProgressProps: {}
   }
 
-  render () {
-    const {classNames, onClick, children, disabled, loading, MuiButtonProps, MuiCircularProgressProps, disableRipple, type} = this.props
+  render() {
+    const {
+      classNames,
+      onClick,
+      children,
+      disabled,
+      loading,
+      MuiButtonProps,
+      MuiCircularProgressProps,
+      disableRipple,
+      type
+    } = this.props
 
     const {
       spinner: classNameSpinner,

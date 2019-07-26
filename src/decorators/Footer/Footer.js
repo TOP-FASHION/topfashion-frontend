@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { injectIntl } from 'react-intl'
-import Fragment from '../../components/Fragment'
 import { Grid, Container, TextField, Button } from '@material-ui/core/'
+import Fragment from '../../components/Fragment'
 import setMessages from '../../utils/setMessages'
 import messages from './Footer.messages.js'
 import './Footer.scss'
@@ -32,19 +32,19 @@ class Footer extends Component {
                   </div>
                   <ul className="footer-contacts__contacts">
                     <li>
-                      <i className="footer-contacts__icon fas fa-globe-americas"></i>
+                      <i className="footer-contacts__icon fas fa-globe-americas" />
                       {this.messages('contacts.address')}
                     </li>
                     <li>
-                      <i className="footer-contacts__icon far fa-envelope"></i>
+                      <i className="footer-contacts__icon far fa-envelope" />
                       {this.messages('contacts.email')}
                     </li>
                     <li>
-                      <i className="footer-contacts__icon fas fa-mobile-alt"></i>
+                      <i className="footer-contacts__icon fas fa-mobile-alt" />
                       {this.messages('contacts.phone')}
                     </li>
                     <li>
-                      <i className="footer-contacts__icon far fa-clock"></i>
+                      <i className="footer-contacts__icon far fa-clock" />
                       {this.messages('contacts.time')}
                     </li>
                   </ul>
@@ -178,27 +178,27 @@ class Footer extends Component {
                   <ul className="footer-newsletter__social-links">
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--facebook">
                       <Link to="/" target="_blank">
-                        <i className="fab fa-facebook-f"></i>
+                        <i className="fab fa-facebook-f" />
                       </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--twitter">
                       <Link to="/" target="_blank">
-                        <i className="fab fa-twitter"></i>
+                        <i className="fab fa-twitter" />
                       </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--youtube">
                       <Link to="/" target="_blank">
-                        <i className="fab fa-youtube"></i>
+                        <i className="fab fa-youtube" />
                       </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--instagram">
                       <Link to="/" target="_blank">
-                        <i className="fab fa-instagram"></i>
+                        <i className="fab fa-instagram" />
                       </Link>
                     </li>
                     <li className="footer-newsletter__social-link footer-newsletter__social-link--rss">
                       <Link to="/" target="_blank">
-                        <i className="fas fa-rss"></i>
+                        <i className="fas fa-rss" />
                       </Link>
                     </li>
                   </ul>

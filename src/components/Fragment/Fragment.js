@@ -12,7 +12,7 @@ class Fragment extends React.Component {
     children: PropTypes.any
   }
 
-  componentWillMount () {
+  componentWillMount() {
     if (this.props.hasOwnProperty('show')) {
       warn('Property `show` has been deprecated, use `hidden` instead.')
     }
@@ -21,12 +21,12 @@ class Fragment extends React.Component {
     }
   }
 
-  get children () {
-    const {children} = this.props
+  get children() {
+    const { children } = this.props
     return typeof children === 'function' ? children() : children
   }
 
-  get isShown () {
+  get isShown() {
     if (this.props.hasOwnProperty('hidden')) {
       return !this.props.hidden
     }
@@ -39,8 +39,10 @@ class Fragment extends React.Component {
     return true
   }
 
-  render () {
-    return this.isShown && typeof this.children !== 'undefined' ? this.children : null
+  render() {
+    return this.isShown && typeof this.children !== 'undefined'
+      ? this.children
+      : null
   }
 }
 

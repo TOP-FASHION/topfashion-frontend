@@ -6,18 +6,18 @@ import { StaticRouter } from 'react-router'
 import createHistory from 'history/createMemoryHistory'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
-import App from '../src/decorators/Routes'
-import allStore from '../src/core/Store'
 import { addLocaleData, IntlProvider } from 'react-intl'
 import acceptLanguage from 'accept-language'
 import en from 'react-intl/locale-data/en'
 import ru from 'react-intl/locale-data/cs'
-import i18n, { locale } from "../src/locales";
+import allStore from '../src/core/Store'
+import App from '../src/decorators/Routes'
+import i18n, { locale } from '../src/locales'
 
 useStaticRendering(true)
 
-acceptLanguage.languages(['en', 'ru']);
-addLocaleData([...en, ...ru]);
+acceptLanguage.languages(['en', 'ru'])
+addLocaleData([...en, ...ru])
 
 export default ({ clientStats }) => (req, res) => {
   const history = createHistory({ initialEntries: [req.path] })
@@ -35,9 +35,7 @@ export default ({ clientStats }) => (req, res) => {
 
   const chunkNames = flushChunkNames()
 
-  const {
-    js, styles, scripts, stylesheets
-  } = flushChunks(clientStats, {
+  const { js, styles, scripts, stylesheets } = flushChunks(clientStats, {
     chunkNames
   })
 
@@ -85,15 +83,11 @@ class AppStylesheets extends React.Component {
     list: []
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
         {this.props.list.map(name => (
-          <link
-            rel='stylesheet'
-            href={`/${name}`}
-            key={name}
-          />
+          <link rel="stylesheet" href={`/${name}`} key={name} />
         ))}
       </React.Fragment>
     )

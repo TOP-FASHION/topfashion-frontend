@@ -44,7 +44,8 @@ class Routes extends Component {
     }
   }
 
-  save = (state = this.url) => sessionTabStorage.set('url', JSON.stringify(state))
+  save = (state = this.url) =>
+    sessionTabStorage.set('url', JSON.stringify(state))
 
   componentDidMount() {
     const pushState = history.pushState.bind(history)
@@ -62,16 +63,15 @@ class Routes extends Component {
       const search = searchParse(location.search)
       if (isBack) {
         this.url.position--
-      }
-      else {
+      } else {
         this.url.position++
         this.url.history.length = this.url.position + 1
       }
       this.save()
       if (
-        isBack
-        && search.modal
-        && this.url.history[this.url.position + 1] === url
+        isBack &&
+        search.modal &&
+        this.url.history[this.url.position + 1] === url
       ) {
         const closeButton = document.querySelector('.modal-buttonRoot')
         if (closeButton) {
@@ -80,8 +80,8 @@ class Routes extends Component {
       }
     })
     if (
-      location.pathname + location.search
-      !== this.url.history[this.url.position]
+      location.pathname + location.search !==
+      this.url.history[this.url.position]
     ) {
       this.push(location.pathname + location.search)
     }
@@ -91,12 +91,10 @@ class Routes extends Component {
     this.url.position++
     if (this.url.position === this.url.history.length) {
       this.url.history.push(url)
-    }
-    else if (this.url.position < this.url.history.length) {
+    } else if (this.url.position < this.url.history.length) {
       this.url.history.length = this.url.position
       this.url.history.push(url)
-    }
-    else {
+    } else {
       console.error('url position is not stable')
     }
     this.save()
@@ -105,12 +103,12 @@ class Routes extends Component {
   render() {
     return (
       <Fragment>
-        {/* <Notifications />*/}
-        {/* <Redirections />*/}
-        {/* <Modals />*/}
+        {/* <Notifications /> */}
+        {/* <Redirections /> */}
+        {/* <Modals /> */}
         <Switch>
-          <Route path='/blocked' component={EmptyDecorator} exact />
-          <Route path='/:category/:id' component={ProductDecorator} exact />
+          <Route path="/blocked" component={EmptyDecorator} exact />
+          <Route path="/:category/:id" component={ProductDecorator} exact />
           <Route component={MainDecorator} />
         </Switch>
       </Fragment>
