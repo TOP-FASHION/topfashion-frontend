@@ -11,9 +11,9 @@
     "translate": "babel-node scripts/manageTranslations.js",
     "format": "prettier --single-quote --semi=false --write \"{src,server,webpack}/**/*.js\" && eslint --fix src server webpack",
     "lint:css": "stylelint src/**/*.scss",
+    "lint-css:fix": "stylelint src/**/*.scss --fix && prettier --write src/**/*.scss",
     "lint:js": "eslint src src/**/*.js",
     "lint-js:fix": "eslint src src/**/*.js --fix",
-    "lint-css:fix": "stylelint src/**/*.scss --fix",
     "clean": "rimraf buildClient buildServer",
     "cm": "git-cz"
   },
@@ -102,6 +102,7 @@
     "rimraf": "^2.6.3",
     "sass-loader": "7.1.0",
     "stylelint": "^10.1.0",
+    "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-order": "^3.0.1",
     "travis-github-status": "^1.6.3",
@@ -122,6 +123,7 @@
       "git add"
     ],
     "*.scss": [
+      "prettier --write",
       "stylelint --fix",
       "git add"
     ]
