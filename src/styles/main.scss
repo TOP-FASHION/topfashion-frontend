@@ -1,36 +1,21 @@
-//--------------------
-// MIXINS & VARIABLES
-//--------------------
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #1b1a20;
+}
 
-@import 'utils/var';
-@import 'utils/mixins';
+main {
+  display: flex;
+  max-width: 1200px;
+  margin: 50px auto 0 auto;
+  padding: 20px 2%;
+}
 
-//--------------------
-// CORE MODULES
-// partials for site-wide styling
-//--------------------
+a {
+  text-decoration: none;
+  background-color: transparent;
 
-@import 'core/fonts';
-@import 'core/normalize';
-@import 'core/reboot';
-@import 'core/helpers';
-@import 'core/typography';
-@import 'core/layout';
-@import 'core/syntax';
-@import 'core/icons';
-@import 'core/animation';
-@import 'core/offline';
-
-
-//--------------------
-// VENDOR STYLES
-//--------------------
-
-//@import "vendor/..."
-
-
-//--------------------
-// MAIN STYLES
-//--------------------
-
-@import 'global';
+  &:hover {
+    text-decoration: none;
+  }
+}

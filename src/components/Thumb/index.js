@@ -1,3 +1,1 @@
-import Thumb from './Thumb'
-
-export default Thumb
+export { default } from './Thumb'

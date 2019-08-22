@@ -12,8 +12,6 @@ import Home from '../../pages/Home'
 import About from '../../pages/About'
 import NotFound from '../../pages/NotFound'
 
-import '../../styles/global.scss'
-
 class MainDecorator extends Component {
   shouldComponentUpdate (nextProps, nextState) {
     return !isShowModalAction(nextProps, nextState)
@@ -22,7 +20,7 @@ class MainDecorator extends Component {
   render () {
     return (
       <Group id='main'>
-        <div className='main-decorator__wrapper'>
+        <Group className='main-decorator__wrapper'>
           <Header />
           <Group className='main-decorator__content'>
             <Switch>
@@ -31,7 +29,7 @@ class MainDecorator extends Component {
               <Route component={NotFound} />
             </Switch>
           </Group>
-        </div>
+        </Group>
         <footer className='main-decorator__footer'>
           <Footer />
         </footer>

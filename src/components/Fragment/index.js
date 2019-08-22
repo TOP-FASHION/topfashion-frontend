@@ -1,3 +1,1 @@
-import Fragment from './Fragment'
-
-export default Fragment
+export { default } from './Fragment'

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import Fragment from '../../components/Fragment'
 import Group from '../../components/Group'
 
 import Shelf from '../../containers/Shelf/Shelf'

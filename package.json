@@ -18,9 +18,9 @@
     "cm": "git-cz"
   },
   "dependencies": {
-    "@material-ui/core": "^4.2.0",
     "accept-language": "^3.0.18",
     "axios": "0.19.0",
+    "bootstrap": "4.3.1",
     "colors": "^1.3.3",
     "dotenv": "^4.0.0",
     "express": "^4.17.1",
@@ -29,6 +29,7 @@
     "glob": "^7.1.4",
     "history": "^4.9.0",
     "http-proxy": "^1.16.2",
+    "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
@@ -41,6 +42,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-universal-component": "^4.0.0",
+    "reactstrap": "^8.0.1",
     "swiper": "^4.5.0",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-flush-chunks": "^2.0.3"
@@ -93,7 +95,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^3.0.1",
     "lint-staged": "^9.2.1",
-    "material-ui": "1.0.0-beta.25",
     "node-sass": "4.11.0",
     "poststylus": "^1.0.0",
     "prettier": "^1.18.0",

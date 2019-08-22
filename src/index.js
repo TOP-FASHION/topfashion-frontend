@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { addLocaleData, IntlProvider } from 'react-intl'
@@ -10,6 +11,7 @@ import { Provider } from 'mobx-react'
 import i18n, { locale } from './locales'
 import App from './decorators'
 import allStore from './core/Store'
+import './styles/main.scss'
 
 const history = createHistory()
 acceptLanguage.languages(['en', 'ru'])

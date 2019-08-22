@@ -12,12 +12,6 @@ import MainDecorator from './MainDecorator/index'
 import ProductDecorator from './ProductDecorator'
 import EmptyDecorator from './EmptyDecorator'
 
-// modals
-import Modals from '../modals'
-// other
-import Redirections from '../redirections'
-import Notifications from '../notifications'
-
 class Routes extends Component {
   static propTypes = {
     intl: PropTypes.object

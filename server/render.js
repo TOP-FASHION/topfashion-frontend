@@ -22,6 +22,8 @@ addLocaleData([...en, ...ru])
 export default ({ clientStats }) => (req, res) => {
   const history = createHistory({ initialEntries: [req.path] })
   const context = {}
+  const languages = getLanguages()
+  const {language} = detectLanguageParams(req, languages)
 
   const app = renderToStaticMarkup(
     <Provider {...allStore}>
@@ -40,31 +42,31 @@ export default ({ clientStats }) => (req, res) => {
   })
 
   const extendedStylesheets = stylesheets.slice(0)
-
   const customerCssIndex = extendedStylesheets.push(null) - 1
   const hotfixesCssIndex = extendedStylesheets.push(null) - 1
 
   // Add "customer.css" file
   extendedStylesheets[customerCssIndex] = `static/customer.css`
-  // Add "hotfixes.css" file
+  // Add "fontawesome.css" file
   extendedStylesheets[hotfixesCssIndex] = `static/fontawesome.css`
-
-  console.log('PATH', req.path)
-  console.log('DYNAMIC CHUNK NAMES RENDERED', chunkNames)
-  console.log('SCRIPTS SERVED', scripts)
-  console.log('STYLESHEETS SERVED', stylesheets)
 
   const bodyStylesheets = renderToStaticMarkup(
     <AppStylesheets list={extendedStylesheets} />
   )
 
+  // First bytes (ASAP)
+  res.setHeader('Content-Type', 'text/html')
+  res.cookie('_lang', language, {maxAge: 900000})
+  res.write(`<!doctype html>\n<html lang="${language}">${headHtml}`)
+
   res.send(
     `<!doctype html>
-      <html>
+      <html dir="ltr">
         <head>
           <meta charset="utf-8">
           <title>react-universal-component-boilerplate</title>
           ${bodyStylesheets}
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
         </head>
         <body>
           <div id="root">${app}</div>
