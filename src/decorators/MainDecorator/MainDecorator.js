@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { SwitchLang } from '../routing'
 import Group from '../../components/Group'
 import isShowModalAction from '../../utils/isShowModalAction'
 
@@ -23,11 +24,11 @@ class MainDecorator extends Component {
         <Group className='main-decorator__wrapper'>
           <Header />
           <Group className='main-decorator__content'>
-            <Switch>
+            <SwitchLang>
               <Route path='/' component={Home} exact />
               <Route path='/about' component={About} exact />
               <Route component={NotFound} />
-            </Switch>
+            </SwitchLang>
           </Group>
         </Group>
         <footer className='main-decorator__footer'>

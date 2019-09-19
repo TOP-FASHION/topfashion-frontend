@@ -1,33 +1,52 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Provider, useStaticRendering } from 'mobx-react'
-import { renderToStaticMarkup } from 'react-dom/server'
+import { renderToStaticMarkup, renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import createHistory from 'history/createMemoryHistory'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
+import Head from '../src/helpers/Head'
+import Body from '../src/helpers/Body'
 import { addLocaleData, IntlProvider } from 'react-intl'
 import acceptLanguage from 'accept-language'
 import en from 'react-intl/locale-data/en'
-import ru from 'react-intl/locale-data/cs'
+import ru from 'react-intl/locale-data/ru'
 import allStore from '../src/core/Store'
-import App from '../src/decorators/Routes'
-import i18n, { locale } from '../src/locales'
+import App from '../src/decorators'
+
+const LOCALES = {
+  'en': en,
+  'ru': ru
+}
 
 useStaticRendering(true)
 
-acceptLanguage.languages(['en', 'ru'])
+// Add all locales
+const AVAILABLE_LOCALES = [
+  'en', 'ru'
+]
+
 addLocaleData([...en, ...ru])
+
+const messages = {}
+
+AVAILABLE_LOCALES.forEach((locale) => {
+  messages[locale] = require(`../src/translations/locales/${locale}.json`)
+})
+
+acceptLanguage.languages(AVAILABLE_LOCALES)
 
 export default ({ clientStats }) => (req, res) => {
   const history = createHistory({ initialEntries: [req.path] })
   const context = {}
-  const languages = getLanguages()
-  const {language} = detectLanguageParams(req, languages)
+  const {language} = detectLanguageParams(req, AVAILABLE_LOCALES)
 
-  const app = renderToStaticMarkup(
+  // Configure React-intl
+  const initialNow = Date.now()
+
+  const app = renderToString(
     <Provider {...allStore}>
-      <IntlProvider locale={locale} messages={i18n[locale]}>
+      <IntlProvider initialNow={initialNow} locale={language} messages={messages[language]}>
         <StaticRouter location={req.originalUrl} context={context}>
           <App history={history} />
         </StaticRouter>
@@ -37,7 +56,7 @@ export default ({ clientStats }) => (req, res) => {
 
   const chunkNames = flushChunkNames()
 
-  const { js, styles, scripts, stylesheets } = flushChunks(clientStats, {
+  const { scripts, stylesheets } = flushChunks(clientStats, {
     chunkNames
   })
 
@@ -50,48 +69,76 @@ export default ({ clientStats }) => (req, res) => {
   // Add "fontawesome.css" file
   extendedStylesheets[hotfixesCssIndex] = `static/fontawesome.css`
 
-  const bodyStylesheets = renderToStaticMarkup(
-    <AppStylesheets list={extendedStylesheets} />
+  const headHtml = renderToStaticMarkup(
+    <Head
+      siteName={'Сайт'}
+      siteDescription={'описание'}
+    />
   )
 
   // First bytes (ASAP)
   res.setHeader('Content-Type', 'text/html')
   res.cookie('_lang', language, {maxAge: 900000})
-  res.write(`<!doctype html>\n<html lang="${language}">${headHtml}`)
+  res.write(`<!doctype html>\n<html lang="${language}" dir="ltr">${headHtml}`)
 
-  res.send(
-    `<!doctype html>
-      <html dir="ltr">
-        <head>
-          <meta charset="utf-8">
-          <title>react-universal-component-boilerplate</title>
-          ${bodyStylesheets}
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
-        </head>
-        <body>
-          <div id="root">${app}</div>
-        </body>
-        ${js}
-      </html>`
+  // Wait generation of the application state
+  const applicationState = generateApplicationState()
+
+  const bodyHtml = renderToStaticMarkup(
+    <Body
+      scripts={scripts}
+      stylesheets={extendedStylesheets}
+      state={applicationState}
+      noScriptText={messages['app.common.noScript']}
+      component={app}
+    />
   )
-}
 
-class AppStylesheets extends React.Component {
-  static propTypes = {
-    list: PropTypes.arrayOf(PropTypes.string)
+  // Last bytes
+  res.write(`${bodyHtml}</html>`)
+  res.end()
+
+  function generateApplicationState () {
+    const serverTime = Date.now()
+
+    return {
+      now: serverTime,
+      locale: language,
+      messages: messages[language],
+      localeData: LOCALES[language]
+    }
   }
 
-  static defaultProps = {
-    list: []
+  function detectLanguageParams (req, languages) {
+    const langFromUrl = (req.url.split(/[/?]/) || [])[1]
+
+    if (isCorrectLang(langFromUrl)) {
+      return {
+        language: langFromUrl,
+        source: 'url'
+      }
+    }
+
+    const langFromLocale = detectLocale(req)
+    if (isCorrectLang(langFromLocale)) {
+      return {
+        language: langFromLocale,
+        source: 'locale'
+      }
+    }
+
+    return {
+      language: 'en'
+    }
+
+    function isCorrectLang (lang) {
+      return !!(lang && ~languages.indexOf(lang))
+    }
   }
 
-  render () {
-    return (
-      <React.Fragment>
-        {this.props.list.map(name => (
-          <link rel='stylesheet' href={`/${name}`} key={name} />
-        ))}
-      </React.Fragment>
-    )
+  // Detects locale from cookie or from header AcceptLanguage
+  function detectLocale (req) {
+    const cookieLocale = req.cookies._lang
+    return cookieLocale || acceptLanguage.get(req.headers['accept-language']) || 'en'
   }
 }

@@ -14,7 +14,7 @@ class Topbar extends Component {
     currency: 'EUR'
   };
   links = [
-    { title: this.messages('aboutUs'), url: '/site/about-us' },
+    { title: this.messages('aboutUs'), url: '/about' },
     { title: this.messages('contacts'), url: '/site/contact-us' },
     { title: this.messages('storeLocation'), url: '' },
     { title: this.messages('trackOrder'), url: '/shop/track-order' },

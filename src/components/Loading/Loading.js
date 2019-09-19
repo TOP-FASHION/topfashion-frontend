@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CircularProgress } from 'material-ui/Progress'
 import CenterContent from '../CenterContent'
 
 export default class Loading extends Component {
@@ -17,7 +16,7 @@ export default class Loading extends Component {
     return (
       <CenterContent>
         <h4 className={this.className}>
-          <CircularProgress className='loading-spinner' />
+          Загрузка
         </h4>
       </CenterContent>
     )

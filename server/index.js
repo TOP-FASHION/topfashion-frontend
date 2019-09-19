@@ -8,6 +8,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
 const httpProxy = require('http-proxy')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const https = require('https')
 const clientConfig = require('../webpack/client.dev')
 const serverConfig = require('../webpack/server.dev')
@@ -21,6 +23,7 @@ const outputPath = clientConfig.output.path
 const DEV = process.env.NODE_ENV === 'development'
 const app = express()
 app.use(noFavicon())
+app.disable('x-powered-by')
 
 const serverKey = `
 -----BEGIN RSA PRIVATE KEY-----
@@ -78,6 +81,9 @@ app.use(
   '/static',
   express.static(path.resolve(__dirname, process.env.STATIC_PATH))
 )
+
+app.use(cookieParser())
+app.use(bodyParser.json())
 
 const done = () =>
   !isBuilt &&
