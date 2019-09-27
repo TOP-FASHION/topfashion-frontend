@@ -12,25 +12,23 @@ import acceptLanguage from 'accept-language'
 import en from 'react-intl/locale-data/en'
 import ru from 'react-intl/locale-data/ru'
 import allStore from '../src/core/Store'
-import App from '../src/decorators'
+// import App from '../src/decorators'
 
 const LOCALES = {
-  'en': en,
-  'ru': ru
+  en: en,
+  ru: ru
 }
 
 useStaticRendering(true)
 
 // Add all locales
-const AVAILABLE_LOCALES = [
-  'en', 'ru'
-]
+const AVAILABLE_LOCALES = ['en', 'ru']
 
 addLocaleData([...en, ...ru])
 
 const messages = {}
 
-AVAILABLE_LOCALES.forEach((locale) => {
+AVAILABLE_LOCALES.forEach(locale => {
   messages[locale] = require(`../src/translations/locales/${locale}.json`)
 })
 
@@ -39,20 +37,20 @@ acceptLanguage.languages(AVAILABLE_LOCALES)
 export default ({ clientStats }) => (req, res) => {
   const history = createHistory({ initialEntries: [req.path] })
   const context = {}
-  const {language} = detectLanguageParams(req, AVAILABLE_LOCALES)
+  const { language } = detectLanguageParams(req, AVAILABLE_LOCALES)
 
   // Configure React-intl
   const initialNow = Date.now()
 
-  const app = renderToString(
-    <Provider {...allStore}>
-      <IntlProvider initialNow={initialNow} locale={language} messages={messages[language]}>
-        <StaticRouter location={req.originalUrl} context={context}>
-          <App history={history} />
-        </StaticRouter>
-      </IntlProvider>
-    </Provider>
-  )
+  // const app = renderToString(
+  //   <Provider {...allStore}>
+  //     <IntlProvider initialNow={initialNow} locale={language} messages={messages[language]}>
+  //       <StaticRouter location={req.originalUrl} context={context}>
+  //         <App history={history} />
+  //       </StaticRouter>
+  //     </IntlProvider>
+  //   </Provider>
+  // )
 
   const chunkNames = flushChunkNames()
 
@@ -70,15 +68,12 @@ export default ({ clientStats }) => (req, res) => {
   extendedStylesheets[hotfixesCssIndex] = `static/fontawesome.css`
 
   const headHtml = renderToStaticMarkup(
-    <Head
-      siteName={'Сайт'}
-      siteDescription={'описание'}
-    />
+    <Head siteName={'Сайт'} siteDescription={'описание'} />
   )
 
   // First bytes (ASAP)
   res.setHeader('Content-Type', 'text/html')
-  res.cookie('_lang', language, {maxAge: 900000})
+  res.cookie('_lang', language, { maxAge: 900000 })
   res.write(`<!doctype html>\n<html lang="${language}" dir="ltr">${headHtml}`)
 
   // Wait generation of the application state
@@ -90,7 +85,6 @@ export default ({ clientStats }) => (req, res) => {
       stylesheets={extendedStylesheets}
       state={applicationState}
       noScriptText={messages['app.common.noScript']}
-      component={app}
     />
   )
 
@@ -139,6 +133,8 @@ export default ({ clientStats }) => (req, res) => {
   // Detects locale from cookie or from header AcceptLanguage
   function detectLocale (req) {
     const cookieLocale = req.cookies._lang
-    return cookieLocale || acceptLanguage.get(req.headers['accept-language']) || 'en'
+    return (
+      cookieLocale || acceptLanguage.get(req.headers['accept-language']) || 'en'
+    )
   }
 }
