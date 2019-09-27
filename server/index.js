@@ -70,7 +70,18 @@ app.use('/wp-json/', (req, res) => {
   proxy.web(
     req,
     res,
-    { target: process.env.API_URL, changeOrigin: true, secure: false },
+    { target: process.env.API_URL_WP, changeOrigin: true, secure: false },
+    proxyError => {
+      res.status(500).json({ error: 'ProxyException', details: proxyError })
+    }
+  )
+})
+
+app.use('/api/', (req, res) => {
+  proxy.web(
+    req,
+    res,
+    { target: process.env.API_URL_AUTH, changeOrigin: true, secure: false },
     proxyError => {
       res.status(500).json({ error: 'ProxyException', details: proxyError })
     }

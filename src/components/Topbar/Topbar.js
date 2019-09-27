@@ -7,7 +7,10 @@ import './Topbar.scss'
 import Dropdown from '../Dropdown'
 import DropdownCurrency from '../DropdownCurrency'
 import DropdownLanguage from '../DropdownLanguage'
+import {inject, observer} from "mobx-react"
 
+@inject('modalStore')
+@observer
 class Topbar extends Component {
   messages = setMessages(this, messages, 'app.topbar.')
   values = {
@@ -49,7 +52,13 @@ class Topbar extends Component {
     },
   ];
 
+  submit = () => {
+    this.props.modalStore.openLogin()
+  }
+
   render() {
+    const { openLogin } = this.props.modalStore
+
     const linksList = this.links.map((item, index) => (
       <div key={index} className="topbar__item topbar__item--link">
         <Link className="topbar-link" to={item.url}>{item.title}</Link>
@@ -62,6 +71,9 @@ class Topbar extends Component {
           <div className="topbar__row">
             {linksList}
             <div className="topbar__spring" />
+            <div className="topbar__item topbar__item--link">
+              <Link className="topbar-link" to='' onClick={this.submit}>{this.messages('login')}</Link>
+            </div>
             <div className="topbar__item">
               <Dropdown
                 title={this.messages('myAccount')}

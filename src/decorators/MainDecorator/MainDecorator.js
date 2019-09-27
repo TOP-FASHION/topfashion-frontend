@@ -12,8 +12,21 @@ import Footer from '../Footer'
 import Home from '../../pages/Home'
 import About from '../../pages/About'
 import NotFound from '../../pages/NotFound'
+import searchParse from "../../utils/text/url/searchParse"
+import {observer} from "mobx-react/index"
+// import Login from '../../pages/Login'
 
+
+@observer
 class MainDecorator extends Component {
+  static isLoggedIn (core, component, component2 = RedirectToHome) {
+    return core.item('loggedIn') ? component : component2
+  }
+
+  static isLoggedOut (core, component, component2 = RedirectToHome) {
+    return core.item('loggedIn') ? component2 : component
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     return !isShowModalAction(nextProps, nextState)
   }
@@ -26,6 +39,7 @@ class MainDecorator extends Component {
           <Group className='main-decorator__content'>
             <SwitchLang>
               <Route path='/' component={Home} exact />
+              {/*<Route path='/login' component={MainDecorator.isLoggedOut(c, Login)} exact />*/}
               <Route path='/about' component={About} exact />
               <Route component={NotFound} />
             </SwitchLang>

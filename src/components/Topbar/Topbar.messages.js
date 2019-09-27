@@ -25,4 +25,12 @@ export default defineMessages({
     id: 'app.topbar.myAccount',
     defaultMessage: 'My Account'
   },
+  'app.topbar.login': {
+    id: 'app.topbar.login',
+    defaultMessage: 'Login'
+  },
+  'app.topbar.register': {
+    id: 'app.topbar.register',
+    defaultMessage: 'Register'
+  },
 })

@@ -1,17 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'mobx-react'
 import App from './decorators'
-import allStore from './core/Store'
+import RootStore from './core/Store'
 import './styles/main.scss'
 import Root from './root'
 
 const render = () =>
   ReactDOM.hydrate(
     <AppContainer>
-      <Provider {...allStore}>
+      <Provider {...RootStore}>
         <Root />
       </Provider>
     </AppContainer>,

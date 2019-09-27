@@ -16,7 +16,7 @@ class Product extends Component {
       <div className='shelf-item' data-sku={product.sku}>
         <Thumb
           classes='shelf-item__thumb'
-          src={product.images[0].src}
+          src={product.images[0] ? product.images[0].src : null}
           alt={product.name}
         />
         <p className='shelf-item__title'>{product.name}</p>

@@ -1,0 +1,109 @@
+.registration-modal {
+  .modalContentWrapper {
+    position: relative;
+    padding-left: 300px;
+
+    @include media-md {
+      position: static;
+      padding-left: 0;
+    }
+  }
+}
+.registration-form {
+  &__banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    background: url("/cms/img/registration.jpg") top center/cover no-repeat;
+
+    @include media-md {
+      display: none;
+    }
+  }
+  &__banner-promo {
+    padding: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+
+    p {
+      line-height: 1;
+    }
+    strong {
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-size: 40px;
+      color: color(primary, main);
+    }
+  }
+  &__info {
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    color: color(text, main);
+  }
+  .fields-container {
+    justify-content: space-between;
+    margin-top: 20px;
+
+    @media (min-width: 768px) {
+      &__grid-root {
+        margin: 0 -10px;
+        padding: 0 10px;
+      }
+    }
+  }
+  &__successful {
+    margin-top: 20px;
+    text-align: center;
+
+    .markdown-root {
+      margin-bottom: 20px;
+    }
+  }
+  &__gdpr-notification {
+    font-size: 14px;
+    text-align: justify;
+    color: color(text, main);
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 0;
+
+    @include media-sm {
+      margin-bottom: 20px;
+    }
+    button + button {
+      margin-left: 30px;
+    }
+  }
+  .fields-container__grid-root--ageAndPolicyChecked,
+  .fields-container__grid-root--receiveEmail,
+  .fields-container__grid-root--receiveSms {
+    max-width: 100%;
+    flex-basis: 100%;
+    order: 10;
+  }
+  .fields-container__grid-root--receiveEmail {
+    label {
+      align-items: flex-start;
+    }
+  }
+  .fields-container__grid-root--nationalIdNumber:not(.fields-container__grid-root--selected-country-ROU) {
+    display: none;
+  }
+  .fields-container__grid-root--selected-country-ROU {
+    &.fields-container__grid-root--birthDate {
+      display: none;
+    }
+  }
+}

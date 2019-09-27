@@ -1,10 +1,12 @@
+import axios from 'axios'
+
 const codeMessage = {
   200: 'ошибка'
 }
 
 function checkStatus (response) {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response.data
   }
   const errortext = codeMessage[response.status] || response.statusText
 
@@ -22,55 +24,48 @@ function checkStatus (response) {
  * @return {object}           An object containing either "data" or "err"
  */
 
-export default function request (url, options) {
-  const defaultOptions = {
-    credentials: 'include'
-  }
-  const newOptions = { ...defaultOptions, ...options }
-  console.log('process.env.API_KEY', process.env.API_KEY)
-  newOptions.headers = {
-    Authorization: `Basic ${btoa(
-      `${process.env.API_KEY}:${process.env.API_SECRET}`
-    )}`,
-    'Content-Type': 'application/json'
-  }
-  if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
-    if (!(newOptions.body instanceof FormData)) {
-      newOptions.headers = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json; charset=utf-8',
-        ...newOptions.headers
-      }
-      newOptions.body = JSON.stringify(newOptions.body)
-    } else {
-      // newOptions.body is FormData
-      newOptions.headers = {
-        Accept: 'application/json',
-        ...newOptions.headers
+export default async function request (url, options) {
+  try {
+    const defaultOptions = {
+      credentials: 'include'
+    }
+    const newOptions = { ...defaultOptions, ...options }
+
+    newOptions.headers = {
+      Authorization: `Basic ${btoa(
+        `${process.env.API_KEY}:${process.env.API_SECRET}`
+      )}`
+    }
+    if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
+      if (!(newOptions.data instanceof FormData)) {
+        newOptions.headers = {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          ...newOptions.headers
+        }
+        let formData  = new FormData();
+
+        for(let name in newOptions.data) {
+          formData.set(name, newOptions.data[name]);
+        }
+
+        newOptions.data = formData
+      } else {
+        // newOptions.body is FormData
+        newOptions.headers = {
+          Accept: 'application/json',
+          ...newOptions.headers
+        }
       }
     }
-  }
 
-  return fetch(`/wp-json${url}`, newOptions)
-    .then(checkStatus)
-    .then(response => {
-      if (newOptions.method === 'DELETE' || response.status === 204) {
-        return Promise.resolve(response.text())
-      }
-      return Promise.resolve(response.json())
-    })
-    .catch(err => {
-      const status = err.name
-      if (status === 401) {
-        myHistory.push('/user/login')
-        return
-      }
-      if (status === 403) {
-        myHistory.push('/exception/403')
-        return
-      }
-      if (status <= 504 && status >= 500) {
-        myHistory.push('/exception/500')
-      }
-    })
+    const response = await axios(`${url}`, newOptions)
+    if (response.status === 401) {
+      return
+    }
+
+    return response.data
+  } catch (err) {
+    return console.log('Error===', err)
+  }
 }

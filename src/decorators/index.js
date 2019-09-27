@@ -3,19 +3,25 @@ import PropTypes from "prop-types"
 import { hot } from 'react-hot-loader/root'
 import { SwitchLang, SetLang } from './routing'
 import { Route } from 'react-router-dom'
-import {observer} from 'mobx-react'
+import {observer, inject} from 'mobx-react'
 import searchParse from "../utils/text/url/searchParse"
 import sessionTabStorage from "../utils/sessionTabStorage"
-
 import MainDecorator from "./MainDecorator"
 import EmptyDecorator from "./EmptyDecorator"
 import ProductDecorator from "./ProductDecorator"
+import Modals from '../modals'
 
+@inject('loginStore')
 @observer
 class AppRoot extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
+    this.validateAuth = () =>  this.props.loginStore.validateAuth()
+  }
+
+  componentWillMount() {
+    this.validateAuth()
   }
 
   static childContextTypes = {
@@ -97,13 +103,16 @@ class AppRoot extends React.Component {
 
   render () {
     return (
-      <SetLang langList={['en', 'ru']}>
-        <SwitchLang>
-          <Route path='/blocked' component={EmptyDecorator} exact />
-          <Route path='/:category/:id' component={ProductDecorator} exact />
-          <Route component={MainDecorator} />
-        </SwitchLang>
-      </SetLang>
+      <div>
+        <Modals />
+        <SetLang langList={['en', 'ru']}>
+          <SwitchLang>
+            <Route path='/blocked' component={EmptyDecorator} exact />
+            <Route path='/:category/:id' component={ProductDecorator} exact />
+            <Route component={MainDecorator} />
+          </SwitchLang>
+        </SetLang>
+      </div>
     )
   }
 }
