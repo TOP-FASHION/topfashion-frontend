@@ -29,7 +29,7 @@ class Header extends Component {
       bannerSection = (
         <Container className="site-header__middle">
           <div className="site-header__logo">
-            <Link to="/"><img src="../../static/img/logos/shop-logo.svg" width="180px" /></Link>
+            <Link to="/"><img src="public/img/logos/shop-logo.svg" width="180px" /></Link>
           </div>
           <div className="site-header__search">
             <Search />

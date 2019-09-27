@@ -63,9 +63,9 @@ export default ({ clientStats }) => (req, res) => {
   const hotfixesCssIndex = extendedStylesheets.push(null) - 1
 
   // Add "customer.css" file
-  extendedStylesheets[customerCssIndex] = `static/customer.css`
+  extendedStylesheets[customerCssIndex] = `public/customer.css`
   // Add "fontawesome.css" file
-  extendedStylesheets[hotfixesCssIndex] = `static/fontawesome.css`
+  extendedStylesheets[hotfixesCssIndex] = `public/fontawesome.css`
 
   const headHtml = renderToStaticMarkup(
     <Head siteName={'Сайт'} siteDescription={'описание'} />

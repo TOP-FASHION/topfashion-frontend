@@ -13,7 +13,7 @@ class Shelf extends Component {
 
   render () {
     const { products } = this.props.productsStore
-    console.log('products', products)
+
     return products ? (
       <React.Fragment>
         <div className='shelf-container'>

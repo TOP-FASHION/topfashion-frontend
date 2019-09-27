@@ -89,8 +89,13 @@ app.use('/api/', (req, res) => {
 })
 
 app.use(
-  '/static',
+  '/',
   express.static(path.resolve(__dirname, process.env.STATIC_PATH))
+)
+
+app.use(
+  '/public',
+  express.static(path.resolve(__dirname, process.env.PUBLIC_PATH))
 )
 
 app.use(cookieParser())

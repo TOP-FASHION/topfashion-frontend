@@ -12,7 +12,6 @@ class Modals extends Component {
   render () {
     const { isLoggedIn } = this.props.loginStore
 
-    console.log('Modal isLoggedIn====', isLoggedIn)
     return isLoggedIn ? null : (
       <LoginModal />
     )

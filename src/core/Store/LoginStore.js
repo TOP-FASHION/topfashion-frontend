@@ -16,7 +16,6 @@ export default class LoginStore {
   validateAuth = async () => {
     try {
       const value = await Api.ValidateAuthCookie({cookie: this.token})
-      console.log('===this.isLoggedIn===', value.valid)
       this.isLoggedIn = value.valid
     } catch (error) {
       runInAction(() => {
