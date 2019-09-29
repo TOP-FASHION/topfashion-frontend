@@ -46,7 +46,10 @@ module.exports = {
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
           }
         ]
       }
@@ -67,5 +70,21 @@ module.exports = {
       }
     }),
     new Dotenv()
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: 'vendor',
+          chunks: chunk => chunk.name == 'main',
+          reuseExistingChunk: true,
+          priority: 1,
+          test: module =>
+            /[\\/]node_modules[\\/]/.test(module.context),
+          minChunks: 1,
+          minSize: 0,
+        },
+      },
+    },
+  },
 }

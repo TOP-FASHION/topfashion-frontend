@@ -10,6 +10,7 @@ import MainDecorator from "./MainDecorator"
 import EmptyDecorator from "./EmptyDecorator"
 import ProductDecorator from "./ProductDecorator"
 import Modals from '../modals'
+import Fragment from "../components/Fragment"
 
 @inject('loginStore')
 @observer
@@ -103,7 +104,7 @@ class AppRoot extends React.Component {
 
   render () {
     return (
-      <div>
+      <Fragment>
         <Modals />
         <SetLang langList={['en', 'ru']}>
           <SwitchLang>
@@ -112,7 +113,7 @@ class AppRoot extends React.Component {
             <Route component={MainDecorator} />
           </SwitchLang>
         </SetLang>
-      </div>
+      </Fragment>
     )
   }
 }

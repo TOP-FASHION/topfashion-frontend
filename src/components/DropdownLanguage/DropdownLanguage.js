@@ -24,13 +24,13 @@ class DropdownLanguage extends React.Component {
         title: this.messages('en'),
         locale: 'en',
         icon: 'images/languages/language-1.png',
-        icon_srcset: '../../static/img/languages/language-1.png 1x, images/languages/language-1@2x.png 2x',
+        icon_srcset: 'public/img/languages/language-1.png 1x, images/languages/language-1@2x.png 2x',
       },
       {
         title: this.messages('ru'),
         locale: 'ru',
         icon: 'images/languages/language-2.png',
-        icon_srcset: '../../static/img/languages/language-2.png 1x, images/languages/language-2@2x.png 2x',
+        icon_srcset: 'public/img/languages/language-2.png 1x, images/languages/language-2@2x.png 2x',
       }
     ];
 

@@ -1,4 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import './assets/public/css/bootstrap.min.css'
+import './assets/public/css/slick.min.css'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'

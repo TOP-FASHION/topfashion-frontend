@@ -19,7 +19,6 @@ class LoginModal extends Component {
   render () {
     const { openModalLogin } = this.props.modalStore
 
-    console.log('openModalLogin')
     return  (
       <Modal centered className='login-modal' show={openModalLogin} onHide={this.close}>
         <Modal.Header closeButton>
