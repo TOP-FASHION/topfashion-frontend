@@ -6,7 +6,11 @@ import messages from './ProductCard.messages'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import './ProductCard.scss'
+import {inject, observer} from "mobx-react"
+import Button from '../../components/Button'
 
+@inject('currencyStore', 'productCartAddStore')
+@observer
 class ProductCard extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
@@ -50,16 +54,18 @@ class ProductCard extends Component {
   }
 
   get price () {
+    let { currency } = this.props.currencyStore
     let product = this.props.product
-    return product.compareAtPrice ? (
+
+    return product.sale_price ? (
       <div className="product-card__prices">
-        <span className="product-card__new-price"><Currency value={product.price} /></span>
+        <span className="product-card__new-price">{currency} {product.regular_price}</span>
         {' '}
-        <span className="product-card__old-price"><Currency value={product.compareAtPrice} /></span>
+        <span className="product-card__old-price">{currency} {product.sale_price}</span>
       </div>
     ) : (
       <div className="product-card__prices">
-        {/*<Currency value={product.price} />*/}
+        {currency} {product.price}
       </div>
     )
   }
@@ -96,14 +102,14 @@ class ProductCard extends Component {
 
   render () {
     const { product } = this.props
+    console.log('---this.props---',  this.props)
     return (
       <div className={this.containerClasses}>
-        <button
-          type="button"
-          className={classNames('product-card__quickview')}
+        <Button
+          className={'product-card__quickview'}
         >
           <i className="fas fa-expand"></i>
-        </button>
+        </Button>
         {this.badges}
         {this.image}
         <div className="product-card__info">
@@ -123,38 +129,30 @@ class ProductCard extends Component {
           </div>
           {this.price}
           <div className="product-card__buttons">
-            <button
-              type="button"
-              className={classNames('btn btn-primary product-card__addtocart', {
-                'btn-loading': 'loading',
-              })}
+            <Button
+              variant='primary'
+              onClick={() => this.props.productCartAddStore.addProduct(product.id)}
+              loading={this.props.productCartAddStore.isLoading}
+              className={'product-card__addtocart'}
             >
               Add To Cart
-            </button>
-            <button
-              type="button"
-              className={classNames('btn btn-secondary product-card__addtocart product-card__addtocart--list', {
-                'btn-loading': 'loading',
-              })}
+            </Button>
+            <Button
+              variant='secondary'
+              className={'product-card__addtocart product-card__addtocart--list'}
             >
               Add To Cart
-            </button>
-            <button
-              type="button"
-              className={classNames('btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist', {
-                'btn-loading': 'loading',
-              })}
+            </Button>
+            <Button
+              className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist'}
             >
               <i className="fas fa-heart"></i>
-            </button>
-            <button
-              type="button"
-              className={classNames('btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare', {
-                'btn-loading': 'loading',
-              })}
+            </Button>
+            <Button
+              className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare'}
             >
               <i className="fas fa-exchange-alt"></i>
-            </button>
+            </Button>
           </div>
         </div>
       </div>

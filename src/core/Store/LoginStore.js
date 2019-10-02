@@ -43,9 +43,9 @@ export default class LoginStore {
     postData.username = this.username
     postData.password = this.password
 
-    Api.wpNonce.getWPnonce('generate_auth_cookie').then(res => {
+    Api.WPnonce('generate_auth_cookie').then(res => {
       if (res) {
-        Api.login.signIn(postData)
+        Api.Login(postData)
           .then(res => {
             if (res.cookie) {
               Cookies.set('auth', res.cookie);

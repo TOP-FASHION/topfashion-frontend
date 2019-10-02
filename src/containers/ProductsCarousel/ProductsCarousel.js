@@ -197,10 +197,10 @@ class ProductsCarousel extends Component {
   }
 
   get columns () {
-    return this.productsColumns().map((column, index) => {
-      const products = column.map((product) => (
+    const columns = this.productsColumns().map((column, index) => {
+      const products = column.map((product, i) => (
         <div key={product.id} className="block-products-carousel__cell">
-          <ProductCard product={product} />
+          {++i}
         </div>
       ));
 
@@ -210,10 +210,13 @@ class ProductsCarousel extends Component {
         </div>
       );
     });
+
+    return columns
   }
 
   render() {
     const { layout, title, withSidebar, onGroupClick, groups, loading } = this.props;
+    let { products } = this.props;
 
     const blockClasses = classNames('block block-products-carousel', {
       'block-products-carousel--loading': loading,
@@ -222,7 +225,7 @@ class ProductsCarousel extends Component {
       container: !withSidebar,
     });
 
-    return (
+    return products ? (
       <div className={blockClasses} data-layout={layout}>
         <div className={containerClasses}>
           <ProductsBlockHeader
@@ -246,7 +249,7 @@ class ProductsCarousel extends Component {
           </div>
         </div>
       </div>
-    );
+    ) : null
   }
 }
 

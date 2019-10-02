@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import ProductsBlockHeader from '../ProductsBlockHeader'
 import ProductCard from '../ProductCard'
-import {injectIntl} from "react-intl"
+import {injectIntl} from 'react-intl'
 import './ProductsBlock.scss'
 
 @inject('productsStore')
@@ -47,8 +47,9 @@ class ProductsBlock extends Component {
 
   render () {
     const { title, layout } = this.props;
+    const { products } = this.props.productsStore
 
-    return (
+    return products && products.length ? (
       <div className={`block block-products block-products--layout--${layout}`}>
         <div className="container">
           <ProductsBlockHeader title={title} />
@@ -59,7 +60,7 @@ class ProductsBlock extends Component {
           </div>
         </div>
       </div>
-    )
+    ) : null
   }
 }
 

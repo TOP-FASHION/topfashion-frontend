@@ -1,7 +1,5 @@
 import request from '../request'
 
-export default class Products {
-  async getProducts () {
-    return await request('/wp-json/wc/v3/products', {})
-  }
+export default async function Products () {
+  return await request('/wp-json/wc/v3/products', {})
 }

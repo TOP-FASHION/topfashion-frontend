@@ -79,7 +79,9 @@
 
   @include direction {
     #{$inset-inline-end}: 0;
-    @include logical-border-radius(0 2px 0 2px)
+    @include logical-border-radius(0 2px 0 2px);
+    padding: 0px 8px;
+    height: 30px;
   }
 
   &:focus {

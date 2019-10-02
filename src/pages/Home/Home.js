@@ -15,7 +15,7 @@ class Home extends Component {
       <React.Fragment>
         <HomeSlider withDepartments />
         <BannerFeatures />
-        <ProductsCarouselTabbs title="Featured Products" layout="grid-4" />
+        {/*<ProductsCarouselTabbs title="Featured Products" layout="grid-4" />*/}
         <HomeBanner />
         <ProductsBlock
           title="Bestsellers"

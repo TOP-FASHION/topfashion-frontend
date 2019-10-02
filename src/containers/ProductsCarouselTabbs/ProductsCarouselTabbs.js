@@ -8,23 +8,6 @@ import './ProductsCarouselTabbs.scss'
 @inject('productsStore')
 @observer
 class ProductsCarouselTabbs extends Component {
-  timeout;
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      products: this.props.productsStore.products,
-      loading: false,
-      groups: [
-        { id: 1, name: 'All', current: true },
-        { id: 2, name: 'Power Tools', current: false },
-        { id: 3, name: 'Hand Tools', current: false },
-        { id: 4, name: 'Plumbing', current: false },
-      ],
-    };
-  }
-
   static propTypes = {
     title: PropTypes.string.isRequired,
     layout: PropTypes.oneOf(['grid-4', 'grid-4-sm', 'grid-5', 'horizontal']),
@@ -37,6 +20,22 @@ class ProductsCarouselTabbs extends Component {
     rows: 1,
     withSidebar: false,
   };
+
+  timeout;
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false,
+      groups: [
+        { id: 1, name: 'All', current: true },
+        { id: 2, name: 'Power Tools', current: false },
+        { id: 3, name: 'Hand Tools', current: false },
+        { id: 4, name: 'Plumbing', current: false },
+      ],
+    };
+  }
 
   componentDidMount () {
     this.props.productsStore.getProducts()
@@ -85,12 +84,19 @@ class ProductsCarouselTabbs extends Component {
     }, 2000);
   };
 
+  get products () {
+    let { products } = this.props.productsStore
+    this.state = {
+      products: products,
+    };
+    return products
+  }
+
   render() {
-    return this.props.productsStore.products ? (
+    return this.products ? (
       <ProductsCarousel
         {...this.props}
         {...this.state}
-        products={this.props.productsStore.products}
         onGroupClick={this.handleChangeGroup}
       />
     ) : null
