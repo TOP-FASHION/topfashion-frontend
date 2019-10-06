@@ -1,16 +1,15 @@
 import React from 'react'
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types'
 import { hot } from 'react-hot-loader/root'
 import { SwitchLang, SetLang } from './routing'
 import { Route } from 'react-router-dom'
-import {observer, inject} from 'mobx-react'
-import searchParse from "../utils/text/url/searchParse"
-import sessionTabStorage from "../utils/sessionTabStorage"
-import MainDecorator from "./MainDecorator"
-import EmptyDecorator from "./EmptyDecorator"
-import ProductDecorator from "./ProductDecorator"
+import { observer, inject } from 'mobx-react'
+import searchParse from '../utils/text/url/searchParse'
+import sessionTabStorage from '../utils/sessionTabStorage'
+import MainDecorator from './MainDecorator'
+import EmptyDecorator from './EmptyDecorator'
 import Modals from '../modals'
-import Fragment from "../components/Fragment"
+import Fragment from '../components/Fragment'
 
 @inject('loginStore')
 @observer
@@ -18,10 +17,10 @@ class AppRoot extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
-    this.validateAuth = () =>  this.props.loginStore.validateAuth()
+    this.validateAuth = () => this.props.loginStore.validateAuth()
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.validateAuth()
   }
 
@@ -109,7 +108,6 @@ class AppRoot extends React.Component {
         <SetLang langList={['en', 'ru']}>
           <SwitchLang>
             <Route path='/blocked' component={EmptyDecorator} exact />
-            <Route path='/:category/:id' component={ProductDecorator} exact />
             <Route component={MainDecorator} />
           </SwitchLang>
         </SetLang>

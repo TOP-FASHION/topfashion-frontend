@@ -25,7 +25,7 @@
 
     border-radius: $product-card-border-radius;
     box-shadow: $product-card-default-shadow;
-    transition: box-shadow .2s;
+    transition: box-shadow 0.2s;
   }
 
   &:hover::before {
@@ -42,13 +42,12 @@
     }
 
     &:not(.product-card__quickview--preload):hover {
-      transition-duration: .2s, .2s;
+      transition-duration: 0.2s, 0.2s;
       background: $product-card-quickview-hover-bg;
       color: $product-card-quickview-hover-color;
     }
   }
 }
-
 .product-card__image {
   padding: 18px;
   flex-shrink: 0;
@@ -69,19 +68,21 @@
   z-index: 2;
   position: absolute;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
+  text-transform: uppercase;
   fill: currentColor;
+  padding: 7px;
+  line-height: 1;
+  height: 30px;
   cursor: pointer;
   top: 0;
   background: transparent;
   color: $product-card-quickview-color;
-  transition: background-color .2s, color .2s;
+  transition: background-color 0.2s, color 0.2s;
 
   @include direction {
     #{$inset-inline-end}: 0;
     @include logical-border-radius(0 2px 0 2px);
-    padding: 0px 8px;
-    height: 30px;
   }
 
   &:focus {
@@ -108,7 +109,7 @@
 
   a {
     color: inherit;
-    transition: .15s;
+    transition: 0.15s;
   }
   a:hover {
     color: $link-hover-color;
@@ -209,7 +210,7 @@
 .product-card__badge {
   font-size: 11px;
   border-radius: 1.5px;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   line-height: 1;
   padding: 5px 8px 4px;
   font-weight: $font-weight-medium;
@@ -233,11 +234,9 @@
   color: $product-card-badge-hot-color;
 }
 
-
 .product-card--layout--horizontal {
   @include product-card-horizontal();
 }
-
 
 .product-card--layout--grid {
   @include product-card-grid();
@@ -252,7 +251,6 @@
     @include product-card-grid-lg();
   }
 }
-
 
 .product-card--layout--list {
   @include product-card-list();

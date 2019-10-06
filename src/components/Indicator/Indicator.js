@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import './Indicator.scss'
 
 class Indicator extends Component {
   static propTypes = {
@@ -16,129 +17,136 @@ class Indicator extends Component {
     /** callback function that is called when the dropdown is opened */
     onOpen: PropTypes.func,
     /** callback function that is called when the dropdown is closed */
-    onClose: PropTypes.func,
-  };
-
-  state = {
-    open: false,
-  };
-
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleOutsideClick);
+    onClose: PropTypes.func
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { open } = this.state;
-    const { onOpen, onClose } = this.props;
+  state = {
+    open: false
+  }
+
+  componentDidMount () {
+    document.addEventListener('mousedown', this.handleOutsideClick)
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const { open } = this.state
+    const { onOpen, onClose } = this.props
 
     if (open !== prevState.open) {
       if (open && onOpen) {
-        onOpen();
+        onOpen()
       }
       if (!open && onClose) {
-        onClose();
+        onClose()
       }
     }
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleOutsideClick);
+  componentWillUnmount () {
+    document.removeEventListener('mousedown', this.handleOutsideClick)
   }
 
-  setWrapperRef = (node) => {
-    this.wrapperRef = node;
-  };
+  setWrapperRef = node => {
+    this.wrapperRef = node
+  }
 
-  handleOutsideClick = (event) => {
-    const { open } = this.state;
+  handleOutsideClick = event => {
+    const { open } = this.state
 
     if (this.wrapperRef && !this.wrapperRef.contains(event.target) && open) {
-      this.close();
+      this.close()
     }
-  };
+  }
 
-  handleButtonClick = (event) => {
-    const { onClick, dropdown } = this.props;
+  handleButtonClick = event => {
+    const { onClick, dropdown } = this.props
 
     if (dropdown) {
-      event.preventDefault();
+      event.preventDefault()
     }
 
-    this.toggle();
+    this.toggle()
 
     if (onClick) {
-      onClick(event);
+      onClick(event)
     }
-  };
+  }
 
-  toggle() {
+  toggle () {
     this.setState(state => ({
-      open: !state.open,
-    }));
+      open: !state.open
+    }))
   }
 
-  open() {
+  open () {
     this.setState(() => ({
-      open: true,
-    }));
+      open: true
+    }))
   }
 
-  close() {
+  close () {
     this.setState(() => ({
-      open: false,
-    }));
+      open: false
+    }))
   }
 
-  render() {
-    const { open } = this.state;
-    const { url, className, icon } = this.props;
-    let { value, dropdown } = this.props;
-    let button;
+  render () {
+    const { open } = this.state
+    const { url, className, icon } = this.props
+    let { value, dropdown } = this.props
+    let button
 
     if (value !== undefined) {
-      value = <span className="indicator__value">{value}</span>;
+      value = <span className='indicator__value'>{value}</span>
     }
 
     const title = (
-      <span className="indicator__area">
-                {icon}
+      <span className='indicator__area'>
+        {icon}
         {value}
-            </span>
-    );
+      </span>
+    )
 
     if (url) {
       button = (
-        <Link to={url} className="indicator__button" onClick={this.handleButtonClick}>
+        <Link
+          to={url}
+          className='indicator__button'
+          onClick={this.handleButtonClick}
+        >
           {title}
         </Link>
-      );
+      )
     } else {
       button = (
-        <button type="button" className="indicator__button" onClick={this.handleButtonClick}>
+        <button
+          type='button'
+          className='indicator__button'
+          onClick={this.handleButtonClick}
+        >
           {title}
         </button>
-      );
+      )
     }
 
     if (dropdown) {
-      dropdown = (
-        <div className="indicator__dropdown">
-          {dropdown}
-        </div>
-      );
+      dropdown = <div className='indicator__dropdown'>{dropdown}</div>
     }
 
-    const classes = classNames(`indicator indicator--trigger--click ${className}`, {
-      'indicator--opened': open,
-    });
+    const classes = classNames(
+      `indicator indicator--trigger--click ${className}`,
+      {
+        'indicator--opened': open
+      }
+    )
 
     return (
       <div className={classes} ref={this.setWrapperRef}>
         {button}
         {dropdown}
       </div>
-    );
+    )
   }
 }
 
-export default Indicator;
+export default Indicator

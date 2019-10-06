@@ -65,7 +65,11 @@ export default ({ clientStats }) => (req, res) => {
   extendedStylesheets[fontawesomeCssIndex] = `public/css/fontawesome.css`
 
   const headHtml = renderToStaticMarkup(
-    <Head siteName={'Сайт'} siteDescription={'описание'} />
+    <Head
+      siteName={'Сайт'}
+      siteDescription={'описание'}
+      stylesheets={extendedStylesheets}
+    />
   )
 
   // First bytes (ASAP)
@@ -79,7 +83,6 @@ export default ({ clientStats }) => (req, res) => {
   const bodyHtml = renderToStaticMarkup(
     <Body
       scripts={scripts}
-      stylesheets={extendedStylesheets}
       state={applicationState}
       noScriptText={messages['app.common.noScript']}
     />

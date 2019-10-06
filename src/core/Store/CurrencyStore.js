@@ -6,7 +6,7 @@ export default class CurrencyStores {
 
   constructor () {
     autorun(() => this.getCurrency())
-}
+  }
 
   getCurrency () {
     return Api.Currency().then(res => {
@@ -23,7 +23,7 @@ export default class CurrencyStores {
   }
 }
 
-decorate (CurrencyStores, {
+decorate(CurrencyStores, {
   currency: observable,
   setData: action
 })
