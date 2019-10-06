@@ -6,24 +6,24 @@ export default class CurrencyStores {
 
   constructor () {
     autorun(() => this.getCurrency())
-}
+  }
 
   getCurrency () {
     return Api.Currency().then(res => {
       if (res) {
         runInAction(() => {
-          this.setData(res.code)
+          this.setCurrency(res.code)
         })
       }
     })
   }
 
-  setData = data => {
+  setCurrency = data => {
     this.currency = data
   }
 }
 
-decorate (CurrencyStores, {
+decorate(CurrencyStores, {
   currency: observable,
   setData: action
 })

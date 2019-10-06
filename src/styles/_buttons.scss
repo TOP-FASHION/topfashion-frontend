@@ -5,9 +5,7 @@
 @import './mixin/hacks';
 @import './mixin/direction';
 
-
-$local-transition-duration: .1s;
-
+$local-transition-duration: 0.1s;
 
 .btn {
   border-radius: 2px;
@@ -15,28 +13,31 @@ $local-transition-duration: .1s;
 
   @include btn-nl();
 }
+
 .btn-lg {
   @include btn-lg();
 }
+
 .btn-xl {
   @include btn-xl();
 }
+
 .btn-sm {
   @include btn-sm();
 }
+
 .btn-xs {
   @include btn-xs();
 }
 
-
 .btn-svg-icon {
-  padding: 0;
   position: relative;
+  padding: 0;
 
   svg {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
 
@@ -49,14 +50,23 @@ $local-transition-duration: .1s;
   }
 }
 
-
-@mixin local-button-variant($bg, $font, $icon, $hover-bg, $hover-font, $hover-icon, $active-bg, $active-font, $active-icon) {
+@mixin local-button-variant(
+  $bg,
+  $font,
+  $icon,
+  $hover-bg,
+  $hover-font,
+  $hover-icon,
+  $active-bg,
+  $active-font,
+  $active-icon
+) {
   &.focus,
   &:focus,
   &:hover {
-    border-color: $hover-bg;
-    background: $hover-bg;
     color: $hover-font;
+    background: $hover-bg;
+    border-color: $hover-bg;
     fill: $hover-icon;
 
     .fake-svg-icon {
@@ -71,9 +81,9 @@ $local-transition-duration: .1s;
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
-    border-color: $active-bg;
-    background: $active-bg;
     color: $active-font;
+    background: $active-bg;
+    border-color: $active-bg;
     fill: $active-icon;
 
     .fake-svg-icon {
@@ -88,9 +98,9 @@ $local-transition-duration: .1s;
   &,
   &.disabled,
   &:disabled {
-    border-color: $bg;
-    background: $bg;
     color: $font;
+    background: $bg;
+    border-color: $bg;
     fill: $icon;
 
     .fake-svg-icon {
@@ -100,36 +110,54 @@ $local-transition-duration: .1s;
 
   &.btn-loading:not(:disabled):not(.disabled),
   &.btn-loading:not(:disabled):not(.disabled):active,
-  &.btn-loading:not(:disabled):not(.disabled).active  {
-    cursor: default;
-    border-color: $bg;
+  &.btn-loading:not(:disabled):not(.disabled).active {
     background: $bg;
+    border-color: $bg;
+    cursor: default;
   }
 }
 
-
 .btn-primary {
   @include local-button-variant(
-      $btn-primary-bg-color,        $btn-primary-font-color,        $btn-primary-icon-color,
-      $btn-primary-hover-bg-color,  $btn-primary-hover-font-color,  $btn-primary-hover-icon-color,
-      $btn-primary-active-bg-color, $btn-primary-active-font-color, $btn-primary-active-icon-color
-  );
-}
-.btn-secondary {
-  @include local-button-variant(
-      $btn-secondary-bg-color,        $btn-secondary-font-color,        $btn-secondary-icon-color,
-      $btn-secondary-hover-bg-color,  $btn-secondary-hover-font-color,  $btn-secondary-hover-icon-color,
-      $btn-secondary-active-bg-color, $btn-secondary-active-font-color, $btn-secondary-active-icon-color
-  );
-}
-.btn-light {
-  @include local-button-variant(
-      $btn-light-bg-color,        $btn-light-font-color,        $btn-light-icon-color,
-      $btn-light-hover-bg-color,  $btn-light-hover-font-color,  $btn-light-hover-icon-color,
-      $btn-light-active-bg-color, $btn-light-active-font-color, $btn-light-active-icon-color
+    $btn-primary-bg-color,
+    $btn-primary-font-color,
+    $btn-primary-icon-color,
+    $btn-primary-hover-bg-color,
+    $btn-primary-hover-font-color,
+    $btn-primary-hover-icon-color,
+    $btn-primary-active-bg-color,
+    $btn-primary-active-font-color,
+    $btn-primary-active-icon-color
   );
 }
 
+.btn-secondary {
+  @include local-button-variant(
+    $btn-secondary-bg-color,
+    $btn-secondary-font-color,
+    $btn-secondary-icon-color,
+    $btn-secondary-hover-bg-color,
+    $btn-secondary-hover-font-color,
+    $btn-secondary-hover-icon-color,
+    $btn-secondary-active-bg-color,
+    $btn-secondary-active-font-color,
+    $btn-secondary-active-icon-color
+  );
+}
+
+.btn-light {
+  @include local-button-variant(
+    $btn-light-bg-color,
+    $btn-light-font-color,
+    $btn-light-icon-color,
+    $btn-light-hover-bg-color,
+    $btn-light-hover-font-color,
+    $btn-light-hover-icon-color,
+    $btn-light-active-bg-color,
+    $btn-light-active-font-color,
+    $btn-light-active-icon-color
+  );
+}
 
 /* loading state */
 .btn-loading {
@@ -152,28 +180,32 @@ $local-transition-duration: .1s;
     fill: transparent;
   }
 
-  &:after {
+  &::after {
     @include preloader();
   }
 
   /* nl size (default) */
-  &:after {
+  &::after {
     @include preloader-size(22px);
   }
+
   /* xl size */
-  &.btn-xl:after {
+  &.btn-xl::after {
     @include preloader-size(42px);
   }
+
   /* lg size */
-  &.btn-lg:after {
+  &.btn-lg::after {
     @include preloader-size(28px);
   }
+
   /* sm size */
-  &.btn-sm:after {
+  &.btn-sm::after {
     @include preloader-size(16px);
   }
+
   /* xs size */
-  &.btn-xs:after {
+  &.btn-xs::after {
     @include preloader-size(14px);
   }
 }

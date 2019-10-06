@@ -5,12 +5,11 @@ import ProductCard from '../ProductCard'
 class ProductsList extends Component {
   render () {
     const { products } = this.props
-
-    return products.map(product => {
-      <div key={product.id} className="products-list__item">
+    return products.map(product => (
+      <div className='products-list__item' key={product.id}>
         <ProductCard product={product} />
       </div>
-    })
+    ))
   }
 }
 

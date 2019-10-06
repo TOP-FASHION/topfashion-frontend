@@ -1,42 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import classNames from "classnames"
+import classNames from 'classnames'
 
-function Button(props) {
-  const { children, variant, className, disabled, loading, onClick } = props;
+function Button (props) {
+  const { children, variant, className, disabled, onClick } = props
+  const [isLoading, setLoading] = useState(false)
 
   const classes = classNames(className, {
-    'btn-loading': loading
+    'btn-loading': isLoading
   })
+
+  useEffect(() => {
+    if (isLoading) {
+      onClick().then(() => {
+        setLoading(false)
+      })
+    }
+  }, [isLoading])
+
+  const handleClick = () => setLoading(true)
 
   return (
     <ReactBootstrap.Button
       className={classes}
-      onClick={!loading ? onClick : null}
-      disabled={disabled || loading}
+      onClick={!isLoading ? handleClick : null}
+      disabled={disabled || isLoading}
       variant={variant}
     >
       {children}
     </ReactBootstrap.Button>
-  );
+  )
 }
 
 Button.propTypes = {
   variant: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  loading: PropTypes.bool,
   onClick: PropTypes.func,
-  children: PropTypes.node,
-};
+  children: PropTypes.node
+}
 
 Button.defaultProps = {
   variant: '',
   classNames: '',
   disabled: false,
-  loading: false,
   onClick: () => {}
-};
+}
 
 export default Button

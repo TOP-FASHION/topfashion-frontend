@@ -5,21 +5,19 @@ export default class ProductsStore {
   products
 
   getProducts () {
-    Api.Products().then(res => {
+    return Api.Products().then(res => {
       if (res) {
-        runInAction(() => {
-          this.setData(res)
-        })
+        this.setProducts(res)
       }
     })
   }
 
-  setData = data => {
+  setProducts = data => {
     this.products = data
   }
 }
 
-decorate (ProductsStore, {
+decorate(ProductsStore, {
   products: observable,
   setData: action
 })

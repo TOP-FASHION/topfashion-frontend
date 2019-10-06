@@ -74,17 +74,23 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
+        styles: {
+          name: 'vendor',
+          priority: 1,
+          test: /\.css$/,
+          chunks: chunk => chunk.name == 'main',
+          enforce: true
+        },
         vendor: {
           name: 'vendor',
           chunks: chunk => chunk.name == 'main',
           reuseExistingChunk: true,
           priority: 1,
-          test: module =>
-            /[\\/]node_modules[\\/]/.test(module.context),
+          test: module => /[\\/]node_modules[\\/]/.test(module.context),
           minChunks: 1,
-          minSize: 0,
-        },
-      },
-    },
-  },
+          minSize: 0
+        }
+      }
+    }
+  }
 }

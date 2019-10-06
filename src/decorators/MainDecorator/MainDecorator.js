@@ -12,10 +12,10 @@ import Footer from '../Footer'
 import Home from '../../pages/Home'
 import About from '../../pages/About'
 import NotFound from '../../pages/NotFound'
-import searchParse from "../../utils/text/url/searchParse"
-import {observer} from "mobx-react/index"
+import searchParse from '../../utils/text/url/searchParse'
+import { observer } from 'mobx-react/index'
 // import Login from '../../pages/Login'
-
+import ProductPage from '../../pages/ProductPage'
 
 @observer
 class MainDecorator extends Component {
@@ -39,7 +39,11 @@ class MainDecorator extends Component {
           <Group className='main-decorator__content'>
             <SwitchLang>
               <Route path='/' component={Home} exact />
-              {/*<Route path='/login' component={MainDecorator.isLoggedOut(c, Login)} exact />*/}
+              <Route
+                path='/shop/product/:productId'
+                component={ProductPage}
+                exact
+              />
               <Route path='/about' component={About} exact />
               <Route component={NotFound} />
             </SwitchLang>
