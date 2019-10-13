@@ -21,7 +21,6 @@ class Home extends Component {
           title="Bestsellers"
           layout="large-first"
         />
-
       </React.Fragment>
     )
   }

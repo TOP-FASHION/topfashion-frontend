@@ -84,9 +84,9 @@ $local-padding: 12px;
   }
 }
 .breadcrumb-arrow {
-  fill: $breadcrumb-arrow-color;
+  color: $breadcrumb-arrow-color;
   position: absolute;
-  top: 5px;
+  top: 4px;
 
   @include direction {
     #{$inset-inline-end}: $local-padding - 1px;

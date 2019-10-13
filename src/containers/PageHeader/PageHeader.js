@@ -26,7 +26,7 @@ function PageHeader(props) {
         link = (
           <li key={index} className="breadcrumb-item">
             <Link to={item.url}>{item.title}</Link>
-              <i className="fas fa-angle-right"></i>
+              <i className="fas fa-angle-right breadcrumb-arrow"></i>
           </li>
         );
       }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import { Helmet } from 'react-helmet';
-// import PageHeader from '../../containers/PageHeader'
+import PageHeader from '../../containers/PageHeader'
 import Product from '../../containers/Product'
-// import ProductTabs from './ProductTabs'
+import ProductTabs from '../../containers/ProductTabs'
 // import BlockProductsCarousel from '../blocks/BlockProductsCarousel'
 // import WidgetCategories from '../widgets/WidgetCategories'
 // import WidgetProducts from '../widgets/WidgetProducts'
@@ -24,11 +24,15 @@ class ProductPage extends Component {
     sidebarPosition: 'start'
   }
 
+  componentDidMount () {
+    this.props.productsStore.getProducts()
+  }
+
   get breadcrumb () {
     return [
       { title: 'Home', url: '' },
       { title: 'Screwdrivers', url: '' },
-      { title: product.name, url: '' }
+      { title: this.product.name, url: '' }
     ]
   }
 
@@ -36,16 +40,16 @@ class ProductPage extends Component {
     return this.props.productsStore.products
   }
 
-  get layout () {
-    return this.props.layout
-  }
-
   get product () {
-    return this.props.match.params.productId
+    return this.props.match.params.productId && this.products
       ? this.products.find(
         x => x.id === parseFloat(this.props.match.params.productId)
       )
-      : this.products[this.products.length - 1]
+      : null
+  }
+
+  get layout () {
+    return this.props.layout
   }
 
   get content () {
@@ -85,22 +89,22 @@ class ProductPage extends Component {
           <div className='block'>
             <div className='container'>
               <Product product={this.product} layout={this.layout} />
-              {/* <ProductTabs /> */}
+              <ProductTabs />
             </div>
           </div>
-          {/* <BlockProductsCarousel title="Related Products" layout="grid-5" products={products} /> */}
+           {/*<BlockProductsCarousel title="Related Products" layout="grid-5" products={products} /> */}
         </React.Fragment>
       )
     }
   }
 
   render () {
-    return (
+    return this.product ? (
       <React.Fragment>
-        {/* <PageHeader breadcrumb={this.breadcrumb} /> */}
+        <PageHeader breadcrumb={this.breadcrumb} />
         {this.content}
       </React.Fragment>
-    )
+    ) : null
   }
 }
 

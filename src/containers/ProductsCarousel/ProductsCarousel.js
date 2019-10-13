@@ -197,10 +197,10 @@ class ProductsCarousel extends Component {
   }
 
   get columns () {
-    const columns = this.productsColumns().map((column, index) => {
-      const products = column.map((product, i) => (
+    return this.productsColumns().map((column, index) => {
+      const products = column.map((product) => (
         <div key={product.id} className="block-products-carousel__cell">
-          {++i}
+          <ProductCard product={product} />
         </div>
       ));
 
@@ -210,8 +210,6 @@ class ProductsCarousel extends Component {
         </div>
       );
     });
-
-    return columns
   }
 
   render() {

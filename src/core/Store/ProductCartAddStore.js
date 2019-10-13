@@ -10,11 +10,11 @@ export default class ProductCartAddStore {
     this.isProductAddCart = false
   }
 
-  addProduct (data) {
+  addProduct (data, quantity) {
     const postData = {}
     postData.product_id = data
     this.product_id = postData.product_id
-    postData.quantity = 1
+    postData.quantity = quantity || 1
     postData.return_cart = true
     return Api.ProductAddCart(postData)
       .then(res => {

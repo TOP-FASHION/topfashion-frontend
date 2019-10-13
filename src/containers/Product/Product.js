@@ -6,15 +6,12 @@ import messages from './Product.messages'
 import { Link } from 'react-router-dom'
 import InputNumber from '../../components/InputNumber'
 import ProductGallery from '../ProductGallery'
-// import Rating from './Rating'
-// import { cartAddItem } from '../../store/cart'
-// import { compareAddItem } from '../../store/compare'
-// import { Wishlist16Svg, Compare16Svg } from '../../svg'
-// import { wishlistAddItem } from '../../store/wishlist'
+import Rating from '../../components/Rating'
+import Button from '../../components/Button'
 import './Product.scss'
 import { inject, observer } from 'mobx-react'
 
-@inject('modalStore', 'currencyStore')
+@inject('modalStore', 'currencyStore', 'productCartAddStore',)
 @observer
 class Product extends Component {
   static propTypes = {
@@ -96,9 +93,11 @@ class Product extends Component {
             </div>
             <h1 className='product__name'>{product.name}</h1>
             <div className='product__rating'>
-              <div className='product__rating-stars'>product.rating</div>
+              <div className='product__rating-stars'>
+                <Rating value={product.rating_count} />
+              </div>
               <div className='product__rating-legend'>
-                <Link to='/'>{`${product.reviews} Reviews`}</Link>
+                <Link to='/'>{`${product.rating_count} Reviews`}</Link>
                 <span>/</span>
                 <Link to='/'>Write A Review</Link>
               </div>
@@ -214,9 +213,13 @@ class Product extends Component {
                     />
                   </div>
                   <div className='product__actions-item product__actions-item--addtocart'>
-                    <button type='button' className={'btn btn-primary btn-lg'}>
-                      Add to cart
-                    </button>
+                    <Button
+                      variant='primary'
+                      onClick={() => this.props.productCartAddStore.addProduct(product.id, quantity)}
+                      className={'btn btn-primary btn-lg'}
+                    >
+                      Add To Cart
+                    </Button>
                   </div>
                   <div className='product__actions-item product__actions-item--wishlist'>
                     <button
