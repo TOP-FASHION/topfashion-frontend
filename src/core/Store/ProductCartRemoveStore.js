@@ -1,28 +1,26 @@
-import React from 'react'
-import { decorate, observable, action, computed, configure } from 'mobx'
+import { decorate, observable, action} from 'mobx'
 import Api from '../Api'
 
 export default class ProductCartRemoveStore {
+  isProductRemoveCart
+  cart_item_key
+
   constructor (rootStore) {
     this.rootStore = rootStore
+    this.isProductRemoveCart = false
   }
-
-  isProductRemoveCart = false
-
-  isLoading = false
 
   removeProductCart (data) {
     const postData = {}
     postData.cart_item_key = data
+    this.cart_item_key = postData.cart_item_key
     postData.return_cart = true
-    this.isLoading = true
     return Api.ProductRemoveCart(postData)
       .then(res => {
         this.updateProductCartAfterRemove(res)
         this.rootStore.productsCartInfoTotalStore.getProductsCartInfoTotal()
         this.rootStore.productsCartCountItemsStore.getProductsCartCountItems()
         this.isProductRemoveCart = true
-        this.isLoading = false
       })
       .catch(error => {
         console.log('Error====', error)
@@ -32,11 +30,20 @@ export default class ProductCartRemoveStore {
   updateProductCartAfterRemove = data => {
     this.rootStore.productsCartStore.productsCart = data
   }
+
+  get cartItemKkey () {
+    return this.cart_item_key
+  }
+
+  clear () {
+    this.cart_item_key = ''
+    this.isProductRemoveCart = false
+  }
 }
 
 decorate(ProductCartRemoveStore, {
   isProductRemoveCart: observable,
-  isLoading: observable,
+  cart_item_key: observable,
   removeProductCart: action.bound,
   updateProductCartAfterRemove: action
 })

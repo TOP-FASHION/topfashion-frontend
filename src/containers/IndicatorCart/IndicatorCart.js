@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
-import Indicator from '../../components/Indicator'
+import Indicator from '../../components/Indicator/index'
 import { inject, observer } from 'mobx-react'
 import './IndicatorCart.scss'
-import Fragment from '../Fragment'
+import Fragment from '../../components/Fragment'
 import Button from '../../components/Button'
 
 @inject(
@@ -74,39 +74,33 @@ class IndicatorCart extends Component {
     }
 
     return (
-      <Fragment key={product.product_id}>
-        <div className='dropcart__product'>
-          {image}
-          <div className='dropcart__product-info'>
-            <div className='dropcart__product-name'>
-              <Link to={`/shop/product/${product.product_id}`}>
-                {product.product_name}
-              </Link>
-            </div>
-            {options}
-            <div className='dropcart__product-meta'>
-              <span className='dropcart__product-quantity'>
-                {product.quantity}
-              </span>
-              {' x '}
-              <span className='dropcart__product-price'>
-                {product.product_price}
-              </span>
-            </div>
+      <div key={product.product_id} className='dropcart__product'>
+        {image}
+        <div className='dropcart__product-info'>
+          <div className='dropcart__product-name'>
+            <Link to={`/shop/product/${product.product_id}`}>
+              {product.product_name}
+            </Link>
           </div>
-          <Button
-            variant='primary'
-            onClick={() =>
-              this.props.productCartRemoveStore.removeProductCart(product.key)
-            }
-            className={
-              'dropcart__product-remove btn btn-light btn-sm btn-svg-icon'
-            }
-          >
-            <i className='fas fa-times' />
-          </Button>
+          {options}
+          <div className='dropcart__product-meta'>
+            <span className='dropcart__product-quantity'>
+              {product.quantity}
+            </span>
+            {' x '}
+            <span className='dropcart__product-price'>
+              {product.product_price}
+            </span>
+          </div>
         </div>
-      </Fragment>
+        <Button
+          variant='primary'
+          onClick={() => this.props.productCartRemoveStore.removeProductCart(product.key)}
+          className={'dropcart__product-remove btn btn-light btn-sm btn-svg-icon'}
+        >
+          <i className='fas fa-times' />
+        </Button>
+      </div>
     )
   }
 
@@ -114,7 +108,7 @@ class IndicatorCart extends Component {
     const { productsCart } = this.props.productsCartStore
     const { productsCartCountItems } = this.props.productsCartCountItemsStore
 
-    return productsCartCountItems ? (
+    return productsCartCountItems && productsCart ? (
       <div className='dropcart'>
         <div className='dropcart__products-list'>
           {Object.keys(productsCart).map((key, index) => (

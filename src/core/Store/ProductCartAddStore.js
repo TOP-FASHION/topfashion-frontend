@@ -1,6 +1,5 @@
 import { decorate, observable, action } from 'mobx'
 import Api from '../Api'
-import { toast } from 'react-toastify'
 
 export default class ProductCartAddStore {
   isProductAddCart
@@ -8,6 +7,7 @@ export default class ProductCartAddStore {
 
   constructor (rootStore) {
     this.rootStore = rootStore
+    this.isProductAddCart = false
   }
 
   addProduct (data) {
@@ -18,7 +18,6 @@ export default class ProductCartAddStore {
     postData.return_cart = true
     return Api.ProductAddCart(postData)
       .then(res => {
-        toast.success(`Product "${postData.product_id}" added to cart!`)
         this.setProductAfterAddCart(res)
         this.rootStore.productsCartInfoTotalStore.getProductsCartInfoTotal()
         this.rootStore.productsCartCountItemsStore.getProductsCartCountItems()
@@ -33,11 +32,20 @@ export default class ProductCartAddStore {
   setProductAfterAddCart = data => {
     this.rootStore.productsCartStore.productsCart = data
   }
+
+  get productId () {
+    return this.product_id
+  }
+
+  clear () {
+    this.product_id = ''
+    this.isProductAddCart = false
+  }
 }
 
 decorate(ProductCartAddStore, {
   product_id: observable,
   isProductAddCart: observable,
-  addProduct: action,
+  addProduct: action.bound,
   setProductAfterAddCart: action
 })

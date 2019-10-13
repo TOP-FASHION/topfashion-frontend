@@ -9,6 +9,7 @@ import ProductReviewsStore from './ProductReviewsStore'
 import ProductCartRemoveStore from './ProductCartRemoveStore'
 import ProductsCartInfoTotalStore from './productsCartInfoTotalStore'
 import ProductsCartCountItemsStore from './ProductsCartCountItemsStore'
+import ProductCartUpdateItemStore from './ProductCartUpdateItemStore'
 
 class RootStore {
   constructor () {
@@ -23,6 +24,7 @@ class RootStore {
     this.productCartRemoveStore = new ProductCartRemoveStore(this)
     this.productsCartInfoTotalStore = new ProductsCartInfoTotalStore(this)
     this.productsCartCountItemsStore = new ProductsCartCountItemsStore(this)
+    this.productCartUpdateItemStore = new ProductCartUpdateItemStore(this)
   }
 }
 

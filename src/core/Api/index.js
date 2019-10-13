@@ -9,6 +9,7 @@ import ProductReviews from './ProductReviews'
 import ProductRemoveCart from './ProductRemoveCart'
 import ProductsCartInfoTotal from './ProductsCartInfoTotal'
 import ProductsCartCountItems from './ProductsCartCountItems'
+import ProductCartUpdateItem from './ProductCartUpdateItem'
 
 const Api = {
   WPnonce,
@@ -21,7 +22,8 @@ const Api = {
   ProductReviews,
   ProductRemoveCart,
   ProductsCartInfoTotal,
-  ProductsCartCountItems
+  ProductsCartCountItems,
+  ProductCartUpdateItem
 }
 
 export default Api

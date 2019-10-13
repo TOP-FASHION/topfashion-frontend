@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Indicator from '../Indicator';
+import Indicator from '../../components/Indicator/index';
 
 class IndicatorSearch extends Component {
   constructor(props) {

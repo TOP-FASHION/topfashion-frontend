@@ -133,32 +133,24 @@ class ProductCard extends Component {
           <div className='product-card__buttons'>
             <Button
               variant='primary'
-              onClick={() =>
-                this.props.productCartAddStore.addProduct(product.id)
-              }
+              onClick={() => this.props.productCartAddStore.addProduct(product.id)}
               className={'product-card__addtocart'}
             >
               Add To Cart
             </Button>
             <Button
               variant='secondary'
-              className={
-                'product-card__addtocart product-card__addtocart--list'
-              }
+              className={'product-card__addtocart product-card__addtocart--list'}
             >
               Add To Cart
             </Button>
             <Button
-              className={
-                'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist'
-              }
+              className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist'}
             >
               <i className='fas fa-heart' />
             </Button>
             <Button
-              className={
-                'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare'
-              }
+              className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare'}
             >
               <i className='fas fa-exchange-alt' />
             </Button>

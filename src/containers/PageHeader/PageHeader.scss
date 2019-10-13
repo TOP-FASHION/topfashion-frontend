@@ -1,81 +1,96 @@
-.login {
-  margin-bottom: 30px;
+@import '../../styles/var';
+@import '../../styles/functions';
+@import '../../styles/mixin/direction';
 
-  .container {
-    max-width: 800px; // TODO: not sure, needs to be checked
-    margin-top: 15px;
-    padding: 30px;
-    background: color(content, background);
-  }
-  &-form {
-    .group-root--buttons {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.page-header {}
+.page-header__container {
+  padding-bottom: 32px;
+}
+.page-header__breadcrumb {
+  padding-top: 16px;
+}
+.page-header__title {
+  padding-top: 6px;
 
-      @include media-xs {
-        justify-content: left;
-      }
-    }
-    &__resume-play {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: calc(100% + 60px);
-      margin: 30px -30px -30px;
-      padding: 20px;
-      text-align: center;
-      background: #f2f2f2;
-
-      .applied-country--gbr & {
-        margin-bottom: 0;
-      }
-
-      .login-modal & {
-        max-width: calc(100% + 100px);
-        margin: 30px -50px -50px;
-
-        .applied-country--gbr & {
-          margin-bottom: 0;
-        }
-
-        @include media-sm {
-          margin: 20px -20px 0;
-        }
-        @include media-xs {
-          margin: 20px -10px 0;
-        }
-      }
-      .markdown-root {
-        margin-bottom: 15px;
-
-        p {
-          margin: 0;
-          font-style: italic;
-        }
-      }
-      .login__resume {
-        padding: 10px 30px;
-        color: color(primary, dark);
-        font-weight: 400;
-        text-transform: none;
-
-        &:hover {
-          color: color(primary, light);
-        }
-      }
-    }
-  }
-  &__button {
-    @include media-xs {
-      min-width: auto;
-    }
-  }
-  &__forgot-password {
-    position: absolute;
-    right: 0;
-    margin-left: 15px;
-    color: color(text, main);
+  h1 {
+    margin-bottom: 0;
   }
 }
+
+
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+  .page-header__title {
+    padding-top: 4px;
+
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+}
+@media (max-width: breakpoint(sm-end)) {
+  .page-header__container {
+    padding-bottom: 24px;
+  }
+  .page-header__title {
+    padding-top: 2px;
+
+    h1 {
+      margin-bottom: 0;
+      font-size: 30px;
+    }
+  }
+}
+
+
+$local-padding: 12px;
+
+
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+.breadcrumb-item {
+  position: relative;
+
+  @include direction {
+    #{$padding-inline-start}: 0;
+    #{$padding-inline-end}: 6px + $local-padding * 2;
+  }
+
+  a {
+    color: $breadcrumb-link-default-color;
+    transition: color .15s;
+  }
+  a:hover {
+    color: $breadcrumb-link-hover-color;
+  }
+
+  & + & {
+    @include direction {
+      #{$padding-inline-start}: 0;
+      #{$padding-inline-end}: 6px + $local-padding * 2;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &.active {
+    color: $breadcrumb-link-active-color;
+  }
+}
+.breadcrumb-arrow {
+  fill: $breadcrumb-arrow-color;
+  position: absolute;
+  top: 5px;
+
+  @include direction {
+    #{$inset-inline-end}: $local-padding - 1px;
+    transform: scaleX(1 * $transform-direction);
+  }
+}
+

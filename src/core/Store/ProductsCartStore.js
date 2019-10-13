@@ -3,7 +3,6 @@ import Api from '../Api'
 
 export default class ProductsCartStore {
   productsCart = 0
-
   isLoading = false
 
   getProductCart () {

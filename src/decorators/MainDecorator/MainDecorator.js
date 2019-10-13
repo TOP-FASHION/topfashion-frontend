@@ -16,6 +16,7 @@ import searchParse from '../../utils/text/url/searchParse'
 import { observer } from 'mobx-react/index'
 // import Login from '../../pages/Login'
 import ProductPage from '../../pages/ProductPage'
+import CartPage from '../../pages/CartPage'
 
 @observer
 class MainDecorator extends Component {
@@ -39,11 +40,8 @@ class MainDecorator extends Component {
           <Group className='main-decorator__content'>
             <SwitchLang>
               <Route path='/' component={Home} exact />
-              <Route
-                path='/shop/product/:productId'
-                component={ProductPage}
-                exact
-              />
+              <Route path='/shop/product/:productId' component={ProductPage} exact />
+              <Route path='/shop/cart' component={CartPage} exact />
               <Route path='/about' component={About} exact />
               <Route component={NotFound} />
             </SwitchLang>

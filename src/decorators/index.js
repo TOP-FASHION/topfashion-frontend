@@ -9,8 +9,8 @@ import sessionTabStorage from '../utils/sessionTabStorage'
 import MainDecorator from './MainDecorator'
 import EmptyDecorator from './EmptyDecorator'
 import Modals from '../modals'
+import Notifications from '../notifications'
 import Fragment from '../components/Fragment'
-import { ToastContainer } from 'react-toastify'
 import DevTools from 'mobx-react-devtools'
 
 @inject('loginStore')
@@ -106,8 +106,8 @@ class AppRoot extends React.Component {
   render () {
     return (
       <Fragment>
-        <DevTools />
-        <ToastContainer autoClose={5000} />
+        {/*<DevTools />*/}
+        <Notifications />
         <Modals />
         <SetLang langList={['en', 'ru']}>
           <SwitchLang>

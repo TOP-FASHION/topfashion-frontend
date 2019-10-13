@@ -1,32 +1,27 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import Notification from '@finnplay/ui/Notification'
-import { $ } from '@finnplay/ui'
-import Markdown from '@finnplay/ui/Markdown'
-import { setApiErrors } from '../../../../projects/finnplay/seed/src/translations/apiErrors.messages'
+import {inject, observer} from "mobx-react"
+import {toast} from 'react-toastify'
+import Fragment from "../../components/Fragment"
 
-class EmailNotification extends React.Component {
-  apiErrors = setApiErrors(this)
+@inject('productCartAddStore')
+@observer
+class ProductAddCartNotification extends React.Component {
+
+  notify = (text) => {
+    toast.success(text, {
+      position: toast.POSITION.TOP_RIGHT,
+      onClose: () => this.props.productCartAddStore.clear()
+    });
+  };
 
   render () {
-    return (
-      <Notification
-        type='error'
-        float
-        autoHide
-        closeDelay
-        onClose={$(c => () => {
-          c.item('autoLogin').callError('')
-        })}
-      >
-        {$(c =>
-          c.item('autoLogin').callError() ? (
-            <Markdown text={this.apiErrors(c.item('autoLogin').callError())} />
-          ) : null
-        )}
-      </Notification>
-    )
+    return this.props.productCartAddStore.isProductAddCart && this.props.productCartAddStore.productId ? (
+      <Fragment>
+        {this.notify("Added")}
+      </Fragment>
+    ) : null
   }
 }
 
-export default injectIntl(EmailNotification)
+export default injectIntl(ProductAddCartNotification)
