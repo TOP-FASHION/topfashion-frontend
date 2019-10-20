@@ -4,8 +4,8 @@ import Api from '../Api'
 export default class ProductReviewsStore {
   productReviews
 
-  getProductReviews (id) {
-    Api.ProductReviews(id).then(res => {
+  getProductReviews (id, page) {
+    Api.ProductReviews(id, page).then(res => {
       if (res) {
         console.log('res', res)
         runInAction(() => {

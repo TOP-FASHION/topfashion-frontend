@@ -11,7 +11,7 @@ import ProductTabs from '../../containers/ProductTabs'
 
 import { inject, observer } from 'mobx-react/index'
 
-@inject('productsStore')
+@inject('productsStore', 'productStore')
 @observer
 class ProductPage extends Component {
   static propTypes = {
@@ -25,7 +25,7 @@ class ProductPage extends Component {
   }
 
   componentDidMount () {
-    this.props.productsStore.getProducts()
+    this.props.productStore.getProduct(this.props.match.params.productId)
   }
 
   get breadcrumb () {
@@ -37,15 +37,11 @@ class ProductPage extends Component {
   }
 
   get products () {
-    return this.props.productsStore.products
+    return this.props.productStore.product
   }
 
   get product () {
-    return this.props.match.params.productId && this.products
-      ? this.products.find(
-        x => x.id === parseFloat(this.props.match.params.productId)
-      )
-      : null
+    return this.props.productStore.product
   }
 
   get layout () {
@@ -89,7 +85,7 @@ class ProductPage extends Component {
           <div className='block'>
             <div className='container'>
               <Product product={this.product} layout={this.layout} />
-              <ProductTabs />
+              <ProductTabs product={this.product} />
             </div>
           </div>
            {/*<BlockProductsCarousel title="Related Products" layout="grid-5" products={products} /> */}

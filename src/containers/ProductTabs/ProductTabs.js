@@ -14,6 +14,9 @@ class ProductTabs extends Component {
       currentTab: 'description',
     };
   }
+  static propTypes = {
+    product: PropTypes.object.isRequired,
+  }
 
   setTab = (newTab) => {
     this.setState(() => ({ currentTab: newTab }));
@@ -29,7 +32,7 @@ class ProductTabs extends Component {
     const tabs = [
       { key: 'description', title: 'Description', content: <ProductTabDescription /> },
       { key: 'specification', title: 'Specification', content: <ProductTabSpecification /> },
-      { key: 'reviews', title: 'Reviews', content: <ProductTabReviews /> },
+      { key: 'reviews', title: 'Reviews', content: <ProductTabReviews product={this.props.product}/> },
     ];
 
     const tabsButtons = tabs.map((tab) => {

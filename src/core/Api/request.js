@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Base64 } from 'js-base64'
 
 const codeMessage = {
   200: 'ошибка'
@@ -32,9 +33,7 @@ export default async function request (url, options) {
     const newOptions = { ...defaultOptions, ...options }
 
     newOptions.headers = {
-      Authorization: `Basic ${btoa(
-        `${process.env.API_KEY}:${process.env.API_SECRET}`
-      )}`
+      Authorization: `Basic ${Base64.encode(`ck_83f4bd53fb1c969a67523637f6e13a9e607fc925:cs_c0a3dcc4a48b4ae106f7a81e9cf2a69ce3b8f67f`)}`
     }
     if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
       if (!(newOptions.data instanceof FormData)) {
@@ -59,7 +58,7 @@ export default async function request (url, options) {
       }
     }
 
-    const response = await axios(`${url}`, newOptions)
+    const response = await axios(`https://localhost:8443${url}`, newOptions)
     if (response.status === 401) {
       return
     }

@@ -19,12 +19,12 @@ class AppRoot extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
-    this.validateAuth = () => this.props.loginStore.validateAuth()
+    //this.validateAuth = () => this.props.loginStore.validateAuth()
   }
 
-  componentWillMount () {
-    this.validateAuth()
-  }
+  // componentWillMount () {
+  //   this.validateAuth()
+  // }
 
   static childContextTypes = {
     url: PropTypes.shape({

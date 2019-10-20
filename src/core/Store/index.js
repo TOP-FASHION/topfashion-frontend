@@ -1,4 +1,5 @@
 import LoginStore from './LoginStore'
+import ProductStore from './ProductStore'
 import ProductsStore from './ProductsStore'
 import ChangeLanguageStore from './ChangeLanguageStore'
 import ModalStore from './ModalStore'
@@ -10,10 +11,12 @@ import ProductCartRemoveStore from './ProductCartRemoveStore'
 import ProductsCartInfoTotalStore from './productsCartInfoTotalStore'
 import ProductsCartCountItemsStore from './ProductsCartCountItemsStore'
 import ProductCartUpdateItemStore from './ProductCartUpdateItemStore'
+import ProductReviewsAddStore from "./ProductReviewsAddStore"
 
 class RootStore {
   constructor () {
     this.loginStore = new LoginStore(this)
+    this.productStore = new ProductStore(this)
     this.productsStore = new ProductsStore(this)
     this.changeLanguageStore = new ChangeLanguageStore(this)
     this.modalStore = new ModalStore(this)
@@ -25,6 +28,7 @@ class RootStore {
     this.productsCartInfoTotalStore = new ProductsCartInfoTotalStore(this)
     this.productsCartCountItemsStore = new ProductsCartCountItemsStore(this)
     this.productCartUpdateItemStore = new ProductCartUpdateItemStore(this)
+    this.productReviewsAddStore = new ProductReviewsAddStore(this)
   }
 }
 
