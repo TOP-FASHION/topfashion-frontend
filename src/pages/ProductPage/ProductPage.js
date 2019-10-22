@@ -9,7 +9,7 @@ import ProductTabs from '../../containers/ProductTabs'
 // import WidgetProducts from '../widgets/WidgetProducts'
 // import categories from '../../data/shopWidgetCategories'
 
-import { inject, observer } from 'mobx-react/index'
+import { inject, observer } from 'mobx-react'
 
 @inject('productsStore', 'productStore')
 @observer

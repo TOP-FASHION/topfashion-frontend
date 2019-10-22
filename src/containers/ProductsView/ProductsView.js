@@ -3,9 +3,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl'
 import setMessages from '../../utils/setMessages'
-import messages from './ProductCard.messages'
+//import messages from './ProductCard.messages'
 import ProductsList from '../ProductsList'
-import ProductsPagination from '../ProductsPagination'
+import Pagination from '../Pagination'
+import './ProductsView.scss'
 
 class ProductsView extends Component {
   constructor(props) {
@@ -39,17 +40,23 @@ class ProductsView extends Component {
   };
 
   get viewModes () {
+    const { layout: propsLayout } = this.props;
+    const { layout: stateLayout } = this.state;
+    const layout = stateLayout || propsLayout;
+
     let viewModes = [
-      { key: 'grid', title: 'Grid', icon: <LayoutGrid16x16Svg /> },
-      { key: 'grid-with-features', title: 'Grid With Features', icon: <LayoutGridWithDetails16x16Svg /> },
-      { key: 'list', title: 'List', icon: <LayoutList16x16Svg /> },
+      { key: 'grid', title: 'Grid', icon: <i className="fas fa-th-large"></i> },
+      { key: 'grid-with-features', title: 'Grid With Features', icon: <i className="fas fa-grip-lines-vertical"></i> },
+      { key: 'list', title: 'List', icon: <i className="fas fa-grip-lines"></i> },
     ];
 
-    viewModes.map((viewMode) => {
+    return viewModes.map((viewMode) => {
       const className = classNames('layout-switcher__button', {
         'layout-switcher__button--active': layout === viewMode.key,
       });
 
+      console.log('this.props.layout', this.props.layout)
+      console.log('viewMode.key', viewMode.key)
       return (
         <button
           key={viewMode.key}
@@ -66,16 +73,24 @@ class ProductsView extends Component {
 
   get viewOptionsClasses () {
     return classNames('view-options', {
-      'view-options--offcanvas--always': offcanvas === 'always',
-      'view-options--offcanvas--mobile': offcanvas === 'mobile',
+      'view-options--offcanvas--always': this.props.offcanvas === 'always',
+      'view-options--offcanvas--mobile': this.props.offcanvas === 'mobile',
     });
   }
 
+  get totalPage () {
+    return Math.ceil(this.props.products.length / 3)
+  }
+
+  changePage = page => {
+    this.props.productReviewsStore.getProductReviews(this.props.product.id, page)
+    this.setState(() => ({ page }));
+  };
+
   render() {
-    const { products, grid, offcanvas, layout: propsLayout, sidebarOpen } = this.props;
+    const { products, grid, layout: propsLayout } = this.props;
     const { page, layout: stateLayout } = this.state;
     const layout = stateLayout || propsLayout;
-
 
     return (
       <div className="products-view">
@@ -83,7 +98,7 @@ class ProductsView extends Component {
           <div className={this.viewOptionsClasses}>
             <div className="view-options__filters-button">
               <button type="button" className="filters-button">
-                <Filters16Svg className="filters-button__icon" />
+                {/*<Filters16Svg className="filters-button__icon" />*/}
                 <span className="filters-button__title">Filters</span>
                 <span className="filters-button__counter">3</span>
               </button>
@@ -129,11 +144,17 @@ class ProductsView extends Component {
         </div>
 
         <div className="products-view__pagination">
-          <ProductsPagination
+          <Pagination
             current={page}
             siblings={2}
             total={10}
             onPageChange={this.handlePageChange}
+          />
+          <Pagination
+            current={page}
+            siblings={2}
+            total={this.totalPage}
+            onPageChange={this.changePage}
           />
         </div>
       </div>

@@ -81,7 +81,12 @@ class ProductTabReviews extends Component {
               {this.reviewsList}
             </ol>
             <div className="reviews-list__pagination">
-              <Pagination current={page} siblings={2} total={this.totalPage} onPageChange={this.changePage}/>
+              <Pagination
+                current={page}
+                siblings={2}
+                total={this.totalPage}
+                onPageChange={this.changePage}
+              />
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ import { observer } from 'mobx-react/index'
 // import Login from '../../pages/Login'
 import ProductPage from '../../pages/ProductPage'
 import CartPage from '../../pages/CartPage'
+import ProductCategoryPage from '../../pages/ProductCategoryPage'
 
 @observer
 class MainDecorator extends Component {
@@ -41,6 +42,7 @@ class MainDecorator extends Component {
             <SwitchLang>
               <Route path='/' component={Home} exact />
               <Route path='/shop/product/:productId' component={ProductPage} exact />
+              <Route path='/shop/category' component={ProductCategoryPage} exact />
               <Route path='/shop/cart' component={CartPage} exact />
               <Route path='/about' component={About} exact />
               <Route component={NotFound} />
