@@ -6,10 +6,10 @@ export default class ProductReviewsStore {
 
   getProductReviews (id, page) {
     Api.ProductReviews(id, page).then(res => {
-      if (res) {
-        console.log('res', res)
+      if (res.data) {
+        console.log('res', res.data)
         runInAction(() => {
-          this.setData(res)
+          this.setData(res.data)
         })
       }
     })

@@ -1,15 +1,21 @@
-import { decorate, observable, action, runInAction } from 'mobx'
+import { decorate, observable, action } from 'mobx'
 import Api from '../Api'
 
 export default class ProductsStore {
   products
+  totalProducts
+  pagesProducts
+  countProducts = 9
 
-  getProducts () {
-    return Api.Products().then(res => {
-      if (res) {
-        this.setProducts(res)
-      }
-    })
+  getProducts (productId, pageNumber, sortASC) {
+    return Api.Products(productId, pageNumber, sortASC)
+      .then((res) => {
+        if (res.data) {
+          this.setProducts(res.data)
+        }
+        this.totalProducts = res.headers['x-wp-total']
+        this.pagesProducts = res.headers['x-wp-totalpages']
+      })
   }
 
   setProducts = data => {
@@ -19,5 +25,8 @@ export default class ProductsStore {
 
 decorate(ProductsStore, {
   products: observable,
+  totalProducts: observable,
+  pagesProducts: observable,
+  countProducts: observable,
   setData: action
 })

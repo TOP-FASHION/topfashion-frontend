@@ -7,7 +7,17 @@ import setMessages from '../../utils/setMessages'
 import ProductsList from '../ProductsList'
 import Pagination from '../Pagination'
 import './ProductsView.scss'
+import {inject, observer} from "mobx-react"
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form
+} from "react-bootstrap";
 
+@inject('productsStore')
+@observer
 class ProductsView extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +46,24 @@ class ProductsView extends Component {
   };
 
   handlePageChange = (page) => {
+    this.props.productsStore.getProducts(page, this.props.productsStore.countProducts)
     this.setState(() => ({ page }));
+  };
+
+  get totalPage () {
+    return parseFloat(this.props.productsStore.pagesProducts)
+  }
+
+  get totalProducts () {
+    return this.props.productsStore.totalProducts
+  }
+
+  sort = e => {
+    this.props.productsStore.getProducts(this.state.page, this.props.productsStore.countProducts, e.target.value)
+  };
+
+  filter = e => {
+    this.props.productsStore.getProducts(this.state.page, e.target.value)
   };
 
   get viewModes () {
@@ -55,8 +82,6 @@ class ProductsView extends Component {
         'layout-switcher__button--active': layout === viewMode.key,
       });
 
-      console.log('this.props.layout', this.props.layout)
-      console.log('viewMode.key', viewMode.key)
       return (
         <button
           key={viewMode.key}
@@ -77,15 +102,6 @@ class ProductsView extends Component {
       'view-options--offcanvas--mobile': this.props.offcanvas === 'mobile',
     });
   }
-
-  get totalPage () {
-    return Math.ceil(this.props.products.length / 3)
-  }
-
-  changePage = page => {
-    this.props.productReviewsStore.getProductReviews(this.props.product.id, page)
-    this.setState(() => ({ page }));
-  };
 
   render() {
     const { products, grid, layout: propsLayout } = this.props;
@@ -110,24 +126,35 @@ class ProductsView extends Component {
                 </div>
               </div>
             </div>
-            <div className="view-options__legend">Showing 6 of 98 products</div>
+            <div className="view-options__legend">Showing {this.props.productsStore.countProducts} of {this.totalProducts} products</div>
             <div className="view-options__divider" />
             <div className="view-options__control">
-              <label htmlFor="view-options-sort">Sort By</label>
+              <Form.Label>Sort By</Form.Label>
               <div>
-                <select className="form-control form-control-sm" name="" id="view-options-sort">
-                  <option value="">Default</option>
-                  <option value="">Name (A-Z)</option>
-                </select>
+                <Form.Control
+                  as="select"
+                  className="form-control form-control-sm"
+                  name=""
+                  onChange={this.sort}
+                >
+                  <option value="desc">Default</option>
+                  <option value="asc">Name (A-Z)</option>
+                </Form.Control>
               </div>
             </div>
             <div className="view-options__control">
-              <label htmlFor="view-options-limit">Show</label>
+              <Form.Label>Show</Form.Label>
               <div>
-                <select className="form-control form-control-sm" name="" id="view-options-limit">
-                  <option value="">12</option>
-                  <option value="">24</option>
-                </select>
+                <Form.Control
+                  as="select"
+                  className="form-control form-control-sm"
+                  id="view-options-limit"
+                  name=""
+                  onChange={this.filter}
+                >
+                  <option value="9">9</option>
+                  <option value="12">12</option>
+                </Form.Control>
               </div>
             </div>
           </div>
@@ -147,14 +174,8 @@ class ProductsView extends Component {
           <Pagination
             current={page}
             siblings={2}
-            total={10}
-            onPageChange={this.handlePageChange}
-          />
-          <Pagination
-            current={page}
-            siblings={2}
             total={this.totalPage}
-            onPageChange={this.changePage}
+            onPageChange={this.handlePageChange}
           />
         </div>
       </div>

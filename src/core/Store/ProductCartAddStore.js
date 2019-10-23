@@ -18,11 +18,11 @@ export default class ProductCartAddStore {
     postData.return_cart = true
     return Api.ProductAddCart(postData)
       .then(res => {
-        this.setProductAfterAddCart(res)
+        this.setProductAfterAddCart(res.data)
         this.rootStore.productsCartInfoTotalStore.getProductsCartInfoTotal()
         this.rootStore.productsCartCountItemsStore.getProductsCartCountItems()
         this.isProductAddCart = true
-        return res
+        return res.data
       })
       .catch(error => {
         console.log('Error====', error)

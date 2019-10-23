@@ -27,7 +27,7 @@ class ProductCategoryPage extends Component {
   };
 
   componentDidMount () {
-    this.props.productsStore.getProducts()
+    this.props.productsStore.getProducts(1, this.props.productsStore.countProducts)
   }
 
   get breadcrumb () {

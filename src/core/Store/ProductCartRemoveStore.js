@@ -17,7 +17,7 @@ export default class ProductCartRemoveStore {
     postData.return_cart = true
     return Api.ProductRemoveCart(postData)
       .then(res => {
-        this.updateProductCartAfterRemove(res)
+        this.updateProductCartAfterRemove(res.data)
         this.rootStore.productsCartInfoTotalStore.getProductsCartInfoTotal()
         this.rootStore.productsCartCountItemsStore.getProductsCartCountItems()
         this.isProductRemoveCart = true

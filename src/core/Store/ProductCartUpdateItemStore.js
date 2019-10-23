@@ -17,7 +17,7 @@ export default class ProductCartUpdateItemStore {
     postData.refresh_totals = true
     return Api.ProductCartUpdateItem(postData)
       .then(res => {
-        this.setProductAfterUpdateCart(res)
+        this.setProductAfterUpdateCart(res.data)
         this.rootStore.productsCartInfoTotalStore.getProductsCartInfoTotal()
         this.rootStore.productsCartCountItemsStore.getProductsCartCountItems()
         this.isProductUpdateCart = true

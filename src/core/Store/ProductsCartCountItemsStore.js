@@ -11,7 +11,7 @@ export default class ProductsCartCountItemsStore {
   getProductsCartCountItems () {
     return Api.ProductsCartCountItems().then(res => {
       runInAction(() => {
-        this.getProductsCartCountItemsAfterUpfate(res)
+        this.getProductsCartCountItemsAfterUpfate(res.data)
       })
     })
   }

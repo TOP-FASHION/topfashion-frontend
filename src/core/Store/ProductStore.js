@@ -6,8 +6,8 @@ export default class ProductStore {
 
   getProduct (id) {
     return Api.Product(id).then(res => {
-      if (res) {
-        this.setProduct(res)
+      if (res.data) {
+        this.setProduct(res.data)
       }
     })
   }

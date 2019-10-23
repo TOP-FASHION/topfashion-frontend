@@ -36,12 +36,12 @@ export default class ProductReviewsAddStore {
     postData.rating = this.rating
     return Api.ProductReviewsAdd(postData)
       .then(res => {
-        Api.ProductReviews(productId, count).then(res => {
-          if (res) {
-            this.setReviewAfterAdd(res)
+        Api.ProductReviews(productId, count).then((res) => {
+          if (res.data) {
+            this.setReviewAfterAdd(res.data)
           }
         })
-        console.log('res', res)
+        console.log('res', res.data)
       })
       .catch(error => {
         console.log('Error====', error)

@@ -10,9 +10,9 @@ export default class CurrencyStores {
 
   getCurrency () {
     return Api.Currency().then(res => {
-      if (res) {
+      if (res.data) {
         runInAction(() => {
-          this.setCurrency(res.code)
+          this.setCurrency(res.data.code)
         })
       }
     })

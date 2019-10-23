@@ -21,7 +21,7 @@ function CategorySidebar(props) {
     sidebarState,
     offcanvas,
   } = props;
-  console.log('---------')
+
   const classes = classNames('block block-sidebar', {
     'block-sidebar--open': true,
     'block-sidebar--offcanvas--always': offcanvas === 'always',

@@ -106,12 +106,12 @@ class ProductCard extends Component {
 
     return (
       <div className={this.containerClasses}>
-        <Button
+        <button
           onClick={() => this.props.modalStore.openProduct(product.id)}
           className={'product-card__quickview'}
         >
           <i className='fas fa-expand' />
-        </Button>
+        </button>
         {this.badges}
         {this.image}
         <div className='product-card__info'>

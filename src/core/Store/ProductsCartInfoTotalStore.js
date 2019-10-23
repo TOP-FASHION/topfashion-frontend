@@ -10,9 +10,9 @@ export default class ProductsCartInfoTotal {
 
   getProductsCartInfoTotal () {
     return Api.ProductsCartInfoTotal().then(res => {
-      if (res) {
+      if (res.data) {
         runInAction(() => {
-          this.setProductsCartInfoTotal(res)
+          this.setProductsCartInfoTotal(res.data)
         })
       }
     })

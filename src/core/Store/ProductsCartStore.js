@@ -9,7 +9,7 @@ export default class ProductsCartStore {
     this.isLoading = true
     return Api.ProductsCart()
       .then(res => {
-        this.setProductCart(res)
+        this.setProductCart(res.data)
         this.isLoading = false
       })
       .catch(error => {

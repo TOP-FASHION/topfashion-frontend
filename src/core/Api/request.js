@@ -63,7 +63,7 @@ export default async function request (url, options) {
       return
     }
 
-    return response.data
+    return response
   } catch (err) {
     return console.log('Error===', err)
   }
