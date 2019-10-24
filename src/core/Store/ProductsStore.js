@@ -8,7 +8,7 @@ export default class ProductsStore {
   countProducts = 9
 
   getProducts (data) {
-    return Api.Products(data)
+    return Api.Woocommerce.Products(data)
       .then((res) => {
         if (res.data) {
           this.setProducts(res.data)

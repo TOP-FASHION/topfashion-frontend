@@ -34,14 +34,13 @@ export default class ProductReviewsAddStore {
     postData.reviewer = this.reviewer
     postData.reviewer_email = this.reviewer_email
     postData.rating = this.rating
-    return Api.ProductReviewsAdd(postData)
+    return Api.Woocommerce.ProductReviewsAdd(postData)
       .then(res => {
-        Api.ProductReviews(productId, count).then((res) => {
+        Api.Woocommerce.ProductReviews(productId, count).then((res) => {
           if (res.data) {
             this.setReviewAfterAdd(res.data)
           }
         })
-        console.log('res', res.data)
       })
       .catch(error => {
         console.log('Error====', error)

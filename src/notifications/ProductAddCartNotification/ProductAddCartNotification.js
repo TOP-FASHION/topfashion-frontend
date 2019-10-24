@@ -4,19 +4,19 @@ import {inject, observer} from "mobx-react"
 import {toast} from 'react-toastify'
 import Fragment from "../../components/Fragment"
 
-@inject('productCartAddStore')
+@inject('cartAddProductStore')
 @observer
 class ProductAddCartNotification extends React.Component {
 
   notify = (text) => {
     toast.success(text, {
       position: toast.POSITION.TOP_RIGHT,
-      onClose: () => this.props.productCartAddStore.clear()
+      onClose: () => this.props.cartAddProductStore.clear()
     });
   };
 
   render () {
-    return this.props.productCartAddStore.isProductAddCart && this.props.productCartAddStore.productId ? (
+    return this.props.cartAddProductStore.isProductAddCart && this.props.cartAddProductStore.productId ? (
       <Fragment>
         {this.notify("Added")}
       </Fragment>

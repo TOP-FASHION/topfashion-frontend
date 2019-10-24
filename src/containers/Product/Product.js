@@ -11,7 +11,7 @@ import Button from '../../components/Button'
 import './Product.scss'
 import { inject, observer } from 'mobx-react'
 
-@inject('modalStore', 'currencyStore', 'productCartAddStore',)
+@inject('modalStore', 'currencyStore', 'cartAddProductStore',)
 @observer
 class Product extends Component {
   static propTypes = {
@@ -215,7 +215,7 @@ class Product extends Component {
                   <div className='product__actions-item product__actions-item--addtocart'>
                     <Button
                       variant='primary'
-                      onClick={() => this.props.productCartAddStore.addProduct(product.id, quantity)}
+                      onClick={() => this.props.cartAddProductStore.addProduct(product.id, quantity)}
                       className={'btn btn-primary btn-lg'}
                     >
                       Add To Cart

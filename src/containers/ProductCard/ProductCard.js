@@ -10,7 +10,7 @@ import { inject, observer } from 'mobx-react'
 import Button from '../../components/Button'
 import Rating from '../../components/Rating'
 
-@inject('currencyStore', 'productCartAddStore', 'modalStore')
+@inject('currencyStore', 'cartAddProductStore', 'modalStore')
 @observer
 class ProductCard extends Component {
   static propTypes = {
@@ -133,7 +133,7 @@ class ProductCard extends Component {
           <div className='product-card__buttons'>
             <Button
               variant='primary'
-              onClick={() => this.props.productCartAddStore.addProduct(product.id)}
+              onClick={() => this.props.cartAddProductStore.addProduct(product.id)}
               className={'product-card__addtocart'}
             >
               Add To Cart

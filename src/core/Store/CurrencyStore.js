@@ -9,7 +9,7 @@ export default class CurrencyStores {
   }
 
   getCurrency () {
-    return Api.Currency().then(res => {
+    return Api.Woocommerce.Currency().then(res => {
       if (res.data) {
         runInAction(() => {
           this.setCurrency(res.data.code)

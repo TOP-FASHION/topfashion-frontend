@@ -15,7 +15,7 @@ export default class LoginStore {
   @action
   validateAuth = async () => {
     try {
-      const value = await Api.ValidateAuthCookie({cookie: this.token})
+      const value = await Api.Wordpress.ValidateAuthCookie({cookie: this.token})
       this.isLoggedIn = value.valid
     } catch (error) {
       runInAction(() => {
@@ -45,7 +45,7 @@ export default class LoginStore {
 
     Api.WPnonce('generate_auth_cookie').then(res => {
       if (res) {
-        Api.Login(postData)
+        Api.Wordpress.Login(postData)
           .then(res => {
             if (res.cookie) {
               Cookies.set('auth', res.cookie);

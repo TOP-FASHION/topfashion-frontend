@@ -1,6 +1,6 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
 function FilterCheckbox(props) {
   const { items } = props;
@@ -19,13 +19,13 @@ function FilterCheckbox(props) {
           'filter-list__item--disabled': item.disabled,
         })}
       >
-                <span className="filter-list__input input-check">
-                    <span className="input-check__body">
-                        <input className="input-check__input" type="checkbox" defaultChecked={item.checked} disabled={item.disabled} />
-                        <span className="input-check__box" />
-                        {/*<Check9x7Svg className="input-check__icon" />*/}
-                    </span>
-                </span>
+        <span className="filter-list__input input-check">
+          <span className="input-check__body">
+            <input className="input-check__input" type="checkbox" defaultChecked={item.checked} disabled={item.disabled} />
+            <span className="input-check__box" />
+            {/*<Check9x7Svg className="input-check__icon" />*/}
+          </span>
+        </span>
         <span className="filter-list__title">{item.label}</span>
         {count}
       </label>

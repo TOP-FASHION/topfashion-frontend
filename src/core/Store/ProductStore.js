@@ -5,7 +5,7 @@ export default class ProductStore {
   product
 
   getProduct (id) {
-    return Api.Product(id).then(res => {
+    return Api.Woocommerce.Product(id).then(res => {
       if (res.data) {
         this.setProduct(res.data)
       }

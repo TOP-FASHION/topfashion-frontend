@@ -24,7 +24,7 @@ export default class RegisterStore {
     let postData = {}
     postData.username = this.username
     postData.password = this.password
-    Api.login.signIn(postData).then(res => {
+    Api.Wordpress.login.signIn(postData).then(res => {
       console.log('res', res)
       if (res) {
         this.onLoggedIn = true

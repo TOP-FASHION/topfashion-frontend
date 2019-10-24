@@ -8,22 +8,22 @@ import Fragment from '../../components/Fragment'
 import Button from '../../components/Button'
 
 @inject(
-  'productsCartStore',
+  'cartProductsStore',
   'currencyStore',
-  'productCartAddStore',
-  'productCartRemoveStore',
+  'cartAddProductStore',
+  'cartRemoveProductStore',
   'productsStore',
-  'productsCartInfoTotalStore',
-  'productsCartCountItemsStore'
+  'cartInfoTotalProductsStore',
+  'cartCountProductsStore'
 )
 @observer
 class IndicatorCart extends Component {
   componentDidMount () {
-    this.props.productsCartStore.getProductCart()
+    this.props.cartProductsStore.getProductCart()
   }
 
   get totals () {
-    const { productsCartInfoTotal } = this.props.productsCartInfoTotalStore
+    const { productsCartInfoTotal } = this.props.cartInfoTotalProductsStore
     const { currency } = this.props.currencyStore
 
     return productsCartInfoTotal ? (
@@ -95,7 +95,7 @@ class IndicatorCart extends Component {
         </div>
         <Button
           variant='primary'
-          onClick={() => this.props.productCartRemoveStore.removeProductCart(product.key)}
+          onClick={() => this.props.cartRemoveProductStore.removeProductCart(product.key)}
           className={'dropcart__product-remove btn btn-light btn-sm btn-svg-icon'}
         >
           <i className='fas fa-times' />
@@ -105,8 +105,8 @@ class IndicatorCart extends Component {
   }
 
   get dropdown () {
-    const { productsCart } = this.props.productsCartStore
-    const { productsCartCountItems } = this.props.productsCartCountItemsStore
+    const { productsCart } = this.props.cartProductsStore
+    const { productsCartCountItems } = this.props.cartCountProductsStore
 
     return productsCartCountItems && productsCart ? (
       <div className='dropcart'>
@@ -141,7 +141,7 @@ class IndicatorCart extends Component {
   }
 
   render () {
-    const { productsCartCountItems } = this.props.productsCartCountItemsStore
+    const { productsCartCountItems } = this.props.cartCountProductsStore
 
     return (
       <Indicator

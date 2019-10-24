@@ -1,9 +1,6 @@
-// react
-import React from 'react';
-
-// third-party
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
 
 function FilterRadio(props) {

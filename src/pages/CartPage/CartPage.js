@@ -7,7 +7,7 @@ import './CartPage.scss'
 import {inject, observer} from "mobx-react"
 import Button from "../../components/Button/Button"
 
-@inject('productsCartStore', 'productsCartCountItemsStore', 'currencyStore', 'productsCartInfoTotalStore', 'productCartRemoveStore', 'productCartUpdateItemStore')
+@inject('cartProductsStore', 'cartCountProductsStore', 'currencyStore', 'cartInfoTotalProductsStore', 'cartRemoveProductStore', 'cartUpdateProductStore')
 @observer
 class CartPage extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class CartPage extends Component {
   }
 
   componentDidMount () {
-    this.props.productsCartStore.getProductCart()
+    this.props.cartProductsStore.getProductCart()
   }
 
   getItemQuantity(item) {
@@ -45,7 +45,7 @@ class CartPage extends Component {
 
   cartNeedUpdate() {
     const { quantities } = this.state;
-    const { productsCart } = this.props.productsCartStore
+    const { productsCart } = this.props.cartProductsStore
 
     quantities.map((x) => {
       Object.keys(productsCart).map((item) => {
@@ -55,14 +55,14 @@ class CartPage extends Component {
             quantity: x.value
           }
 
-          return this.props.productCartUpdateItemStore.updateProduct(data)
+          return this.props.cartUpdateProductStore.updateProduct(data)
         }
       })
     });
   }
 
   renderItems() {
-    const { productsCart } = this.props.productsCartStore
+    const { productsCart } = this.props.cartProductsStore
     const { cart, cartRemoveItem } = this.props;
     const { currency } = this.props.currencyStore
 
@@ -111,7 +111,7 @@ class CartPage extends Component {
           <td className="cart-table__column cart-table__column--remove">
             <Button
               variant='primary'
-              onClick={() => this.props.productCartRemoveStore.removeProductCart(productsCart[item].key)}
+              onClick={() => this.props.cartRemoveProductStore.removeProductCart(productsCart[item].key)}
               className={'btn btn-light btn-sm btn-svg-icon'}
             >
               <i className='fas fa-times' />
@@ -123,7 +123,7 @@ class CartPage extends Component {
   }
 
   renderTotals() {
-    const { productsCartInfoTotal } = this.props.productsCartInfoTotalStore
+    const { productsCartInfoTotal } = this.props.cartInfoTotalProductsStore
     const { currency } = this.props.currencyStore
 
     /*if (cart.extraLines.length <= 0) {
@@ -164,7 +164,7 @@ class CartPage extends Component {
   }
 
   renderCart() {
-    const { productsCartInfoTotal } = this.props.productsCartInfoTotalStore
+    const { productsCartInfoTotal } = this.props.cartInfoTotalProductsStore
     const { currency } = this.props.currencyStore
 
     return productsCartInfoTotal ? (
@@ -230,7 +230,7 @@ class CartPage extends Component {
 
   render() {
     const { cart } = this.props;
-    const { productsCartCountItems } = this.props.productsCartCountItemsStore
+    const { productsCartCountItems } = this.props.cartCountProductsStore
     const breadcrumb = [
       { title: 'Home', url: '' },
       { title: 'Shopping Cart', url: '' },

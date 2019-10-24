@@ -5,7 +5,7 @@ export default class ProductReviewsStore {
   productReviews
 
   getProductReviews (id, page) {
-    Api.ProductReviews(id, page).then(res => {
+    Api.Woocommerce.ProductReviews(id, page).then(res => {
       if (res.data) {
         console.log('res', res.data)
         runInAction(() => {
