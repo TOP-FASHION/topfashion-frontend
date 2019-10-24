@@ -7,8 +7,8 @@ export default class ProductsStore {
   pagesProducts
   countProducts = 9
 
-  getProducts (productId, pageNumber, sortASC) {
-    return Api.Products(productId, pageNumber, sortASC)
+  getProducts (data) {
+    return Api.Products(data)
       .then((res) => {
         if (res.data) {
           this.setProducts(res.data)

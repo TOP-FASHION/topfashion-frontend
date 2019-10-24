@@ -59,7 +59,12 @@ class ProductsView extends Component {
   }
 
   sort = e => {
-    this.props.productsStore.getProducts(this.state.page, this.props.productsStore.countProducts, e.target.value)
+    this.props.productsStore.getProducts({
+      'page': this.state.page,
+      'per_page': this.props.productsStore.countProducts,
+      'filter[limit]': this.props.productsStore.countProducts,
+      'order': e.target.value || 'desc'
+    })
   };
 
   filter = e => {

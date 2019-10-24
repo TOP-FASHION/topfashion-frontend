@@ -1,4 +1,5 @@
 import axios from 'axios'
+import isPlainObject from 'lodash/isPlainObject'
 import { Base64 } from 'js-base64'
 
 const codeMessage = {
@@ -56,6 +57,8 @@ export default async function request (url, options) {
           ...newOptions.headers
         }
       }
+    } else {
+      url = url + (newOptions.data && Object.keys(newOptions.data).length ? '?' + convertArguments(newOptions.data) : '')
     }
 
     const response = await axios(`https://localhost:8443${url}`, newOptions)
@@ -67,4 +70,11 @@ export default async function request (url, options) {
   } catch (err) {
     return console.log('Error===', err)
   }
+}
+
+function convertArguments (args) {
+  if (isPlainObject(args)) {
+    return Object.keys(args).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(`${args[key]}`)}`).join('&')
+  }
+  return args
 }
