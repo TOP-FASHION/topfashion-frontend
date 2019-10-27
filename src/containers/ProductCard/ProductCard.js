@@ -57,13 +57,13 @@ class ProductCard extends Component {
     const product = this.props.product
     return product.images && product.images.length > 0 ? (
       <div className='product-card__image'>
-        <Link to={`/shop/product/${product.id}`}>
+        <Link to={`/category/product/${product.id}`}>
           <img src={product.images[0].src} alt='' />
         </Link>
       </div>
     ) : (
       <div className='product-card__image'>
-        <Link to={`/shop/product/${product.id}`}>
+        <Link to={`/category/product/${product.id}`}>
           <img src={'public/img/products/default.jpg'} alt='' />
         </Link>
       </div>
@@ -116,7 +116,7 @@ class ProductCard extends Component {
         {this.image}
         <div className='product-card__info'>
           <div className='product-card__name'>
-            <Link to={`/shop/product/${product.id}`}>{product.name}</Link>
+            <Link to={`/category/product/${product.id}`}>{product.name}</Link>
           </div>
           <div className='product-card__rating'>
             <Rating value={product.rating_count} />

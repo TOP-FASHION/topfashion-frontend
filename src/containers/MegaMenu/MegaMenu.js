@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import MegaMenuLinks from '../../components/MegaMenuLinks/index'
+import MegaMenuLinks from '../../components/MegaMenuLinks'
 import './MegaMenu.scss'
 
 function MegaMenu(props) {

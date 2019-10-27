@@ -7,6 +7,7 @@ import ProductsStore from './ProductsStore'
 import CurrencyStore from './CurrencyStore'
 import ProductReviewsStore from './ProductReviewsStore'
 import ProductReviewsAddStore from "./ProductReviewsAddStore"
+import ProductsCategoriesStore from "./ProductsCategoriesStore"
 
 // CoCart
 import CartAddProductStore from './CartAddProductStore'
@@ -31,6 +32,7 @@ class RootStore {
     this.currencyStore = new CurrencyStore(this)
     this.productReviewsStore = new ProductReviewsStore(this)
     this.productReviewsAddStore = new ProductReviewsAddStore(this)
+    this.productsCategoriesStore = new ProductsCategoriesStore(this)
 
     // CoCart
     this.cartAddProductStore = new CartAddProductStore(this)

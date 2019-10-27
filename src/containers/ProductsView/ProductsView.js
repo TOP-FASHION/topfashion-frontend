@@ -16,7 +16,7 @@ import {
   Form
 } from "react-bootstrap";
 
-@inject('productsStore')
+@inject('productsStore', 'productsCategoriesStore')
 @observer
 class ProductsView extends Component {
   constructor(props) {
@@ -46,7 +46,12 @@ class ProductsView extends Component {
   };
 
   handlePageChange = (page) => {
-    this.props.productsStore.getProducts(page, this.props.productsStore.countProducts)
+    this.props.productsStore.getProducts({
+      'page': page,
+      'per_page': this.state.limitPage || this.props.productsStore.countProducts,
+      'filter[limit]': this.state.limitPage || this.props.productsStore.countProducts,
+      'order': this.state.order || 'desc',
+    })
     this.setState(() => ({ page }));
   };
 
@@ -63,12 +68,21 @@ class ProductsView extends Component {
       'page': this.state.page,
       'per_page': this.props.productsStore.countProducts,
       'filter[limit]': this.props.productsStore.countProducts,
-      'order': e.target.value || 'desc'
+      'order': e.target.value || 'desc',
+      'category': this.props.productsCategoriesStore.categoryId
     })
+    this.state.order = e.target.value
   };
 
   filter = e => {
-    this.props.productsStore.getProducts(this.state.page, e.target.value)
+    this.props.productsStore.getProducts({
+      'page': this.state.page,
+      'per_page': e.target.value || this.props.productsStore.countProducts,
+      'filter[limit]': e.target.value || this.props.productsStore.countProducts,
+      'order': this.state.order || 'desc',
+      'category': this.props.productsCategoriesStore.categoryId
+    })
+    this.state.limitPage = e.target.value
   };
 
   get viewModes () {
@@ -131,7 +145,7 @@ class ProductsView extends Component {
                 </div>
               </div>
             </div>
-            <div className="view-options__legend">Showing {this.props.productsStore.countProducts} of {this.totalProducts} products</div>
+            <div className="view-options__legend">Showing {this.props.productsStore.countProducts > this.totalProducts ? this.totalProducts : this.props.productsStore.countProducts} of {this.totalProducts} products</div>
             <div className="view-options__divider" />
             <div className="view-options__control">
               <Form.Label>Sort By</Form.Label>

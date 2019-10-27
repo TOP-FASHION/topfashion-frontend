@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import InputRange from 'react-input-range'
 import PropTypes from 'prop-types'
 import './FilterPrice.scss'
+import {inject, observer} from "mobx-react"
 
-
+@inject('currencyStore', 'productsStore', 'productsCategoriesStore')
+@observer
 class FilterPrice extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +27,17 @@ class FilterPrice extends Component {
     this.setState(() => ({ from, to }));
   };
 
+  submit = (from, to) => {
+    this.props.productsStore.getProducts({
+      'per_page': this.props.productsStore.countProducts,
+      'filter[limit]': this.props.productsStore.countProducts,
+      'order': 'desc',
+      'category': this.props.productsCategoriesStore.categoryId,
+      'min_price': from,
+      'max_price': to
+    })
+  };
+
   render() {
     const { from: stateFrom, to: stateTo } = this.state;
     const {
@@ -33,6 +46,7 @@ class FilterPrice extends Component {
       from: propsFrom,
       to: propsTo,
     } = this.props;
+    const { currency } = this.props.currencyStore
     let { min, max } = this.props;
     const { direction } = 'en';
 
@@ -58,14 +72,15 @@ class FilterPrice extends Component {
             value={{ min: from, max: to }}
             step={step}
             onChange={this.handleChange}
+            onChangeComplete={() => this.submit(fromLabel, toLabel)}
           />
         </div>
         <div className="filter-price__title">
           Price:
           {' '}
-          <span className="filter-price__min-value">89</span>
+          <span className="filter-price__min-value">{currency} {fromLabel}</span>
           {' – '}
-          <span className="filter-price__max-value">889</span>
+          <span className="filter-price__max-value">{currency} {toLabel}</span>
         </div>
       </div>
     );

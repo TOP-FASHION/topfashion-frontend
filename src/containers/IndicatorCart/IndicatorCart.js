@@ -66,7 +66,7 @@ class IndicatorCart extends Component {
     if (product.product_image.length) {
       image = (
         <div className='dropcart__product-image'>
-          <Link to={`/shop/product/${product.product_id}`}>
+          <Link to={`/category/product/${product.product_id}`}>
             <img src={product.product_image} alt='' />
           </Link>
         </div>
@@ -78,7 +78,7 @@ class IndicatorCart extends Component {
         {image}
         <div className='dropcart__product-info'>
           <div className='dropcart__product-name'>
-            <Link to={`/shop/product/${product.product_id}`}>
+            <Link to={`/category/product/${product.product_id}`}>
               {product.product_name}
             </Link>
           </div>

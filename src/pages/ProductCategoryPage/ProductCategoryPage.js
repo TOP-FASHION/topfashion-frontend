@@ -11,7 +11,7 @@ import CategorySidebar from '../../containers/CategorySidebar'
 import { inject, observer } from 'mobx-react'
 import './ProductCategoryPage.scss'
 
-@inject('productsStore')
+@inject('productsStore', 'productsCategoriesStore')
 @observer
 class ProductCategoryPage extends Component {
   static propTypes = {
@@ -27,13 +27,50 @@ class ProductCategoryPage extends Component {
   };
 
   componentDidMount () {
-    this.props.productsStore.getProducts(1, this.props.productsStore.countProducts)
+    this.props.productsStore.getProducts({
+      'page': 1,
+      'per_page': this.props.productsStore.countProducts,
+      'filter[limit]': this.props.productsStore.countProducts,
+      'category': this.normalizeCategory(this.props.match.params.categoryId)
+    })
+    this.props.productsCategoriesStore.categoryId = this.normalizeCategory(this.props.match.params.categoryId)
+  }
+
+  normalizeCategory (id = '') {
+    switch (id) {
+      case 'accessories':
+        return 18
+      case 'hoodies':
+        return 19
+      case 'tshirts':
+        return 20
+      case 'jeans':
+        return 23
+      case 'woman':
+        return 22
+      case 'man':
+        return 24
+      default:
+        return id
+    }
+  }
+
+  normalizeParentCategory (id) {
+    if ([23, 22].includes(this.normalizeCategory(id))) {
+      return 'woman'
+    } else if ([18, 19].includes(this.normalizeCategory(id))) {
+      return 'man'
+    } else {
+
+    }
   }
 
   get breadcrumb () {
     return [
       { title: 'Home', url: '' },
-      { title: 'Screwdrivers', url: '' },
+      { title: 'Category', url: '/category' },
+      { title: this.normalizeParentCategory(this.props.match.params.categoryId), url: this.normalizeParentCategory(this.props.match.params.categoryId) },
+      { title: this.props.match.params.categoryId, url: this.props.match.params.categoryId },
     ]
   }
 
@@ -89,7 +126,7 @@ class ProductCategoryPage extends Component {
   render () {
     return (
       <React.Fragment>
-        <PageHeader header="Screwdrivers" breadcrumb={this.breadcrumb} />
+        <PageHeader header="Category" breadcrumb={this.breadcrumb} />
         {this.content}
       </React.Fragment>
     );

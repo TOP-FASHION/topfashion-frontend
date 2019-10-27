@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import MegaMenu from '../MegaMenu/index'
-import Menu from '../Menu/index'
+import MegaMenu from '../MegaMenu'
+import Menu from '../Menu'
 
 // data stubs
 import departments from '../../data/headerDepartments';

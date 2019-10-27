@@ -71,7 +71,7 @@ class CartPage extends Component {
       let options;
 
       if (productsCart[item].product_image.length > 0) {
-        image = <Link to={`/shop/product/${productsCart[item].product_id}`}><img src={productsCart[item].product_image} alt="" /></Link>;
+        image = <Link to={`/category/product/${productsCart[item].product_id}`}><img src={productsCart[item].product_image} alt="" /></Link>;
       }
 
 /*      if (item.options.length > 0) {
@@ -90,7 +90,7 @@ class CartPage extends Component {
             {image}
           </td>
           <td className="cart-table__column cart-table__column--product">
-            <Link to={`/shop/product/${productsCart[item].product_id}`} className="cart-table__product-name">
+            <Link to={`/category/product/${productsCart[item].product_id}`} className="cart-table__product-name">
               {productsCart[item].product_name}
             </Link>
           {/*  {options}*/}

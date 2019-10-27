@@ -41,9 +41,10 @@ class MainDecorator extends Component {
           <Group className='main-decorator__content'>
             <SwitchLang>
               <Route path='/' component={Home} exact />
-              <Route path='/shop/product/:productId' component={ProductPage} exact />
-              <Route path='/shop/category' component={ProductCategoryPage} exact />
-              <Route path='/shop/cart' component={CartPage} exact />
+              <Route path='/category/product/:productId' component={ProductPage} exact />
+              <Route path='/category' component={ProductCategoryPage} exact />
+              <Route path='/category/:categoryId' component={ProductCategoryPage} exact />
+              <Route path='/cart' component={CartPage} exact />
               <Route path='/about' component={About} exact />
               <Route component={NotFound} />
             </SwitchLang>

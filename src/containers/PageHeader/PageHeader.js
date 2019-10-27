@@ -22,7 +22,7 @@ function PageHeader(props) {
 
       if (lastIndex === index) {
         link = <li key={index} className="breadcrumb-item active" aria-current="page">{item.title}</li>;
-      } else {
+      } else if (item.url !== undefined) {
         link = (
           <li key={index} className="breadcrumb-item">
             <Link to={item.url}>{item.title}</Link>

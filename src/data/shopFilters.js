@@ -97,10 +97,10 @@ export default [
     name: 'Price',
     type: 'price',
     options: {
-      min: 500,
-      max: 1500,
-      from: 590,
-      to: 1130,
+      min: 10,
+      max: 100,
+      from: 15,
+      to: 90,
     },
   },
   {

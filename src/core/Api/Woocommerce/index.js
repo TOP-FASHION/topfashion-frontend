@@ -3,6 +3,7 @@ import Product from './Product'
 import Products from './Products'
 import ProductReviews from './ProductReviews'
 import ProductReviewsAdd from './ProductReviewsAdd'
+import ProductsCategories from './ProductsCategories'
 
 const Woocommerce = {
   Currency,
@@ -10,6 +11,7 @@ const Woocommerce = {
   Products,
   ProductReviews,
   ProductReviewsAdd,
+  ProductsCategories
 }
 
 export default Woocommerce

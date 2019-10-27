@@ -20,7 +20,7 @@ function WidgetFilters(props) {
     let filterView;
 
     if (filter.type === 'categories') {
-      filterView = <FilterCategories categories={filter.options.items} />;
+      filterView = <FilterCategories />;
     } else if (filter.type === 'checkbox') {
       filterView = <FilterCheckbox items={filter.options.items} />;
     } else if (['checkbox', 'radio'].includes(filter.type)) {
