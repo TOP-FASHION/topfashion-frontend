@@ -5,6 +5,7 @@ import './WidgetProducts.scss'
 
 function WidgetProducts(props) {
   const { title, products } = props;
+  console.log('products', products)
   const productsList = products.map((product) => {
     let image;
     let price;
@@ -12,7 +13,7 @@ function WidgetProducts(props) {
     if (product.images && product.images.length > 0) {
       image = (
         <div className="widget-products__image">
-          <Link to="/"><img src={product.images[0]} alt="" /></Link>
+          <Link to="/"><img src={product.images[0].src} alt="" /></Link>
         </div>
       );
     }

@@ -9,7 +9,8 @@ import ProductTabs from '../../containers/ProductTabs'
 // import WidgetProducts from '../widgets/WidgetProducts'
 // import categories from '../../data/shopWidgetCategories'
 
-import { inject, observer } from 'mobx-react'
+import { inject, observer, to } from 'mobx-react'
+import { toJS } from 'mobx'
 
 @inject('productsStore', 'productStore')
 @observer
@@ -26,6 +27,34 @@ class ProductPage extends Component {
 
   componentDidMount () {
     this.props.productStore.getProduct(this.props.match.params.productId)
+  }
+
+  componentWillUnmount () {
+    this.lastProducts()
+  }
+
+  lastProducts () {
+    let lastProducts = localStorage.getItem('lastProducts')
+
+    if (lastProducts) {
+      let objLastProducts = JSON.parse(lastProducts)
+      let isAdd = true
+      let arr = objLastProducts
+
+      Object.keys(objLastProducts).map(item => {
+        let itemLastProduct = objLastProducts[item]
+        Object.keys(itemLastProduct).map(item => {
+          if (itemLastProduct.id === this.product.id) {
+            return isAdd = false
+          }
+        })
+      })
+
+      isAdd ? arr.unshift(toJS(this.product)) : null
+      isAdd ? localStorage.setItem('lastProducts', JSON.stringify(arr.slice(0, 5))) : null
+    } else {
+      localStorage.setItem('lastProducts', JSON.stringify([this.product]))
+    }
   }
 
   get breadcrumb () {

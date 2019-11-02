@@ -211,8 +211,8 @@ $local-transition-duration: .15s;
 .input-check__icon {
   pointer-events: none;
   position: absolute;
-  left: 4px;
-  top: 5px;
+  left: 0;
+  top: 1px;
   fill: $input-check-icon-color;
   transform: scale(0);
   transition: fill $local-transition-duration,
@@ -227,7 +227,7 @@ $local-transition-duration: .15s;
   .input-check__icon {
     fill: $input-check-checked-icon-color;
     transition-delay: 0s, 0s, 0s;
-    transform: scale(1);
+    transform: scale(0.7);
   }
 }
 .input-check__input:disabled ~ {

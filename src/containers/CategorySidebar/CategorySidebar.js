@@ -106,7 +106,7 @@ function CategorySidebar(props) {
         </div>
         {offcanvas !== 'always' && (
           <div className="block-sidebar__item d-none d-lg-block">
-            <WidgetProducts title="Latest Products" products={products.slice(0, 5)} />
+            <WidgetProducts title="Latest Products" products={JSON.parse(localStorage.getItem('lastProducts'))} />
           </div>
         )}
       </div>

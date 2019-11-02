@@ -1,8 +1,6 @@
 @import '../../styles/var';
 
-
 $local-margin: 4px;
-
 
 .filter-color {}
 .filter-color__list {
@@ -24,7 +22,6 @@ $local-box-disabled-size: 22px;
 $local-stick-length: 34px;
 $local-border-radius: 1.2px;
 $local-transition-duration: .15s;
-
 
 .input-check-color {
   display: inline-block;
@@ -53,15 +50,15 @@ $local-transition-duration: .15s;
 }
 .input-check-color__icon {
   position: absolute;
-  left: (4px + ($local-box-size - 20px) / 2);
-  top: (5px + ($local-box-size - 20px) / 2);
+  left: (4px + ($local-box-size - 24px) / 2);
+  top: (5px + ($local-box-size - 24px) / 2);
   fill: $input-check-color-arrow-light-color;
   transform: scale(0);
   transition: transform $local-transition-duration;
 }
 .input-check-color__input:checked ~ {
   .input-check-color__icon {
-    transform: scale(1);
+    transform: scale(0.7);
   }
 }
 .input-check-color__input:disabled {
@@ -95,7 +92,7 @@ $local-transition-duration: .15s;
 
 .input-check-color--light {
   .input-check-color__icon {
-    fill: $input-check-color-arrow-dark-color;
+    color: $input-check-color-arrow-dark-color;
   }
 }
 .input-check-color--white {
@@ -103,6 +100,6 @@ $local-transition-duration: .15s;
     box-shadow: $input-check-color-white-shadow;
   }
   .input-check-color__icon {
-    fill: $input-check-color-white-arrow-color;
+    color: $input-check-color-white-arrow-color;
   }
 }

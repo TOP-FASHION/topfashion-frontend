@@ -1,17 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
-// application
 import Collapse from '../../components/Collapse'
 import FilterCategories from '../../components/FilterCategories'
 import FilterCheckbox from '../../components/FilterCheckbox'
 import FilterColor from '../../components/FilterColor'
 import FilterPrice from '../../components/FilterPrice'
-import FilterRadio from '../../components/FilterRadio'
-//import { ArrowRoundedDown12x7Svg } from '../../svg';
 import './WidgetFilters.scss'
-
 
 function WidgetFilters(props) {
   const { title, filters, offcanvas } = props;
@@ -23,15 +18,8 @@ function WidgetFilters(props) {
       filterView = <FilterCategories />;
     } else if (filter.type === 'checkbox') {
       filterView = <FilterCheckbox items={filter.options.items} />;
-    } else if (['checkbox', 'radio'].includes(filter.type)) {
-      filterView = (
-        <FilterRadio
-          items={filter.options.items}
-          name={filter.options.name}
-        />
-      );
     } else if (filter.type === 'color') {
-      filterView = <FilterColor items={filter.options.items} />;
+      filterView = <FilterColor />;
     } else if (filter.type === 'price') {
       filterView = (
         <FilterPrice
@@ -52,7 +40,7 @@ function WidgetFilters(props) {
             <div className="filter filter--opened" ref={setItemRef}>
               <button type="button" className="filter__title" onClick={toggle}>
                 {filter.name}
-                {/*<ArrowRoundedDown12x7Svg className="filter__arrow" />*/}
+                <i className="fas fa-angle-down filter__arrow"></i>
               </button>
               <div className="filter__body" ref={setContentRef}>
                 <div className="filter__container">

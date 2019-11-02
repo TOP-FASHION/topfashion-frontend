@@ -1,44 +1,59 @@
-import React from 'react'
+import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { inject, observer } from 'mobx-react'
 
-function FilterCheckbox(props) {
-  const { items } = props;
+@inject('brandsStore', 'productsStore')
+@observer
+class FilterCheckbox extends Component {
 
-  const itemsList = items.map((item) => {
-    let count;
+  componentDidMount () {
+    this.props.brandsStore.getBrands()
+  }
 
-    if (item.count) {
-      count = <span className="filter-list__counter">{item.count}</span>;
-    }
+  get itemsList () {
+    const { brands } = this.props.brandsStore;
+
+    console.log('brands', brands)
+
+    return brands ? brands.map((item) => {
+      let count;
+
+      if (item.count) {
+        count = <span className="filter-list__counter">{item.count}</span>;
+      }
+
+      return (
+        <label
+          key={item.term_id}
+          className={classNames('filter-list__item', {
+            'filter-list__item--disabled': item.disabled,
+          })}
+        >
+          <span className="filter-list__input input-check">
+            <span className="input-check__body">
+              <input className="input-check__input" type="checkbox" />
+              <span className="input-check__box" />
+              <i className="input-check__icon fas fa-check "></i>
+            </span>
+          </span>
+          <span className="filter-list__title">{item.name}</span>
+          {count}
+        </label>
+      );
+    }) : null
+  }
+
+  render () {
 
     return (
-      <label
-        key={item.id}
-        className={classNames('filter-list__item', {
-          'filter-list__item--disabled': item.disabled,
-        })}
-      >
-        <span className="filter-list__input input-check">
-          <span className="input-check__body">
-            <input className="input-check__input" type="checkbox" defaultChecked={item.checked} disabled={item.disabled} />
-            <span className="input-check__box" />
-            {/*<Check9x7Svg className="input-check__icon" />*/}
-          </span>
-        </span>
-        <span className="filter-list__title">{item.label}</span>
-        {count}
-      </label>
-    );
-  });
-
-  return (
-    <div className="filter-list">
-      <div className="filter-list__list">
-        {itemsList}
+      <div className="filter-list">
+        <div className="filter-list__list">
+          {this.itemsList}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 FilterCheckbox.propTypes = {

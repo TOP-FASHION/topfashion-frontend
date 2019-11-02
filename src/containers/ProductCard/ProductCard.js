@@ -23,12 +23,9 @@ class ProductCard extends Component {
 
   get containerClasses () {
     return classNames('product-card', {
-      'product-card--layout--grid product-card--size--sm':
-        this.layout === 'grid-sm',
-      'product-card--layout--grid product-card--size--nl':
-        this.layout === 'grid-nl',
-      'product-card--layout--grid product-card--size--lg':
-        this.layout === 'grid-lg',
+      'product-card--layout--grid product-card--size--sm': this.layout === 'grid-sm',
+      'product-card--layout--grid product-card--size--nl': this.layout === 'grid-nl',
+      'product-card--layout--grid product-card--size--lg': this.layout === 'grid-lg',
       'product-card--layout--list': this.layout === 'list',
       'product-card--layout--horizontal': this.layout === 'horizontal'
     })
@@ -40,10 +37,10 @@ class ProductCard extends Component {
     product.tags.map((item, index) =>
       badges.push(
         <div
-          key='sale'
-          className={`product-card__badge product-card__badge--${item.name}`}
+          key={item.id}
+          className={`product-card__badge product-card__badge--${item.slug}`}
         >
-          ${item.name}
+          {item.name}
         </div>
       )
     )

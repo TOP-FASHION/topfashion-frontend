@@ -33,6 +33,12 @@ class Product extends Component {
     }
   }
 
+  componentDidMount () {
+
+  }
+
+
+
   handleChangeQuantity = quantity => {
     this.setState({ quantity })
   }

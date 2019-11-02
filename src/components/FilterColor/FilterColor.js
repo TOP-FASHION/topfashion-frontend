@@ -1,37 +1,49 @@
-import React from 'react'
+import React, {Component} from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import {inject, observer} from "mobx-react"
 import './FilterColor.scss'
 
-function FilterColor(props) {
-  const { items } = props;
+@inject('productAttributesStore', 'productsStore')
+@observer
+class FilterColor extends Component {
 
-  const itemsList = items.map((item) => (
-    <div key={item.id} className="filter-color__item">
+  componentDidMount () {
+    this.props.productAttributesStore.getAttributeTerms(3)
+  }
+
+  get itemsList () {
+    const { attributeTerms } = this.props.productAttributesStore;
+
+    return attributeTerms ? attributeTerms.map((item) => (
+      <div key={item} className="filter-color__item">
       <span
         className={classNames('filter-color__check input-check-color', {
-          'input-check-color--white': item.white,
-          'input-check-color--light': item.light,
+          'input-check-color--white': item,
+          'input-check-color--light': item,
         })}
-        style={{ color: item.color }}
+        style={{ color: item }}
       >
-          <label className="input-check-color__body">
-              <input className="input-check-color__input" type="checkbox" defaultChecked={item.checked} disabled={item.disabled} />
-              <span className="input-check-color__box" />
-              {/*<Check12x9Svg className="input-check-color__icon" />*/}
-              <span className="input-check-color__stick" />
-          </label>
+        <label className="input-check-color__body">
+          <input className="input-check-color__input" type="checkbox" defaultChecked={item.checked} disabled={item.disabled} />
+          <span className="input-check-color__box" />
+          <i className="input-check-color__icon fas fa-check"></i>
+          <span className="input-check-color__stick" />
+        </label>
       </span>
-    </div>
-  ));
-
-  return (
-    <div className="filter-color">
-      <div className="filter-color__list">
-        {itemsList}
       </div>
-    </div>
-  );
+    )) : null
+  }
+
+  render () {
+    return (
+      <div className="filter-color">
+        <div className="filter-color__list">
+          {this.itemsList}
+        </div>
+      </div>
+    );
+  }
 }
 
 FilterColor.propTypes = {

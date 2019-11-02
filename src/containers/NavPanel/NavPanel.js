@@ -49,7 +49,7 @@ class NavPanel extends Component {
             <div className='nav-panel__indicators'>
               {/* {searchIndicator} */}
               <Indicator
-                url='/shop/wishlist'
+                url='/wishlist'
                 value={10}
                 icon={<i className='far fa-heart' />}
               />
