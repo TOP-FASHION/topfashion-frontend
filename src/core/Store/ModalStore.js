@@ -21,7 +21,6 @@ export default class ModalStore {
   }
 
   @action openProduct (productId) {
-    console.log('open')
     this.productIdModal = productId
     this.openModalProduct = true
   }

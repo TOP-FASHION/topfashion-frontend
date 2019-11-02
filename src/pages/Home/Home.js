@@ -4,7 +4,7 @@ import { observer } from 'mobx-react'
 import HomeSlider from "../../containers/HomeSlider"
 import BannerFeatures from '../../containers/BannerFeatures'
 import ProductsBlock from '../../containers/ProductsBlock'
-import ProductsCarouselTabbs from '../../containers/ProductsCarouselTabbs'
+//import ProductsCarouselTabbs from '../../containers/ProductsCarouselTabbs'
 import HomeBanner from '../../containers/HomeBanner'
 import './Home.scss'
 
@@ -15,7 +15,7 @@ class Home extends Component {
       <React.Fragment>
         <HomeSlider withDepartments />
         <BannerFeatures />
-        <ProductsCarouselTabbs title="Featured Products" layout="grid-4" />
+        {/*<ProductsCarouselTabbs title="Featured Products" layout="grid-4" />*/}
         <HomeBanner />
         <ProductsBlock
           title="Bestsellers"

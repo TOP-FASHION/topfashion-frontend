@@ -14,8 +14,6 @@ class FilterCheckbox extends Component {
   get itemsList () {
     const { brands } = this.props.brandsStore;
 
-    console.log('brands', brands)
-
     return brands ? brands.map((item) => {
       let count;
 

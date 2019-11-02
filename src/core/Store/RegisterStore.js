@@ -25,7 +25,6 @@ export default class RegisterStore {
     postData.username = this.username
     postData.password = this.password
     Api.Wordpress.login.signIn(postData).then(res => {
-      console.log('res', res)
       if (res) {
         this.onLoggedIn = true
         localStorage.setItem( 'login', res.cookie );

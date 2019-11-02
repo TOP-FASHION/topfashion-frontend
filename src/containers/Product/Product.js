@@ -54,7 +54,7 @@ class Product extends Component {
     const { quantity } = this.state
     const { currency } = this.props.currencyStore
     let prices
-    console.log('item', this.images)
+
 
     if (product.sale_price) {
       prices = (

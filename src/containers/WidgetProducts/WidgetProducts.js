@@ -5,7 +5,7 @@ import './WidgetProducts.scss'
 
 function WidgetProducts(props) {
   const { title, products } = props;
-  console.log('products', products)
+
   const productsList = products.map((product) => {
     let image;
     let price;

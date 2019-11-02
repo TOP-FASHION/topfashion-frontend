@@ -50,7 +50,6 @@ class ProductTabReviews extends Component {
   }
 
   get reviewsList () {
-    console.log('this.reviews', this.reviews)
     return this.reviews && this.reviews.length > 0 ? this.reviews.map((review, index) => (
       <li key={index} className="reviews-list__item">
         <div className="review">
