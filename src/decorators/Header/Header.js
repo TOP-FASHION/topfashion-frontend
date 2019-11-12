@@ -22,36 +22,36 @@ class Header extends Component {
 
   messages = setMessages(this, messages, 'app.header.')
 
+  get bannerSection() {
+    return this.props.layout === 'default' ?  (
+      <Container className='site-header__middle'>
+        <div className='site-header__logo'>
+          <Link to='/'>
+            <img src='public/img/logos/shop-logo.svg' width='180px' />
+          </Link>
+        </div>
+        <div className='site-header__search'>
+          <Search />
+        </div>
+        <div className='site-header__phone'>
+          <div className='site-header__phone-title'>
+            {this.messages('phoneLabel')}
+          </div>
+          <div className='site-header__phone-number'>
+            {this.messages('phone')}
+          </div>
+        </div>
+      </Container>
+    ) : null
+  }
+
   render () {
     const { layout } = this.props
-    let bannerSection
-    if (layout === 'default') {
-      bannerSection = (
-        <Container className='site-header__middle'>
-          <div className='site-header__logo'>
-            <Link to='/'>
-              <img src='public/img/logos/shop-logo.svg' width='180px' />
-            </Link>
-          </div>
-          <div className='site-header__search'>
-            <Search />
-          </div>
-          <div className='site-header__phone'>
-            <div className='site-header__phone-title'>
-              {this.messages('phoneLabel')}
-            </div>
-            <div className='site-header__phone-number'>
-              {this.messages('phone')}
-            </div>
-          </div>
-        </Container>
-      )
-    }
 
     return (
       <div className='site-header'>
         <Topbar />
-        {bannerSection}
+        {this.bannerSection}
         <div className='site-header__nav-panel'>
           <NavPanel layout={layout} />
         </div>

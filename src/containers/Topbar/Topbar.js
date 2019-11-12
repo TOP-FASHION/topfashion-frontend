@@ -4,23 +4,20 @@ import {injectIntl} from "react-intl"
 import setMessages from "../../utils/setMessages"
 import messages from "./Topbar.messages"
 import Dropdown from '../../components/Dropdown'
-import DropdownCurrency from '../DropdownCurrency'
+import Fragment from '../../components/Fragment'
 import DropdownLanguage from '../DropdownLanguage'
 import {inject, observer} from "mobx-react"
 import './Topbar.scss'
 
-@inject('modalStore')
+@inject('modalStore', 'loginStore')
 @observer
 class Topbar extends Component {
   messages = setMessages(this, messages, 'app.topbar.')
-  values = {
-    currency: 'EUR'
-  };
   links = [
     { title: this.messages('aboutUs'), url: '/about' },
-    { title: this.messages('contacts'), url: '/site/contact-us' },
+    { title: this.messages('contacts'), url: '/contact-us' },
     { title: this.messages('storeLocation'), url: '' },
-    { title: this.messages('trackOrder'), url: '/shop/track-order' },
+    { title: this.messages('trackOrder'), url: '/track-order' },
     { title: this.messages('blog'), url: '/blog/category-classic' },
   ];
 
@@ -30,26 +27,7 @@ class Topbar extends Component {
     { title: 'Order History', url: '/account/orders' },
     { title: 'Addresses', url: '/account/addresses' },
     { title: 'Password', url: '/account/password' },
-    { title: 'Logout', url: '/account/login' },
-  ];
-
-  currencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
+    { title: 'Logout', url: '/logout' },
   ];
 
   submit = () => {
@@ -57,8 +35,6 @@ class Topbar extends Component {
   }
 
   render() {
-    const { openLogin } = this.props.modalStore
-
     const linksList = this.links.map((item, index) => (
       <div key={index} className="topbar__item topbar__item--link">
         <Link className="topbar-link" to={item.url}>{item.title}</Link>
@@ -71,18 +47,19 @@ class Topbar extends Component {
           <div className="topbar__row">
             {linksList}
             <div className="topbar__spring" />
-            <div className="topbar__item topbar__item--link">
-              <Link className="topbar-link" to='' onClick={this.submit}>{this.messages('login')}</Link>
-            </div>
-            <div className="topbar__item">
-              <Dropdown
-                title={this.messages('myAccount')}
-                items={this.accountLinks}
-              />
-            </div>
-            <div className="topbar__item">
-              <DropdownCurrency />
-            </div>
+            <Fragment hidden={this.props.loginStore.loggedIn}>
+              <div className="topbar__item topbar__item--link">
+                <Link className="topbar-link" to='' onClick={this.submit}>{this.messages('login')}</Link>
+              </div>
+            </Fragment>
+            <Fragment hidden={!this.props.loginStore.loggedIn}>
+              <div className="topbar__item">
+                <Dropdown
+                  title={this.messages('myAccount')}
+                  items={this.accountLinks}
+                />
+              </div>
+            </Fragment>
             <div className="topbar__item">
               <DropdownLanguage />
             </div>

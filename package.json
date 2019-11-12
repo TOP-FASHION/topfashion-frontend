@@ -1,6 +1,6 @@
 {
-  "name": "React-Mobx-Woocomerce-Theme",
-  "description": "Frontend application for Woocomerce projects",
+  "name": "Top-Fashion-App",
+  "description": "Top Fashion frontend application",
   "version": "1.0.0",
   "main": "server/index.js",
   "author": "Popov Evgeniy <1212evgen@gmail.com>",

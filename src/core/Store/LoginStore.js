@@ -6,29 +6,31 @@ export default class LoginStore {
   @observable username
   @observable password
   @observable token
-  @observable isLoggedIn
+  @observable loggedIn = false
 
   constructor () {
     this.token = Cookies.get('auth')
+    autorun(() => this.validateAuth())
   }
 
   @action
   validateAuth = async () => {
     try {
       const value = await Api.Wordpress.ValidateAuthCookie({cookie: this.token})
-      this.isLoggedIn = value.valid
+      this.loggedIn = value.data.valid
+      new Event('login');
+      var event = new CustomEvent('login', { 'detail':  {'status': value.data.valid} });
+      window.dispatchEvent(event);
     } catch (error) {
       runInAction(() => {
         this.status = "error";
       });
     }
-
   }
 
-  // @computed get isLoggedIn() {
-  //   console.log('this.user===', this.user)
-  //   return this.user
-  // }
+  @computed get isLoggedIn() {
+     return this.loggedIn
+  }
 
   @action.bound onUsernameChange(event) {
     this.username = event.target.value
@@ -40,27 +42,23 @@ export default class LoginStore {
 
   @action signIn = async () =>  {
     let postData = {}
-    postData.username = this.username
+    postData.email = this.username
     postData.password = this.password
 
-    Api.WPnonce('generate_auth_cookie').then(res => {
-      if (res) {
-        Api.Wordpress.Login(postData)
-          .then(res => {
-            if (res.cookie) {
-              Cookies.set('auth', res.cookie);
-              this.isLoggedIn = true
-            }
-          })
-          .catch(error => {
-            console.log("Error====", error)
-          });
-      }
-    })
+    Api.Wordpress.Login(postData)
+      .then(res => {
+        if (res.data.cookie) {
+          Cookies.set('auth', res.data.cookie);
+          this.loggedIn = true
+        }
+      })
+      .catch(error => {
+        console.log("Error====", error)
+      });
   }
 
   @action logout() {
-    this.isLoggedIn = false
+    this.loggedIn = false
     Cookies.remove('auth')
   }
 }
