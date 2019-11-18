@@ -51,6 +51,7 @@
     "react-universal-component": "^4.0.0",
     "reactstrap": "^8.0.1",
     "serialize-javascript": "^2.1.0",
+    "validatorjs": "^3.17.1",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-flush-chunks": "^2.0.3"
   },

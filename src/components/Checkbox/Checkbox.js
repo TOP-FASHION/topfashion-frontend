@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {Form} from 'react-bootstrap'
 
 class Checkbox extends Component {
   static propTypes = {
@@ -26,17 +27,13 @@ class Checkbox extends Component {
     const { isChecked } = this.state
 
     return (
-      <div className={classes}>
-        <label>
-          <input
-            type='checkbox'
-            value={label}
-            checked={isChecked}
-            onChange={this.toggleCheckboxChange}
-          />
-          <span className='checkmark'>{label}</span>
-        </label>
-      </div>
+      <Form.Check
+        required
+        name="terms"
+        label="Agree to terms and conditions"
+        onChange={this.toggleCheckboxChange}
+        id="validationFormik0"
+      />
     )
   }
 }

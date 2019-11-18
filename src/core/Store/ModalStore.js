@@ -1,23 +1,27 @@
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 export default class ModalStore {
-  @observable openModalLogin
 
-  @observable openModalProduct
-
-  @observable productIdModal
-
-  constructor () {
-    this.openModalLogin = false
+  constructor (rootStore) {
+    this.isOpenModalLogin = false
     this.openModalProduct = false
+    this.rootStore = rootStore
   }
 
+  @observable isOpenModalLogin
+  @observable openModalProduct
+  @observable productIdModal
+
   @action openLogin () {
-    this.openModalLogin = true
+    this.isOpenModalLogin = true
   }
 
   @action closeLogin () {
-    this.openModalLogin = false
+    this.isOpenModalLogin = false
+  }
+
+  @computed get openModalLogin () {
+    return !this.rootStore.loginStore.loggedIn && this.isOpenModalLogin
   }
 
   @action openProduct (productId) {

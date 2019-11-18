@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import {injectIntl} from 'react-intl'
-import { observable, action } from "mobx"
 import {inject, observer} from "mobx-react"
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
+import Field from '../../components/Field'
+import Input from '../../components/Input'
+import Button from '../../components/Button'
 import messages from './LoginForm.messages'
 import setMessages from '../../utils/setMessages'
 
@@ -11,32 +13,45 @@ import setMessages from '../../utils/setMessages'
 class LoginForm extends Component {
   messages = setMessages(this, messages, 'app.form.login.')
 
-  @observable authenticationError
-
-  submit = () => {
-    this.props.loginStore.signIn()
-  }
-
   render () {
-    const { username, password, onUsernameChange, onPasswordChange } = this.props.loginStore
+    const { onFieldChange, form } = this.props.loginStore
 
     return (
-      <Form noValidate>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>{this.messages('email')}</Form.Label>
-          <Form.Control type="email" placeholder={this.messages('email.placeholder')} value={username} onChange={ onUsernameChange } />
-          <Form.Text className="text-muted">
-            {this.messages('email.description')}
-          </Form.Text>
-        </Form.Group>
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>{this.messages('password')}</Form.Label>
-          <Form.Control type="password" placeholder={this.messages('password.placeholder')} value={password}  onChange={ onPasswordChange } />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button onClick={this.submit}>
+      <Form>
+        <Field
+          className='login__field'
+          label={this.messages('email')}
+          error={form.fields.email.error}
+        >
+          <Input
+            autoFocus
+            type='text'
+            placeholder={this.messages('email.placeholder')}
+            onChange={onFieldChange}
+            value={form.fields.email.value}
+            name='email'
+          />
+        </Field>
+        <Field
+          className='login__field'
+          label={this.messages('password')}
+          error={form.fields.password.error}
+        >
+          <Input
+            autoFocus
+            type='password'
+            placeholder={this.messages('password.placeholder')}
+            onChange={onFieldChange}
+            value={form.fields.password.value}
+            name='password'
+          />
+        </Field>
+        <Button
+          variant='primary'
+          onClick={() => this.props.loginStore.signIn()}
+          className={'btn'}
+          disabled={!form.meta.isValid}
+        >
           {this.messages('login.button')}
         </Button>
       </Form>
