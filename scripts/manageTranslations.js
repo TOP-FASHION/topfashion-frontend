@@ -108,7 +108,7 @@ async function run() {
       displayHelpExport()
       return
     }
-
+    // TODO need to fix for window os
     //await logAsync(`Preparing`, prepareScriptToRun())
     //await logAsync(`Extracting messages (${extractedMessagesDirectory})`, extractMessages())
     const messages = await logAsync(`Reading messages`, readMessages())
