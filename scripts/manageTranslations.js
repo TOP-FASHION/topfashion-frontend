@@ -109,8 +109,8 @@ async function run() {
       return
     }
 
-    await logAsync(`Preparing`, prepareScriptToRun())
-    await logAsync(`Extracting messages (${extractedMessagesDirectory})`, extractMessages())
+    //await logAsync(`Preparing`, prepareScriptToRun())
+    //await logAsync(`Extracting messages (${extractedMessagesDirectory})`, extractMessages())
     const messages = await logAsync(`Reading messages`, readMessages())
     await logAsync(`Authorization in Google API`, authorizeInApi())
     const spreadsheetProps = await logAsync(`Reading spreadsheet properties`, readSpreadsheetProps())
@@ -145,7 +145,7 @@ async function run() {
     }
 
     await fse.remove(extractedMessagesPath)
-    //await runCmd(`npm install`, { cwd: basePath })
+    await runCmd(`yarn install`, { cwd: basePath })
   }
 
   async function extractMessages() {
