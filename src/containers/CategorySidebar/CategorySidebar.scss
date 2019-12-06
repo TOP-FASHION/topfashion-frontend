@@ -2,16 +2,16 @@
 @import '../../styles/functions';
 @import '../../styles/mixin/direction';
 
-$local-transition-duration: .3s;
+$local-transition-duration: 0.3s;
 
 
 @mixin local-offcanvas() {
-  visibility: hidden;
   position: fixed;
   top: 0;
+  z-index: 1000;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  visibility: hidden;
   transition: visibility 0s $local-transition-duration;
 
   @include direction {
@@ -31,24 +31,26 @@ $local-transition-duration: .3s;
       #{$inset-inline-start}: 0;
     }
   }
+
   .block-sidebar__body {
     position: absolute;
     top: 0;
+    display: flex;
+    flex-direction: column;
     width: 290px;
     height: 100%;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     background: $mobilemenu-bg;
     box-shadow: $mobilemenu-shadow;
     transition: transform $local-transition-duration;
-    display: flex;
-    flex-direction: column;
+    -webkit-overflow-scrolling: touch;
 
     @include direction {
       #{$inset-inline-start}: 0;
       transform: translateX(#{-100% * $transform-direction}) translateX(#{-30px * $transform-direction});
     }
   }
+
   .block-sidebar__header {
     display: flex;
   }
@@ -58,7 +60,7 @@ $local-transition-duration: .3s;
     transition-delay: 0s;
 
     .block-sidebar__backdrop {
-      opacity: .9;
+      opacity: 0.9;
     }
 
     .block-sidebar__body {
@@ -69,9 +71,11 @@ $local-transition-duration: .3s;
 
 
 .block-sidebar {}
+
 .block-sidebar__item + .block-sidebar__item {
   margin-top: 30px;
 }
+
 .block-sidebar--position--start {
   @include direction {
     #{$padding-inline-end}: 20px;
@@ -82,12 +86,14 @@ $local-transition-duration: .3s;
       #{$padding-inline-end}: 6px;
     }
   }
+
   @media (max-width: breakpoint(md-end)) {
     @include direction {
       #{$padding-inline-end}: 0;
     }
   }
 }
+
 .block-sidebar--position--end {
   @include direction {
     #{$padding-inline-start}: 20px;
@@ -98,6 +104,7 @@ $local-transition-duration: .3s;
       #{$padding-inline-start}: 6px;
     }
   }
+
   @media (max-width: breakpoint(md-end)) {
     @include direction {
       #{$padding-inline-start}: 0;
@@ -107,29 +114,31 @@ $local-transition-duration: .3s;
 
 
 .block-sidebar__header {
-  height: $mobilemenu-header-height + 1px;
+  display: none;
   flex-shrink: 0;
   align-items: center;
+  height: $mobilemenu-header-height + 1px;
   border-bottom: 1px solid $mobilemenu-divider-color;
-  display: none;
 }
+
 .block-sidebar__title {
+  flex-grow: 1;
   padding: 0 20px;
   font-weight: $font-weight-bold;
-  flex-grow: 1;
 }
+
 .block-sidebar__close {
-  border: none;
-  background: transparent;
-  height: $mobilemenu-header-height;
-  width: $mobilemenu-header-height + 1px;
-  flex-shrink: 0;
   display: flex;
-  align-items: center;
+  flex-shrink: 0;
   justify-content: center;
+  align-items: center;
+  width: $mobilemenu-header-height + 1px;
+  height: $mobilemenu-header-height;
+  background: transparent;
+  border: none;
   cursor: pointer;
+  transition: fill 0.2s;
   fill: $mobilemenu-close-button-default-color;
-  transition: fill .2s;
 
   @include direction {
     #{$border-inline-start}: 1px solid $mobilemenu-divider-color;
@@ -138,6 +147,7 @@ $local-transition-duration: .3s;
   &:focus {
     outline: none;
   }
+
   &:focus,
   &:hover {
     fill: $mobilemenu-close-button-hover-color;
@@ -162,24 +172,27 @@ $local-item-padding-left: 14px;
 
 
 .filter-categories {}
+
 .filter-categories__list {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
   font-size: 15px;
   line-height: 18px;
 
   a {
     color: inherit;
-    transition: color .15s;
+    transition: color 0.15s;
   }
+
   a:hover {
     color: $link-hover-color;
   }
 }
+
 .filter-categories__item {
-  padding: 6px 0;
   display: flex;
+  padding: 6px 0;
 
   & > a {
     flex-grow: 1;
@@ -189,6 +202,7 @@ $local-item-padding-left: 14px;
     }
   }
 }
+
 .filter-categories__item--parent {
   position: relative;
 
@@ -196,9 +210,11 @@ $local-item-padding-left: 14px;
     #{$padding-inline-start}: $local-item-padding-left;
   }
 }
+
 .filter-categories__item--current {
   font-weight: $font-weight-bold;
 }
+
 .filter-categories__item--child {
   position: relative;
   font-size: 15px;
@@ -207,21 +223,23 @@ $local-item-padding-left: 14px;
     #{$padding-inline-start}: $local-item-padding-left;
   }
 }
+
 .filter-categories__arrow {
-  fill: $filter-title-default-arrow-color;
   position: absolute;
   top: 10px;
+  fill: $filter-title-default-arrow-color;
 
   @include direction {
     #{$inset-inline-start}: 0;
     transform: scaleX(1 * $transform-direction);
   }
 }
+
 .filter-categories__counter {
-  font-size: 12px;
-  line-height: 12px;
   padding-top: 4px;
   font-weight: $font-weight-normal;
+  font-size: 12px;
+  line-height: 12px;
   color: $card-font-muted-color;
 }
 

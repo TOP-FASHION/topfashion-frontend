@@ -5,15 +5,17 @@
 
 
 @mixin local-offcanvas() {
-  border: none;
   padding-top: 0;
+  border: none;
 
   .widget-filters__title {
     display: none;
   }
+
   .widget-filters__item:first-child {
     border-top: none;
   }
+
   .widget-filters__item {
     border-width: 1px;
   }
@@ -21,19 +23,21 @@
 
 
 .widget-filters {
+  padding: $widget-shop-padding;
   border: $card-border;
   border-radius: $card-border-radius;
-  padding: $widget-shop-padding;
 }
+
 .widget-filters__item {
-  padding: 8px $widget-shop-padding;
   margin: 0 (-$widget-shop-padding);
+  padding: 8px $widget-shop-padding;
   border-bottom: 2px solid $card-border-color;
 
   &:first-child {
     border-top: 2px solid $card-border-color;
   }
 }
+
 .widget-filters__actions {
   padding-top: 24px;
   padding-bottom: 16px;
@@ -47,25 +51,26 @@
 
 $local-title-vertical-padding: 6px;
 $local-title-horizontal-padding: 10px;
-$local-transition-duration: .2s;
+$local-transition-duration: 0.2s;
 
 
 .filter {}
+
 .filter__title {
-  display: block;
-  border: none;
-  padding: $local-title-vertical-padding $local-title-horizontal-padding;
-  cursor: pointer;
-  width: calc(100% + #{$local-title-horizontal-padding * 2});
   position: relative;
-  color: inherit;
+  display: block;
+  width: calc(100% + #{$local-title-horizontal-padding * 2});
+  margin: 0 #{-$local-title-horizontal-padding};
+  padding: $local-title-vertical-padding $local-title-horizontal-padding;
   font-weight: $font-weight-bold;
   font-size: 15px;
   line-height: 18px;
-  border-radius: 2px;
-  margin: 0 #{-$local-title-horizontal-padding};
-  transition: background-color .2s, fill .2s;
+  color: inherit;
   background: $filter-title-default-bg;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
 
   @include direction {
@@ -74,8 +79,8 @@ $local-transition-duration: .2s;
 
   &:focus,
   &:hover {
-    transition-duration: .1s, .1s;
     background: $filter-title-hover-bg;
+    transition-duration: 0.1s, 0.1s;
     fill: $filter-title-hover-arrow-color;
   }
 
@@ -83,6 +88,7 @@ $local-transition-duration: .2s;
     outline: none;
   }
 }
+
 .filter__arrow {
   position: absolute;
   top: 5px + $local-title-vertical-padding;
@@ -92,27 +98,31 @@ $local-transition-duration: .2s;
     #{$inset-inline-end}: $local-title-horizontal-padding;
   }
 }
+
 .filter__body {
+  height: 0;
   margin: 0 (-$widget-shop-padding);
   overflow: hidden;
   visibility: hidden;
-  height: 0;
   opacity: 0;
-  transition: height $local-transition-duration,
-  opacity $local-transition-duration,
-  visibility 0s $local-transition-duration;
+  transition:
+    height $local-transition-duration,
+    opacity $local-transition-duration,
+    visibility 0s $local-transition-duration;
 }
+
 .filter__container {
   padding: 10px $widget-shop-padding 16px;
 }
 
 .filter--opened {
   .filter__body {
-    transition-delay: 0s, 0s;
-    visibility: visible;
     height: auto;
+    visibility: visible;
     opacity: 1;
+    transition-delay: 0s, 0s;
   }
+
   .filter__arrow {
     transform: rotateZ(180deg);
   }
@@ -122,15 +132,18 @@ $local-margin: 8px;
 
 
 .filter-list {}
+
 .filter-list__list {
   margin: -$local-margin 0;
 }
+
 .filter-list__item {
-  padding: 1px 0;
-  cursor: pointer;
   display: flex;
   margin: $local-margin 0;
+  padding: 1px 0;
+  cursor: pointer;
 }
+
 .filter-list__input {
   flex-shrink: 0;
 
@@ -138,12 +151,14 @@ $local-margin: 8px;
     #{$margin-inline-end}: 7px;
   }
 }
+
 .filter-list__title {
+  flex-grow: 1;
   padding: 1px 0;
   font-size: 14px;
   line-height: 16px;
-  flex-grow: 1;
 }
+
 .filter-list__counter {
   padding-top: 3px;
   font-size: 12px;
@@ -154,6 +169,7 @@ $local-margin: 8px;
     #{$margin-inline-start}: 12px;
   }
 }
+
 .filter-list__item--disabled {
   cursor: default;
 
@@ -164,25 +180,26 @@ $local-margin: 8px;
 
 $local-title-vertical-padding: 6px;
 $local-title-horizontal-padding: 10px;
-$local-transition-duration: .2s;
+$local-transition-duration: 0.2s;
 
 
 .filter {}
+
 .filter__title {
-  display: block;
-  border: none;
-  padding: $local-title-vertical-padding $local-title-horizontal-padding;
-  cursor: pointer;
-  width: calc(100% + #{$local-title-horizontal-padding * 2});
   position: relative;
-  color: inherit;
+  display: block;
+  width: calc(100% + #{$local-title-horizontal-padding * 2});
+  margin: 0 #{-$local-title-horizontal-padding};
+  padding: $local-title-vertical-padding $local-title-horizontal-padding;
   font-weight: $font-weight-bold;
   font-size: 15px;
   line-height: 18px;
-  border-radius: 2px;
-  margin: 0 #{-$local-title-horizontal-padding};
-  transition: background-color .2s, fill .2s;
+  color: inherit;
   background: $filter-title-default-bg;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
 
   @include direction {
@@ -191,8 +208,8 @@ $local-transition-duration: .2s;
 
   &:focus,
   &:hover {
-    transition-duration: .1s, .1s;
     background: $filter-title-hover-bg;
+    transition-duration: 0.1s, 0.1s;
     fill: $filter-title-hover-arrow-color;
   }
 
@@ -200,6 +217,7 @@ $local-transition-duration: .2s;
     outline: none;
   }
 }
+
 .filter__arrow {
   position: absolute;
   top: 5px + $local-title-vertical-padding;
@@ -209,27 +227,31 @@ $local-transition-duration: .2s;
     #{$inset-inline-end}: $local-title-horizontal-padding;
   }
 }
+
 .filter__body {
+  height: 0;
   margin: 0 (-$widget-shop-padding);
   overflow: hidden;
   visibility: hidden;
-  height: 0;
   opacity: 0;
-  transition: height $local-transition-duration,
-  opacity $local-transition-duration,
-  visibility 0s $local-transition-duration;
+  transition:
+    height $local-transition-duration,
+    opacity $local-transition-duration,
+    visibility 0s $local-transition-duration;
 }
+
 .filter__container {
   padding: 10px $widget-shop-padding 16px;
 }
 
 .filter--opened {
   .filter__body {
-    transition-delay: 0s, 0s;
-    visibility: visible;
     height: auto;
+    visibility: visible;
     opacity: 1;
+    transition-delay: 0s, 0s;
   }
+
   .filter__arrow {
     transform: rotateZ(180deg);
   }

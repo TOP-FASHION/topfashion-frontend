@@ -4,15 +4,15 @@
 @import '../../styles/mixin/hacks';
 
 .megamenu {
-  background: $megamenu-bg;
-  background-repeat: no-repeat;
-  color: $megamenu-font-color;
-  box-shadow: $megamenu-shadow;
-  min-height: 100%;
   width: 100%;
+  min-height: 100%;
   padding: 26px 30px;
   line-height: 1.5;
-  letter-spacing: .01em;
+  color: $megamenu-font-color;
+  letter-spacing: 0.01em;
+  background: $megamenu-bg;
+  background-repeat: no-repeat;
+  box-shadow: $megamenu-shadow;
 
   @include direction {
     background-position: $inline-end bottom;
@@ -20,9 +20,10 @@
 
   // without it IE renders a blurred menu
   @include only-ie() {
-    box-shadow: 0 0 0 1px rgba(#000, .15);
+    box-shadow: 0 0 0 1px rgba(#000, 0.15);
   }
 }
+
 .megamenu--departments {
   @include direction {
     #{$padding-inline-end}: 31px;
@@ -36,19 +37,20 @@
 }
 
 .megamenu__links {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 
   a {
     color: $megamenu-primary-link-color;
-    transition: color .15s;
+    transition: color 0.15s;
 
     &:hover {
       color: $link-hover-color;
     }
   }
 }
+
 .megamenu__links--level--0 {
   & > .megamenu__item + .megamenu__item--with-submenu,
   & > .megamenu__item--with-submenu + .megamenu__item {
@@ -64,16 +66,17 @@
   }
 
   & > .megamenu__item > a + .megamenu__links {
-    padding-top: 10px;
     margin-top: 3px;
+    padding-top: 10px;
     border-top: 1px solid $megamenu-divider-color;
   }
 }
+
 .megamenu__links--level--1 {
   & > .megamenu__item > a {
     font-size: 14px;
     color: $megamenu-secondary-link-color;
-    transition: color .15s;
+    transition: color 0.15s;
 
     &:hover {
       color: $link-hover-color;

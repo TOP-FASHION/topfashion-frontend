@@ -5,34 +5,37 @@
 .product-tabs {
   margin-top: 36px;
 }
+
 .product-tabs__list {
   display: flex;
+  margin-bottom: -$product-tabs-border-width;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: -$product-tabs-border-width;
 
   &::after,
   &::before {
     content: '';
     display: block;
-    width: 8px;
     flex-shrink: 0;
+    width: 8px;
   }
 }
+
 .product-tabs__item {
-  font-size: 20px;
   padding: 18px 48px;
+  font-weight: $font-weight-medium;
+  font-size: 20px;
+  color: inherit;
   background: none;
   border: none;
   border-bottom: $product-tabs-border-width solid transparent;
-  color: inherit;
-  font-weight: $font-weight-medium;
   border-radius: 3px 3px 0 0;
-  transition: all .15s;
+  transition: all 0.15s;
 
   &:focus {
     outline: none;
   }
+
   &:hover {
     color: inherit;
     background: $product-tabs-hover-bg;
@@ -44,36 +47,41 @@
       #{$margin-inline-start}: auto;
     }
   }
+
   &:last-child {
     @include direction {
       #{$margin-inline-end}: auto;
     }
   }
 }
+
 .product-tabs__item--active {
   transition-duration: 0s;
 
   &,
   &:hover {
-    cursor: default;
-    border-bottom-color: $product-tabs-active-border-color;
     background: transparent;
+    border-bottom-color: $product-tabs-active-border-color;
+    cursor: default;
   }
 }
+
 .product-tabs__content {
+  padding: 80px 90px;
   border: $product-tabs-border;
   border-radius: $product-tabs-border-radius;
-  padding: 80px 90px;
 }
+
 .product-tabs__pane {
-  overflow: hidden;
   height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 }
+
 .product-tabs__pane--active {
-  overflow: visible;
   height: auto;
+  overflow: visible;
   opacity: 1;
 }
 
@@ -83,6 +91,7 @@
   .product-tabs__item {
     padding: 14px 30px;
   }
+
   .product-tabs__content {
     padding: 48px 50px;
   }
@@ -94,24 +103,30 @@
     padding: 60px 70px;
   }
 }
+
 @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
   .product-tabs {
     margin-top: 40px;
   }
+
   .product-tabs .product-tabs__item {
     padding: 14px 30px;
   }
+
   .product-tabs .product-tabs__content {
     padding: 40px 50px;
   }
 }
+
 @media (max-width: breakpoint(sm-end)) {
   .product-tabs {
     margin-top: 30px;
   }
+
   .product-tabs .product-tabs__item {
     padding: 10px 22px;
   }
+
   .product-tabs .product-tabs__content {
     padding: 24px;
   }

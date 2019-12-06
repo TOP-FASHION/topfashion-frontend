@@ -3,17 +3,18 @@
 @import '../../styles/mixin/direction';
 
 .block-features {}
+
 .block-features__list {
+  display: flex;
   border: $card-border;
   border-radius: $card-border-radius;
-  display: flex;
 }
 
 .block-features__item {
-  flex-basis: 0;
-  flex-grow: 1;
-  padding: 16px 24px;
   display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 16px 24px;
 }
 
 .block-features__divider {
@@ -24,8 +25,8 @@
   flex-shrink: 0;
   width: 48px;
   height: 48px;
-  fill: $block-features-icon-color;
   font-size: 32px;
+  fill: $block-features-icon-color;
 
   @include direction {
     #{$margin-inline-end}: 20px;
@@ -41,9 +42,9 @@
 }
 
 .block-features__title {
+  font-weight: $font-weight-bold;
   font-size: 17px;
   line-height: 24px;
-  font-weight: $font-weight-bold;
 }
 
 .block-features__subtitle {
@@ -61,11 +62,11 @@
 
   .block-features__item {
     flex-direction: column;
-    background: $block-features-boxed-bg;
-    border-radius: 3px;
-    text-align: center;
     align-items: center;
     padding: 30px 28px 28px;
+    text-align: center;
+    background: $block-features-boxed-bg;
+    border-radius: 3px;
   }
 
   .block-features__divider {
@@ -84,9 +85,11 @@
     .block-features__list {
       flex-wrap: wrap;
     }
+
     .block-features__item {
       width: 50%;
     }
+
     .block-features__divider:nth-child(4n) {
       width: 100%;
       height: $local-margin;
@@ -119,15 +122,17 @@
     background: $card-border-color;
   }
 
-  @media (max-width: breakpoint(lg-end)) and (min-width: breakpoint(lg-start)), (max-width: breakpoint(sm-end)) and (min-width: breakpoint(sm-start)){
+  @media (max-width: breakpoint(lg-end)) and (min-width: breakpoint(lg-start)), (max-width: breakpoint(sm-end)) and (min-width: breakpoint(sm-start)) {
     .block-features__item {
       padding: 12px;
     }
+
     .block-features__icon {
       @include direction {
         #{$margin-inline-end}: 16px;
       }
     }
+
     .block-features__content {
       padding-top: 0;
     }
@@ -137,11 +142,13 @@
     .block-features__list {
       flex-wrap: wrap;
     }
+
     .block-features__item {
+      flex-shrink: 0;
       flex-basis: auto;
       width: calc(50% - 1px);
-      flex-shrink: 0;
     }
+
     .block-features__divider:nth-child(4n) {
       width: 100%;
       height: 2px;
@@ -150,14 +157,15 @@
 
   @media (max-width: breakpoint(xs-end)) and (min-width: 420px) {
     .block-features__item {
-      text-align: center;
       flex-direction: column;
+      text-align: center;
     }
+
     .block-features__icon {
-      margin-bottom: 20px;
-      width: 100%;
       display: flex;
       justify-content: center;
+      width: 100%;
+      margin-bottom: 20px;
 
       @include direction {
         #{$margin-inline-end}: 0;
@@ -169,16 +177,19 @@
     .block-features__list {
       flex-wrap: wrap;
     }
+
     .block-features__item {
+      flex-shrink: 0;
       flex-basis: auto;
       width: 100%;
-      flex-shrink: 0;
     }
+
     .block-features__icon {
       @include direction {
         #{$margin-inline-end}: 24px;
       }
     }
+
     .block-features__divider {
       width: 100%;
       height: 2px;

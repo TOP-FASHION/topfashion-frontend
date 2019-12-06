@@ -3,12 +3,15 @@
 @import '../../styles/mixin/direction';
 
 .page-header {}
+
 .page-header__container {
   padding-bottom: 32px;
 }
+
 .page-header__breadcrumb {
   padding-top: 16px;
 }
+
 .page-header__title {
   padding-top: 6px;
 
@@ -27,10 +30,12 @@
     }
   }
 }
+
 @media (max-width: breakpoint(sm-end)) {
   .page-header__container {
     padding-bottom: 24px;
   }
+
   .page-header__title {
     padding-top: 2px;
 
@@ -46,12 +51,13 @@ $local-padding: 12px;
 
 
 .breadcrumb {
-  background: transparent;
+  margin-bottom: 0;
   padding: 0;
   font-size: 14px;
   line-height: 20px;
-  margin-bottom: 0;
+  background: transparent;
 }
+
 .breadcrumb-item {
   position: relative;
 
@@ -62,8 +68,9 @@ $local-padding: 12px;
 
   a {
     color: $breadcrumb-link-default-color;
-    transition: color .15s;
+    transition: color 0.15s;
   }
+
   a:hover {
     color: $breadcrumb-link-hover-color;
   }
@@ -83,10 +90,11 @@ $local-padding: 12px;
     color: $breadcrumb-link-active-color;
   }
 }
+
 .breadcrumb-arrow {
-  color: $breadcrumb-arrow-color;
   position: absolute;
   top: 4px;
+  color: $breadcrumb-arrow-color;
 
   @include direction {
     #{$inset-inline-end}: $local-padding - 1px;

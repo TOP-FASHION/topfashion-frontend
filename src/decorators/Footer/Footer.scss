@@ -12,11 +12,11 @@
 }
 
 .site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 54px;
   border-top: $footer-copyright-border;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .site-footer__copyright {
@@ -26,11 +26,13 @@
     text-decoration: underline;
   }
 }
+
 .site-footer__payments {
   img {
     max-width: 100%;
   }
 }
+
 .site-footer__widget {
   & + & {
     margin-top: 24px;
@@ -43,9 +45,9 @@
   }
 
   .site-footer__bottom {
-    padding: 20px 0 24px;
     flex-wrap: wrap;
     height: auto;
+    padding: 20px 0 24px;
   }
 
   .site-footer__payments {

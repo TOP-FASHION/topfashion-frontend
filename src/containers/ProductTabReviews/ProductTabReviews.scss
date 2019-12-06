@@ -5,6 +5,7 @@
 .review {
   display: flex;
 }
+
 .review__avatar {
   flex-shrink: 0;
 
@@ -18,22 +19,26 @@
     border-radius: 1000px;
   }
 }
+
 .review__author {
   margin-top: -4px;
-  font-size: 16px;
   font-weight: $font-weight-medium;
+  font-size: 16px;
 }
+
 .review__rating {
   margin-top: 2px;
 }
+
 .review__text {
-  font-size: 16px;
   margin-top: 12px;
+  font-size: 16px;
 }
+
 .review__date {
   margin-top: 10px;
-  color: $card-font-muted-color;
   font-size: 14px;
+  color: $card-font-muted-color;
 }
 
 @media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(sm-end)) {
@@ -47,6 +52,7 @@
     }
   }
 }
+
 @media (max-width: breakpoint(xs-end)) {
   .review__avatar {
     display: none;
@@ -56,16 +62,18 @@
 .reviews-view__header {
   margin-bottom: 50px;
 }
+
 .reviews-view__form {
   margin-top: 40px;
-  border-top: 1px solid $card-divider-color;
   padding-top: 60px;
+  border-top: 1px solid $card-divider-color;
 }
 
 @media (max-width: breakpoint(xs-end)) {
   .reviews-view__header {
     margin-bottom: 32px;
   }
+
   .reviews-view__form {
     margin-top: 30px;
     padding-top: 50px;
@@ -73,20 +81,23 @@
 }
 
 .reviews-list {}
+
 .reviews-list__content {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 .reviews-list__item {
-  border-bottom: 1px solid $card-divider-color;
   padding-top: 28px;
   padding-bottom: 24px;
+  border-bottom: 1px solid $card-divider-color;
 
   &:first-child {
     padding-top: 0;
   }
 }
+
 .reviews-list__pagination {
   margin-top: 36px;
 }

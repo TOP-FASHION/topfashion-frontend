@@ -7,15 +7,15 @@ body {
     overflow: hidden;
 
     // Logo
-    &:after {
+    &::after {
       content: '';
       position: fixed;
       top: 0;
-      left: 0;
       right: 0;
       bottom: 0;
-      background: url(/cms/img/logo.svg) center center / 250px no-repeat #fff;
+      left: 0;
       z-index: 99999;
+      background: url(/cms/img/logo.svg) center center / 250px no-repeat #fff;
     }
   }
 
@@ -24,20 +24,20 @@ body {
   &.offline #root > span {
     position: fixed;
     top: 50%;
-    left: 0;
     right: 0;
+    left: 0;
     z-index: 100000;
     margin-top: 40px;
-    color: #777;
     font-size: 12px;
     text-align: center;
+    color: #777;
     text-transform: uppercase;
   }
 
   // Offline
   &.offline {
     // Logo
-    &:after {
+    &::after {
       filter: grayscale(100%);
     }
 

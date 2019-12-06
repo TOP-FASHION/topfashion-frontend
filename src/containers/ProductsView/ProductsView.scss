@@ -8,28 +8,34 @@
   .products-list__body {
     margin: #{-$margin-vertical} #{-$margin-horizontal};
   }
+
   .products-list__item {
     @if ($columns == 1) {
       width: 100%;
-    } @else {
+    }
+
+    @else {
       width: calc(#{100% / $columns} - #{$margin-horizontal*2});
     }
+
     margin: $margin-vertical $margin-horizontal;
   }
 }
 
 
 .products-list {}
+
 .products-list__body {
   display: flex;
   flex-wrap: wrap;
 }
+
 .products-list__item {
   display: flex;
 
   .product-card {
-    width: 100%;
     flex-shrink: 0;
+    width: 100%;
   }
 }
 
@@ -45,6 +51,7 @@
     @include product-card-grid-with-features();
   }
 }
+
 .products-list[data-layout="grid-3-sidebar"] {
   @include local-layout(3, 6px, 6px);
 
@@ -57,16 +64,20 @@
       @include product-card-grid-sm();
     }
   }
+
   @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
     @include local-layout(3, 6px, 6px);
   }
+
   @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
     @include local-layout(2, 6px, 6px);
   }
+
   @media (max-width: 479px) {
     @include local-layout(1, 6px, 6px);
   }
 }
+
 .products-list[data-layout="grid-4-full"] {
   @include local-layout(4, 6px, 6px);
 
@@ -79,16 +90,20 @@
       @include product-card-grid-sm();
     }
   }
+
   @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
     @include local-layout(3, 6px, 6px);
   }
+
   @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
     @include local-layout(2, 6px, 6px);
   }
+
   @media (max-width: 479px) {
     @include local-layout(1, 6px, 6px);
   }
 }
+
 .products-list[data-layout="grid-5-full"] {
   @include local-layout(5, 6px, 6px);
 
@@ -101,12 +116,15 @@
   @media (max-width: breakpoint(lg-end)) and (min-width: breakpoint(lg-start)) {
     @include local-layout(4, 6px, 6px);
   }
+
   @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
     @include local-layout(3, 6px, 6px);
   }
+
   @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
     @include local-layout(2, 6px, 6px);
   }
+
   @media (max-width: 479px) {
     @include local-layout(1, 6px, 6px);
   }
@@ -128,9 +146,11 @@
 }
 
 .products-view {}
+
 .products-view__options {
   padding-bottom: 20px;
 }
+
 .products-view__pagination {
   padding-top: 30px;
 }
@@ -142,19 +162,23 @@
   align-items: center;
   font-size: 15px;
 }
+
 .view-options__legend {
   @include direction {
     #{$margin-inline-start}: 20px;
   }
 }
+
 .view-options__divider {
   flex-grow: 1;
 }
+
 .view-options__filters-button {
   @include direction {
     #{$margin-inline-end}: 12px;
   }
 }
+
 .view-options__control {
   display: flex;
   align-items: center;
@@ -177,15 +201,18 @@
   .view-options {
     flex-wrap: wrap;
   }
+
   .view-options__legend {
     @include direction {
       #{$margin-inline-start}: auto;
     }
   }
+
   .view-options__divider {
     width: 100%;
     height: 12px;
   }
+
   .view-options__control {
     @include direction {
       #{$margin-inline-start}: auto;
@@ -205,9 +232,11 @@
     width: 100%;
     padding-top: 12px;
   }
+
   .view-options__divider {
     height: 8px;
   }
+
   .view-options__control {
     display: block;
 
@@ -235,19 +264,21 @@
 
 
 .layout-switcher {}
+
 .layout-switcher__list {
   display: flex;
 }
+
 .layout-switcher__button {
-  border: 1px solid $layout-switcher-default-border-color;
-  cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0 9px;
+  align-items: center;
   height: 32px;
-  border-radius: 0;
+  padding: 0 9px;
   background: $layout-switcher-default-bg;
+  border: 1px solid $layout-switcher-default-border-color;
+  border-radius: 0;
+  cursor: pointer;
   fill: $layout-switcher-default-color;
 
   &:focus {
@@ -255,8 +286,8 @@
   }
 
   &:hover {
-    border-color: $layout-switcher-hover-border-color;
     background: $layout-switcher-hover-bg;
+    border-color: $layout-switcher-hover-border-color;
     fill: $layout-switcher-hover-color;
   }
 
@@ -266,6 +297,7 @@
       #{$border-end-start-radius}: 2px;
     }
   }
+
   &:last-child {
     @include direction {
       #{$border-start-end-radius}: 2px;
@@ -282,9 +314,9 @@
 
 .layout-switcher__button--active,
 .layout-switcher__button--active:hover {
-  cursor: default;
-  border-color: $layout-switcher-active-border-color;
-  background: $layout-switcher-active-bg;
-  fill: $layout-switcher-active-color;
   z-index: 1;
+  background: $layout-switcher-active-bg;
+  border-color: $layout-switcher-active-border-color;
+  cursor: default;
+  fill: $layout-switcher-active-color;
 }

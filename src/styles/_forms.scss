@@ -5,14 +5,16 @@
 .form-group {
   margin-bottom: 1.5rem;
 }
+
 .form-check {
   @include direction {
     #{$padding-inline-start}: 1.5rem;
   }
 }
+
 .form-check-input {
   position: absolute;
-  margin-top: .1875rem;
+  margin-top: 0.1875rem;
 
   @include direction {
     #{$margin-inline-start}: -1.5rem;
@@ -27,14 +29,16 @@
 
 
 .form-control {
-  border-radius: 2px;
   line-height: 1.25;
+  border-radius: 2px;
 }
+
 .form-control-sm {
   height: calc(1.875rem + 2px);
+  padding: 0.3125rem 0.5rem;
   line-height: 1.25;
-  padding: .3125rem .5rem;
 }
+
 .form-control-lg {
   height: calc(2.75rem + 2px);
   line-height: 1.25;
@@ -53,6 +57,7 @@
 @mixin local-select-arrow($color) {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 10'%3E%3Cpath fill='#{str-replace(#{$color}, '#', '%23')}' d='M4.503,4 L0.497,4 C0.094,4 -0.142,3.492 0.089,3.122 L2.095,0.233 C2.293,-0.084 2.712,-0.084 2.911,0.233 L4.911,3.122 C5.142,3.492 4.906,4 4.503,4 ZM0.497,6 L4.503,6 C4.906,6 5.142,6.504 4.911,6.871 L2.905,9.737 C2.707,10.052 2.288,10.052 2.089,9.737 L0.089,6.871 C-0.142,6.504 0.094,6 0.497,6 Z'/%3E%3C/svg%3E%0A");
 }
+
 @mixin local-select-define-size($size: '') {
   @if ($size != '') {
     $size: '-' + $size;
@@ -66,6 +71,7 @@
     @content;
   }
 }
+
 select.form-control {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -82,16 +88,18 @@ select.form-control {
   background-size: 5px 10px;
 
   @include direction {
-    background-position: $inline-end .75rem center;
-    #{$padding-inline-end}: calc(.75rem * 2 + 5px);
+    background-position: $inline-end 0.75rem center;
+    #{$padding-inline-end}: calc(0.75rem * 2 + 5px);
   }
 }
+
 @include local-select-define-size('sm') {
   @include direction {
-    background-position: $inline-end .5rem center;
-    #{$padding-inline-end}: calc(.5rem * 2 + 5px);
+    background-position: $inline-end 0.5rem center;
+    #{$padding-inline-end}: calc(0.5rem * 2 + 5px);
   }
 }
+
 @include local-select-define-size('lg') {
   @include direction {
     background-position: $inline-end 1rem center;
@@ -102,54 +110,60 @@ select.form-control {
 
 $local-circle-size: 16px;
 $local-inner-circle-size: 6px;
-$local-transition-duration: .2s;
+$local-transition-duration: 0.2s;
 
 
 .input-radio {
   display: inline-block;
 }
+
 .input-radio__body {
-  display: block;
   position: relative;
+  display: block;
   width: $local-circle-size;
   height: $local-circle-size;
 }
+
 .input-radio__input {
-  opacity: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   cursor: inherit;
+  opacity: 0;
 }
+
 .input-radio__circle {
   display: block;
   width: $local-circle-size;
   height: $local-circle-size;
-  border-radius: $local-circle-size / 2;
   background: $input-radio-circle-bg;
+  border-radius: $local-circle-size / 2;
   box-shadow: $input-radio-circle-shadow;
-  transition: background $local-transition-duration,
-  box-shadow $local-transition-duration;
+  transition:
+    background $local-transition-duration,
+    box-shadow $local-transition-duration;
 
   &::after {
-    display: block;
     content: '';
     position: absolute;
-    left: ($local-circle-size - $local-inner-circle-size) / 2;
     top: ($local-circle-size - $local-inner-circle-size) / 2;
+    left: ($local-circle-size - $local-inner-circle-size) / 2;
+    display: block;
     width: $local-inner-circle-size;
     height: $local-inner-circle-size;
-    border-radius: $local-inner-circle-size / 2;
     background: $input-radio-inner-circle-color;
+    border-radius: $local-inner-circle-size / 2;
     transform: scale(0);
-    transition: background $local-transition-duration,
-    transform $local-transition-duration,
-    visibility 0s $local-transition-duration;
     visibility: hidden;
+    transition:
+      background $local-transition-duration,
+      transform $local-transition-duration,
+      visibility 0s $local-transition-duration;
   }
 }
+
 .input-radio__input:checked ~ {
   .input-radio__circle {
     background: $input-radio-checked-circle-bg;
@@ -157,12 +171,13 @@ $local-transition-duration: .2s;
 
     &::after {
       background: $input-radio-checked-inner-circle-color;
+      transform: scale(1);
       visibility: visible;
       transition-delay: 0s, 0s, 0s;
-      transform: scale(1);
     }
   }
 }
+
 .input-radio__input:disabled ~ {
   .input-radio__circle {
     background: $input-radio-disabled-circle-bg;
@@ -177,64 +192,74 @@ $local-transition-duration: .2s;
 
 $local-box-size: 16px;
 $local-border-radius: 1.2px;
-$local-transition-duration: .15s;
+$local-transition-duration: 0.15s;
 
 
 .input-check {
   display: inline-block;
 }
+
 .input-check__body {
-  display: block;
   position: relative;
+  display: block;
   width: $local-box-size;
   height: $local-box-size;
 }
+
 .input-check__input {
-  opacity: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   cursor: inherit;
+  opacity: 0;
 }
+
 .input-check__box {
   display: block;
   width: $local-box-size;
   height: $local-box-size;
-  border-radius: $local-border-radius;
   background: $input-check-box-bg;
+  border-radius: $local-border-radius;
   box-shadow: $input-check-box-shadow;
-  transition: background $local-transition-duration,
-  box-shadow $local-transition-duration;
+  transition:
+    background $local-transition-duration,
+    box-shadow $local-transition-duration;
 }
+
 .input-check__icon {
-  pointer-events: none;
   position: absolute;
-  left: 0;
   top: 1px;
-  fill: $input-check-icon-color;
+  left: 0;
   transform: scale(0);
-  transition: fill $local-transition-duration,
-  transform $local-transition-duration,
-  visibility 0s $local-transition-duration;
+  transition:
+    fill $local-transition-duration,
+    transform $local-transition-duration,
+    visibility 0s $local-transition-duration;
+  pointer-events: none;
+  fill: $input-check-icon-color;
 }
+
 .input-check__input:checked ~ {
   .input-check__box {
     background: $input-check-checked-box-bg;
     box-shadow: $input-check-checked-box-shadow;
   }
+
   .input-check__icon {
-    fill: $input-check-checked-icon-color;
-    transition-delay: 0s, 0s, 0s;
     transform: scale(0.7);
+    transition-delay: 0s, 0s, 0s;
+    fill: $input-check-checked-icon-color;
   }
 }
+
 .input-check__input:disabled ~ {
   .input-check__box {
     background: $input-check-disabled-box-bg;
     box-shadow: $input-check-disabled-box-shadow;
   }
+
   .input-check__icon {
     fill: $input-check-disabled-icon-color;
   }

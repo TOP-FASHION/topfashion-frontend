@@ -2,46 +2,48 @@
 @import '../../styles/mixin/direction';
 
 .input-number {
+  position: relative;
   display: block;
   width: 100%;
-  position: relative;
 }
+
 .input-number__input {
-  -moz-appearance: textfield;
   display: block;
   width: 100%;
   min-width: 88px;
   padding: 0 24px 1px;
   text-align: center;
+  -moz-appearance: textfield;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
   }
 }
+
 .input-number__sub,
 .input-number__add {
   position: absolute;
-  height: 100%;
-  width: 24px;
   top: 0;
+  width: 24px;
+  height: 100%;
   cursor: pointer;
-  user-select: none;
   opacity: 0.3;
   transition: opacity 0.18s;
+  user-select: none;
 
-  &:before,
-  &:after {
-    display: block;
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    display: block;
     background: currentColor;
+    transform: translateX(-50%) translateY(-50%);
   }
 
-  &:before {
+  &::before {
     width: 8px;
     height: 2px;
   }
@@ -50,17 +52,19 @@
     opacity: 1;
   }
 }
+
 .input-number__sub {
   @include direction {
     #{$inset-inline-start}: 1px;
   }
 }
+
 .input-number__add {
   @include direction {
     #{$inset-inline-end}: 1px;
   }
 
-  &:after {
+  &::after {
     width: 2px;
     height: 8px;
   }

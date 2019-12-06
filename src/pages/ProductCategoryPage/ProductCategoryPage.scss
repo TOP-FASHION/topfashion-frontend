@@ -9,12 +9,14 @@
 
 @media (min-width: breakpoint(lg-start)) {
   .shop-layout__sidebar {
-    width: 255px;
     flex-shrink: 0;
+    width: 255px;
   }
+
   .shop-layout__content {
     width: calc(100% - 285px);
   }
+
   .shop-layout--sidebar--start {
     .shop-layout__sidebar {
       @include direction {
@@ -22,6 +24,7 @@
       }
     }
   }
+
   .shop-layout--sidebar--end {
     .shop-layout__sidebar {
       @include direction {
@@ -36,13 +39,16 @@
   .shop-layout {
     flex-wrap: wrap;
   }
+
   .shop-layout__content,
   .shop-layout__sidebar {
     width: 100%;
   }
+
   .shop-layout__sidebar {
     order: 1;
   }
+
   .shop-layout--sidebar--start,
   .shop-layout--sidebar--end {
     .shop-layout__sidebar {

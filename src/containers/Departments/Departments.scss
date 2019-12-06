@@ -3,27 +3,28 @@
 @import '../../styles/mixin/direction';
 
 
-$local-transition-duration: .25s;
+$local-transition-duration: 0.25s;
 
 
 .departments {
+  position: relative;
   width: 255px;
   height: $departments-height;
   color: $departments-font-color;
-  position: relative;
 }
+
 .departments__button {
-  border: none;
-  background: transparent;
-  color: inherit;
-  font-size: 15px;
   position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
-  cursor: default;
-  font-weight: $font-weight-medium;
   padding: 0;
+  font-weight: $font-weight-medium;
+  font-size: 15px;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: default;
 
   @include direction {
     #{$padding-inline-end}: 32px;
@@ -35,69 +36,77 @@ $local-transition-duration: .25s;
     outline: none;
   }
 }
+
 .departments__button-icon {
   position: absolute;
   top: calc(50% - 7px);
+  transition: fill 0.2s;
   fill: $departments-icon-color;
-  transition: fill .2s;
 
   @include direction {
     #{$inset-inline-start}: 16px;
   }
 }
+
 .departments__button-arrow {
   position: absolute;
   top: calc(50% - 3px);
+  transition: fill 0.2s, transform 0.2s;
   fill: $departments-icon-color;
-  transition: fill .2s, transform .2s;
 
   @include direction {
     #{$inset-inline-end}: 13px;
     top: 15px;
   }
 }
+
 .departments__body {
+  position: absolute;
   width: 100%;
   padding-top: $departments-height;
-  position: absolute;
   background: $departments-bg;
-  box-shadow: $departments-shadow;
   border-radius: 2px;
+  box-shadow: $departments-shadow;
 }
+
 .departments__links {
   position: relative;
+  margin: 6px 0 0;
+  padding: 0 0 14px;
 
   // reset list
   list-style: none;
-  padding: 0 0 14px;
-  margin: 6px 0 0;
 
   > li {
     &:hover .departments__menu,
     &:hover .departments__megamenu {
       visibility: visible;
     }
+
     &:hover > a {
       background: $departments-item-hover-bg;
     }
   }
+
   > li > a {
-    font-weight: $departments-font-weight;
     position: relative;
     display: block;
     padding: 10px 16px;
-    color: inherit;
+    font-weight: $departments-font-weight;
     font-size: 14px;
     line-height: 16px;
-    letter-spacing: .02em;
+    color: inherit;
+    letter-spacing: 0.02em;
   }
 }
+
 .departments__item--menu {
   position: relative;
 }
+
 .departments__link-arrow {
-  top: calc(50% - 5px);
   position: absolute;
+  top: calc(50% - 5px);
   fill: $departments-arrow-color;
 
   @include direction {
@@ -105,6 +114,7 @@ $local-transition-duration: .25s;
     transform: scaleX(1 * $transform-direction);
   }
 }
+
 .departments__megamenu {
   position: absolute;
   top: 0;
@@ -115,6 +125,7 @@ $local-transition-duration: .25s;
     #{$inset-inline-start}: 100%;
   }
 }
+
 .departments__menu {
   position: absolute;
   top: 0;
@@ -129,21 +140,23 @@ $local-transition-duration: .25s;
 .departments__megamenu--sm {
   width: (206px * 1 + 31px);
 }
+
 .departments__megamenu--nl {
   width: (206px * 2 + 31px);
 }
+
 .departments__megamenu--lg {
   width: (206px * 3 + 31px);
 }
+
 .departments__megamenu--xl {
   width: (206px * 4 + 31px);
 }
 
 .departments__links-wrapper {
-  overflow: hidden;
   height: 0;
+  overflow: hidden;
   opacity: 0;
-
   transition: height $local-transition-duration ease-in-out, opacity $local-transition-duration ease-in-out;
 }
 
@@ -159,21 +172,25 @@ $local-transition-duration: .25s;
     }
   }
 }
+
 .departments--fixed {
   .departments__button {
 
   }
 }
+
 .departments--opened {
   .departments__links-wrapper {
-    overflow: visible;
     height: auto;
+    overflow: visible;
     opacity: 1;
   }
+
   .departments__button-arrow {
     transform: rotateZ(180deg);
   }
 }
+
 .departments--transition {
   .departments__links-wrapper {
     overflow: hidden;
@@ -187,15 +204,19 @@ $local-transition-duration: .25s;
   .departments {
     width: 210px;
   }
+
   .departments__megamenu--sm {
     width: (172px * 1 + 32px);
   }
+
   .departments__megamenu--nl {
     width: (172px * 2 + 32px);
   }
+
   .departments__megamenu--lg {
     width: (172px * 3 + 32px);
   }
+
   .departments__megamenu--xl {
     width: (172px * 4 + 32px);
   }

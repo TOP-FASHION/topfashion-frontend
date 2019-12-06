@@ -7,17 +7,19 @@
     padding: 30px;
     background: color(content, background);
   }
+
   &-form {
     .group-root--buttons {
       position: relative;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
       @include media-xs {
         justify-content: left;
       }
     }
+
     &__resume-play {
       display: flex;
       flex-direction: column;
@@ -26,7 +28,7 @@
       margin: 30px -30px -30px;
       padding: 20px;
       text-align: center;
-      background: #F2F2F2;
+      background: #f2f2f2;
 
       .applied-country--gbr & {
         margin-bottom: 0;
@@ -43,10 +45,12 @@
         @include media-sm {
           margin: 20px -20px 0;
         }
+
         @include media-xs {
           margin: 20px -10px 0;
         }
       }
+
       .markdown-root {
         margin-bottom: 15px;
 
@@ -55,10 +59,11 @@
           font-style: italic;
         }
       }
+
       .login__resume {
         padding: 10px 30px;
-        color: color(primary, dark);
         font-weight: 400;
+        color: color(primary, dark);
         text-transform: none;
 
         &:hover {
@@ -67,11 +72,13 @@
       }
     }
   }
+
   &__button {
     @include media-xs {
       min-width: auto;
     }
   }
+
   &__forgot-password {
     position: absolute;
     right: 0;

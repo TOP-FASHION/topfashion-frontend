@@ -9,35 +9,43 @@
     text-decoration: underline;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: 1.75em;
-    margin-bottom: .75em;
+    margin-bottom: 0.75em;
   }
 
   p {
     margin-bottom: 1.5em;
   }
 
-  ol, ul {
+  ol,
+  ul {
     margin: 1.7em 0;
   }
 
   li {
-    margin-bottom: .7em;
+    margin-bottom: 0.7em;
   }
 
   > *:first-child {
     margin-top: 0;
   }
+
   > *:last-child {
     margin-bottom: 0;
   }
 
   a > img {
-    transition: opacity .2s;
+    transition: opacity 0.2s;
   }
+
   a:hover > img {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   img {
@@ -47,10 +55,11 @@
   figure {
     margin: 2.5em 0;
   }
+
   figcaption {
     margin-top: 20px;
-    text-align: center;
     font-size: 14px;
+    text-align: center;
     color: $typography-figcaption-color;
   }
 
@@ -61,20 +70,20 @@
     position: relative;
     width: $size;
     height: $size;
-    border-radius: $size / 2;
-    border: none;
-    background: $typography-hr-color;
     margin: 2.5em auto;
+    background: $typography-hr-color;
+    border: none;
+    border-radius: $size / 2;
 
     &::after,
     &::before {
-      position: absolute;
       content: '';
+      position: absolute;
       display: block;
       width: inherit;
       height: inherit;
-      border-radius: inherit;
       background: inherit;
+      border-radius: inherit;
     }
 
     &::after {
@@ -92,16 +101,16 @@
 
   blockquote {
     margin: 3em 2.5em 2.5em;
-    text-align: center;
-    font-size: 18px;
     font-style: italic;
+    font-size: 18px;
+    text-align: center;
 
     cite {
-      margin-top: -.5em;
-      color: $typography-cite-color;
       display: block;
-      font-size: 15px;
+      margin-top: -0.5em;
       font-style: normal;
+      font-size: 15px;
+      color: $typography-cite-color;
     }
 
     p {
@@ -111,6 +120,7 @@
     > *:first-child {
       margin-top: 0;
     }
+
     > *:last-child {
       margin-bottom: 0;
     }
@@ -120,28 +130,37 @@
 
 @media (max-width: breakpoint(md-end)) {
   .typography {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin-top: 1.25em;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
     }
   }
 }
+
 @media (max-width: breakpoint(sm-end)) {
   .typography {
-    ol, ul {
+    ol,
+    ul {
       margin: 1.5em 0;
     }
   }
 }
+
 @media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(sm-end)) {
   .typography blockquote {
     margin: 2.5em 1.5em 2em;
   }
 }
+
 @media (max-width: breakpoint(xs-end)) {
   .typography blockquote {
-    font-size: 16px;
     margin: 2.25em 0;
+    font-size: 16px;
 
     @include direction {
       text-align: $inline-start;
@@ -153,10 +172,10 @@
 .typography--expanded {
   @media (min-width: breakpoint(lg-start)) {
     figure {
-      text-align: center;
       position: relative;
       width: calc(100% + 190px);
       margin: 3em 0;
+      text-align: center;
 
       @include direction {
         #{$inset-inline-start}: -95px;

@@ -5,49 +5,55 @@
   margin-bottom: 0;
   padding: 0;
 }
+
 .page-link {
-  font-weight: $font-weight-medium;
-  border-radius: 2px;
-  border: none;
-  line-height: 1;
+  height: 33px;
   margin: 0 2px;
   padding: 9px 10px 8px;
-  height: 33px;
-  background: $pagination-bg;
+  font-weight: $font-weight-medium;
+  line-height: 1;
   color: $pagination-font-color;
+  background: $pagination-bg;
+  border: none;
+  border-radius: 2px;
   cursor: pointer;
   user-select: none;
 }
+
 .page-link:hover,
 .page-link:focus {
-  box-shadow: none;
-  background: $pagination-hover-bg;
   color: $pagination-hover-font-color;
+  background: $pagination-hover-bg;
+  box-shadow: none;
 }
+
 .page-link--with-arrow {
-  width: 29px;
   position: relative;
+  width: 29px;
 
   .page-link__arrow {
     position: absolute;
-    fill: currentColor;
     top: 10px;
+    fill: currentColor;
 
     @include direction {
       transform: scaleX(1 * $transform-direction);
     }
   }
+
   .page-link__arrow--left {
     @include direction {
       #{$inset-inline-start}: 10px;
     }
   }
+
   .page-link__arrow--right {
     @include direction {
       #{$inset-inline-start}: 11px;
     }
   }
 }
+
 .page-item:first-child .page-link {
   border-radius: 2px;
 
@@ -55,6 +61,7 @@
     #{$margin-inline-start}: 0;
   }
 }
+
 .page-item:last-child .page-link {
   border-radius: 2px;
 
@@ -62,12 +69,14 @@
     #{$margin-inline-end}: 0;
   }
 }
+
 .page-item.active .page-link {
-  background: $pagination-current-bg;
   color: $pagination-current-font-color;
+  background: $pagination-current-bg;
   cursor: default;
 }
+
 .page-item.disabled .page-link {
-  background: $pagination-disabled-bg;
   color: $pagination-disabled-font-color;
+  background: $pagination-disabled-bg;
 }
