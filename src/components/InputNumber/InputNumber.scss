@@ -1,5 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/direction';
 
 .input-number {
   position: relative;
@@ -18,6 +17,19 @@
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
+  }
+}
+
+.input-number__sub {
+  #{$inset-inline-start}: 1px;
+}
+
+.input-number__add {
+  #{$inset-inline-end}: 1px;
+
+  &::after {
+    width: 2px;
+    height: 8px;
   }
 }
 
@@ -50,22 +62,5 @@
 
   &:hover {
     opacity: 1;
-  }
-}
-
-.input-number__sub {
-  @include direction {
-    #{$inset-inline-start}: 1px;
-  }
-}
-
-.input-number__add {
-  @include direction {
-    #{$inset-inline-end}: 1px;
-  }
-
-  &::after {
-    width: 2px;
-    height: 8px;
   }
 }

@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
-@import '../../styles/mixin/hacks';
+
 
 .megamenu {
   width: 100%;
@@ -12,27 +11,16 @@
   letter-spacing: 0.01em;
   background: $megamenu-bg;
   background-repeat: no-repeat;
+  background-position: $inline-end bottom;
   box-shadow: $megamenu-shadow;
-
-  @include direction {
-    background-position: $inline-end bottom;
-  }
-
-  // without it IE renders a blurred menu
-  @include only-ie() {
-    box-shadow: 0 0 0 1px rgba(#000, 0.15);
-  }
 }
 
 .megamenu--departments {
-  @include direction {
-    #{$padding-inline-end}: 31px;
-  }
+  #{$padding-inline-end}: 31px;
+
 
   @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
-    @include direction {
-      #{$padding-inline-end}: 32px;
-    }
+    #{$padding-inline-end}: 32px;
   }
 }
 

@@ -1,10 +1,8 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 
 $local-transition-duration: 0.25s;
-
 
 .departments {
   position: relative;
@@ -21,16 +19,14 @@ $local-transition-duration: 0.25s;
   padding: 0;
   font-weight: $font-weight-medium;
   font-size: 15px;
+  text-align: $inline-start;
   color: inherit;
   background: transparent;
   border: none;
   cursor: default;
+  #{$padding-inline-end}: 32px;
+  #{$padding-inline-start}: 47px;
 
-  @include direction {
-    #{$padding-inline-end}: 32px;
-    #{$padding-inline-start}: 47px;
-    text-align: $inline-start;
-  }
 
   &:focus {
     outline: none;
@@ -42,22 +38,16 @@ $local-transition-duration: 0.25s;
   top: calc(50% - 7px);
   transition: fill 0.2s;
   fill: $departments-icon-color;
-
-  @include direction {
-    #{$inset-inline-start}: 16px;
-  }
+  #{$inset-inline-start}: 16px;
 }
 
 .departments__button-arrow {
   position: absolute;
   top: calc(50% - 3px);
+  top: 15px;
   transition: fill 0.2s, transform 0.2s;
   fill: $departments-icon-color;
-
-  @include direction {
-    #{$inset-inline-end}: 13px;
-    top: 15px;
-  }
+  #{$inset-inline-end}: 13px;
 }
 
 .departments__body {
@@ -107,12 +97,9 @@ $local-transition-duration: 0.25s;
 .departments__link-arrow {
   position: absolute;
   top: calc(50% - 5px);
+  transform: scaleX(1 * $transform-direction);
   fill: $departments-arrow-color;
-
-  @include direction {
-    #{$inset-inline-end}: 14px;
-    transform: scaleX(1 * $transform-direction);
-  }
+  #{$inset-inline-end}: 14px;
 }
 
 .departments__megamenu {
@@ -120,10 +107,7 @@ $local-transition-duration: 0.25s;
   top: 0;
   height: 100%;
   visibility: hidden;
-
-  @include direction {
-    #{$inset-inline-start}: 100%;
-  }
+  #{$inset-inline-start}: 100%;
 }
 
 .departments__menu {
@@ -131,10 +115,7 @@ $local-transition-duration: 0.25s;
   top: 0;
   height: 100%;
   visibility: hidden;
-
-  @include direction {
-    #{$inset-inline-start}: 100%;
-  }
+  #{$inset-inline-start}: 100%;
 }
 
 .departments__megamenu--sm {
@@ -173,12 +154,6 @@ $local-transition-duration: 0.25s;
   }
 }
 
-.departments--fixed {
-  .departments__button {
-
-  }
-}
-
 .departments--opened {
   .departments__links-wrapper {
     height: auto;
@@ -196,9 +171,6 @@ $local-transition-duration: 0.25s;
     overflow: hidden;
   }
 }
-
-
-
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .departments {

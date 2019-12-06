@@ -1,8 +1,5 @@
 @import '../../../styles/var';
 @import '../../../styles/functions';
-@import '../../../styles/mixin/direction';
-
-.footer-contacts {}
 
 .footer-contacts__title {
   margin-bottom: 25px;
@@ -14,10 +11,7 @@
   list-style: none;
   font-size: 15px;
   line-height: 22px;
-
-  @include direction {
-    #{$padding-inline-end}: 20px;
-  }
+  #{$padding-inline-end}: 20px;
 
   a {
     color: inherit;
@@ -45,10 +39,7 @@
   display: inline-block;
   width: 22px;
   text-align: center;
-
-  @include direction {
-    #{$margin-inline-end}: 2px;
-  }
+  #{$margin-inline-end}: 2px;
 }
 
 @media (max-width: breakpoint(sm-end)) {

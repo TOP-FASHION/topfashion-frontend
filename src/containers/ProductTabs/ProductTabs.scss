@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 .product-tabs {
   margin-top: 36px;
@@ -43,15 +42,11 @@
   }
 
   &:first-child {
-    @include direction {
-      #{$margin-inline-start}: auto;
-    }
+    #{$margin-inline-start}: auto;
   }
 
   &:last-child {
-    @include direction {
-      #{$margin-inline-end}: auto;
-    }
+    #{$margin-inline-end}: auto;
   }
 }
 
@@ -84,8 +79,6 @@
   overflow: visible;
   opacity: 1;
 }
-
-
 
 .product-tabs--layout--sidebar {
   .product-tabs__item {

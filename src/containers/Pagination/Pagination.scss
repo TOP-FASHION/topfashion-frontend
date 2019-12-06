@@ -1,5 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/direction';
 
 .pagination {
   margin-bottom: 0;
@@ -34,40 +33,27 @@
   .page-link__arrow {
     position: absolute;
     top: 10px;
+    transform: scaleX(1 * $transform-direction);
     fill: currentColor;
-
-    @include direction {
-      transform: scaleX(1 * $transform-direction);
-    }
   }
 
   .page-link__arrow--left {
-    @include direction {
-      #{$inset-inline-start}: 10px;
-    }
+    #{$inset-inline-start}: 10px;
   }
 
   .page-link__arrow--right {
-    @include direction {
-      #{$inset-inline-start}: 11px;
-    }
+    #{$inset-inline-start}: 11px;
   }
 }
 
 .page-item:first-child .page-link {
   border-radius: 2px;
-
-  @include direction {
-    #{$margin-inline-start}: 0;
-  }
+  #{$margin-inline-start}: 0;
 }
 
 .page-item:last-child .page-link {
   border-radius: 2px;
-
-  @include direction {
-    #{$margin-inline-end}: 0;
-  }
+  #{$margin-inline-end}: 0;
 }
 
 .page-item.active .page-link {

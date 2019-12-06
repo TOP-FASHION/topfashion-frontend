@@ -1,8 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 @import '../../styles/mixin/product-card';
-@import '../../styles/mixin/direction';
-
 
 @mixin local-offcanvas() {
   padding-top: 0;
@@ -43,9 +41,7 @@
   padding-bottom: 16px;
 
   & > .btn + .btn {
-    @include direction {
-      #{$margin-inline-start}: 8px;
-    }
+    #{$margin-inline-start}: 8px;
   }
 }
 
@@ -65,6 +61,7 @@ $local-transition-duration: 0.2s;
   font-weight: $font-weight-bold;
   font-size: 15px;
   line-height: 18px;
+  text-align: $inline-start;
   color: inherit;
   background: $filter-title-default-bg;
   border: none;
@@ -73,9 +70,6 @@ $local-transition-duration: 0.2s;
   transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
 
-  @include direction {
-    text-align: $inline-start;
-  }
 
   &:focus,
   &:hover {
@@ -93,10 +87,7 @@ $local-transition-duration: 0.2s;
   position: absolute;
   top: 5px + $local-title-vertical-padding;
   transition: transform $local-transition-duration;
-
-  @include direction {
-    #{$inset-inline-end}: $local-title-horizontal-padding;
-  }
+  #{$inset-inline-end}: $local-title-horizontal-padding;
 }
 
 .filter__body {
@@ -146,10 +137,7 @@ $local-margin: 8px;
 
 .filter-list__input {
   flex-shrink: 0;
-
-  @include direction {
-    #{$margin-inline-end}: 7px;
-  }
+  #{$margin-inline-end}: 7px;
 }
 
 .filter-list__title {
@@ -164,10 +152,7 @@ $local-margin: 8px;
   font-size: 12px;
   line-height: 12px;
   color: $card-font-muted-color;
-
-  @include direction {
-    #{$margin-inline-start}: 12px;
-  }
+  #{$margin-inline-start}: 12px;
 }
 
 .filter-list__item--disabled {
@@ -194,6 +179,7 @@ $local-transition-duration: 0.2s;
   font-weight: $font-weight-bold;
   font-size: 15px;
   line-height: 18px;
+  text-align: $inline-start;
   color: inherit;
   background: $filter-title-default-bg;
   border: none;
@@ -202,9 +188,6 @@ $local-transition-duration: 0.2s;
   transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
 
-  @include direction {
-    text-align: $inline-start;
-  }
 
   &:focus,
   &:hover {
@@ -222,10 +205,7 @@ $local-transition-duration: 0.2s;
   position: absolute;
   top: 5px + $local-title-vertical-padding;
   transition: transform $local-transition-duration;
-
-  @include direction {
-    #{$inset-inline-end}: $local-title-horizontal-padding;
-  }
+  #{$inset-inline-end}: $local-title-horizontal-padding;
 }
 
 .filter__body {

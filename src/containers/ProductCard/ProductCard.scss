@@ -2,8 +2,6 @@
 @import '../../styles/mixin/buttons';
 @import '../../styles/mixin/product-card';
 @import '../../styles/mixin/preloader';
-@import '../../styles/mixin/hacks';
-@import '../../styles/mixin/direction';
 
 .product-card {
   position: relative;
@@ -80,15 +78,11 @@
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
   fill: currentColor;
+  #{$inset-inline-end}: 0;
+  //@include logical-border-radius(0 2px 0 2px);
 
   &:focus {
     outline: none;
-  }
-
-  @include direction {
-    #{$inset-inline-end}: 0;
-
-    @include logical-border-radius(0 2px 0 2px);
   }
 }
 
@@ -132,10 +126,7 @@
   font-size: 13px;
   line-height: 1;
   color: $rating-legend-font-color;
-
-  @include direction {
-    #{$margin-inline-start}: 9px;
-  }
+  #{$margin-inline-start}: 9px;
 }
 
 .product-card__prices {
@@ -161,15 +152,11 @@
   margin-top: 24px;
 
   > *:first-child {
-    @include direction {
-      #{$margin-inline-end}: auto;
-    }
+    #{$margin-inline-end}: auto;
   }
 
   > * + * {
-    @include direction {
-      #{$margin-inline-start}: 4px;
-    }
+    #{$margin-inline-start}: 4px;
   }
 }
 
@@ -188,10 +175,7 @@
   li {
     position: relative;
     padding: 3px 0 3px;
-
-    @include direction {
-      #{$padding-inline-start}: 12px;
-    }
+    #{$padding-inline-start}: 12px;
   }
 
   li::before {
@@ -203,10 +187,7 @@
     height: 5px;
     border: 1px solid currentColor;
     border-radius: 2.5px;
-
-    @include direction {
-      #{$inset-inline-start}: 0;
-    }
+    #{$inset-inline-start}: 0;
   }
 }
 
@@ -217,10 +198,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  @include direction {
-    #{$inset-inline-start}: 18px;
-  }
+  #{$inset-inline-start}: 18px;
 }
 
 .product-card__badge {
@@ -232,10 +210,7 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
   border-radius: 1.5px;
-
-  @include direction {
-    #{$margin-inline-end}: 4px;
-  }
+  #{$margin-inline-end}: 4px;
 }
 
 .product-card__badge--sale {

@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 $local-close-button-size: 50px;
 
@@ -24,10 +23,8 @@ $local-close-button-size: 50px;
   cursor: pointer;
   transition: all 0.2s;
   fill: $quickview-close-default-color;
+  #{$inset-inline-end}: 0;
 
-  @include direction {
-    #{$inset-inline-end}: 0;
-  }
 
   &:focus,
   &:hover {

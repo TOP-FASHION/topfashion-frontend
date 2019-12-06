@@ -2,8 +2,6 @@
 @import './functions';
 @import './mixin/buttons';
 @import './mixin/preloader';
-@import './mixin/hacks';
-@import './mixin/direction';
 
 $local-transition-duration: 0.1s;
 
@@ -39,14 +37,6 @@ $local-transition-duration: 0.1s;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  @include only-ie() {
-    svg {
-      @include direction {
-        transform: translate((-50% * $transform-direction), -50%);
-      }
-    }
   }
 }
 

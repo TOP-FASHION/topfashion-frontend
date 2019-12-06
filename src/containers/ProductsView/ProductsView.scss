@@ -2,8 +2,6 @@
 @import '../../styles/functions';
 @import '../../styles/mixin/product-card';
 
-
-
 @mixin local-layout($columns: 1, $margin-vertical: 0, $margin-horizontal: 0) {
   .products-list__body {
     margin: #{-$margin-vertical} #{-$margin-horizontal};
@@ -130,9 +128,6 @@
   }
 }
 
-
-
-
 .products-list[data-layout="list"] {
   @include local-layout(1, 6px);
 
@@ -155,8 +150,6 @@
   padding-top: 30px;
 }
 
-
-
 .view-options {
   display: flex;
   align-items: center;
@@ -164,9 +157,7 @@
 }
 
 .view-options__legend {
-  @include direction {
-    #{$margin-inline-start}: 20px;
-  }
+  #{$margin-inline-start}: 20px;
 }
 
 .view-options__divider {
@@ -174,25 +165,18 @@
 }
 
 .view-options__filters-button {
-  @include direction {
-    #{$margin-inline-end}: 12px;
-  }
+  #{$margin-inline-end}: 12px;
 }
 
 .view-options__control {
   display: flex;
   align-items: center;
+  #{$margin-inline-start}: 24px;
 
-  @include direction {
-    #{$margin-inline-start}: 24px;
-  }
 
   label {
     margin-bottom: 0;
-
-    @include direction {
-      #{$margin-inline-end}: 8px;
-    }
+    #{$margin-inline-end}: 8px;
   }
 }
 
@@ -203,9 +187,7 @@
   }
 
   .view-options__legend {
-    @include direction {
-      #{$margin-inline-start}: auto;
-    }
+    #{$margin-inline-start}: auto;
   }
 
   .view-options__divider {
@@ -214,14 +196,11 @@
   }
 
   .view-options__control {
-    @include direction {
-      #{$margin-inline-start}: auto;
-    }
+    #{$margin-inline-start}: auto;
+
 
     & + & {
-      @include direction {
-        #{$margin-inline-start}: 24px;
-      }
+      #{$margin-inline-start}: 24px;
     }
   }
 }
@@ -239,16 +218,12 @@
 
   .view-options__control {
     display: block;
+    #{$margin-inline-start}: 0;
+    #{$margin-inline-end}: 24px;
 
-    @include direction {
-      #{$margin-inline-start}: 0;
-      #{$margin-inline-end}: 24px;
-    }
 
     & + & {
-      @include direction {
-        #{$margin-inline-start}: 0;
-      }
+      #{$margin-inline-start}: 0;
     }
   }
 }
@@ -292,23 +267,17 @@
   }
 
   &:first-child {
-    @include direction {
-      #{$border-start-start-radius}: 2px;
-      #{$border-end-start-radius}: 2px;
-    }
+    #{$border-start-start-radius}: 2px;
+    #{$border-end-start-radius}: 2px;
   }
 
   &:last-child {
-    @include direction {
-      #{$border-start-end-radius}: 2px;
-      #{$border-end-end-radius}: 2px;
-    }
+    #{$border-start-end-radius}: 2px;
+    #{$border-end-end-radius}: 2px;
   }
 
   & + & {
-    @include direction {
-      #{$margin-inline-start}: -1px;
-    }
+    #{$margin-inline-start}: -1px;
   }
 }
 

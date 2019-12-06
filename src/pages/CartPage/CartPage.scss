@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 @import '../../styles/mixin/buttons';
-@import '../../styles/mixin/direction';
 
 .cart {}
 
@@ -17,10 +16,7 @@
 
   .btn {
     flex-shrink: 0;
-
-    @include direction {
-      #{$margin-inline-start}: 0.5rem;
-    }
+    #{$margin-inline-start}: 0.5rem;
   }
 }
 
@@ -31,9 +27,7 @@
 }
 
 .cart__update-button {
-  @include direction {
-    #{$margin-inline-start}: 0.5rem;
-  }
+  #{$margin-inline-start}: 0.5rem;
 }
 
 .cart__totals {
@@ -57,15 +51,11 @@
   }
 
   tr > :first-child {
-    @include direction {
-      #{$padding-inline-end}: 20px;
-    }
+    #{$padding-inline-end}: 20px;
   }
 
   tr > :last-child {
-    @include direction {
-      text-align: $inline-end;
-    }
+    text-align: $inline-end;
   }
 }
 
@@ -130,10 +120,7 @@
   .cart__update-button {
     order: -1;
     margin-bottom: 0.75rem;
-
-    @include direction {
-      #{$margin-inline-start}: 0;
-    }
+    #{$margin-inline-start}: 0;
   }
 }
 
@@ -169,10 +156,7 @@
 
   li {
     position: relative;
-
-    @include direction {
-      #{$padding-inline-start}: 12px;
-    }
+    #{$padding-inline-start}: 12px;
   }
 
   li::before {
@@ -184,10 +168,7 @@
     height: 4px;
     background: currentColor;
     border-radius: 2px;
-
-    @include direction {
-      #{$inset-inline-start}: 1px;
-    }
+    #{$inset-inline-start}: 1px;
   }
 }
 
@@ -198,15 +179,11 @@
     border-top: 1px solid $table-border-color;
 
     &:first-child {
-      @include direction {
-        #{$border-inline-start}: 1px solid $table-border-color;
-      }
+      #{$border-inline-start}: 1px solid $table-border-color;
     }
 
     &:last-child {
-      @include direction {
-        #{$border-inline-end}: 1px solid $table-border-color;
-      }
+      #{$border-inline-end}: 1px solid $table-border-color;
     }
   }
 
@@ -219,15 +196,11 @@
     }
 
     .cart-table__column:first-child {
-      @include direction {
-        #{$border-start-start-radius}: $table-border-radius;
-      }
+      #{$border-start-start-radius}: $table-border-radius;
     }
 
     .cart-table__column:last-child {
-      @include direction {
-        #{$border-start-end-radius}: $table-border-radius;
-      }
+      #{$border-start-end-radius}: $table-border-radius;
     }
   }
 
@@ -243,15 +216,11 @@
       }
 
       .cart-table__column:first-child {
-        @include direction {
-          #{$border-end-start-radius}: $table-border-radius;
-        }
+        #{$border-end-start-radius}: $table-border-radius;
       }
 
       .cart-table__column:last-child {
-        @include direction {
-          #{$border-end-end-radius}: $table-border-radius;
-        }
+        #{$border-end-end-radius}: $table-border-radius;
       }
     }
   }
@@ -267,27 +236,18 @@
 
   .cart-table__column--price {
     width: 170px;
-
-    @include direction {
-      text-align: $inline-end;
-    }
+    text-align: $inline-end;
   }
 
   .cart-table__column--quantity {
     width: 1px;
     text-align: center;
-
-    @include direction {
-      #{$padding-inline-start}: 90px;
-    }
+    #{$padding-inline-start}: 90px;
   }
 
   .cart-table__column--total {
     width: 170px;
-
-    @include direction {
-      text-align: $inline-end;
-    }
+    text-align: $inline-end;
   }
 
   .cart-table__column--remove {
@@ -297,9 +257,7 @@
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .cart-table__column--quantity {
-    @include direction {
-      #{$padding-inline-start}: 40px;
-    }
+    #{$padding-inline-start}: 40px;
   }
 
   .cart-table__column--price,
@@ -310,10 +268,8 @@
 
 @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
   .cart-table__column--quantity {
-    @include direction {
-      #{$padding-inline-start}: 0;
-      #{$padding-inline-end}: 0;
-    }
+    #{$padding-inline-start}: 0;
+    #{$padding-inline-end}: 0;
   }
 
   .cart-table__column--price,
@@ -322,12 +278,9 @@
   }
 
   .cart-table__column--remove {
-    @include direction {
-      #{$padding-inline-start}: 0;
-    }
+    #{$padding-inline-start}: 0;
   }
 }
-
 
 @media (max-width: breakpoint(sm-end)) {
   .cart-table {
@@ -389,10 +342,7 @@
       flex-shrink: 0;
       width: 55%;
       font-weight: $font-weight-medium;
-
-      @include direction {
-        text-align: $inline-end;
-      }
+      text-align: $inline-end;
     }
   }
 
@@ -411,10 +361,7 @@
   .cart-table__column--remove {
     position: absolute;
     top: 5px;
-
-    @include direction {
-      #{$inset-inline-end}: 5px;
-    }
+    #{$inset-inline-end}: 5px;
   }
 
   .cart-table__options li::before {
@@ -436,4 +383,3 @@
 .block-empty__actions {
   margin-top: 24px;
 }
-

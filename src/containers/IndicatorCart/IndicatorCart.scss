@@ -1,6 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/hacks';
-@import '../../styles/mixin/direction';
 
 .dropcart {
   width: 320px;
@@ -9,11 +7,6 @@
   color: $dropcart-font-color;
   background: $dropcart-bg;
   box-shadow: $dropcart-shadow;
-
-  // without it IE renders a blurred menu
-  @include only-ie() {
-    box-shadow: 0 0 0 1px rgba(#000, 0.15);
-  }
 }
 
 .dropcart__empty {
@@ -60,11 +53,8 @@
 .dropcart__product-info {
   flex-grow: 1;
   margin: 0;
-
-  @include direction {
-    #{$padding-inline-end}: 10px;
-    #{$padding-inline-start}: 16px;
-  }
+  #{$padding-inline-end}: 10px;
+  #{$padding-inline-start}: 16px;
 }
 
 .dropcart__product-options {
@@ -89,10 +79,7 @@
 .dropcart__product-remove {
   flex-shrink: 0;
   margin-top: -6px;
-
-  @include direction {
-    #{$margin-inline-end}: -6px;
-  }
+  #{$margin-inline-end}: -6px;
 }
 
 .dropcart__totals {
@@ -101,15 +88,11 @@
   border-top: 1px solid $dropcart-divider-color;
 
   th {
-    @include direction {
-      #{$padding-inline-end}: 16px;
-    }
+    #{$padding-inline-end}: 16px;
   }
 
   td {
-    @include direction {
-      text-align: $inline-end;
-    }
+    text-align: $inline-end;
   }
 
   table {
@@ -127,8 +110,6 @@
   }
 
   > :first-child {
-    @include direction {
-      #{$margin-inline-end}: 8px;
-    }
+    #{$margin-inline-end}: 8px;
   }
 }

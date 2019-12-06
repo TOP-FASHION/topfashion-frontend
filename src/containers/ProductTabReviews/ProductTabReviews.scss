@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 .review {
   display: flex;
@@ -8,11 +7,9 @@
 
 .review__avatar {
   flex-shrink: 0;
+  #{$margin-inline-start}: 16px;
+  #{$margin-inline-end}: 24px;
 
-  @include direction {
-    #{$margin-inline-start}: 16px;
-    #{$margin-inline-end}: 24px;
-  }
 
   img {
     width: 70px;
@@ -43,9 +40,8 @@
 
 @media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(sm-end)) {
   .review__avatar {
-    @include direction {
-      #{$margin-inline-end}: 18px;
-    }
+    #{$margin-inline-end}: 18px;
+
 
     img {
       width: 60px;

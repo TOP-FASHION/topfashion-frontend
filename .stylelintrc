@@ -6,6 +6,7 @@
     "stylelint-order"
   ],
   "rules": {
+    "at-rule-no-unknown": null,
     "order/order": [
       "declarations",
       {
@@ -19,7 +20,7 @@
       {
         "type": "rule",
         "selector": "^&_"
-      },
+      }
     ],
     "order/properties-order": [
       [

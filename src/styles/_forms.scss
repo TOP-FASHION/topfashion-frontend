@@ -1,24 +1,18 @@
 @import './var';
 @import './functions';
-@import './mixin/direction';
 
 .form-group {
   margin-bottom: 1.5rem;
 }
 
 .form-check {
-  @include direction {
-    #{$padding-inline-start}: 1.5rem;
-  }
+  #{$padding-inline-start}: 1.5rem;
 }
 
 .form-check-input {
   position: absolute;
   margin-top: 0.1875rem;
-
-  @include direction {
-    #{$margin-inline-start}: -1.5rem;
-  }
+  #{$margin-inline-start}: -1.5rem;
 }
 
 @media (max-width: breakpoint(sm-end)) {
@@ -85,26 +79,19 @@ select.form-control {
   @include local-select-arrow($form-control-select-arrow-color);
 
   background-repeat: no-repeat;
+  background-position: $inline-end 0.75rem center;
   background-size: 5px 10px;
-
-  @include direction {
-    background-position: $inline-end 0.75rem center;
-    #{$padding-inline-end}: calc(0.75rem * 2 + 5px);
-  }
+  #{$padding-inline-end}: calc(0.75rem * 2 + 5px);
 }
 
 @include local-select-define-size('sm') {
-  @include direction {
-    background-position: $inline-end 0.5rem center;
-    #{$padding-inline-end}: calc(0.5rem * 2 + 5px);
-  }
+  background-position: $inline-end 0.5rem center;
+  #{$padding-inline-end}: calc(0.5rem * 2 + 5px);
 }
 
 @include local-select-define-size('lg') {
-  @include direction {
-    background-position: $inline-end 1rem center;
-    #{$padding-inline-end}: calc(1rem * 2 + 5px);
-  }
+  background-position: $inline-end 1rem center;
+  #{$padding-inline-end}: calc(1rem * 2 + 5px);
 }
 
 

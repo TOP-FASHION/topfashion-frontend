@@ -1,6 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/direction';
-@import '../../styles/mixin/hacks';
 
 .site-header {
   position: relative;
@@ -43,15 +41,12 @@
 }
 
 .site-header__phone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   line-height: 1;
-
-  @include direction {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    #{$margin-inline-end}: 20px;
-  }
+  text-align: center;
+  #{$margin-inline-end}: 20px;
 }
 
 .site-header__phone-title {
@@ -93,9 +88,6 @@
   .site-header__logo {
     justify-content: flex-start;
     width: 210px;
-
-    @include direction {
-      #{$margin-inline-end}: 24px;
-    }
+    #{$margin-inline-end}: 24px;
   }
 }

@@ -1,6 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
+
 
 .nav-panel {
   height: $nav-panel-height;
@@ -39,31 +39,22 @@
 
 .nav-panel__logo + .nav-panel__nav-links,
 .nav-panel__departments + .nav-panel__nav-links {
-  @include direction {
-    #{$margin-inline-start}: 18px;
-  }
+  #{$margin-inline-start}: 18px;
 }
 
 .nav-panel__nav-links {
-  @include direction {
-    #{$margin-inline-end}: 18px;
-  }
+  #{$margin-inline-end}: 18px;
 }
 
 .nav-panel__indicators {
   display: flex;
   height: 100%;
-
-  @include direction {
-    #{$margin-inline-start}: auto;
-  }
+  #{$margin-inline-start}: auto;
 }
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .nav-panel__nav-links {
-    @include direction {
-      #{$margin-inline-start}: 14px;
-      #{$margin-inline-end}: 14px;
-    }
+    #{$margin-inline-start}: 14px;
+    #{$margin-inline-end}: 14px;
   }
 }

@@ -1,7 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/hacks';
-@import '../../styles/mixin/direction';
 
 .product {
 }
@@ -22,12 +20,6 @@
   -ms-grid-column: 1;
   grid-row-start: 1;
   grid-row-end: 6;
-
-  @include only-ie() {
-    @include direction {
-      #{$margin-inline-end}: 40px;
-    }
-  }
 }
 
 .product__info {
@@ -62,10 +54,7 @@
 
 .product__rating-stars {
   padding-top: 2px;
-
-  @include direction {
-    #{$margin-inline-end}: 12px;
-  }
+  #{$margin-inline-end}: 12px;
 }
 
 .product__rating-legend {
@@ -103,11 +92,8 @@
     position: relative;
     padding-top: 1px;
     padding-bottom: 1px;
-
-    @include direction {
-      #{$padding-inline-start}: 13px;
-      #{$padding-inline-end}: 0;
-    }
+    #{$padding-inline-start}: 13px;
+    #{$padding-inline-end}: 0;
   }
 
   li::before {
@@ -119,10 +105,7 @@
     height: 5px;
     border: 1px solid currentColor;
     border-radius: 2.5px;
-
-    @include direction {
-      #{$inset-inline-start}: 0;
-    }
+    #{$inset-inline-start}: 0;
   }
 }
 
@@ -137,9 +120,7 @@
   border-top: 1px solid $body-divider-color;
 
   li {
-    @include direction {
-      #{$margin-inline-end}: 18px;
-    }
+    #{$margin-inline-end}: 18px;
   }
 
   a {
@@ -213,10 +194,8 @@
 }
 
 .product__tags {
-  @include direction {
-    #{$margin-inline-end}: 24px;
-    #{$margin-inline-start}: 0;
-  }
+  #{$margin-inline-end}: 24px;
+  #{$margin-inline-start}: 0;
 }
 
 .product__share-links {
@@ -238,13 +217,6 @@
     grid-column-gap: 30px;
   }
 
-  .product__gallery {
-    @include only-ie() {
-      @include direction {
-        #{$margin-inline-end}: 30px;
-      }
-    }
-  }
 
   .product__name {
     margin-bottom: 18px;
@@ -533,9 +505,7 @@ $local-lg-tag-padding: 6px 10px 5px;
 
 .share-links__item {
   & + & {
-    @include direction {
-      #{$margin-inline-start}: 4px;
-    }
+    #{$margin-inline-start}: 4px;
   }
 }
 

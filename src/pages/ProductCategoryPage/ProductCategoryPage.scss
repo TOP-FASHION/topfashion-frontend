@@ -1,11 +1,10 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
+
 
 .shop-layout {
   display: flex;
 }
-
 
 @media (min-width: breakpoint(lg-start)) {
   .shop-layout__sidebar {
@@ -19,17 +18,13 @@
 
   .shop-layout--sidebar--start {
     .shop-layout__sidebar {
-      @include direction {
-        #{$margin-inline-end}: 30px;
-      }
+      #{$margin-inline-end}: 30px;
     }
   }
 
   .shop-layout--sidebar--end {
     .shop-layout__sidebar {
-      @include direction {
-        #{$margin-inline-start}: 30px;
-      }
+      #{$margin-inline-start}: 30px;
     }
   }
 }
@@ -52,10 +47,8 @@
   .shop-layout--sidebar--start,
   .shop-layout--sidebar--end {
     .shop-layout__sidebar {
-      @include direction {
-        #{$margin-inline-start}: 0;
-        #{$margin-inline-end}: 0;
-      }
+      #{$margin-inline-start}: 0;
+      #{$margin-inline-end}: 0;
     }
   }
 }

@@ -13,7 +13,6 @@
 }
 
 @import './var';
-@import './mixin/direction';
 @import 'buttons';
 @import 'block';
 @import 'typography';
@@ -30,14 +29,11 @@ body {
   font-size: $body-font-size;
   line-height: $body-line-height;
   font-family: $body-font-family;
+  text-align: $inline-start;
+  direction: $direction;
   color: $body-font-color;
   background: $body-bg;
   backface-visibility: hidden;
-
-  @include direction {
-    text-align: $inline-start;
-    direction: $direction;
-  }
 }
 
 
@@ -176,4 +172,3 @@ body {
   opacity: 0;
   transition: opacity 0.3s;
 }
-

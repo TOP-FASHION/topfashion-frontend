@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 .spec {
   font-size: 15px;
@@ -39,10 +38,7 @@
   flex-shrink: 0;
   width: 230px;
   color: $card-font-muted-color;
-
-  @include direction {
-    #{$padding-inline-end}: 30px;
-  }
+  #{$padding-inline-end}: 30px;
 }
 
 .spec__disclaimer {

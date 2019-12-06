@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 $local-open-transition-duration: 0.2s;
 
@@ -46,6 +45,8 @@ $local-open-transition-duration: 0.2s;
   font-weight: $font-weight-bold;
   font-size: 10px;
   color: #fff;
+  #{$margin-inline-start}: -5px;
+  #{$margin-inline-end}: -8px;
 
   &::after {
     content: attr(data-count);
@@ -65,11 +66,6 @@ $local-open-transition-duration: 0.2s;
     background: #c92f67;
     border-radius: 50%;
   }
-
-  @include direction {
-    #{$margin-inline-start}: -5px;
-    #{$margin-inline-end}: -8px;
-  }
 }
 
 .indicator__dropdown {
@@ -79,14 +75,11 @@ $local-open-transition-duration: 0.2s;
   transform-origin: top;
   visibility: hidden;
   opacity: 0;
+  #{$inset-inline-end}: 0;
   transition:
     transform $local-open-transition-duration,
     opacity $local-open-transition-duration,
     visibility 0s $local-open-transition-duration;
-
-  @include direction {
-    #{$inset-inline-end}: 0;
-  }
 }
 
 .indicator--trigger--click.indicator--opened,

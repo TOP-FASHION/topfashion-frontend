@@ -1,9 +1,5 @@
 @import '../../../styles/var';
 @import '../../../styles/functions';
-@import '../../../styles/mixin/direction';
-
-
-.footer-newsletter {}
 
 .footer-newsletter__title {
   margin-bottom: 25px;
@@ -29,9 +25,7 @@
 
 .footer-newsletter__social-link {
   & + & {
-    @include direction {
-      #{$margin-inline-start}: 7px;
-    }
+    #{$margin-inline-start}: 7px;
   }
 
   a {
@@ -81,12 +75,8 @@
 }
 
 .footer-newsletter__form-button {
-  @include direction {
-    #{$margin-inline-start}: 6px;
-  }
+  #{$margin-inline-start}: 6px;
 }
-
-
 
 @media (max-width: breakpoint(md-end)) {
   .footer-newsletter {
@@ -102,11 +92,8 @@
 @media (max-width: breakpoint(sm-end)) {
   .footer-newsletter {
     text-align: center;
-
-    @include direction {
-      #{$margin-inline-start}: auto;
-      #{$margin-inline-end}: auto;
-    }
+    #{$margin-inline-start}: auto;
+    #{$margin-inline-end}: auto;
   }
 
   .footer-newsletter__title {
@@ -122,4 +109,3 @@
     margin-top: 16px;
   }
 }
-

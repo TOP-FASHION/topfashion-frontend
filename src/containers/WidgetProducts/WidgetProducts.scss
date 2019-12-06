@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 
 .widget-products {
@@ -24,10 +23,8 @@
 .widget-products__image {
   flex-shrink: 0;
   width: 50px;
+  #{$margin-inline-end}: 12px;
 
-  @include direction {
-    #{$margin-inline-end}: 12px;
-  }
 
   img {
     max-width: 100%;

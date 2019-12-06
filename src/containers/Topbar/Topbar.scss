@@ -1,6 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/direction';
-@import '../../styles/mixin/hacks';
 
 $local-item-margin: 0;
 
@@ -45,7 +43,5 @@ $local-item-margin: 0;
 }
 
 .topbar__item--link + .topbar__item--link {
-  @include direction {
-    #{$margin-inline-start}: 16px;
-  }
+  #{$margin-inline-start}: 16px;
 }

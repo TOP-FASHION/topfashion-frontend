@@ -1,6 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
 
 $item-padding: 14px;
 
@@ -83,18 +82,12 @@ $item-padding: 14px;
 .nav-links__item--with-submenu {
   & > a span {
     position: relative;
-
-    @include direction {
-      #{$padding-inline-end}: ($item-padding + 4px + 9px);
-    }
+    #{$padding-inline-end}: ($item-padding + 4px + 9px);
   }
 
   & > a .nav-links__arrow {
     position: absolute;
-
-    @include direction {
-      #{$inset-inline-end}: $item-padding - 2px;
-    }
+    #{$inset-inline-end}: $item-padding - 2px;
   }
 }
 
@@ -110,9 +103,7 @@ $item-padding: 14px;
 }
 
 .nav-links__megamenu {
-  @include direction {
-    #{$inset-inline-start}: 0;
-  }
+  #{$inset-inline-start}: 0;
 }
 
 
@@ -149,14 +140,10 @@ $item-padding: 14px;
   }
 
   .nav-links__item--with-submenu > a > span {
-    @include direction {
-      #{$padding-inline-end}: ($item-padding + 4px + 9px);
-    }
+    #{$padding-inline-end}: ($item-padding + 4px + 9px);
   }
 
   .nav-links__item--with-submenu > a .nav-links__arrow {
-    @include direction {
-      #{$inset-inline-end}: $item-padding - 2px;
-    }
+    #{$inset-inline-end}: $item-padding - 2px;
   }
 }

@@ -1,5 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/direction';
 
 $local-transition-duration: 0.2s;
 $local-button-padding: 10px;
@@ -19,11 +18,8 @@ $local-button-padding: 10px;
   cursor: pointer;
   transition: all 0.1s;
   fill: $topbar-dropdown-arrow-color;
-
-  @include direction {
-    #{$padding-inline-start}: $local-button-padding;
-    #{$padding-inline-end}: $local-button-padding;
-  }
+  #{$padding-inline-start}: $local-button-padding;
+  #{$padding-inline-end}: $local-button-padding;
 
   &:focus {
     outline: none;
@@ -32,10 +28,7 @@ $local-button-padding: 10px;
   svg {
     position: absolute;
     top: calc(50% - 4px);
-
-    @include direction {
-      #{$inset-inline-end}: $local-button-padding - 3px;
-    }
+    #{$inset-inline-end}: $local-button-padding - 3px;
   }
 }
 
@@ -47,10 +40,7 @@ $local-button-padding: 10px;
   visibility: hidden;
   opacity: 0;
   transition: transform $local-transition-duration, opacity $local-transition-duration, visibility 0s $local-transition-duration;
-
-  @include direction {
-    #{$inset-inline-end}: 0;
-  }
+  #{$inset-inline-end}: 0;
 }
 
 .dropdown--opened .topbar-dropdown__btn,

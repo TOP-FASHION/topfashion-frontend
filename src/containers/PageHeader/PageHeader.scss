@@ -1,8 +1,5 @@
 @import '../../styles/var';
 @import '../../styles/functions';
-@import '../../styles/mixin/direction';
-
-.page-header {}
 
 .page-header__container {
   padding-bottom: 32px;
@@ -19,7 +16,6 @@
     margin-bottom: 0;
   }
 }
-
 
 @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
   .page-header__title {
@@ -60,11 +56,9 @@ $local-padding: 12px;
 
 .breadcrumb-item {
   position: relative;
+  #{$padding-inline-start}: 0;
+  #{$padding-inline-end}: 6px + $local-padding * 2;
 
-  @include direction {
-    #{$padding-inline-start}: 0;
-    #{$padding-inline-end}: 6px + $local-padding * 2;
-  }
 
   a {
     color: $breadcrumb-link-default-color;
@@ -76,10 +70,9 @@ $local-padding: 12px;
   }
 
   & + & {
-    @include direction {
-      #{$padding-inline-start}: 0;
-      #{$padding-inline-end}: 6px + $local-padding * 2;
-    }
+    #{$padding-inline-start}: 0;
+    #{$padding-inline-end}: 6px + $local-padding * 2;
+
 
     &::before {
       display: none;
@@ -95,10 +88,6 @@ $local-padding: 12px;
   position: absolute;
   top: 4px;
   color: $breadcrumb-arrow-color;
-
-  @include direction {
-    #{$inset-inline-end}: $local-padding - 1px;
-    transform: scaleX(1 * $transform-direction);
-  }
+  #{$inset-inline-end}: $local-padding - 1px;
+  transform: scaleX(1 * $transform-direction);
 }
-

@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 @import '../../styles/mixin/product-card';
-@import '../../styles/mixin/direction';
 
 $local-product-margin: 5px;
 
@@ -70,15 +69,11 @@ $local-product-margin: 5px;
   }
 
   .block-products__featured + .block-products__list {
-    @include direction {
-      #{$margin-inline-start}: $local-product-margin;
-    }
+    #{$margin-inline-start}: $local-product-margin;
   }
 
   .block-products__list + .block-products__featured {
-    @include direction {
-      #{$margin-inline-start}: $local-product-margin * 2;
-    }
+    #{$margin-inline-start}: $local-product-margin * 2;
   }
 }
 

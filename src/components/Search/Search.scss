@@ -1,6 +1,4 @@
 @import '../../styles/var';
-@import '../../styles/mixin/direction';
-@import '../../styles/mixin/hacks';
 
 .search {
   width: 100%;
@@ -22,6 +20,28 @@
   border-radius: $search-border-radius;
   transition: box-shadow 0.15s, background 0.15s;
   pointer-events: none;
+}
+
+.search__button {
+  position: absolute;
+  top: 13px;
+  right: 0;
+  display: flex;
+  flex-grow: 0;
+  justify-content: center;
+  width: 42px;
+  padding: 0;
+  color: #ccc;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  fill: #bfbfbf;
+
+  &:hover,
+  &:focus {
+    color: $search-input-default-icon-hover-color;
+    outline: none;
+  }
 }
 
 .search__input {
@@ -59,10 +79,6 @@
     color: $search-input-focus-font-color;
     outline: none;
 
-    &::placeholder {
-      color: $search-input-focus-placeholder;
-    }
-
     & ~ .search__button {
       fill: $search-input-focus-icon-color;
 
@@ -70,27 +86,9 @@
         fill: $search-input-focus-icon-hover-color;
       }
     }
-  }
-}
 
-.search__button {
-  position: absolute;
-  top: 13px;
-  right: 0;
-  display: flex;
-  flex-grow: 0;
-  justify-content: center;
-  width: 42px;
-  padding: 0;
-  color: #ccc;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  fill: #bfbfbf;
-
-  &:hover,
-  &:focus {
-    color: $search-input-default-icon-hover-color;
-    outline: none;
+    &::placeholder {
+      color: $search-input-focus-placeholder;
+    }
   }
 }

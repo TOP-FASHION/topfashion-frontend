@@ -1,6 +1,5 @@
 @import './var';
 @import './functions';
-@import './mixin/direction';
 
 .typography {
   line-height: 1.625;
@@ -87,15 +86,11 @@
     }
 
     &::after {
-      @include direction {
-        #{$inset-inline-start}: -$margin;
-      }
+      #{$inset-inline-start}: -$margin;
     }
 
     &::before {
-      @include direction {
-        #{$inset-inline-end}: -$margin;
-      }
+      #{$inset-inline-end}: -$margin;
     }
   }
 
@@ -126,7 +121,6 @@
     }
   }
 }
-
 
 @media (max-width: breakpoint(md-end)) {
   .typography {
@@ -161,10 +155,7 @@
   .typography blockquote {
     margin: 2.25em 0;
     font-size: 16px;
-
-    @include direction {
-      text-align: $inline-start;
-    }
+    text-align: $inline-start;
   }
 }
 
@@ -176,10 +167,8 @@
       width: calc(100% + 190px);
       margin: 3em 0;
       text-align: center;
+      #{$inset-inline-start}: -95px;
 
-      @include direction {
-        #{$inset-inline-start}: -95px;
-      }
 
       img {
         overflow: hidden;
