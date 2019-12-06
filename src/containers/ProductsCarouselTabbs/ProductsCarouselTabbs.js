@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import ProductsCarousel from '../ProductsCarousel'
-import {injectIntl} from "react-intl"
+import { injectIntl } from 'react-intl'
 import './ProductsCarouselTabbs.scss'
 
 @inject('productsStore')
@@ -12,19 +12,19 @@ class ProductsCarouselTabbs extends Component {
     title: PropTypes.string.isRequired,
     layout: PropTypes.oneOf(['grid-4', 'grid-4-sm', 'grid-5', 'horizontal']),
     rows: PropTypes.number,
-    withSidebar: PropTypes.bool,
+    withSidebar: PropTypes.bool
   };
 
   static defaultProps = {
     layout: 'grid-4',
     rows: 1,
-    withSidebar: false,
+    withSidebar: false
   };
 
   timeout;
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       loading: false,
@@ -32,27 +32,27 @@ class ProductsCarouselTabbs extends Component {
         { id: 1, name: 'All', current: true },
         { id: 2, name: 'Power Tools', current: false },
         { id: 3, name: 'Hand Tools', current: false },
-        { id: 4, name: 'Plumbing', current: false },
-      ],
-    };
+        { id: 4, name: 'Plumbing', current: false }
+      ]
+    }
   }
 
   componentDidMount () {
     this.props.productsStore.getProducts()
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
+  componentWillUnmount () {
+    clearTimeout(this.timeout)
   }
 
   handleChangeGroup = (newCurrentGroup) => {
-    clearTimeout(this.timeout);
+    clearTimeout(this.timeout)
 
-    const { groups } = this.state;
-    const currentGroup = groups.find((group) => group.current);
+    const { groups } = this.state
+    const currentGroup = groups.find((group) => group.current)
 
     if (currentGroup && currentGroup.id === newCurrentGroup.id) {
-      return;
+      return
     }
 
     this.setState((state) => (
@@ -60,43 +60,41 @@ class ProductsCarouselTabbs extends Component {
         loading: true,
         groups: state.groups.map((group) => (
           { ...group, current: group.id === newCurrentGroup.id }
-        )),
+        ))
       }
-    ));
+    ))
 
     // sending request to server, timeout is used as a stub
     this.timeout = setTimeout(() => {
       this.setState((state) => {
         // this is only for demo purpose
-        const itemsArray = state.products;
-        const newItemsArray = [];
+        const itemsArray = state.products
+        const newItemsArray = []
         while (itemsArray.length > 0) {
-          const randomIndex = Math.floor(Math.random() * itemsArray.length);
-          const randomItem = itemsArray.splice(randomIndex, 1)[0];
-          newItemsArray.push(randomItem);
+          const randomIndex = Math.floor(Math.random() * itemsArray.length)
+          const randomItem = itemsArray.splice(randomIndex, 1)[0]
+          newItemsArray.push(randomItem)
         }
 
         return {
           products: newItemsArray,
-          loading: false,
-        };
-      });
-    }, 2000);
+          loading: false
+        }
+      })
+    }, 2000)
   };
 
   get products () {
     let { products } = this.props.productsStore
-    this.state = {
-      products: products,
-    };
     return products
   }
 
-  render() {
+  render () {
     return this.products ? (
       <ProductsCarousel
         {...this.props}
         {...this.state}
+        products={this.products}
         onGroupClick={this.handleChangeGroup}
       />
     ) : null

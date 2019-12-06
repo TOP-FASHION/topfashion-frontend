@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ProductsBlockHeader from '../ProductsBlockHeader'
 import ProductCard from '../ProductCard'
 import SlickWithPreventSwipeClick from '../../components/SlickWithPreventSwipeClick'
-import {injectIntl} from "react-intl"
+import { injectIntl } from 'react-intl'
 import './ProductsCarousel.scss'
 
 const slickSettings = {
@@ -20,31 +20,31 @@ const slickSettings = {
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
-        },
+          slidesToScroll: 4
+        }
       },
       {
         breakpoint: 991,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-        },
+          slidesToScroll: 3
+        }
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-        },
+          slidesToScroll: 2
+        }
       },
       {
         breakpoint: 479,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   },
   'grid-4-sm': {
     dots: false,
@@ -58,24 +58,24 @@ const slickSettings = {
         breakpoint: 1199,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-        },
+          slidesToScroll: 3
+        }
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-        },
+          slidesToScroll: 2
+        }
       },
       {
         breakpoint: 474,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   },
   'grid-5': {
     dots: false,
@@ -89,31 +89,31 @@ const slickSettings = {
         breakpoint: 1199,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
-        },
+          slidesToScroll: 4
+        }
       },
       {
         breakpoint: 991,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-        },
+          slidesToScroll: 3
+        }
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-        },
+          slidesToScroll: 2
+        }
       },
       {
         breakpoint: 479,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   },
   horizontal: {
     dots: false,
@@ -127,22 +127,21 @@ const slickSettings = {
         breakpoint: 991,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-        },
+          slidesToScroll: 2
+        }
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  },
-};
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
+}
 
 class ProductsCarousel extends Component {
-
   static propTypes = {
     title: PropTypes.string.isRequired,
     layout: PropTypes.oneOf(['grid-4', 'grid-4-sm', 'grid-5', 'horizontal']),
@@ -151,7 +150,7 @@ class ProductsCarousel extends Component {
     groups: PropTypes.array,
     withSidebar: PropTypes.bool,
     loading: PropTypes.bool,
-    onGroupClick: PropTypes.func,
+    onGroupClick: PropTypes.func
   }
 
   static defaultProps = {
@@ -161,67 +160,66 @@ class ProductsCarousel extends Component {
     groups: [],
     withSidebar: false,
     loading: false,
-    onGroupClick: undefined,
+    onGroupClick: undefined
   }
 
   handleNextClick = () => {
     if (this.slickRef) {
-      this.slickRef.slickNext();
+      this.slickRef.slickNext()
     }
   };
 
   handlePrevClick = () => {
     if (this.slickRef) {
-      this.slickRef.slickPrev();
+      this.slickRef.slickPrev()
     }
   };
 
   setSlickRef = (ref) => {
-    this.slickRef = ref;
+    this.slickRef = ref
   };
 
-  productsColumns() {
-    const columns = [];
-    const { rows } = this.props;
-    let { products } = this.props;
+  productsColumns () {
+    const columns = []
+    const { rows } = this.props
+    let { products } = this.props
 
     if (rows > 0) {
-      products = products.slice();
+      products = products.slice()
 
       while (products.length > 0) {
-        columns.push(products.splice(0, rows));
+        columns.push(products.splice(0, rows))
       }
     }
 
-    return columns;
+    return columns
   }
 
   get columns () {
     return this.productsColumns().map((column, index) => {
       const products = column.map((product) => (
-        <div key={product.id} className="block-products-carousel__cell">
+        <div key={product.id} className='block-products-carousel__cell'>
           <ProductCard product={product} />
         </div>
-      ));
+      ))
 
       return (
-        <div key={index} className="block-products-carousel__column">
+        <div key={index} className='block-products-carousel__column'>
           {products}
         </div>
-      );
-    });
+      )
+    })
   }
 
-  render() {
-    const { layout, title, withSidebar, onGroupClick, groups, loading } = this.props;
-    let { products } = this.props;
+  render () {
+    const { products, layout, title, withSidebar, onGroupClick, groups, loading } = this.props
 
     const blockClasses = classNames('block block-products-carousel', {
-      'block-products-carousel--loading': loading,
-    });
+      'block-products-carousel--loading': loading
+    })
     const containerClasses = classNames({
-      container: !withSidebar,
-    });
+      container: !withSidebar
+    })
 
     return products ? (
       <div className={blockClasses} data-layout={layout}>
@@ -235,8 +233,8 @@ class ProductsCarousel extends Component {
             onGroupClick={onGroupClick}
           />
 
-          <div className="block-products-carousel__slider">
-            <div className="block-products-carousel__preloader" />
+          <div className='block-products-carousel__slider'>
+            <div className='block-products-carousel__preloader' />
 
             <SlickWithPreventSwipeClick
               ref={this.setSlickRef}
