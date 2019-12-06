@@ -3,11 +3,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Departments from '../Departments'
 import NavLinks from '../NavLinks'
-import Indicator from '../../components/Indicator'
-import IndicatorCart from '../IndicatorCart'
 import IndicatorSearch from '../IndicatorSearch'
-import './NavPanel.scss'
 import { observer } from 'mobx-react'
+import './NavPanel.scss'
 
 @observer
 class NavPanel extends Component {
@@ -28,32 +26,21 @@ class NavPanel extends Component {
       searchIndicator = <IndicatorSearch />
     }
 
-    if (layout === 'default') {
-      departments = (
-        <div className='nav-panel__departments'>
-          <Departments />
-        </div>
-      )
-    }
+    // if (layout === 'default') {
+    //   departments = (
+    //     <div className='nav-panel__departments'>
+    //       <Departments />
+    //     </div>
+    //   )
+    // }
     return (
       <div className='nav-panel'>
         <div className='nav-panel__container container'>
           <div className='nav-panel__row'>
             {logo}
             {departments}
-
             <div className='nav-panel__nav-links nav-links'>
               <NavLinks />
-            </div>
-
-            <div className='nav-panel__indicators'>
-              {/* {searchIndicator} */}
-              <Indicator
-                url='/wishlist'
-                value={10}
-                icon={<i className='far fa-heart' />}
-              />
-              <IndicatorCart />
             </div>
           </div>
         </div>

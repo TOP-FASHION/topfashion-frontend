@@ -4,16 +4,11 @@ import PropTypes from 'prop-types'
 import AppLink from '../../components/AppLink/index'
 import './Menu.scss'
 
-function Menu(props) {
-  const {
-    layout,
-    withIcons,
-    items,
-    onClick,
-  } = props;
+function Menu (props) {
+  const { layout, withIcons, items, onClick } = props
 
   const renderLink = (item, content) => {
-    let link;
+    let link
 
     if (item.url) {
       link = (
@@ -24,38 +19,37 @@ function Menu(props) {
         >
           {content}
         </AppLink>
-      );
+      )
     } else {
-      link = <button type="button" onClick={() => onClick(item)}>{content}</button>;
+      link = <button type='button' onClick={() => onClick(item)}>{content}</button>;
     }
 
-    return link;
-  };
+    return link
+  }
 
   const itemsList = items.map((item, index) => {
-    let arrow;
-    let submenu;
-    let icon;
-
+    let arrow
+    let submenu
+    let icon
 
     if (item.submenu) {
       submenu = (
-        <div className="menu__submenu">
+        <div className='menu__submenu'>
           <Menu items={item.submenu} />
         </div>
-      );
+      )
     }
 
     if (item.submenu) {
-      arrow = <i className="fa fa-angle-right ml-2 opacity-5 departments__link-arrow"></i>;
+      arrow = <i className='fa fa-angle-right ml-2 opacity-5 departments__link-arrow'></i>;
     }
 
     if (withIcons && item.icon) {
       icon = (
-        <div className="menu__icon">
-          <img src={item.icon} srcSet={item.icon_srcset} alt="" />
+        <div className='menu__icon'>
+          <img src={item.icon} srcSet={item.icon_srcset} alt='' />
         </div>
-      );
+      )
     }
 
     return (
@@ -69,18 +63,18 @@ function Menu(props) {
         ))}
         {submenu}
       </li>
-    );
-  });
+    )
+  })
 
   const classes = classNames(`menu menu--layout--${layout}`, {
-    'menu--with-icons': withIcons,
-  });
+    'menu--with-icons': withIcons
+  })
 
   return (
     <ul className={classes}>
       {itemsList}
     </ul>
-  );
+  )
 }
 
 Menu.propTypes = {
@@ -91,14 +85,14 @@ Menu.propTypes = {
   /** array of menu items */
   items: PropTypes.array,
   /** callback function that is called when the item is clicked */
-  onClick: PropTypes.func,
-};
+  onClick: PropTypes.func
+}
 
 Menu.defaultProps = {
   layout: 'classic',
   withIcons: false,
   items: [],
-  onClick: () => {},
-};
+  onClick: () => {}
+}
 
-export default Menu;
+export default Menu

@@ -88,7 +88,7 @@ class HomeSlider extends Component {
     );
 
     const layoutClasses = classNames(
-      'col-12',
+      'col-12 colCustom',
       {
         'col-lg-12': !withDepartments,
         'col-lg-9': withDepartments,
@@ -112,17 +112,19 @@ class HomeSlider extends Component {
               backgroundImage: `url(${slide.image_mobile})`,
             }}
           />
-          <div className="block-slideshow__slide-content">
-            <div
-              className="block-slideshow__slide-title"
-              dangerouslySetInnerHTML={{ __html: slide.title }}
-            />
-            <div
-              className="block-slideshow__slide-text"
-              dangerouslySetInnerHTML={{ __html: slide.text }}
-            />
-            <div className="block-slideshow__slide-button">
-              <Link to="/" className="btn btn-primary btn-lg">Shop Now</Link>
+          <div className="container">
+            <div className="block-slideshow__slide-content">
+              <div
+                className="block-slideshow__slide-title"
+                dangerouslySetInnerHTML={{ __html: slide.title }}
+              />
+              <div
+                className="block-slideshow__slide-text"
+                dangerouslySetInnerHTML={{ __html: slide.text }}
+              />
+              <div className="block-slideshow__slide-button">
+                <Link to="/" className="btn btn-primary btn-lg">Shop Now</Link>
+              </div>
             </div>
           </div>
         </div>
@@ -131,7 +133,7 @@ class HomeSlider extends Component {
 
     return (
       <div className={blockClasses}>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             {withDepartments && (
               <div className="col-3 d-lg-block d-none" ref={this.setDepartmentsAreaRef} />

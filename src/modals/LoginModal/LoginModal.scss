@@ -1,0 +1,36 @@
+@import '../../styles/var';
+
+.modal-title {
+  &__item {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    color: #c92f67;
+    cursor: pointer;
+
+    &:hover {
+      color: #424242;
+    }
+
+    &--active {
+      color: #424242;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  &__item:first-child {
+    &::after {
+      content: '/';
+      position: absolute;
+      top: 0;
+      right: -16px;
+      height: 15px;
+      padding: 0 10px;
+      font-size: 25px;
+      color: #dbdbdb;
+    }
+  }
+}

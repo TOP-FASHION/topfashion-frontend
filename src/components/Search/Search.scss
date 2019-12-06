@@ -2,40 +2,41 @@
 @import '../../styles/mixin/direction';
 @import '../../styles/mixin/hacks';
 
+.search {
+  width: 100%;
+}
 
-.search {}
 .search__form {
   position: relative;
-  height: $search-height;
   display: flex;
+  height: $search-height;
 }
+
 .search__border {
-  z-index: -1;
   position: absolute;
-  pointer-events: none;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
   border-radius: $search-border-radius;
-  transition: box-shadow .15s, background .15s;
+  transition: box-shadow 0.15s, background 0.15s;
+  pointer-events: none;
 }
+
 .search__input {
-  border: none;
-  padding: 0 17px;
-  background: transparent;
-  width: 1px;
   flex-grow: 1;
+  width: 1px;
+  padding: 0 17px;
   font-size: 15px;
-  transition: color .15s;
   color: $search-input-default-font-color;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 30px;
+  transition: color 0.15s;
 
   &::placeholder {
     color: $search-input-default-placeholder;
-  }
-  & ~ .search__border {
-    background: $search-input-default-bg;
-    box-shadow: $search-input-default-shadow;
   }
 
   &:hover {
@@ -44,10 +45,7 @@
     &::placeholder {
       color: $search-input-hover-placeholder;
     }
-    & ~ .search__border {
-      background: $search-input-hover-bg;
-      box-shadow: $search-input-hover-shadow;
-    }
+
     & ~ .search__button {
       fill: $search-input-hover-icon-color;
 
@@ -56,17 +54,15 @@
       }
     }
   }
+
   &:focus {
-    outline: none;
     color: $search-input-focus-font-color;
+    outline: none;
 
     &::placeholder {
       color: $search-input-focus-placeholder;
     }
-    & ~ .search__border {
-      background: $search-input-focus-bg;
-      box-shadow: $search-input-focus-shadow;
-    }
+
     & ~ .search__button {
       fill: $search-input-focus-icon-color;
 
@@ -76,23 +72,25 @@
     }
   }
 }
+
 .search__button {
-  border: none;
-  padding: 0;
-  background: transparent;
-  flex-grow: 0;
-  width: $search-height;
-  cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: 0;
   display: flex;
-  align-items: center;
+  flex-grow: 0;
   justify-content: center;
-  fill: $search-input-default-icon-color;
-  transition: fill .15s;
+  width: 42px;
+  padding: 0;
   color: #ccc;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  fill: #bfbfbf;
 
   &:hover,
   &:focus {
-    outline: none;
     color: $search-input-default-icon-hover-color;
+    outline: none;
   }
 }

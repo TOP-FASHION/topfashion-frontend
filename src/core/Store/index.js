@@ -1,15 +1,16 @@
 // Wordpress
 import LoginStore from './LoginStore'
+import PageStore from './PageStore'
 
 // Woocomerce
 import ProductStore from './ProductStore'
 import ProductsStore from './ProductsStore'
 import CurrencyStore from './CurrencyStore'
 import ProductReviewsStore from './ProductReviewsStore'
-import ProductReviewsAddStore from "./ProductReviewsAddStore"
-import ProductsCategoriesStore from "./ProductsCategoriesStore"
-import ProductAttributesStore from "./ProductAttributesStore"
-import BrandsStore from "./BrandsStore"
+import ProductReviewsAddStore from './ProductReviewsAddStore'
+import ProductsCategoriesStore from './ProductsCategoriesStore'
+import ProductAttributesStore from './ProductAttributesStore'
+import BrandsStore from './BrandsStore'
 
 // CoCart
 import CartAddProductStore from './CartAddProductStore'
@@ -27,6 +28,7 @@ class RootStore {
   constructor () {
     // Wordpress
     this.loginStore = new LoginStore(this)
+    this.pageStore = new PageStore(this)
 
     // Woocomerce
     this.productStore = new ProductStore(this)

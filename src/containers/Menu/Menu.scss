@@ -2,23 +2,21 @@
 @import '../../styles/mixin/direction';
 @import '../../styles/mixin/hacks';
 
-
 .menu {
-  color: $menu-font-color;
-  background: $menu-bg;
-  box-shadow: $menu-shadow;
-  list-style: none;
-
   width: 190px;
   padding: 10px 0;
+  list-style: none;
+  font-weight: $font-weight-medium;
   font-size: 14px;
   line-height: 16px;
-  letter-spacing: .02em;
-  font-weight: $font-weight-medium;
+  color: $menu-font-color;
+  letter-spacing: 0.02em;
+  background: $menu-bg;
+  box-shadow: $menu-shadow;
 
   // without it IE renders a blurred menu
   @include only-ie() {
-    box-shadow: 0 0 0 1px rgba(#000, .15);
+    box-shadow: 0 0 0 1px rgba(#000, 0.15);
   }
 
   > li {
@@ -27,14 +25,14 @@
 
   > li > a,
   > li > button {
-    background: transparent;
-    border: none;
-    width: 100%;
-    font-weight: inherit;
     display: block;
+    width: 100%;
     padding-top: 8px;
     padding-bottom: 6px;
+    font-weight: inherit;
     color: inherit;
+    background: transparent;
+    border: none;
 
     @include direction {
       text-align: $inline-start;
@@ -53,11 +51,12 @@
   }
 
   > li:hover .menu__submenu {
-    opacity: 1;
-    visibility: visible;
     transform: rotateY(0deg);
+    visibility: visible;
+    opacity: 1;
   }
 }
+
 .menu__icon {
   position: absolute;
   top: 3px;
@@ -66,6 +65,7 @@
     #{$inset-inline-start}: 15px;
   }
 }
+
 .menu__arrow {
   position: absolute;
   top: calc(50% - 5px);
@@ -76,19 +76,21 @@
     transform: scaleX(1 * $transform-direction);
   }
 }
+
 .menu__submenu {
-  top: -10px;
   position: absolute;
-  visibility: hidden;
+  top: -10px;
   transform: rotateY(45deg);
+  visibility: hidden;
   opacity: 0;
-  transition: transform .2s, opacity .2s;
+  transition: transform 0.2s, opacity 0.2s;
 
   @include direction {
     #{$inset-inline-start}: 100%;
     transform-origin: #{$inline-start};
   }
 }
+
 .menu--with-icons {
   > li > a,
   > li > button {
@@ -98,15 +100,14 @@
   }
 }
 
-
 .menu--layout--topbar {
-  padding: 6px 0;
   width: 150px;
+  padding: 6px 0;
   box-shadow: $menu-topbar-shadow;
 
   // without it IE renders a blurred menu
   @include only-ie() {
-    box-shadow: 0 0 0 1px rgba(#000, .15);
+    box-shadow: 0 0 0 1px rgba(#000, 0.15);
   }
 
   > li > a,
@@ -131,6 +132,7 @@
         #{$inset-inline-start}: 12px;
       }
     }
+
     > li > a,
     > li > button {
       @include direction {

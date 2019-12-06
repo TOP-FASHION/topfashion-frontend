@@ -2,10 +2,7 @@
 @import '../../styles/functions';
 @import '../../styles/mixin/direction';
 
-
-
 $item-padding: 14px;
-
 
 .nav-links {
   height: 100%;
@@ -30,6 +27,7 @@ $item-padding: 14px;
     letter-spacing: .02em;
     font-weight: $nav-links-item-font-weight;
     color: $nav-links-item-default-font-color;
+    text-transform: uppercase;
 
     span {
       background: $nav-links-item-default-bg;

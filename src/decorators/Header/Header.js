@@ -8,8 +8,15 @@ import Search from '../../components/Search'
 import Topbar from '../../containers/Topbar'
 import setMessages from '../../utils/setMessages'
 import messages from './Header.messages'
+import Indicator from '../../components/Indicator'
+import IndicatorCart from '../../containers/IndicatorCart'
+import Fragment from '../../components/Fragment'
+import Dropdown from '../../components/Dropdown'
+import { inject, observer } from 'mobx-react'
 import './Header.scss'
 
+@inject('modalStore', 'loginStore')
+@observer
 class Header extends Component {
   static propTypes = {
     /** one of ['default', 'compact'] (default: 'default') */
@@ -22,27 +29,63 @@ class Header extends Component {
 
   messages = setMessages(this, messages, 'app.header.')
 
-  get bannerSection() {
-    return this.props.layout === 'default' ?  (
-      <Container className='site-header__middle'>
-        <div className='site-header__logo'>
-          <Link to='/'>
-            <img src='public/img/logos/shop-logo.svg' width='180px' />
-          </Link>
-        </div>
-        <div className='site-header__search'>
-          <Search />
-        </div>
-        <div className='site-header__phone'>
-          <div className='site-header__phone-title'>
-            {this.messages('phoneLabel')}
+  accountLinks = [
+    { title: 'Dashboard', url: '/account/dashboard' },
+    { title: 'Edit Profile', url: '/account/profile' },
+    { title: 'Order History', url: '/account/orders' },
+    { title: 'Addresses', url: '/account/addresses' },
+    { title: 'Password', url: '/account/password' },
+    { title: 'Logout', url: '/logout' }
+  ];
+
+  submit = () => {
+    this.props.modalStore.openLogin()
+  }
+
+  get bannerSection () {
+    return (
+      <div className='site-header__middle'>
+        <Container>
+          <div className='site-header__logo'>
+            <Link to='/'>
+              <img src='public/img/logos/shop-logo.svg' width='180px' />
+            </Link>
           </div>
-          <div className='site-header__phone-number'>
-            {this.messages('phone')}
+          <div className='site-header__phone'>
+            <div className='site-header__phone-title'>
+              {this.messages('phoneLabel')}
+            </div>
+            <div className='site-header__phone-number'>
+              {this.messages('phone')}
+            </div>
           </div>
-        </div>
-      </Container>
-    ) : null
+          <div className='site-header__search'>
+            <Search />
+          </div>
+          <div className='site-header__actions'>
+            <Fragment hidden={this.props.loginStore.loggedIn}>
+              <div className='site-header__item--link'>
+                <Link className='site-header-link' to='' onClick={this.submit}>{this.messages('login')}</Link>
+              </div>
+            </Fragment>
+            <Fragment hidden={!this.props.loginStore.loggedIn}>
+              <div className='site-header__item'>
+                <Dropdown
+                  title={this.messages('myAccount')}
+                  items={this.accountLinks}
+                />
+              </div>
+            </Fragment>
+            <Indicator
+              url='/wishlist'
+              value={10}
+              icon={<i className='far fa-heart' />}
+            />
+            <IndicatorCart />
+          </div>
+        </Container>
+      </div>
+    )
   }
 
   render () {

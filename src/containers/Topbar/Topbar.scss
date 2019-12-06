@@ -1,131 +1,51 @@
-/*
-// .topbar
-*/
 @import '../../styles/var';
 @import '../../styles/mixin/direction';
 @import '../../styles/mixin/hacks';
 
-
 $local-item-margin: 0;
 
 .topbar {
+  position: relative;
+  z-index: 20;
   height: $topbar-height;
-  background: $topbar-bg;
-  box-shadow: $topbar-shadow;
-  border-bottom: $topbar-border-bottom;
   font-size: 14px;
   line-height: 14px;
   color: $topbar-font-color;
-  position: relative;
-  z-index: 20;
+  background: #f1efef;
+  border-bottom: $topbar-border-bottom;
+  box-shadow: $topbar-shadow;
 }
+
 .topbar__container {
   height: 100%;
 }
+
 .topbar__row {
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
   margin: 0 #{-$local-item-margin};
 }
+
 .topbar__item {
-  margin: 0 $local-item-margin;
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
+  margin: 0 $local-item-margin;
 }
+
 .topbar__item-value {
   color: $topbar-dropdown-value-color;
-  transition: all .1s;
+  text-transform: uppercase;
+  transition: all 0.1s;
 }
+
 .topbar__spring {
   flex-grow: 1;
 }
+
 .topbar__item--link + .topbar__item--link {
   @include direction {
     #{$margin-inline-start}: 16px;
-  }
-}
-
-
-$local-transition-duration: .2s;
-$local-button-padding: 10px;
-
-.topbar-dropdown {
-  position: relative;
-  height: 100%;
-}
-.topbar-dropdown__btn {
-  height: 100%;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-  transition: all .1s;
-  background: $topbar-dropdown-bg;
-  color: $topbar-dropdown-font-color;
-  fill: $topbar-dropdown-arrow-color;
-
-  @include direction {
-    #{$padding-inline-start}: $local-button-padding;
-    #{$padding-inline-end}: $local-button-padding;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  svg {
-    position: absolute;
-    top: calc(50% - 4px);
-
-    @include direction {
-      #{$inset-inline-end}: $local-button-padding - 3px;
-    }
-  }
-}
-.topbar-dropdown__body {
-  position: absolute;
-  top: 100%;
-  visibility: hidden;
-  transform-origin: top;
-  transform: rotateX(60deg);
-  opacity: 0;
-  transition: transform $local-transition-duration,
-  opacity $local-transition-duration,
-  visibility 0s $local-transition-duration;
-
-  @include direction {
-    #{$inset-inline-end}: 0;
-  }
-}
-
-.topbar-dropdown--opened .topbar-dropdown__btn,
-.topbar-dropdown__btn:hover,
-.topbar-dropdown__btn:focus {
-  background: $topbar-dropdown-hover-bg;
-  color: $topbar-dropdown-hover-font-color;
-  fill: $topbar-dropdown-hover-arrow-color;
-  .topbar__item-value {
-    color: $topbar-dropdown-hover-value-color;
-  }
-}
-
-.topbar-dropdown--opened {
-  .topbar-dropdown__body {
-    z-index: 1;
-    transition-delay: 0s, 0s, 0s;
-    opacity: 1;
-    visibility: visible;
-    transform: rotateX(0deg);
-  }
-}
-
-.topbar-link {
-  color: $topbar-link-color;
-  transition: color .3s;
-
-  &:hover {
-    color: $topbar-link-hover-color;
   }
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { SwitchLang } from '../routing'
 import Group from '../../components/Group'
 import isShowModalAction from '../../utils/isShowModalAction'
 import { observer, inject } from 'mobx-react'
-import searchParse from '../../utils/text/url/searchParse'
 
 // components
 import Header from '../Header'
@@ -13,14 +12,13 @@ import RedirectToHome from '../../containers/RedirectToHome'
 
 // pages
 import Home from '../../pages/Home'
-import About from '../../pages/About'
 import NotFound from '../../pages/NotFound'
-// import Login from '../../pages/Login'
 import Logout from '../../pages/Logout'
 import ProductPage from '../../pages/ProductPage'
 import CartPage from '../../pages/CartPage'
-//import WishlistPage from '../../pages/WishlistPage'
+import WishlistPage from '../../pages/WishlistPage'
 import ProductCategoryPage from '../../pages/ProductCategoryPage'
+import StaticPage from '../../pages/StaticPage'
 
 @inject('loginStore')
 @observer
@@ -49,9 +47,9 @@ class MainDecorator extends Component {
               <Route path='/category/product/:productId' component={ProductPage} exact />
               <Route path='/category' component={ProductCategoryPage} exact />
               <Route path='/category/:categoryId' component={ProductCategoryPage} exact />
-              <Route path='/cart' component={MainDecorator.isLoggedIn(this.props.loginStore, CartPage)} exact />
-              {/*<Route path='/wishlist' component={WishlistPage} exact />*/}
-              <Route path='/about' component={About} exact />
+              <Route path='/cart' component={CartPage} exact />
+              <Route path='/wishlist' component={WishlistPage} exact />
+              {['about', 'contact-us'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
               <Route component={NotFound} />
             </SwitchLang>
           </Group>

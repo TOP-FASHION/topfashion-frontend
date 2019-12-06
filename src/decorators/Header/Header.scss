@@ -5,24 +5,26 @@
 .site-header {
   position: relative;
   z-index: 100;
-  background: $header-bg;
   color: $header-font-color;
 }
+
 .site-header__middle {
   display: flex;
   align-items: center;
   height: 104px;
-}
-.site-header__logo {
-  width: 255px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $header-logo-color;
+  background: $topbar-bg;
 
-  @include direction {
-    #{$margin-inline-end}: 30px;
+  .container {
+    display: flex;
   }
+}
+
+.site-header__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 255px;
+  color: $header-logo-color;
 
   a {
     color: inherit;
@@ -32,35 +34,65 @@
     fill: currentColor;
   }
 }
+
 .site-header__search {
+  display: flex;
   flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .site-header__phone {
   line-height: 1;
 
   @include direction {
-    text-align: $inline-end;
-    #{$margin-inline-start}: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    #{$margin-inline-end}: 20px;
   }
 }
+
 .site-header__phone-title {
+  margin-bottom: 6px;
   font-size: 14px;
   color: $header-font-muted-color;
-  margin-bottom: 6px;
 }
+
 .site-header__phone-number {
-  font-size: 20px;
   font-weight: $font-weight-bold;
+  font-size: 20px;
 }
+
 .site-header__nav-panel {
   height: $nav-panel-height;
 }
 
+.site-header__actions {
+  display: flex;
+}
+
+.site-header__item--link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: -5px;
+  margin-left: 16px;
+
+  a {
+    color: $header-font-color;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .site-header__logo {
-    width: 210px;
     justify-content: flex-start;
+    width: 210px;
 
     @include direction {
       #{$margin-inline-end}: 24px;

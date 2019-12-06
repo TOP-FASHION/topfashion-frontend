@@ -104,11 +104,11 @@ function CategorySidebar(props) {
         <div className="block-sidebar__item">
           <WidgetFilters title="Filters" filters={filters} offcanvas={offcanvas} />
         </div>
-        {offcanvas !== 'always' && (
+{/*        {offcanvas !== 'always' && (
           <div className="block-sidebar__item d-none d-lg-block">
             <WidgetProducts title="Latest Products" products={JSON.parse(localStorage.getItem('lastProducts'))} />
           </div>
-        )}
+        )}*/}
       </div>
     </div>
   );

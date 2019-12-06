@@ -97,7 +97,7 @@ class Indicator extends Component {
     let button
 
     if (value !== undefined) {
-      value = <span className='indicator__value'>{value}</span>
+      value = <span className='indicator__value' data-count={value}></span>
     }
 
     const title = (

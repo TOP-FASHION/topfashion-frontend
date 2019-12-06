@@ -13,14 +13,11 @@ class Home extends Component {
   render () {
     return (
       <React.Fragment>
-        <HomeSlider withDepartments />
+        <HomeSlider />
         <BannerFeatures />
         {/*<ProductsCarouselTabbs title="Featured Products" layout="grid-4" />*/}
         <HomeBanner />
-        <ProductsBlock
-          title="Bestsellers"
-          layout="large-first"
-        />
+        <ProductsBlock title="Bestsellers" layout="large-first" />
       </React.Fragment>
     )
   }

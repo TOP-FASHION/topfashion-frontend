@@ -3,7 +3,7 @@ import {defineMessages} from 'react-intl'
 export default defineMessages({
   'modals.login.title': {
     id: 'modals.login.title',
-    defaultMessage: 'Log In'
+    defaultMessage: 'Login'
   },
   'modals.login.limits': {
     id: 'modals.login.limits',

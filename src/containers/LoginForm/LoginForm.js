@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {injectIntl} from 'react-intl'
-import {inject, observer} from "mobx-react"
-import {Form} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { injectIntl } from 'react-intl'
+import { inject, observer } from 'mobx-react'
+import { Form } from 'react-bootstrap'
 import Field from '../../components/Field'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
@@ -46,14 +46,16 @@ class LoginForm extends Component {
             name='password'
           />
         </Field>
-        <Button
-          variant='primary'
-          onClick={() => this.props.loginStore.signIn()}
-          className={'btn'}
-          disabled={!form.meta.isValid}
-        >
-          {this.messages('login.button')}
-        </Button>
+        <div className='text-center'>
+          <Button
+            variant='primary'
+            onClick={() => this.props.loginStore.signIn()}
+            className={'btn'}
+            disabled={!form.meta.isValid}
+          >
+            {this.messages('login.button')}
+          </Button>
+        </div>
       </Form>
     )
   }

@@ -9,28 +9,12 @@ export default defineMessages({
     id: 'app.topbar.contacts',
     defaultMessage: 'Contact Us'
   },
-  'app.topbar.storeLocation': {
-    id: 'app.topbar.storeLocation',
-    defaultMessage: 'About us'
+  'app.topbar.promotions': {
+    id: 'app.topbar.promotions',
+    defaultMessage: 'Promotions and news'
   },
   'app.topbar.trackOrder': {
     id: 'app.topbar.trackOrder',
     defaultMessage: 'Track order'
-  },
-  'app.topbar.blog': {
-    id: 'app.topbar.blog',
-    defaultMessage: 'Blog'
-  },
-  'app.topbar.myAccount': {
-    id: 'app.topbar.myAccount',
-    defaultMessage: 'My Account'
-  },
-  'app.topbar.login': {
-    id: 'app.topbar.login',
-    defaultMessage: 'Login'
-  },
-  'app.topbar.register': {
-    id: 'app.topbar.register',
-    defaultMessage: 'Register'
-  },
+  }
 })

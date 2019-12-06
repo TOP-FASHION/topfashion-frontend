@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import Menu from '../../containers/Menu';
+import React, { Component } from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import Menu from '../../containers/Menu'
 import './Dropdown.scss'
 
 class Dropdown extends Component {
@@ -13,82 +13,82 @@ class Dropdown extends Component {
     /** default: false */
     withIcons: PropTypes.bool,
     /** callback function that is called when the item is clicked */
-    onClick: PropTypes.func,
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
     withIcons: false,
-    onClick: undefined,
+    onClick: undefined
   };
 
   state = {
-    open: false,
+    open: false
   };
 
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleOutsideClick);
+  componentDidMount () {
+    document.addEventListener('mousedown', this.handleOutsideClick)
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleOutsideClick);
+  componentWillUnmount () {
+    document.removeEventListener('mousedown', this.handleOutsideClick)
   }
 
   setWrapperRef = (node) => {
-    this.wrapperRef = node;
+    this.wrapperRef = node
   };
 
   handleOutsideClick = (event) => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.setState(() => ({
-        open: false,
-      }));
+        open: false
+      }))
     }
   };
 
   handleButtonClick = () => {
     this.setState(state => ({
-      open: !state.open,
-    }));
+      open: !state.open
+    }))
   };
 
   handleItemClick = (item) => {
-    const { onClick } = this.props;
+    const { onClick } = this.props
 
     this.setState(() => ({
-      open: false,
-    }));
+      open: false
+    }))
 
     if (onClick) {
-      onClick(item);
+      onClick(item)
     }
   };
 
-  render() {
-    const { open } = this.state;
-    const { title, withIcons, items } = this.props;
+  render () {
+    const { open } = this.state
+    const { title, withIcons, items } = this.props
 
-    const classes = classNames('topbar-dropdown', {
-      'topbar-dropdown--opened': open,
-    });
+    const classes = classNames('dropdown', {
+      'dropdown--opened': open
+    })
 
     return (
       <div className={classes} ref={this.setWrapperRef}>
-        <button className="topbar-dropdown__btn" type="button" onClick={this.handleButtonClick}>
+        <button className='dropdown__btn' type='button' onClick={this.handleButtonClick}>
           {title}
-          <i className="fa fa-angle-down ml-2 opacity-5"></i>
+          <i className='fa fa-angle-down ml-2 opacity-5'></i>
         </button>
 
-        <div className="topbar-dropdown__body">
+        <div className='dropdown__body'>
           <Menu
-            layout="topbar"
+            layout='topbar'
             withIcons={withIcons}
             items={items}
             onClick={this.handleItemClick}
           />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Dropdown;
+export default Dropdown

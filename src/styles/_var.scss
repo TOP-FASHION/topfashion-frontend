@@ -57,7 +57,7 @@ $font-weight-extra-bold:  800 !default;
 $font-weight-black:       900 !default;
 // breakpoints
 $breakpoints: (
-  xs-start: 0px,
+  xs-start: 0,
   xs-end:   575px,
   sm-start: 576px,
   sm-end:   767px,
@@ -76,7 +76,7 @@ $body-bg:               $light-color                !default;
 $body-font-color:       $light-opposite-color       !default;
 $body-font-muted-color: $light-opposite-muted-color !default;
 $body-font-alt-color:   $light-opposite-alt-color   !default;
-$body-font-family:      'Roboto', 'sans-serif'      !default;
+$body-font-family:      'Circe', 'sans-serif'       !default;
 $body-font-size:        16px                        !default;
 $body-font-weight:      $font-weight-normal         !default;
 $body-line-height:      1.5                         !default;
@@ -87,7 +87,7 @@ $body-divider-color:    $light-divider-color        !default;
 // -- header
 // ----------------------------------------
 $header-bg:               transparent            !default;
-$header-font-color:       inherit                !default;
+$header-font-color:       #424242                !default;
 $header-font-muted-color: $body-font-muted-color !default;
 $header-logo-color:       inherit                !default;
 

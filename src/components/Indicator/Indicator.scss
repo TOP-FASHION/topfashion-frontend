@@ -6,7 +6,6 @@ $local-open-transition-duration: 0.2s;
 
 .indicator {
   display: flex;
-  color: $indicator-default-font-color;
 }
 
 .indicator__button {
@@ -32,7 +31,8 @@ $local-open-transition-duration: 0.2s;
   display: flex;
   align-items: center;
   height: $indicator-height;
-  padding: 0 14px;
+  padding: 0 24px;
+  font-size: 20px;
   background: $indicator-default-bg;
   border-radius: $indicator-border-radius;
   transition: background-color 0.2s;
@@ -45,9 +45,26 @@ $local-open-transition-duration: 0.2s;
   padding: 0 5px;
   font-weight: $font-weight-bold;
   font-size: 10px;
-  color: $indicator-default-counter-font-color;
-  background: $indicator-default-counter-bg;
-  border-radius: 1000px;
+  color: #fff;
+
+  &::after {
+    content: attr(data-count);
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-top: -2px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    background: #c92f67;
+    border-radius: 50%;
+  }
 
   @include direction {
     #{$margin-inline-start}: -5px;
@@ -77,16 +94,10 @@ $local-open-transition-duration: 0.2s;
   .indicator__button {
     color: $indicator-hover-font-color;
   }
+}
 
-  .indicator__area {
-    background: $indicator-hover-bg;
-    transition-duration: 0.1s;
-  }
-
-  .indicator__value {
-    color: $indicator-hover-counter-font-color;
-    background: $indicator-hover-counter-bg;
-  }
+.indicator__area > i:hover {
+  color: #c92f67;
 }
 
 .indicator--trigger--click.indicator--opened,
@@ -131,6 +142,6 @@ $local-open-transition-duration: 0.2s;
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .indicator__area {
-    padding: 0 12px;
+    padding: 0 20px;
   }
 }
