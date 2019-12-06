@@ -1,18 +1,18 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import Dropdown from '../../components/Dropdown/index';
-import currencies from '../../data/shopCurrencies';
+import React from 'react'
+import { FormattedMessage } from 'react-intl'
+import Dropdown from '../../components/Dropdown/index'
+import currencies from '../../data/shopCurrencies'
 
-function DropdownCurrency(props) {
-  const { currency, currencyChange: changeCurrency } = props;
+function DropdownCurrency (props) {
+  const { currency, currencyChange: changeCurrency } = props
 
   const title = (
     <React.Fragment>
       Currency
       {': '}
-      <span className="topbar__item-value">USD</span>
+      <span className='topbar__item-value'>USD</span>
     </React.Fragment>
-  );
+  )
 
   return (
     <Dropdown
@@ -20,7 +20,7 @@ function DropdownCurrency(props) {
       items={currencies}
       onClick={(item) => changeCurrency(item.currency)}
     />
-  );
+  )
 }
 
 export default DropdownCurrency

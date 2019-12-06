@@ -6,7 +6,7 @@ import Rating from '../../components/Rating'
 
 class WishlistPage extends Component {
   render () {
-    const { wishlist, cartAddItem, wishlistRemoveItem } = this.props;
+    const { wishlist, cartAddItem, wishlistRemoveItem } = this.props
     const breadcrumb = [
       { title: 'Home', url: '' },
       { title: 'Wishlist', url: '' }
@@ -16,106 +16,106 @@ class WishlistPage extends Component {
 
     if (wishlist.length) {
       const itemsList = wishlist.map((item) => {
-        let image;
+        let image
 
         if (item.images.length > 0) {
           image = (
             <Link to={`/shop/product/${item.id}`}>
-              <img src={item.images[0]} alt="" />
+              <img src={item.images[0]} alt='' />
             </Link>
-          );
+          )
         }
 
         const renderAddToCarButton = ({ run, loading }) => {
           const classes = classNames('btn btn-primary btn-sm', {
-            'btn-loading': loading,
-          });
+            'btn-loading': loading
+          })
 
-          return <button type="button" onClick={run} className={classes}>Add To Cart</button>;
-        };
+          return <button type='button' onClick={run} className={classes}>Add To Cart</button>
+        }
 
         const renderRemoveButton = ({ run, loading }) => {
           const classes = classNames('btn btn-light btn-sm btn-svg-icon', {
-            'btn-loading': loading,
-          });
+            'btn-loading': loading
+          })
 
-          return <button type="button" onClick={run} className={classes} aria-label="Remove"><Cross12Svg /></button>;
-        };
+          return <button type='button' onClick={run} className={classes} aria-label='Remove'><Cross12Svg /></button>
+        }
 
         return (
-          <tr key={item.id} className="wishlist__row">
-            <td className="wishlist__column wishlist__column--image">
+          <tr key={item.id} className='wishlist__row'>
+            <td className='wishlist__column wishlist__column--image'>
               {image}
             </td>
-            <td className="wishlist__column wishlist__column--product">
-              <Link to={`/shop/product/${item.id}`} className="wishlist__product-name">{item.name}</Link>
-              <div className="wishlist__product-rating">
+            <td className='wishlist__column wishlist__column--product'>
+              <Link to={`/shop/product/${item.id}`} className='wishlist__product-name'>{item.name}</Link>
+              <div className='wishlist__product-rating'>
                 <Rating value={item.rating} />
-                <div className="wishlist__product-rating-legend">{`${item.reviews} Reviews`}</div>
+                <div className='wishlist__product-rating-legend'>{`${item.reviews} Reviews`}</div>
               </div>
             </td>
-            <td className="wishlist__column wishlist__column--stock">
-              <div className="badge badge-success">In Stock</div>
+            <td className='wishlist__column wishlist__column--stock'>
+              <div className='badge badge-success'>In Stock</div>
             </td>
-            <td className="wishlist__column wishlist__column--price"><Currency value={item.price} /></td>
-            <td className="wishlist__column wishlist__column--tocart">
+            <td className='wishlist__column wishlist__column--price'><Currency value={item.price} /></td>
+            <td className='wishlist__column wishlist__column--tocart'>
               <AsyncAction
                 action={() => cartAddItem(item)}
                 render={renderAddToCarButton}
               />
             </td>
-            <td className="wishlist__column wishlist__column--remove">
+            <td className='wishlist__column wishlist__column--remove'>
               <AsyncAction
                 action={() => wishlistRemoveItem(item.id)}
                 render={renderRemoveButton}
               />
             </td>
           </tr>
-        );
-      });
+        )
+      })
 
       content = (
-        <div className="block">
-          <div className="container">
-            <table className="wishlist">
-              <thead className="wishlist__head">
-                <tr className="wishlist__row">
-                  <th className="wishlist__column wishlist__column--image">Image</th>
-                  <th className="wishlist__column wishlist__column--product">Product</th>
-                  <th className="wishlist__column wishlist__column--stock">Stock Status</th>
-                  <th className="wishlist__column wishlist__column--price">Price</th>
-                  <th className="wishlist__column wishlist__column--tocart" aria-label="Add to cart" />
-                  <th className="wishlist__column wishlist__column--remove" aria-label="Remove" />
+        <div className='block'>
+          <div className='container'>
+            <table className='wishlist'>
+              <thead className='wishlist__head'>
+                <tr className='wishlist__row'>
+                  <th className='wishlist__column wishlist__column--image'>Image</th>
+                  <th className='wishlist__column wishlist__column--product'>Product</th>
+                  <th className='wishlist__column wishlist__column--stock'>Stock Status</th>
+                  <th className='wishlist__column wishlist__column--price'>Price</th>
+                  <th className='wishlist__column wishlist__column--tocart' aria-label='Add to cart' />
+                  <th className='wishlist__column wishlist__column--remove' aria-label='Remove' />
                 </tr>
               </thead>
-              <tbody className="wishlist__body">
+              <tbody className='wishlist__body'>
                 {itemsList}
               </tbody>
             </table>
           </div>
         </div>
-      );
+      )
     } else {
       content = (
-        <div className="block block-empty">
-          <div className="container">
-            <div className="block-empty__body">
-              <div className="block-empty__message">Your wish list is empty!</div>
-              <div className="block-empty__actions">
-                <Link to="/" className="btn btn-primary btn-sm">Continue</Link>
+        <div className='block block-empty'>
+          <div className='container'>
+            <div className='block-empty__body'>
+              <div className='block-empty__message'>Your wish list is empty!</div>
+              <div className='block-empty__actions'>
+                <Link to='/' className='btn btn-primary btn-sm'>Continue</Link>
               </div>
             </div>
           </div>
         </div>
-      );
+      )
     }
 
     return (
       <React.Fragment>
-        <PageHeader header="Wishlist" breadcrumb={breadcrumb} />
+        <PageHeader header='Wishlist' breadcrumb={breadcrumb} />
         {content}
       </React.Fragment>
-    );
+    )
   }
 }
 

@@ -1,7 +1,6 @@
 import { observable, action, computed } from 'mobx'
 
 export default class ModalStore {
-
   constructor (rootStore) {
     this.isOpenModalLogin = false
     this.isOpenModalRegistration = false
@@ -10,8 +9,11 @@ export default class ModalStore {
   }
 
   @observable isOpenModalLogin
+
   @observable isOpenModalRegistration
+
   @observable openModalProduct
+
   @observable productIdModal
 
   // LOGIN

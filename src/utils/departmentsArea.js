@@ -11,29 +11,29 @@ class DepartmentsArea {
    */
   privateSubscriber = null;
 
-  set area(value) {
+  set area (value) {
     if (this.privateArea === value) {
-      return;
+      return
     }
 
-    this.privateArea = value;
+    this.privateArea = value
 
     if (this.privateSubscriber) {
-      this.privateSubscriber(this.area);
+      this.privateSubscriber(this.area)
     }
   }
 
-  get area() {
-    return this.privateArea;
+  get area () {
+    return this.privateArea
   }
 
-  subscribe(fn) {
-    this.privateSubscriber = fn;
+  subscribe (fn) {
+    this.privateSubscriber = fn
 
     return () => {
-      this.privateSubscriber = null;
-    };
+      this.privateSubscriber = null
+    }
   }
 }
 
-export default new DepartmentsArea();
+export default new DepartmentsArea()

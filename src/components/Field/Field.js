@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Form} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import Fragment from '../Fragment'
-import classNames from 'classnames';
+import classNames from 'classnames'
 
 class Field extends React.Component {
   static propTypes = {
@@ -14,24 +14,24 @@ class Field extends React.Component {
     error: PropTypes.node,
     disabled: PropTypes.bool,
     label: PropTypes.node,
-    classNames: PropTypes.object,
+    classNames: PropTypes.object
   }
 
   static defaultProps = {
     disabled: false,
-    classNames: {},
+    classNames: {}
   }
 
-  modifyChildren(child) {
+  modifyChildren (child) {
     const className = classNames({
-      'is-invalid': this.props.error,
-    });
+      'is-invalid': this.props.error
+    })
 
     const props = {
       className
-    };
+    }
 
-    return React.cloneElement(child, props);
+    return React.cloneElement(child, props)
   }
 
   render () {
@@ -42,7 +42,7 @@ class Field extends React.Component {
         <Form.Group>
           <Form.Label>{label}</Form.Label>
           {React.Children.map(children, child => this.modifyChildren(child))}
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type='invalid'>
             {error}
           </Form.Control.Feedback>
         </Form.Group>

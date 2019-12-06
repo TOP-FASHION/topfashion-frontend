@@ -7,7 +7,7 @@ export default class ChangeLanguageStore {
     this.language = 'en'
   }
 
-  @action changeLanguage(values) {
+  @action changeLanguage (values) {
     this.language = values
   }
 }

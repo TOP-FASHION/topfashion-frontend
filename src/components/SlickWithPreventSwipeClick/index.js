@@ -1,1 +1,1 @@
-export { default } from "./SlickWithPreventSwipeClick"
+export { default } from './SlickWithPreventSwipeClick'

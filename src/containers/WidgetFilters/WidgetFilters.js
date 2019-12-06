@@ -8,18 +8,18 @@ import FilterColor from '../../components/FilterColor'
 import FilterPrice from '../../components/FilterPrice'
 import './WidgetFilters.scss'
 
-function WidgetFilters(props) {
-  const { title, filters, offcanvas } = props;
+function WidgetFilters (props) {
+  const { title, filters, offcanvas } = props
 
   const filtersList = filters.map((filter) => {
-    let filterView;
+    let filterView
 
     if (filter.type === 'categories') {
-      filterView = <FilterCategories />;
+      filterView = <FilterCategories />
     } else if (filter.type === 'checkbox') {
-      filterView = <FilterCheckbox items={filter.options.items} />;
+      filterView = <FilterCheckbox items={filter.options.items} />
     } else if (filter.type === 'color') {
-      filterView = <FilterColor />;
+      filterView = <FilterColor />
     } else if (filter.type === 'price') {
       filterView = (
         <FilterPrice
@@ -29,21 +29,21 @@ function WidgetFilters(props) {
           max={filter.options.max}
           step={1}
         />
-      );
+      )
     }
 
     return (
-      <div key={filter.id} className="widget-filters__item">
+      <div key={filter.id} className='widget-filters__item'>
         <Collapse
-          toggleClass="filter--opened"
+          toggleClass='filter--opened'
           render={({ toggle, setItemRef, setContentRef }) => (
-            <div className="filter filter--opened" ref={setItemRef}>
-              <button type="button" className="filter__title" onClick={toggle}>
+            <div className='filter filter--opened' ref={setItemRef}>
+              <button type='button' className='filter__title' onClick={toggle}>
                 {filter.name}
-                <i className="fas fa-angle-down filter__arrow"></i>
+                <i className='fas fa-angle-down filter__arrow' />
               </button>
-              <div className="filter__body" ref={setContentRef}>
-                <div className="filter__container">
+              <div className='filter__body' ref={setContentRef}>
+                <div className='filter__container'>
                   {filterView}
                 </div>
               </div>
@@ -51,28 +51,28 @@ function WidgetFilters(props) {
           )}
         />
       </div>
-    );
-  });
+    )
+  })
 
   const classes = classNames('widget-filters widget', {
     'widget-filters--offcanvas--always': offcanvas === 'always',
-    'widget-filters--offcanvas--mobile': offcanvas === 'mobile',
-  });
+    'widget-filters--offcanvas--mobile': offcanvas === 'mobile'
+  })
 
   return (
     <div className={classes}>
-      <h4 className="widget-filters__title widget__title">{title}</h4>
+      <h4 className='widget-filters__title widget__title'>{title}</h4>
 
-      <div className="widget-filters__list">
+      <div className='widget-filters__list'>
         {filtersList}
       </div>
 
-      <div className="widget-filters__actions d-flex">
-        <button type="button" className="btn btn-primary btn-sm">Filter</button>
-        <button type="button" className="btn btn-secondary btn-sm ml-2">Reset</button>
+      <div className='widget-filters__actions d-flex'>
+        <button type='button' className='btn btn-primary btn-sm'>Filter</button>
+        <button type='button' className='btn btn-secondary btn-sm ml-2'>Reset</button>
       </div>
     </div>
-  );
+  )
 }
 
 WidgetFilters.propTypes = {
@@ -87,12 +87,12 @@ WidgetFilters.propTypes = {
   /**
    * indicates when sidebar bar should be off canvas
    */
-  offcanvas: PropTypes.oneOf(['always', 'mobile']),
-};
+  offcanvas: PropTypes.oneOf(['always', 'mobile'])
+}
 
 WidgetFilters.defaultProps = {
   filters: [],
-  offcanvas: 'mobile',
-};
+  offcanvas: 'mobile'
+}
 
-export default WidgetFilters;
+export default WidgetFilters

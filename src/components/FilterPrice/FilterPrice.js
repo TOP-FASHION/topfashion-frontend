@@ -2,70 +2,70 @@ import React, { Component } from 'react'
 import InputRange from 'react-input-range'
 import PropTypes from 'prop-types'
 import './FilterPrice.scss'
-import {inject, observer} from "mobx-react"
+import { inject, observer } from 'mobx-react'
 
 @inject('currencyStore', 'productsStore', 'productsCategoriesStore')
 @observer
 class FilterPrice extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.state = {};
+    this.state = {}
   }
 
   handleChange = (value) => {
-    const { locale } = this.props;
-    const { direction } = 'en';
-    let { min: from, max: to } = value;
+    const { locale } = this.props
+    const { direction } = 'en'
+    let { min: from, max: to } = value
 
     // since react-input-range does not support RTL direction,
     // we just need to invert and swipe values
     if (direction === 'rtl') {
-      [from, to] = [to * -1, from * -1];
+      [from, to] = [to * -1, from * -1]
     }
 
-    this.setState(() => ({ from, to }));
+    this.setState(() => ({ from, to }))
   };
 
   submit = (from, to) => {
     this.props.productsStore.getProducts({
-      'per_page': this.props.productsStore.countProducts,
+      per_page: this.props.productsStore.countProducts,
       'filter[limit]': this.props.productsStore.countProducts,
-      'order': 'desc',
-      'category': this.props.productsCategoriesStore.categoryId,
-      'min_price': from,
-      'max_price': to
+      order: 'desc',
+      category: this.props.productsCategoriesStore.categoryId,
+      min_price: from,
+      max_price: to
     })
   };
 
-  render() {
-    const { from: stateFrom, to: stateTo } = this.state;
+  render () {
+    const { from: stateFrom, to: stateTo } = this.state
     const {
       locale,
       step,
       from: propsFrom,
-      to: propsTo,
-    } = this.props;
+      to: propsTo
+    } = this.props
     const { currency } = this.props.currencyStore
-    let { min, max } = this.props;
-    const { direction } = 'en';
+    let { min, max } = this.props
+    const { direction } = 'en'
 
-    let from = Math.max(stateFrom || propsFrom || min, min);
-    let to = Math.min(stateTo || propsTo || max, max);
-    let fromLabel = from;
-    let toLabel = to;
+    let from = Math.max(stateFrom || propsFrom || min, min)
+    let to = Math.min(stateTo || propsTo || max, max)
+    let fromLabel = from
+    let toLabel = to
 
     // since react-input-range does not support RTL direction,
     // we just need to invert and swipe values
     if (direction === 'rtl') {
       [from, to] = [to * -1, from * -1];
       [min, max] = [max * -1, min * -1];
-      [fromLabel, toLabel] = [from * -1, to * -1];
+      [fromLabel, toLabel] = [from * -1, to * -1]
     }
 
     return (
-      <div className="filter-price">
-        <div className="filter-price__slider" dir="ltr">
+      <div className='filter-price'>
+        <div className='filter-price__slider' dir='ltr'>
           <InputRange
             minValue={min}
             maxValue={max}
@@ -75,15 +75,15 @@ class FilterPrice extends Component {
             onChangeComplete={() => this.submit(fromLabel, toLabel)}
           />
         </div>
-        <div className="filter-price__title">
+        <div className='filter-price__title'>
           Price:
           {' '}
-          <span className="filter-price__min-value">{currency} {fromLabel}</span>
+          <span className='filter-price__min-value'>{currency} {fromLabel}</span>
           {' – '}
-          <span className="filter-price__max-value">{currency} {toLabel}</span>
+          <span className='filter-price__max-value'>{currency} {toLabel}</span>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -94,15 +94,15 @@ FilterPrice.propTypes = {
   max: PropTypes.number,
   step: PropTypes.number,
   /** current locale */
-  locale: PropTypes.string,
-};
+  locale: PropTypes.string
+}
 
 FilterPrice.defaultProps = {
   from: undefined,
   to: undefined,
   min: 0,
   max: 100,
-  step: 1,
-};
+  step: 1
+}
 
 export default FilterPrice

@@ -85,7 +85,7 @@ class ProductsCarouselTabbs extends Component {
   };
 
   get products () {
-    let { products } = this.props.productsStore
+    const { products } = this.props.productsStore
     return products
   }
 

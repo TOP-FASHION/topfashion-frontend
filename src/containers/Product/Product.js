@@ -11,7 +11,7 @@ import Button from '../../components/Button'
 import './Product.scss'
 import { inject, observer } from 'mobx-react'
 
-@inject('modalStore', 'currencyStore', 'cartAddProductStore',)
+@inject('modalStore', 'currencyStore', 'cartAddProductStore')
 @observer
 class Product extends Component {
   static propTypes = {
@@ -37,8 +37,6 @@ class Product extends Component {
 
   }
 
-
-
   handleChangeQuantity = quantity => {
     this.setState({ quantity })
   }
@@ -54,7 +52,6 @@ class Product extends Component {
     const { quantity } = this.state
     const { currency } = this.props.currencyStore
     let prices
-
 
     if (product.sale_price) {
       prices = (

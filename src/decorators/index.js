@@ -101,7 +101,7 @@ class AppRoot extends React.Component {
   render () {
     return (
       <Fragment>
-        {/*<DevTools />*/}
+        {/* <DevTools /> */}
         <Notifications />
         <Modals />
         <SetLang langList={['en', 'ru']}>

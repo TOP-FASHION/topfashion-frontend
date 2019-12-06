@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {Form} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 
 class Checkbox extends Component {
   static propTypes = {
@@ -29,10 +29,10 @@ class Checkbox extends Component {
     return (
       <Form.Check
         required
-        name="terms"
-        label="Agree to terms and conditions"
+        name='terms'
+        label='Agree to terms and conditions'
         onChange={this.toggleCheckboxChange}
-        id="validationFormik0"
+        id='validationFormik0'
       />
     )
   }

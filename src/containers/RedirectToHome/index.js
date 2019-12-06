@@ -1,1 +1,1 @@
-export {default} from './RedirectToHome'
+export { default } from './RedirectToHome'

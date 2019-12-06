@@ -1,1 +1,1 @@
-export { default } from "./WidgetProducts"
+export { default } from './WidgetProducts'

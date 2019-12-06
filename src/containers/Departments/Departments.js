@@ -7,127 +7,127 @@ class Departments extends Component {
   state = {
     open: false,
     fixed: false,
-    area: null,
+    area: null
   };
 
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleOutsideClick);
+  componentDidMount () {
+    document.addEventListener('mousedown', this.handleOutsideClick)
 
     this.unsubscribeAria = departmentsArea.subscribe((area) => {
       this.setState({
         fixed: !!area,
-        area,
-      });
-    });
+        area
+      })
+    })
 
     this.setState({
       fixed: !!departmentsArea.area,
-      area: departmentsArea.area,
-    });
+      area: departmentsArea.area
+    })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { fixed, area, open } = this.state;
+  componentDidUpdate (prevProps, prevState) {
+    const { fixed, area, open } = this.state
 
     if (prevState.fixed !== fixed) {
-      const root = this.wrapperRef;
-      const content = root.querySelector('.departments__links-wrapper');
+      const root = this.wrapperRef
+      const content = root.querySelector('.departments__links-wrapper')
 
       if (fixed) {
-        const areaRect = area.getBoundingClientRect();
-        const areaBottom = areaRect.top + areaRect.height + window.scrollY;
+        const areaRect = area.getBoundingClientRect()
+        const areaBottom = areaRect.top + areaRect.height + window.scrollY
 
-        root.classList.remove('departments--transition');
-        root.classList.add('departments--fixed', 'departments--opened');
+        root.classList.remove('departments--transition')
+        root.classList.add('departments--fixed', 'departments--opened')
 
-        const height = areaBottom - (content.getBoundingClientRect().top + window.scrollY);
+        const height = areaBottom - (content.getBoundingClientRect().top + window.scrollY)
 
-        content.style.height = `${height}px`;
-        content.getBoundingClientRect(); // force reflow
+        content.style.height = `${height}px`
+        content.getBoundingClientRect() // force reflow
       } else {
-        root.classList.remove('departments--opened', 'departments--fixed');
-        content.style.height = '';
+        root.classList.remove('departments--opened', 'departments--fixed')
+        content.style.height = ''
       }
     } else if (!fixed) {
       if (open) {
-        const root = this.wrapperRef;
+        const root = this.wrapperRef
 
-        const content = root.querySelector('.departments__links-wrapper');
-        content.getBoundingClientRect(); // force reflow
-        const startHeight = content.getBoundingClientRect().height;
+        const content = root.querySelector('.departments__links-wrapper')
+        content.getBoundingClientRect() // force reflow
+        const startHeight = content.getBoundingClientRect().height
 
-        root.classList.add('departments--transition', 'departments--opened');
+        root.classList.add('departments--transition', 'departments--opened')
 
-        const endHeight = content.getBoundingClientRect().height;
+        const endHeight = content.getBoundingClientRect().height
 
-        content.style.height = `${startHeight}px`;
-        content.getBoundingClientRect(); // force reflow
-        content.style.height = `${endHeight}px`;
+        content.style.height = `${startHeight}px`
+        content.getBoundingClientRect() // force reflow
+        content.style.height = `${endHeight}px`
       } else {
-        const root = this.wrapperRef;
-        const content = root.querySelector('.departments__links-wrapper');
-        const startHeight = content.getBoundingClientRect().height;
+        const root = this.wrapperRef
+        const content = root.querySelector('.departments__links-wrapper')
+        const startHeight = content.getBoundingClientRect().height
 
-        content.style.height = `${startHeight}px`;
+        content.style.height = `${startHeight}px`
 
-        root.classList.add('departments--transition');
-        root.classList.remove('departments--opened');
+        root.classList.add('departments--transition')
+        root.classList.remove('departments--opened')
 
-        content.getBoundingClientRect(); // force reflow
-        content.style.height = '';
+        content.getBoundingClientRect() // force reflow
+        content.style.height = ''
       }
     }
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleOutsideClick);
+  componentWillUnmount () {
+    document.removeEventListener('mousedown', this.handleOutsideClick)
 
-    this.unsubscribeAria();
+    this.unsubscribeAria()
   }
 
   unsubscribeAria = () => {};
 
   setWrapperRef = (node) => {
-    this.wrapperRef = node;
+    this.wrapperRef = node
   };
 
   handleOutsideClick = (event) => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.setState(() => ({
-        open: false,
-      }));
+        open: false
+      }))
     }
   };
 
   handleButtonClick = () => {
     this.setState(state => ({
-      open: !state.open,
-    }));
+      open: !state.open
+    }))
   };
 
   handleTransitionEnd = (event) => {
     if (this.wrapperRef && event.propertyName === 'height') {
-      this.wrapperRef.querySelector('.departments__links-wrapper').style.height = '';
-      this.wrapperRef.classList.remove('departments--transition');
+      this.wrapperRef.querySelector('.departments__links-wrapper').style.height = ''
+      this.wrapperRef.classList.remove('departments--transition')
     }
   };
 
-  render() {
+  render () {
     return (
-      <div className="departments" ref={this.setWrapperRef}>
-        <div className="departments__body">
-          <div className="departments__links-wrapper" onTransitionEnd={this.handleTransitionEnd}>
+      <div className='departments' ref={this.setWrapperRef}>
+        <div className='departments__body'>
+          <div className='departments__links-wrapper' onTransitionEnd={this.handleTransitionEnd}>
             <DepartmentsLinks />
           </div>
         </div>
-        <button type="button" className="departments__button" onClick={this.handleButtonClick}>
-          <i className="fas fa-bars departments__button-icon"></i>
+        <button type='button' className='departments__button' onClick={this.handleButtonClick}>
+          <i className='fas fa-bars departments__button-icon' />
           Shop By Category
-          <i className="fa fa-angle-up ml-2 opacity-5 departments__button-arrow"></i>
+          <i className='fa fa-angle-up ml-2 opacity-5 departments__button-arrow' />
         </button>
       </div>
-    );
+    )
   }
 }
 
-export default Departments;
+export default Departments

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-function ProductTabDescription() {
+function ProductTabDescription () {
   return (
-    <div className="typography">
+    <div className='typography'>
       <h3>Product Full Description</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum, diam
@@ -32,7 +32,7 @@ function ProductTabDescription() {
         fringilla odio scelerisque non.
       </p>
     </div>
-  );
+  )
 }
 
-export default ProductTabDescription;
+export default ProductTabDescription

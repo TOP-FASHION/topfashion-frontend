@@ -1,1 +1,1 @@
-export { default } from "./MegaMenuLinks"
+export { default } from './MegaMenuLinks'

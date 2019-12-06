@@ -1,7 +1,7 @@
 import './assets/public/css/bootstrap.min.css'
 import './assets/public/css/slick.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
-import 'react-input-range/lib/css/index.css';
+import 'react-input-range/lib/css/index.css'
 import './styles/main.scss'
 
 import React from 'react'

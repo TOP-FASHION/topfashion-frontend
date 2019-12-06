@@ -43,10 +43,10 @@ export default async function request (url, options) {
           'Content-Type': 'multipart/form-data',
           ...newOptions.headers
         }
-        let formData  = new FormData();
+        const formData = new FormData()
 
-        for(let name in newOptions.data) {
-          formData.set(name, newOptions.data[name]);
+        for (const name in newOptions.data) {
+          formData.set(name, newOptions.data[name])
         }
 
         newOptions.data = formData

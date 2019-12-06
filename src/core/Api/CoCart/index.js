@@ -11,7 +11,7 @@ const CoCart = {
   CartRemoveProduct,
   CartUpdateProduct,
   CartInfoTotalProducts,
-  CartCountProducts,
+  CartCountProducts
 }
 
 export default CoCart

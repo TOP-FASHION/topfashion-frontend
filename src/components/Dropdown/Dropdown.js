@@ -75,7 +75,7 @@ class Dropdown extends Component {
       <div className={classes} ref={this.setWrapperRef}>
         <button className='dropdown__btn' type='button' onClick={this.handleButtonClick}>
           {title}
-          <i className='fa fa-angle-down ml-2 opacity-5'></i>
+          <i className='fa fa-angle-down ml-2 opacity-5' />
         </button>
 
         <div className='dropdown__body'>

@@ -3,6 +3,7 @@ import Api from '../Api'
 
 export default class ProductAttributesStore {
   attributes
+
   attributeTerms
 
   getAttributes (data) {
@@ -26,16 +27,16 @@ export default class ProductAttributesStore {
   }
 
   setAttributeTerms = data => {
-    let arrAttribute = []
+    const arrAttribute = []
     Object.keys(data).map(key => {
-      let obj = data[key];
-      let value;
+      const obj = data[key]
+      let value
       Object.keys(obj).forEach(() => {
-        value = obj.name;
+        value = obj.name
       })
-      arrAttribute.push(value);
+      arrAttribute.push(value)
     })
-    this.attributeTerms = arrAttribute;
+    this.attributeTerms = arrAttribute
   }
 }
 

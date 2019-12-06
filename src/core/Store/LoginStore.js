@@ -5,9 +5,13 @@ import Validator from 'validatorjs'
 
 export default class LoginStore {
   @observable token
+
   @observable loggedIn = false
+
   @observable statusLogin = ''
+
   @observable messageStatusLogin = ''
+
   @observable form = {
     fields: {
       email: {
@@ -19,13 +23,13 @@ export default class LoginStore {
         value: '',
         error: null,
         rule: 'required'
-      },
+      }
     },
     meta: {
       isValid: false,
       error: null,
-      message: null,
-    },
+      message: null
+    }
   }
 
   constructor (rootStore) {
@@ -37,38 +41,38 @@ export default class LoginStore {
   @action
   validateAuth = async () => {
     try {
-      const value = await Api.Wordpress.ValidateAuthCookie({cookie: this.token})
+      const value = await Api.Wordpress.ValidateAuthCookie({ cookie: this.token })
       this.loggedIn = value.data.valid
-      new Event('login');
-      var event = new CustomEvent('login', { 'detail':  {'status': value.data.valid} });
-      window.dispatchEvent(event);
+      new Event('login')
+      var event = new CustomEvent('login', { detail: { status: value.data.valid } })
+      window.dispatchEvent(event)
     } catch (error) {
       runInAction(() => {
-        this.status = "error";
-      });
+        this.status = 'error'
+      })
     }
   }
 
-  @computed get isLoggedIn() {
-     return this.loggedIn
+  @computed get isLoggedIn () {
+    return this.loggedIn
   }
 
   getFlattenedValues = (valueKey = 'value') => {
-    let data = {};
-    let form = toJS(this.form).fields;
+    const data = {}
+    const form = toJS(this.form).fields
     Object.keys(form).map(key => {
       data[key] = form[key][valueKey]
-    });
+    })
     return data
   };
 
-  @action  onFieldChange = (field, value) => {
-    this.form.fields[field.target.name].value = field.target.value;
-    Validator.useLang(Cookies.get('_lang'));
-    let validation = new Validator(
+  @action onFieldChange = (field, value) => {
+    this.form.fields[field.target.name].value = field.target.value
+    Validator.useLang(Cookies.get('_lang'))
+    const validation = new Validator(
       this.getFlattenedValues('value'),
-      this.getFlattenedValues('rule'));
-    this.form.meta.isValid = validation.passes();
+      this.getFlattenedValues('rule'))
+    this.form.meta.isValid = validation.passes()
     this.form.fields[field.target.name].error = validation.errors.first(field.target.name)
   };
 
@@ -76,14 +80,14 @@ export default class LoginStore {
     if (!this.form.meta.isValid) {
       return Promise.resolve(null)
     }
-    let postData = {}
+    const postData = {}
     postData.email = this.form.fields.email.value
     postData.password = this.form.fields.password.value
 
     return Api.Wordpress.Login(postData)
       .then(res => {
         if (res.data.cookie) {
-          Cookies.set('auth', res.data.cookie);
+          Cookies.set('auth', res.data.cookie)
           this.loggedIn = true
           this.messageStatusLogin = res.data.status
           this.statusLogin = res.data.status
@@ -96,11 +100,11 @@ export default class LoginStore {
         return res.data
       })
       .catch(error => {
-        console.log("Error====", error)
-      });
+        console.log('Error====', error)
+      })
   }
 
-  @action logout() {
+  @action logout () {
     this.loggedIn = false
     Cookies.remove('auth')
   }

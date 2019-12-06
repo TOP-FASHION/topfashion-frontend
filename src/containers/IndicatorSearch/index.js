@@ -1,1 +1,1 @@
-export { default } from "./IndicatorSearch"
+export { default } from './IndicatorSearch'

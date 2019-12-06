@@ -98,7 +98,7 @@ class NavLinks extends Component {
   ];
 
   render () {
-    //console.log('links', Links.Links)
+    // console.log('links', Links.Links)
     const handleMouseEnter = (event) => {
       const item = event.currentTarget
       const megamenu = item.querySelector('.nav-links__megamenu')
@@ -121,7 +121,7 @@ class NavLinks extends Component {
       let submenu
 
       if (item.submenu) {
-        arrow = <i className='fa fa-angle-down ml-2 opacity-5 nav-links__arrow'></i>;
+        arrow = <i className='fa fa-angle-down ml-2 opacity-5 nav-links__arrow' />
       }
 
       if (item.submenu && item.submenu.type === 'menu') {

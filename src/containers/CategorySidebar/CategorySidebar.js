@@ -10,26 +10,25 @@ import WidgetFilters from '../../containers/WidgetFilters'
 import WidgetProducts from '../../containers/WidgetProducts'
 
 // data stubs
-import filters from '../../data/shopFilters';
-import products from '../../data/shopProducts';
+import filters from '../../data/shopFilters'
+import products from '../../data/shopProducts'
 import './CategorySidebar.scss'
 
-
-function CategorySidebar(props) {
+function CategorySidebar (props) {
   const {
     sidebarClose,
     sidebarState,
-    offcanvas,
-  } = props;
+    offcanvas
+  } = props
 
   const classes = classNames('block block-sidebar', {
     'block-sidebar--open': true,
     'block-sidebar--offcanvas--always': offcanvas === 'always',
-    'block-sidebar--offcanvas--mobile': offcanvas === 'mobile',
-  });
+    'block-sidebar--offcanvas--mobile': offcanvas === 'mobile'
+  })
 
-  const backdropRef = useRef(null);
-  const bodyRef = useRef(null);
+  const backdropRef = useRef(null)
+  const bodyRef = useRef(null)
 
   // useEffect(() => {
   //   const media = matchMedia('(max-width: 991px)');
@@ -93,34 +92,33 @@ function CategorySidebar(props) {
     <div className={classes}>
       {/* eslint-disable-next-line max-len */}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <div className="block-sidebar__backdrop" ref={backdropRef} />
-      <div className="block-sidebar__body" ref={bodyRef}>
-        <div className="block-sidebar__header">
-          <div className="block-sidebar__title">Filters</div>
-          <button className="block-sidebar__close" type="button" >
+      <div className='block-sidebar__backdrop' ref={backdropRef} />
+      <div className='block-sidebar__body' ref={bodyRef}>
+        <div className='block-sidebar__header'>
+          <div className='block-sidebar__title'>Filters</div>
+          <button className='block-sidebar__close' type='button' >
             +++
           </button>
         </div>
-        <div className="block-sidebar__item">
-          <WidgetFilters title="Filters" filters={filters} offcanvas={offcanvas} />
+        <div className='block-sidebar__item'>
+          <WidgetFilters title='Filters' filters={filters} offcanvas={offcanvas} />
         </div>
-{/*        {offcanvas !== 'always' && (
+        {/*        {offcanvas !== 'always' && (
           <div className="block-sidebar__item d-none d-lg-block">
             <WidgetProducts title="Latest Products" products={JSON.parse(localStorage.getItem('lastProducts'))} />
           </div>
-        )}*/}
+        )} */}
       </div>
     </div>
-  );
+  )
 }
 
 CategorySidebar.propTypes = {
-  offcanvas: PropTypes.oneOf(['always', 'mobile']),
-};
+  offcanvas: PropTypes.oneOf(['always', 'mobile'])
+}
 
 CategorySidebar.defaultProps = {
-  offcanvas: 'mobile',
-};
-
+  offcanvas: 'mobile'
+}
 
 export default CategorySidebar

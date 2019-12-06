@@ -13,7 +13,7 @@ class NavPanel extends Component {
     const { layout } = this.props
 
     let logo = null
-    let departments = null
+    const departments = null
     let searchIndicator
 
     if (layout === 'compact') {

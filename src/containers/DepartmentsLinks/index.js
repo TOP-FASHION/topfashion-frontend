@@ -1,1 +1,1 @@
-export { default } from "./DepartmentsLinks"
+export { default } from './DepartmentsLinks'

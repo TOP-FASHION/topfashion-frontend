@@ -7,25 +7,24 @@ export default class BrandsStore {
   getBrands () {
     return Api.Woocommerce.Brands().then(res => {
       if (res.data) {
-        //this.setBrands(res.data)
+        // this.setBrands(res.data)
         this.brands = res.data
       }
     })
   }
 
   setBrands = data => {
-    let arrBrands = []
+    const arrBrands = []
     Object.keys(data).map(key => {
-      let obj = data[key];
-      let value;
+      const obj = data[key]
+      let value
       Object.keys(obj).forEach(() => {
-        value = obj.name;
+        value = obj.name
       })
-      arrBrands.push(value);
+      arrBrands.push(value)
     })
-    this.brands = arrBrands;
+    this.brands = arrBrands
   }
-
 }
 
 decorate(BrandsStore, {

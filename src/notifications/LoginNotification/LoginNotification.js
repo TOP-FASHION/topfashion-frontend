@@ -1,15 +1,16 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import {inject, observer} from "mobx-react"
-import {toast} from 'react-toastify'
+import { inject, observer } from 'mobx-react'
+import { toast } from 'react-toastify'
 import messages from './LoginNotification.messages'
 import setMessages from '../../utils/setMessages'
-import Fragment from "../../components/Fragment"
+import Fragment from '../../components/Fragment'
 
 @inject('loginStore')
 @observer
 class LoginNotification extends React.Component {
   messages = setMessages(this, messages, 'app.globalNotification.login.status.')
+
   statusTypes = {
     error: 'error',
     ok: 'success'
@@ -22,7 +23,7 @@ class LoginNotification extends React.Component {
       type: this.statusTypes[this.props.loginStore.statusLogin] || 'default',
       position: toast.POSITION.TOP_RIGHT,
       onClose: () => this.props.loginStore.clear()
-    });
+    })
   };
 
   render () {

@@ -3,27 +3,30 @@ import Api from '../Api'
 
 export default class ProductReviewsAddStore {
   @observable review
+
   @observable reviewer
+
   @observable reviewer_email
+
   @observable rating
 
   constructor (rootStore) {
     this.rootStore = rootStore
   }
 
-  @action.bound onReviewerChange(event) {
+  @action.bound onReviewerChange (event) {
     this.reviewer = event.target.value
   }
 
-  @action.bound onReviewerEmailChange(event) {
+  @action.bound onReviewerEmailChange (event) {
     this.reviewer_email = event.target.value
   }
 
-  @action.bound onReviewChange(event) {
+  @action.bound onReviewChange (event) {
     this.review = event.target.value
   }
 
-  @action.bound onRatingChange(event) {
+  @action.bound onRatingChange (event) {
     this.rating = event.target.value
   }
 

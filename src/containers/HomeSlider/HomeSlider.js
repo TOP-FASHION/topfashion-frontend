@@ -12,8 +12,8 @@ const slickSettings = {
   infinite: true,
   speed: 400,
   slidesToShow: 1,
-  slidesToScroll: 1,
-};
+  slidesToScroll: 1
+}
 
 class HomeSlider extends Component {
   departmentsAreaRef = null;
@@ -26,121 +26,121 @@ class HomeSlider extends Component {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
       image_classic: 'public/img/slides/slide-1.jpg',
       image_full: 'public/img/slides/slide-1-full.jpg',
-      image_mobile: 'public/img/slides/slide-1-mobile.jpg',
+      image_mobile: 'public/img/slides/slide-1-mobile.jpg'
     },
     {
       title: 'Screwdrivers<br>Professional Tools',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
       image_classic: 'public/img/slides/slide-2.jpg',
       image_full: 'public/img/slides/slide-2-full.jpg',
-      image_mobile: 'public/img/slides/slide-2-mobile.jpg',
+      image_mobile: 'public/img/slides/slide-2-mobile.jpg'
     },
     {
       title: 'One more<br>Unique header',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
       image_classic: 'public/img/slides/slide-3.jpg',
       image_full: 'public/img/slides/slide-3-full.jpg',
-      image_mobile: 'public/img/slides/slide-3-mobile.jpg',
-    },
+      image_mobile: 'public/img/slides/slide-3-mobile.jpg'
+    }
   ];
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.media.addEventListener) {
-      this.media.addEventListener('change', this.onChangeMedia);
+      this.media.addEventListener('change', this.onChangeMedia)
     } else {
-      this.media.addListener(this.onChangeMedia);
+      this.media.addListener(this.onChangeMedia)
     }
   }
 
-  componentWillUnmount() {
-    departmentsAria.area = null;
+  componentWillUnmount () {
+    departmentsAria.area = null
 
     if (this.media.removeEventListener) {
-      this.media.removeEventListener('change', this.onChangeMedia);
+      this.media.removeEventListener('change', this.onChangeMedia)
     } else {
-      this.media.removeListener(this.onChangeMedia);
+      this.media.removeListener(this.onChangeMedia)
     }
   }
 
   onChangeMedia = () => {
     if (this.media.matches) {
-      departmentsAria.area = this.departmentsAreaRef;
+      departmentsAria.area = this.departmentsAreaRef
     }
   };
 
   setDepartmentsAreaRef = (ref) => {
-    this.departmentsAreaRef = ref;
+    this.departmentsAreaRef = ref
 
     if (this.media.matches) {
-      departmentsAria.area = this.departmentsAreaRef;
+      departmentsAria.area = this.departmentsAreaRef
     }
   };
 
-  render() {
-    const { withDepartments } = this.props;
+  render () {
+    const { withDepartments } = this.props
 
     const blockClasses = classNames(
       'block-slideshow block',
       {
         'block-slideshow--layout--full': !withDepartments,
-        'block-slideshow--layout--with-departments': withDepartments,
-      },
-    );
+        'block-slideshow--layout--with-departments': withDepartments
+      }
+    )
 
     const layoutClasses = classNames(
       'col-12 colCustom',
       {
         'col-lg-12': !withDepartments,
-        'col-lg-9': withDepartments,
-      },
-    );
+        'col-lg-9': withDepartments
+      }
+    )
 
     const slides = this.slides.map((slide, index) => {
-      const image = withDepartments ? slide.image_classic : slide.image_full;
+      const image = withDepartments ? slide.image_classic : slide.image_full
 
       return (
-        <div key={index} className="block-slideshow__slide">
+        <div key={index} className='block-slideshow__slide'>
           <div
-            className="block-slideshow__slide-image block-slideshow__slide-image--desktop"
+            className='block-slideshow__slide-image block-slideshow__slide-image--desktop'
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${image})`
             }}
           />
           <div
-            className="block-slideshow__slide-image block-slideshow__slide-image--mobile"
+            className='block-slideshow__slide-image block-slideshow__slide-image--mobile'
             style={{
-              backgroundImage: `url(${slide.image_mobile})`,
+              backgroundImage: `url(${slide.image_mobile})`
             }}
           />
-          <div className="container">
-            <div className="block-slideshow__slide-content">
+          <div className='container'>
+            <div className='block-slideshow__slide-content'>
               <div
-                className="block-slideshow__slide-title"
+                className='block-slideshow__slide-title'
                 dangerouslySetInnerHTML={{ __html: slide.title }}
               />
               <div
-                className="block-slideshow__slide-text"
+                className='block-slideshow__slide-text'
                 dangerouslySetInnerHTML={{ __html: slide.text }}
               />
-              <div className="block-slideshow__slide-button">
-                <Link to="/" className="btn btn-primary btn-lg">Shop Now</Link>
+              <div className='block-slideshow__slide-button'>
+                <Link to='/' className='btn btn-primary btn-lg'>Shop Now</Link>
               </div>
             </div>
           </div>
         </div>
-      );
-    });
+      )
+    })
 
     return (
       <div className={blockClasses}>
-        <div className="container-fluid">
-          <div className="row">
+        <div className='container-fluid'>
+          <div className='row'>
             {withDepartments && (
-              <div className="col-3 d-lg-block d-none" ref={this.setDepartmentsAreaRef} />
+              <div className='col-3 d-lg-block d-none' ref={this.setDepartmentsAreaRef} />
             )}
 
             <div className={layoutClasses}>
-              <div className="block-slideshow__body">
+              <div className='block-slideshow__body'>
                 <SlickWithPreventSwipeClick {...slickSettings}>
                   {slides}
                 </SlickWithPreventSwipeClick>
@@ -149,18 +149,16 @@ class HomeSlider extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 HomeSlider.propTypes = {
-  withDepartments: PropTypes.bool,
-};
+  withDepartments: PropTypes.bool
+}
 
 HomeSlider.defaultProps = {
-  withDepartments: false,
-};
-
+  withDepartments: false
+}
 
 export default HomeSlider
-

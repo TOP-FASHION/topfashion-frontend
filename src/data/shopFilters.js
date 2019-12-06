@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     name: 'Categories',
-    type: 'categories',
+    type: 'categories'
   },
   {
     id: 2,
@@ -12,8 +12,8 @@ export default [
       min: 10,
       max: 100,
       from: 15,
-      to: 90,
-    },
+      to: 90
+    }
   },
   {
     id: 3,
@@ -26,28 +26,28 @@ export default [
           label: 'Wakita',
           count: 7,
           checked: false,
-          disabled: false,
+          disabled: false
         },
         {
           id: 2,
           label: 'Zosch',
           count: 42,
           checked: true,
-          disabled: false,
+          disabled: false
         },
         {
           id: 3,
           label: 'WeVALT',
           count: 0,
           checked: true,
-          disabled: true,
-        },
-      ],
-    },
+          disabled: true
+        }
+      ]
+    }
   },
   {
     id: 5,
     name: 'Color',
-    type: 'color',
-  },
-];
+    type: 'color'
+  }
+]

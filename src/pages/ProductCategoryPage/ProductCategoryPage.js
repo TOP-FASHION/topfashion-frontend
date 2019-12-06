@@ -17,21 +17,21 @@ class ProductCategoryPage extends Component {
   static propTypes = {
     columns: PropTypes.number,
     viewMode: PropTypes.oneOf(['grid', 'grid-with-features', 'list']),
-    sidebarPosition: PropTypes.oneOf(['start', 'end']),
+    sidebarPosition: PropTypes.oneOf(['start', 'end'])
   };
 
   static defaultProps = {
     columns: 3,
     viewMode: 'grid',
-    sidebarPosition: 'start',
+    sidebarPosition: 'start'
   };
 
   componentDidMount () {
     this.props.productsStore.getProducts({
-      'page': 1,
-      'per_page': this.props.productsStore.countProducts,
+      page: 1,
+      per_page: this.props.productsStore.countProducts,
       'filter[limit]': this.props.productsStore.countProducts,
-      'category': this.normalizeCategory(this.props.match.params.categoryId)
+      category: this.normalizeCategory(this.props.match.params.categoryId)
     })
     this.props.productsCategoriesStore.categoryId = this.normalizeCategory(this.props.match.params.categoryId)
   }
@@ -70,20 +70,20 @@ class ProductCategoryPage extends Component {
       { title: 'Home', url: '' },
       { title: 'Category', url: '/category' },
       { title: this.normalizeParentCategory(this.props.match.params.categoryId), url: this.normalizeParentCategory(this.props.match.params.categoryId) },
-      { title: this.props.match.params.categoryId, url: this.props.match.params.categoryId },
+      { title: this.props.match.params.categoryId, url: this.props.match.params.categoryId }
     ]
   }
 
   get content () {
     const { products } = this.props.productsStore
-    let content;
+    let content
 
-    const offcanvas = this.props.columns === 3 ? 'mobile' : 'always';
+    const offcanvas = this.props.columns === 3 ? 'mobile' : 'always'
 
     if (this.props.columns > 3) {
       content = (
-        <div className="container">
-          <div className="block">
+        <div className='container'>
+          <div className='block'>
             <ProductsView
               products={products}
               layout={viewMode}
@@ -94,22 +94,22 @@ class ProductCategoryPage extends Component {
           </div>
           {<CategorySidebar offcanvas={offcanvas} />}
         </div>
-      );
+      )
     } else {
       const sidebar = (
-        <div className="shop-layout__sidebar">{<CategorySidebar offcanvas={offcanvas} />}</div>
-      );
+        <div className='shop-layout__sidebar'>{<CategorySidebar offcanvas={offcanvas} />}</div>
+      )
 
       content = (
-        <div className="container">
+        <div className='container'>
           <div className={`shop-layout shop-layout--sidebar--${this.props.sidebarPosition}`}>
             {this.props.sidebarPosition === 'start' && sidebar}
-            <div className="shop-layout__content">
-              <div className="block">
+            <div className='shop-layout__content'>
+              <div className='block'>
                 <ProductsView
                   products={products}
                   layout={this.props.viewMode}
-                  grid="grid-3-sidebar"
+                  grid='grid-3-sidebar'
                   limit={15}
                   offcanvas={offcanvas}
                 />
@@ -118,7 +118,7 @@ class ProductCategoryPage extends Component {
             {this.props.sidebarPosition === 'end' && sidebar}
           </div>
         </div>
-      );
+      )
     }
     return content
   }
@@ -126,10 +126,10 @@ class ProductCategoryPage extends Component {
   render () {
     return (
       <React.Fragment>
-        <PageHeader header="Category" breadcrumb={this.breadcrumb} />
+        <PageHeader header='Category' breadcrumb={this.breadcrumb} />
         {this.content}
       </React.Fragment>
-    );
+    )
   }
 }
 

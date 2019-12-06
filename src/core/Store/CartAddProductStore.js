@@ -3,6 +3,7 @@ import Api from '../Api'
 
 export default class CartAddProductStore {
   isProductAddCart
+
   product_id
 
   constructor (rootStore) {

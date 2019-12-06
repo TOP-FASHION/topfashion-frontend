@@ -3,6 +3,7 @@ import Api from '../Api'
 
 export default class ProductsCategoriesStore {
   categories
+
   categoryId
 
   getCategories (data) {

@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-function AppLink(props) {
-  const { external, children, ...otherProps } = props;
-  let link;
+function AppLink (props) {
+  const { external, children, ...otherProps } = props
+  let link
 
   if (external) {
     const {
@@ -12,14 +12,14 @@ function AppLink(props) {
       replace,
       innerRef,
       ...linkProps
-    } = otherProps;
+    } = otherProps
 
-    link = <a href={to} {...linkProps}>{children}</a>;
+    link = <a href={to} {...linkProps}>{children}</a>
   } else {
-    link = <Link {...otherProps}>{children}</Link>;
+    link = <Link {...otherProps}>{children}</Link>
   }
 
-  return link;
+  return link
 }
 
 AppLink.propTypes = {
@@ -29,18 +29,18 @@ AppLink.propTypes = {
       pathname: PropTypes.string,
       search: PropTypes.string,
       hash: PropTypes.string,
-      state: PropTypes.any,
-    }),
+      state: PropTypes.any
+    })
   ]).isRequired,
   replace: PropTypes.bool,
   innerRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.object,
+    PropTypes.object
   ]),
-  external: PropTypes.bool,
-};
+  external: PropTypes.bool
+}
 AppLink.defaultProps = {
-  external: false,
-};
+  external: false
+}
 
-export default AppLink;
+export default AppLink

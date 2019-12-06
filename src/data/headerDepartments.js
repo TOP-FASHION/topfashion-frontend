@@ -21,14 +21,14 @@ export default [
                   { title: 'Plumbing', url: '' },
                   { title: 'Wall Chaser', url: '' },
                   { title: 'Pneumatic Tools', url: '' },
-                  { title: 'Milling Cutters', url: '' },
-                ],
+                  { title: 'Milling Cutters', url: '' }
+                ]
               },
               { title: 'Workbenches', url: '', links: [] },
               { title: 'Presses', url: '', links: [] },
               { title: 'Spray Guns', url: '', links: [] },
-              { title: 'Riveters', url: '', links: [] },
-            ],
+              { title: 'Riveters', url: '', links: [] }
+            ]
           },
           {
             size: 3,
@@ -42,8 +42,8 @@ export default [
                   { title: 'Knives', url: '' },
                   { title: 'Axes', url: '' },
                   { title: 'Multitools', url: '' },
-                  { title: 'Paint Tools', url: '' },
-                ],
+                  { title: 'Paint Tools', url: '' }
+                ]
               },
               {
                 title: 'Garden Equipment',
@@ -52,10 +52,10 @@ export default [
                   { title: 'Motor Pumps', url: '' },
                   { title: 'Chainsaws', url: '' },
                   { title: 'Electric Saws', url: '' },
-                  { title: 'Brush Cutters', url: '' },
-                ],
-              },
-            ],
+                  { title: 'Brush Cutters', url: '' }
+                ]
+              }
+            ]
           },
           {
             size: 3,
@@ -69,10 +69,10 @@ export default [
                   { title: 'Sharpening Machines', url: '' },
                   { title: 'Pipe Cutters', url: '' },
                   { title: 'Slotting machines', url: '' },
-                  { title: 'Lathes', url: '' },
-                ],
-              },
-            ],
+                  { title: 'Lathes', url: '' }
+                ]
+              }
+            ]
           },
           {
             size: 3,
@@ -84,14 +84,14 @@ export default [
                   { title: 'Welding Equipment', url: '' },
                   { title: 'Power Tools', url: '' },
                   { title: 'Hand Tools', url: '' },
-                  { title: 'Measuring Tool', url: '' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    },
+                  { title: 'Measuring Tool', url: '' }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     title: 'Hand Tools',
@@ -114,8 +114,8 @@ export default [
                   { title: 'Knives', url: '' },
                   { title: 'Axes', url: '' },
                   { title: 'Multitools', url: '' },
-                  { title: 'Paint Tools', url: '' },
-                ],
+                  { title: 'Paint Tools', url: '' }
+                ]
               },
               {
                 title: 'Garden Equipment',
@@ -124,10 +124,10 @@ export default [
                   { title: 'Motor Pumps', url: '' },
                   { title: 'Chainsaws', url: '' },
                   { title: 'Electric Saws', url: '' },
-                  { title: 'Brush Cutters', url: '' },
-                ],
-              },
-            ],
+                  { title: 'Brush Cutters', url: '' }
+                ]
+              }
+            ]
           },
           {
             size: 4,
@@ -141,10 +141,10 @@ export default [
                   { title: 'Sharpening Machines', url: '' },
                   { title: 'Pipe Cutters', url: '' },
                   { title: 'Slotting machines', url: '' },
-                  { title: 'Lathes', url: '' },
-                ],
-              },
-            ],
+                  { title: 'Lathes', url: '' }
+                ]
+              }
+            ]
           },
           {
             size: 4,
@@ -156,14 +156,14 @@ export default [
                   { title: 'Welding Equipment', url: '' },
                   { title: 'Power Tools', url: '' },
                   { title: 'Hand Tools', url: '' },
-                  { title: 'Measuring Tool', url: '' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    },
+                  { title: 'Measuring Tool', url: '' }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     title: 'Machine Tools',
@@ -186,8 +186,8 @@ export default [
                   { title: 'Knives', url: '' },
                   { title: 'Axes', url: '' },
                   { title: 'Multitools', url: '' },
-                  { title: 'Paint Tools', url: '' },
-                ],
+                  { title: 'Paint Tools', url: '' }
+                ]
               },
               {
                 title: 'Garden Equipment',
@@ -196,10 +196,10 @@ export default [
                   { title: 'Motor Pumps', url: '' },
                   { title: 'Chainsaws', url: '' },
                   { title: 'Electric Saws', url: '' },
-                  { title: 'Brush Cutters', url: '' },
-                ],
-              },
-            ],
+                  { title: 'Brush Cutters', url: '' }
+                ]
+              }
+            ]
           },
           {
             size: 6,
@@ -211,14 +211,14 @@ export default [
                   { title: 'Welding Equipment', url: '' },
                   { title: 'Power Tools', url: '' },
                   { title: 'Hand Tools', url: '' },
-                  { title: 'Measuring Tool', url: '' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    },
+                  { title: 'Measuring Tool', url: '' }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     title: 'Building Supplies',
@@ -240,8 +240,8 @@ export default [
                   { title: 'Knives', url: '' },
                   { title: 'Axes', url: '' },
                   { title: 'Multitools', url: '' },
-                  { title: 'Paint Tools', url: '' },
-                ],
+                  { title: 'Paint Tools', url: '' }
+                ]
               },
               {
                 title: 'Garden Equipment',
@@ -250,14 +250,14 @@ export default [
                   { title: 'Motor Pumps', url: '' },
                   { title: 'Chainsaws', url: '' },
                   { title: 'Electric Saws', url: '' },
-                  { title: 'Brush Cutters', url: '' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    },
+                  { title: 'Brush Cutters', url: '' }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     title: 'Electrical',
@@ -272,22 +272,22 @@ export default [
             { title: 'Soldering Station', url: '' },
             { title: 'Soldering Dryers', url: '' },
             { title: 'Gas Soldering Iron', url: '' },
-            { title: 'Electric Soldering Iron', url: '' },
-          ],
+            { title: 'Electric Soldering Iron', url: '' }
+          ]
         },
         { title: 'Light Bulbs', url: '' },
         { title: 'Batteries', url: '' },
         { title: 'Light Fixtures', url: '' },
         { title: 'Warm Floor', url: '' },
         { title: 'Generators', url: '' },
-        { title: 'UPS', url: '' },
-      ],
-    },
+        { title: 'UPS', url: '' }
+      ]
+    }
   },
   { title: 'Power Machinery', url: '', submenu: null },
   { title: 'Measurement', url: '', submenu: null },
   { title: 'Clothes & PPE', url: '', submenu: null },
   { title: 'Plumbing', url: '', submenu: null },
   { title: 'Storage & Organization', url: '', submenu: null },
-  { title: 'Welding & Soldering', url: '', submenu: null },
-];
+  { title: 'Welding & Soldering', url: '', submenu: null }
+]

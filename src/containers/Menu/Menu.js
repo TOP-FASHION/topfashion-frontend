@@ -21,7 +21,7 @@ function Menu (props) {
         </AppLink>
       )
     } else {
-      link = <button type='button' onClick={() => onClick(item)}>{content}</button>;
+      link = <button type='button' onClick={() => onClick(item)}>{content}</button>
     }
 
     return link
@@ -41,7 +41,7 @@ function Menu (props) {
     }
 
     if (item.submenu) {
-      arrow = <i className='fa fa-angle-right ml-2 opacity-5 departments__link-arrow'></i>;
+      arrow = <i className='fa fa-angle-right ml-2 opacity-5 departments__link-arrow' />
     }
 
     if (withIcons && item.icon) {

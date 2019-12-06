@@ -34,15 +34,15 @@ class ProductPage extends Component {
   }
 
   lastProducts () {
-    let lastProducts = localStorage.getItem('lastProducts')
+    const lastProducts = localStorage.getItem('lastProducts')
 
     if (lastProducts) {
-      let objLastProducts = JSON.parse(lastProducts)
+      const objLastProducts = JSON.parse(lastProducts)
       let isAdd = true
-      let arr = objLastProducts
+      const arr = objLastProducts
 
       Object.keys(objLastProducts).map(item => {
-        let itemLastProduct = objLastProducts[item]
+        const itemLastProduct = objLastProducts[item]
         Object.keys(itemLastProduct).map(item => {
           if (itemLastProduct.id === this.product.id) {
             return isAdd = false
@@ -117,7 +117,7 @@ class ProductPage extends Component {
               <ProductTabs product={this.product} />
             </div>
           </div>
-           {/*<BlockProductsCarousel title="Related Products" layout="grid-5" products={products} /> */}
+          {/* <BlockProductsCarousel title="Related Products" layout="grid-5" products={products} /> */}
         </React.Fragment>
       )
     }

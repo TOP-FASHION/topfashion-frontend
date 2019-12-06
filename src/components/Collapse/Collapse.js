@@ -2,123 +2,123 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Collapse extends Component {
-  componentDidMount() {
+  componentDidMount () {
     if (!this.content) {
-      return;
+      return
     }
 
-    const { open } = this.props;
+    const { open } = this.props
 
-    this.content.addEventListener('transitionend', this.handleTransitionEnd);
+    this.content.addEventListener('transitionend', this.handleTransitionEnd)
 
     if (open === true) {
-      this.expand(true);
+      this.expand(true)
     }
     if (open === false) {
-      this.collapse(true);
+      this.collapse(true)
     }
   }
 
-  componentDidUpdate() {
-    const { open } = this.props;
+  componentDidUpdate () {
+    const { open } = this.props
 
     if (typeof open === 'boolean') {
       if (open) {
-        this.expand();
+        this.expand()
       } else {
-        this.collapse();
+        this.collapse()
       }
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (!this.content) {
-      return;
+      return
     }
 
-    this.content.removeEventListener('transitionend', this.handleTransitionEnd);
+    this.content.removeEventListener('transitionend', this.handleTransitionEnd)
   }
 
   handleTransitionEnd = (event) => {
     if (this.content && event.propertyName === 'height') {
-      this.content.style.height = '';
+      this.content.style.height = ''
     }
   };
 
   handleToggle = () => {
-    const { toggleClass } = this.props;
+    const { toggleClass } = this.props
 
     if (!this.item || !this.content || !toggleClass) {
-      return;
+      return
     }
 
     if (this.item.classList.contains(toggleClass)) {
-      this.collapse();
+      this.collapse()
     } else {
-      this.expand();
+      this.expand()
     }
   };
 
   setItemRef = (ref) => {
-    this.item = ref;
+    this.item = ref
   };
 
   setContentRef = (ref) => {
-    this.content = ref;
+    this.content = ref
   };
 
-  expand(immediate = false) {
-    const { toggleClass } = this.props;
+  expand (immediate = false) {
+    const { toggleClass } = this.props
 
     if (!this.item || !this.content || !toggleClass) {
-      return;
+      return
     }
 
     if (immediate) {
-      this.item.classList.add(toggleClass);
-      this.content.style.height = '';
+      this.item.classList.add(toggleClass)
+      this.content.style.height = ''
     } else {
-      const startHeight = this.content.getBoundingClientRect().height;
+      const startHeight = this.content.getBoundingClientRect().height
 
-      this.item.classList.add(toggleClass);
+      this.item.classList.add(toggleClass)
 
-      const endHeight = this.content.getBoundingClientRect().height;
+      const endHeight = this.content.getBoundingClientRect().height
 
-      this.content.style.height = `${startHeight}px`;
-      this.content.getBoundingClientRect(); // force reflow
-      this.content.style.height = `${endHeight}px`;
+      this.content.style.height = `${startHeight}px`
+      this.content.getBoundingClientRect() // force reflow
+      this.content.style.height = `${endHeight}px`
     }
   }
 
-  collapse(immediate = false) {
-    const { toggleClass } = this.props;
+  collapse (immediate = false) {
+    const { toggleClass } = this.props
 
     if (immediate) {
-      this.item.classList.remove(toggleClass);
-      this.content.style.height = '';
+      this.item.classList.remove(toggleClass)
+      this.content.style.height = ''
     } else {
-      const startHeight = this.content.getBoundingClientRect().height;
+      const startHeight = this.content.getBoundingClientRect().height
 
-      this.content.style.height = `${startHeight}px`;
-      this.item.classList.remove(toggleClass);
+      this.content.style.height = `${startHeight}px`
+      this.item.classList.remove(toggleClass)
 
-      this.content.getBoundingClientRect(); // force reflow
-      this.content.style.height = '';
+      this.content.getBoundingClientRect() // force reflow
+      this.content.style.height = ''
     }
   }
 
-  render() {
-    const { render } = this.props;
+  render () {
+    const { render } = this.props
 
     if (render) {
       return render({
         toggle: this.handleToggle,
         setItemRef: this.setItemRef,
-        setContentRef: this.setContentRef,
-      });
+        setContentRef: this.setContentRef
+      })
     }
 
-    return null;
+    return null
   }
 }
 
@@ -128,7 +128,7 @@ Collapse.propTypes = {
   /** render function with arguments: toggle, setItemRef, setContentRef */
   render: PropTypes.func,
   /** if specified, the component will behave as a stateless component */
-  open: PropTypes.bool,
-};
+  open: PropTypes.bool
+}
 
-export default Collapse;
+export default Collapse

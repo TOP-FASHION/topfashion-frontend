@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {Form} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 
 class Input extends Component {
   static propTypes = {
@@ -11,7 +11,7 @@ class Input extends Component {
     type: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   static defaultProps = {
@@ -19,7 +19,7 @@ class Input extends Component {
   }
 
   render () {
-    const { name, placeholder, type, value, onChange, className} = this.props
+    const { name, placeholder, type, value, onChange, className } = this.props
 
     return (
       <Form.Control

@@ -1,1 +1,1 @@
-export { default } from "./Indicator"
+export { default } from './Indicator'

@@ -14,9 +14,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 2,
@@ -33,9 +33,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 3,
@@ -52,9 +52,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 4,
@@ -71,9 +71,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 5,
@@ -90,9 +90,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 6,
@@ -109,9 +109,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 7,
@@ -128,9 +128,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 8,
@@ -147,9 +147,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 9,
@@ -166,9 +166,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 10,
@@ -185,9 +185,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 11,
@@ -204,9 +204,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 12,
@@ -223,9 +223,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 13,
@@ -242,9 +242,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 14,
@@ -261,9 +261,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 15,
@@ -280,9 +280,9 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
+    options: []
   },
   {
     id: 16,
@@ -294,7 +294,7 @@ export default [
       'images/products/product-16-1.jpg',
       'images/products/product-16-2.jpg',
       'images/products/product-16-3.jpg',
-      'images/products/product-16-4.jpg',
+      'images/products/product-16-4.jpg'
     ],
     badges: [],
     rating: 5,
@@ -305,8 +305,8 @@ export default [
       { name: 'Power Source', value: 'Cordless-Electric' },
       { name: 'Battery Cell Type', value: 'Lithium' },
       { name: 'Voltage', value: '20 Volts' },
-      { name: 'Battery Capacity', value: '2 Ah' },
+      { name: 'Battery Capacity', value: '2 Ah' }
     ],
-    options: [],
-  },
-];
+    options: []
+  }
+]

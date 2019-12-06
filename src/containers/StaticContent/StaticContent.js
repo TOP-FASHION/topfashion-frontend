@@ -18,7 +18,7 @@ class StaticContent extends Component {
     return (
       <div
         className={this.className}
-        dangerouslySetInnerHTML={{__html: content}}
+        dangerouslySetInnerHTML={{ __html: content }}
       />
     )
   }

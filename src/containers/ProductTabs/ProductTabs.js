@@ -7,69 +7,70 @@ import ProductTabReviews from '../ProductTabReviews'
 import './ProductTabs.scss'
 
 class ProductTabs extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
-      currentTab: 'description',
-    };
+      currentTab: 'description'
+    }
   }
+
   static propTypes = {
-    product: PropTypes.object.isRequired,
+    product: PropTypes.object.isRequired
   }
 
   setTab = (newTab) => {
-    this.setState(() => ({ currentTab: newTab }));
+    this.setState(() => ({ currentTab: newTab }))
   };
 
-  render() {
-    const { currentTab } = this.state;
-    const { withSidebar } = this.props;
+  render () {
+    const { currentTab } = this.state
+    const { withSidebar } = this.props
     const classes = classNames('product-tabs', {
-      'product-tabs--layout--sidebar': withSidebar,
-    });
+      'product-tabs--layout--sidebar': withSidebar
+    })
 
     const tabs = [
       { key: 'description', title: 'Description', content: <ProductTabDescription /> },
       { key: 'specification', title: 'Specification', content: <ProductTabSpecification /> },
-      { key: 'reviews', title: 'Reviews', content: <ProductTabReviews product={this.props.product}/> },
-    ];
+      { key: 'reviews', title: 'Reviews', content: <ProductTabReviews product={this.props.product} /> }
+    ]
 
     const tabsButtons = tabs.map((tab) => {
       const classes = classNames('product-tabs__item', {
-        'product-tabs__item--active': currentTab === tab.key,
-      });
+        'product-tabs__item--active': currentTab === tab.key
+      })
 
-      return <button key={tab.key} type="button" onClick={() => this.setTab(tab.key)} className={classes}>{tab.title}</button>;
-    });
+      return <button key={tab.key} type='button' onClick={() => this.setTab(tab.key)} className={classes}>{tab.title}</button>
+    })
 
     const tabsContent = tabs.map((tab) => {
       const classes = classNames('product-tabs__pane', {
-        'product-tabs__pane--active': currentTab === tab.key,
-      });
+        'product-tabs__pane--active': currentTab === tab.key
+      })
 
-      return <div key={tab.key} className={classes}>{tab.content}</div>;
-    });
+      return <div key={tab.key} className={classes}>{tab.content}</div>
+    })
 
     return (
       <div className={classes}>
-        <div className="product-tabs__list">
+        <div className='product-tabs__list'>
           {tabsButtons}
         </div>
-        <div className="product-tabs__content">
+        <div className='product-tabs__content'>
           {tabsContent}
         </div>
       </div>
-    );
+    )
   }
 }
 
 ProductTabs.propTypes = {
-  withSidebar: PropTypes.bool,
-};
+  withSidebar: PropTypes.bool
+}
 
 ProductTabs.defaultProps = {
-  withSidebar: false,
-};
+  withSidebar: false
+}
 
-export default ProductTabs;
+export default ProductTabs

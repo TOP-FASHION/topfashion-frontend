@@ -3,8 +3,11 @@ import Api from '../Api'
 
 export default class ProductsStore {
   products
+
   totalProducts
+
   pagesProducts
+
   countProducts = 9
 
   getProducts (data) {

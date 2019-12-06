@@ -3,56 +3,56 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import './WidgetProducts.scss'
 
-function WidgetProducts(props) {
-  const { title, products } = props;
+function WidgetProducts (props) {
+  const { title, products } = props
 
   const productsList = products.map((product) => {
-    let image;
-    let price;
+    let image
+    let price
 
     if (product.images && product.images.length > 0) {
       image = (
-        <div className="widget-products__image">
-          <Link to="/"><img src={product.images[0].src} alt="" /></Link>
+        <div className='widget-products__image'>
+          <Link to='/'><img src={product.images[0].src} alt='' /></Link>
         </div>
-      );
+      )
     }
 
     if (product.compareAtPrice) {
       price = (
         <React.Fragment>
-          <span className="widget-products__new-price">''</span>
+          <span className='widget-products__new-price'>''</span>
           {' '}
-          <span className="widget-products__old-price">''</span>
+          <span className='widget-products__old-price'>''</span>
         </React.Fragment>
-      );
+      )
     } else {
-      price = '';
+      price = ''
     }
 
     return (
-      <div key={product.id} className="widget-products__item">
+      <div key={product.id} className='widget-products__item'>
         {image}
-        <div className="widget-products__info">
-          <div className="widget-products__name">
-            <Link to="/">{product.name}</Link>
+        <div className='widget-products__info'>
+          <div className='widget-products__name'>
+            <Link to='/'>{product.name}</Link>
           </div>
-          <div className="widget-products__prices">
+          <div className='widget-products__prices'>
             {price}
           </div>
         </div>
       </div>
-    );
-  });
+    )
+  })
 
   return (
-    <div className="widget-products widget">
-      <h4 className="widget__title">{title}</h4>
-      <div className="widget-products__list">
+    <div className='widget-products widget'>
+      <h4 className='widget__title'>{title}</h4>
+      <div className='widget-products__list'>
         {productsList}
       </div>
     </div>
-  );
+  )
 }
 
 WidgetProducts.propTypes = {
@@ -63,11 +63,11 @@ WidgetProducts.propTypes = {
   /**
    * array of product objects
    */
-  products: PropTypes.array,
-};
+  products: PropTypes.array
+}
 
 WidgetProducts.defaultProps = {
-  products: [],
-};
+  products: []
+}
 
-export default WidgetProducts;
+export default WidgetProducts

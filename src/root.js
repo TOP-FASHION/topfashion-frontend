@@ -12,16 +12,16 @@ addLocaleData(window.__data.localeData)
 
 @observer
 class Root extends Component {
-  componentDidMount() {
+  componentDidMount () {
     // preloader
     setTimeout(() => {
-      const preloader = document.querySelector('.site-preloader');
+      const preloader = document.querySelector('.site-preloader')
       window.addEventListener('login', (event) => {
         if (event.detail) {
-          preloader.parentNode.removeChild(preloader);
+          preloader.parentNode.removeChild(preloader)
         }
-      });
-    });
+      })
+    })
   }
 
   render () {
