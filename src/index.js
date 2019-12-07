@@ -13,7 +13,7 @@ import RootStore from './core/Store'
 import Root from './root'
 
 const render = () =>
-  ReactDOM.hydrate(
+  ReactDOM.render( // TODO SSR
     <AppContainer>
       <Provider {...RootStore}>
         <Root />

@@ -37,13 +37,13 @@ export default async function request (url, options) {
       Authorization: `Basic ${Base64.encode(`ck_83f4bd53fb1c969a67523637f6e13a9e607fc925:cs_c0a3dcc4a48b4ae106f7a81e9cf2a69ce3b8f67f`)}`
     }
     if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
-      if (!(newOptions.data instanceof FormData)) {
+      if (typeof window !== 'undefined' && !(newOptions.data instanceof window.FormData)) {
         newOptions.headers = {
           Accept: 'application/json',
           'Content-Type': 'multipart/form-data',
           ...newOptions.headers
         }
-        const formData = new FormData()
+        const formData = new window.FormData()
 
         for (const name in newOptions.data) {
           formData.set(name, newOptions.data[name])

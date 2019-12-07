@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { injectIntl } from 'react-intl'
 import { inject, observer } from 'mobx-react'
+import { injectIntl } from 'react-intl'
 import { Form } from 'react-bootstrap'
 import Field from '../../components/Field'
 import Input from '../../components/Input'

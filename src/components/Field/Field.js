@@ -6,11 +6,7 @@ import classNames from 'classnames'
 
 class Field extends React.Component {
   static propTypes = {
-    children: PropTypes.oneOfType([
-      'Input',
-      'Select',
-      'Checkbox'
-    ]),
+    children: PropTypes.node.isRequired, // TODO custom element
     error: PropTypes.node,
     disabled: PropTypes.bool,
     label: PropTypes.node,

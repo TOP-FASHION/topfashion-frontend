@@ -8,10 +8,6 @@ import './Modals.scss'
 @inject('loginStore')
 @observer
 class Modals extends Component {
-  constructor () {
-    super()
-  }
-
   render () {
     const { isLoggedIn } = this.props.loginStore
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider, useStaticRendering } from 'mobx-react'
 import { renderToStaticMarkup, renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
-import createHistory from 'history/createMemoryHistory'
+import { createMemoryHistory } from 'history'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
 import Head from '../src/helpers/Head'
@@ -35,7 +35,7 @@ AVAILABLE_LOCALES.forEach(locale => {
 acceptLanguage.languages(AVAILABLE_LOCALES)
 
 export default ({ clientStats }) => (req, res) => {
-  const history = createHistory({ initialEntries: [req.path] })
+  const history = createMemoryHistory({ initialEntries: [req.path] })
   const context = {}
   const { language } = detectLanguageParams(req, AVAILABLE_LOCALES)
 
@@ -75,7 +75,7 @@ export default ({ clientStats }) => (req, res) => {
   // First bytes (ASAP)
   res.setHeader('Content-Type', 'text/html')
   res.cookie('_lang', language, { maxAge: 900000 })
-  res.write(`<!doctype html>\n<html lang="${language}" dir="ltr">${headHtml}`)
+  res.write(`<!doctype html>\n<html lang="${language}">${headHtml}`)
 
   // Wait generation of the application state
   const applicationState = generateApplicationState()
