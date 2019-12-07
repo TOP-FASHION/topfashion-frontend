@@ -31,9 +31,11 @@ class MainDecorator extends Component {
     return loginStore.loggedIn ? component2 : component
   }
 
+  /* error mobx-react ---> 6.1.4
   shouldComponentUpdate (nextProps, nextState) {
     return !isShowModalAction(nextProps, nextState)
   }
+  */
 
   render () {
     return (
