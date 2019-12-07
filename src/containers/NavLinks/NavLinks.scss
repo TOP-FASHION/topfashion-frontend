@@ -82,12 +82,12 @@ $item-padding: 14px;
 .nav-links__item--with-submenu {
   & > a span {
     position: relative;
-    #{$padding-inline-end}: ($item-padding + 4px + 9px);
+    padding-right: ($item-padding + 4px + 9px);
   }
 
   & > a .nav-links__arrow {
     position: absolute;
-    #{$inset-inline-end}: $item-padding - 2px;
+    right: $item-padding - 2px;
   }
 }
 
@@ -103,9 +103,8 @@ $item-padding: 14px;
 }
 
 .nav-links__megamenu {
-  #{$inset-inline-start}: 0;
+  left: 0;
 }
-
 
 .nav-links__megamenu--size--xs {
   width: 2 / 12 * 100%;
@@ -131,7 +130,6 @@ $item-padding: 14px;
   width: 100%;
 }
 
-
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   $item-padding: 10px;
 
@@ -140,10 +138,10 @@ $item-padding: 14px;
   }
 
   .nav-links__item--with-submenu > a > span {
-    #{$padding-inline-end}: ($item-padding + 4px + 9px);
+    padding-right: ($item-padding + 4px + 9px);
   }
 
   .nav-links__item--with-submenu > a .nav-links__arrow {
-    #{$inset-inline-end}: $item-padding - 2px;
+    right: $item-padding - 2px;
   }
 }

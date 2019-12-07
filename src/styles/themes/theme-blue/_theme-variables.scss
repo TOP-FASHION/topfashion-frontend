@@ -6,13 +6,11 @@ $accent-opposite-color:       #fff !default;
 $link-color:                  $accent-color !default;
 $link-hover-color:            $accent-color !default;
 
-
 // header
 $header-bg:               $accent-color !default;
 $header-font-color:       $accent-opposite-color !default;
 $header-font-muted-color: $accent-opposite-muted-color !default;
 $header-logo-color:       inherit !default;
-
 
 // .topbar
 $topbar-height:                     34px !default;
@@ -26,7 +24,6 @@ $topbar-dropdown-hover-bg:          rgba(#fff, 0.15) !default;
 $topbar-dropdown-hover-font-color:  $accent-opposite-color !default;
 $topbar-dropdown-hover-value-color: $accent-opposite-color !default;
 $topbar-dropdown-hover-arrow-color: $topbar-dropdown-arrow-color !default;
-
 
 // .search
 $search-height:                         40px !default;
@@ -49,12 +46,10 @@ $search-input-focus-font-color:         $light-opposite-color !default;
 $search-input-focus-icon-color:         #b3b3b3 !default;
 $search-input-focus-icon-hover-color:   $light-opposite-color !default;
 
-
 // .nav-links
 $nav-links-item-font-weight:         400 !default;
 $nav-links-item-default-arrow-color: rgba(#000, 0.25) !default;
 $nav-links-item-hover-bg:            rgba(#fff, 0.15) !default;
-
 
 // .departments
 $departments-bg:            #fff !default;
@@ -63,7 +58,6 @@ $departments-icon-color:    rgba(#000, 0.3) !default;
 $departments-arrow-color:   rgba(#000, 0.3) !default;
 $departments-item-hover-bg: rgba(#000, 0.05) !default;
 $departments-font-color:    $light-opposite-color !default;
-
 
 // .mobile-header
 $mobile-header-menu-button-hover-bg:                  $nav-links-item-hover-bg !default;
@@ -84,12 +78,10 @@ $mobile-header-search-input-focus-font-color:         $light-opposite-color !def
 $mobile-header-search-input-focus-icon-color:         #b3b3b3 !default;
 $mobile-header-search-input-focus-icon-hover-color:   $light-opposite-color !default;
 
-
 // .product-card
 $product-card-hover-shadow:            0 0 0 2px #e5e5e5 inset !default;
 $product-card-quickview-default-bg:    #e5e5e5 !default;
 $product-card-quickview-default-color: $light-opposite-color !default;
-
 
 // .nouislider
 $nouislider-border-color: $accent-color !default;

@@ -29,23 +29,53 @@ body {
   font-size: $body-font-size;
   line-height: $body-line-height;
   font-family: $body-font-family;
-  text-align: $inline-start;
-  direction: $direction;
+  text-align: left;
   color: $body-font-color;
   background: $body-bg;
   backface-visibility: hidden;
 }
 
-
 #root {
   height: 100%;
 }
 
+.site-preloader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.site-preloader::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  display: block;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50px;
+  animation-name: site-preloader-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.site-preloader__fade {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
 svg {
   display: block;
 }
-
 
 a {
   color: $link-color;
@@ -56,11 +86,9 @@ a:hover {
   text-decoration: none;
 }
 
-
 label {
   margin-bottom: 0.25rem;
 }
-
 
 h1 {
   @if ($h1-font-family != null) { font-family: $h1-font-family; }
@@ -130,45 +158,4 @@ h6 {
   to {
     transform: rotateZ(360deg);
   }
-}
-
-body {
-  height: 100% !important;
-  padding-right: 0 !important;
-  overflow: hidden !important;
-  overflow-y: scroll !important;
-}
-
-.site-preloader {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 99999;
-  background-color: #fff;
-  opacity: 1;
-}
-
-.site-preloader::before {
-  content: '';
-  position: absolute;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  display: block;
-  box-sizing: border-box;
-  width: 100px;
-  height: 100px;
-  border: 3px solid rgba(0, 0, 0, 0.2);
-  border-top-color: rgba(0, 0, 0, 0.6);
-  border-radius: 50px;
-  animation-name: site-preloader-animation;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.site-preloader__fade {
-  opacity: 0;
-  transition: opacity 0.3s;
 }

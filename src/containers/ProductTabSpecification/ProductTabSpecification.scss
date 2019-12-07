@@ -37,8 +37,8 @@
 .spec__name {
   flex-shrink: 0;
   width: 230px;
+  padding-right: 30px;
   color: $card-font-muted-color;
-  #{$padding-inline-end}: 30px;
 }
 
 .spec__disclaimer {

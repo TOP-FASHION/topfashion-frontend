@@ -1,28 +1,4 @@
 // ----------------------------------------
-// -- direction
-// ----------------------------------------
-$direction:                 ltr !default; // or rtl
-$both-directions:           true !default;
-
-$inline-start:              if($direction == ltr, left, right) !default;
-$inline-end:                if($direction == ltr, right, left) !default;
-$transform-direction:       if($direction == ltr, 1, -1) !default;
-
-$margin-inline-start:       margin- + $inline-start !default;
-$margin-inline-end:         margin- + $inline-end !default;
-$padding-inline-start:      padding- + $inline-start !default;
-$padding-inline-end:        padding- + $inline-end !default;
-$inset-inline-start:        $inline-start !default;
-$inset-inline-end:          $inline-end !default;
-$border-inline-start:       border- + $inline-start !default;
-$border-inline-end:         border- + $inline-end !default;
-$border-start-start-radius: border-top- + $inline-start + -radius !default;
-$border-start-end-radius:   border-top- + $inline-end + -radius !default;
-$border-end-start-radius:   border-bottom- + $inline-start + -radius !default;
-$border-end-end-radius:     border-bottom- + $inline-end + -radius !default;
-
-
-// ----------------------------------------
 // -- colors
 // ----------------------------------------
 // light
@@ -40,7 +16,6 @@ $accent-opposite-color:          $light-opposite-color !default;
 //links
 $link-color:                     #1a66ff !default;
 $link-hover-color:               #1a66ff !default;
-
 
 // ----------------------------------------
 // -- helpers
@@ -68,7 +43,6 @@ $breakpoints: (
   xl-start: 1200px
 );
 
-
 // ----------------------------------------
 // -- body
 // ----------------------------------------
@@ -81,7 +55,6 @@ $body-font-size:        16px !default;
 $body-font-weight:      $font-weight-normal !default;
 $body-line-height:      1.5 !default;
 $body-divider-color:    $light-divider-color !default;
-
 
 // ----------------------------------------
 // -- header
@@ -294,7 +267,6 @@ $megamenu-divider-color:        #e5e5e5 !default;
 $megamenu-primary-link-color:   inherit !default;
 $megamenu-secondary-link-color: #5c6b73 !default;
 
-
 // ----------------------------------------
 // -- footer
 // ----------------------------------------
@@ -308,7 +280,6 @@ $footer-social-link-twitter-color:   #00a2e8 !default;
 $footer-social-link-youtube-color:   #e52e2e !default;
 $footer-social-link-instagram-color: #815dc7 !default;
 $footer-social-link-rss-color:       #ffc338 !default;
-
 
 // ----------------------------------------
 // -- common
@@ -375,8 +346,6 @@ $preloader-color-2:   rgba(#000, 0.5) !default;
 // -- post-image-overlay
 // ----------------------------------------
 $post-image-overlay-bg: rgba(#000, 0.2) !default;
-
-
 
 // ----------------------------------------
 // -- components
@@ -674,7 +643,6 @@ $typography-figcaption-color: #999 !default;
 $typography-hr-color:         #ccc !default;
 $typography-cite-color:       #999 !default;
 
-
 // ----------------------------------------
 // -- shop
 // ----------------------------------------
@@ -727,7 +695,6 @@ $quickview-close-hover-color:   #808080 !default;
 // ----------------------------------------
 $wishlist-divider-color: $light-divider-color !default;
 
-
 // ----------------------------------------
 // -- other
 // ----------------------------------------
@@ -768,7 +735,6 @@ $filter-title-default-arrow-color: #ccc !default;
 $filter-title-hover-bg:            #f2f2f2 !default;
 $filter-title-hover-arrow-color:   #b3b3b3 !default;
 
-
 // ----------------------------------------
 // -- blocks
 // ----------------------------------------
@@ -803,7 +769,6 @@ $block-slideshow-dots-bg:           #fff !default;
 $block-slideshow-dot-default-color: #e0e0e0 !default;
 $block-slideshow-dot-hover-color:   #d1d1d1 !default;
 $block-slideshow-dot-active-color:  $accent-color !default;
-
 
 // ----------------------------------------
 // -- widgets

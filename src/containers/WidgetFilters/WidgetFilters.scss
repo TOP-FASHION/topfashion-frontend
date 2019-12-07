@@ -19,7 +19,6 @@
   }
 }
 
-
 .widget-filters {
   padding: $widget-shop-padding;
   border: $card-border;
@@ -41,14 +40,13 @@
   padding-bottom: 16px;
 
   & > .btn + .btn {
-    #{$margin-inline-start}: 8px;
+    margin-left: 8px;
   }
 }
 
 $local-title-vertical-padding: 6px;
 $local-title-horizontal-padding: 10px;
 $local-transition-duration: 0.2s;
-
 
 .filter {}
 
@@ -61,7 +59,7 @@ $local-transition-duration: 0.2s;
   font-weight: $font-weight-bold;
   font-size: 15px;
   line-height: 18px;
-  text-align: $inline-start;
+  text-align: left;
   color: inherit;
   background: $filter-title-default-bg;
   border: none;
@@ -69,7 +67,6 @@ $local-transition-duration: 0.2s;
   cursor: pointer;
   transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
-
 
   &:focus,
   &:hover {
@@ -86,8 +83,8 @@ $local-transition-duration: 0.2s;
 .filter__arrow {
   position: absolute;
   top: 5px + $local-title-vertical-padding;
+  right: $local-title-horizontal-padding;
   transition: transform $local-transition-duration;
-  #{$inset-inline-end}: $local-title-horizontal-padding;
 }
 
 .filter__body {
@@ -121,7 +118,6 @@ $local-transition-duration: 0.2s;
 
 $local-margin: 8px;
 
-
 .filter-list {}
 
 .filter-list__list {
@@ -137,7 +133,7 @@ $local-margin: 8px;
 
 .filter-list__input {
   flex-shrink: 0;
-  #{$margin-inline-end}: 7px;
+  margin-right: 7px;
 }
 
 .filter-list__title {
@@ -148,11 +144,11 @@ $local-margin: 8px;
 }
 
 .filter-list__counter {
+  margin-left: 12px;
   padding-top: 3px;
   font-size: 12px;
   line-height: 12px;
   color: $card-font-muted-color;
-  #{$margin-inline-start}: 12px;
 }
 
 .filter-list__item--disabled {
@@ -167,7 +163,6 @@ $local-title-vertical-padding: 6px;
 $local-title-horizontal-padding: 10px;
 $local-transition-duration: 0.2s;
 
-
 .filter {}
 
 .filter__title {
@@ -179,7 +174,7 @@ $local-transition-duration: 0.2s;
   font-weight: $font-weight-bold;
   font-size: 15px;
   line-height: 18px;
-  text-align: $inline-start;
+  text-align: left;
   color: inherit;
   background: $filter-title-default-bg;
   border: none;
@@ -187,7 +182,6 @@ $local-transition-duration: 0.2s;
   cursor: pointer;
   transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
-
 
   &:focus,
   &:hover {
@@ -204,8 +198,8 @@ $local-transition-duration: 0.2s;
 .filter__arrow {
   position: absolute;
   top: 5px + $local-title-vertical-padding;
+  right: $local-title-horizontal-padding;
   transition: transform $local-transition-duration;
-  #{$inset-inline-end}: $local-title-horizontal-padding;
 }
 
 .filter__body {

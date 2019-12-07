@@ -43,5 +43,5 @@ $local-item-margin: 0;
 }
 
 .topbar__item--link + .topbar__item--link {
-  #{$margin-inline-start}: 16px;
+  margin-left: 16px;
 }

@@ -9,7 +9,7 @@
   color: #ccc;
 
   & + & {
-    #{$margin-inline-start}: 3px;
+    margin-left: 3px;
   }
 }
 

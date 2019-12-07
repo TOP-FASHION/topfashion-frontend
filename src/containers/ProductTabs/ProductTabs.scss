@@ -42,11 +42,11 @@
   }
 
   &:first-child {
-    #{$margin-inline-start}: auto;
+    margin-left: auto;
   }
 
   &:last-child {
-    #{$margin-inline-end}: auto;
+    margin-right: auto;
   }
 }
 
@@ -89,7 +89,6 @@
     padding: 48px 50px;
   }
 }
-
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .product-tabs__content {

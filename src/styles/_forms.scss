@@ -6,13 +6,13 @@
 }
 
 .form-check {
-  #{$padding-inline-start}: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .form-check-input {
   position: absolute;
   margin-top: 0.1875rem;
-  #{$margin-inline-start}: -1.5rem;
+  margin-left: -1.5rem;
 }
 
 @media (max-width: breakpoint(sm-end)) {
@@ -20,7 +20,6 @@
     margin-bottom: 1.125rem;
   }
 }
-
 
 .form-control {
   line-height: 1.25;
@@ -38,14 +37,12 @@
   line-height: 1.25;
 }
 
-
 .form-control:valid,
 .form-control.is-valid,
 .form-control:invalid,
 .form-control.is-invalid {
   background-image: none;
 }
-
 
 // select
 @mixin local-select-arrow($color) {
@@ -78,27 +75,25 @@ select.form-control {
 @include local-select-define-size() {
   @include local-select-arrow($form-control-select-arrow-color);
 
+  padding-right: calc(0.75rem * 2 + 5px);
   background-repeat: no-repeat;
-  background-position: $inline-end 0.75rem center;
+  background-position: right 0.75rem center;
   background-size: 5px 10px;
-  #{$padding-inline-end}: calc(0.75rem * 2 + 5px);
 }
 
 @include local-select-define-size('sm') {
-  background-position: $inline-end 0.5rem center;
-  #{$padding-inline-end}: calc(0.5rem * 2 + 5px);
+  padding-right: calc(0.5rem * 2 + 5px);
+  background-position: right 0.5rem center;
 }
 
 @include local-select-define-size('lg') {
-  background-position: $inline-end 1rem center;
-  #{$padding-inline-end}: calc(1rem * 2 + 5px);
+  padding-right: calc(1rem * 2 + 5px);
+  background-position: right 1rem center;
 }
-
 
 $local-circle-size: 16px;
 $local-inner-circle-size: 6px;
 $local-transition-duration: 0.2s;
-
 
 .input-radio {
   display: inline-block;
@@ -176,11 +171,9 @@ $local-transition-duration: 0.2s;
   }
 }
 
-
 $local-box-size: 16px;
 $local-border-radius: 1.2px;
 $local-transition-duration: 0.15s;
-
 
 .input-check {
   display: inline-block;

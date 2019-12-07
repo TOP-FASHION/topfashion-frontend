@@ -12,7 +12,6 @@
   background: $menu-bg;
   box-shadow: $menu-shadow;
 
-
   > li {
     position: relative;
   }
@@ -22,15 +21,14 @@
     display: block;
     width: 100%;
     padding-top: 8px;
+    padding-right: 24px;
     padding-bottom: 6px;
+    padding-left: 16px;
     font-weight: inherit;
-    text-align: $inline-start;
+    text-align: left;
     color: inherit;
     background: transparent;
     border: none;
-    #{$padding-inline-end}: 24px;
-    #{$padding-inline-start}: 16px;
-
 
     &:focus {
       outline: none;
@@ -52,32 +50,32 @@
 .menu__icon {
   position: absolute;
   top: 3px;
-  #{$inset-inline-start}: 15px;
+  left: 15px;
 }
 
 .menu__arrow {
   position: absolute;
   top: calc(50% - 5px);
-  transform: scaleX(1 * $transform-direction);
+  right: 12px;
+  transform: scaleX(1 * 1);
   fill: $menu-item-arrow-color;
-  #{$inset-inline-end}: 12px;
 }
 
 .menu__submenu {
   position: absolute;
   top: -10px;
+  left: 100%;
   transform: rotateY(45deg);
-  transform-origin: #{$inline-start};
+  transform-origin: #{left};
   visibility: hidden;
   opacity: 0;
   transition: transform 0.2s, opacity 0.2s;
-  #{$inset-inline-start}: 100%;
 }
 
 .menu--with-icons {
   > li > a,
   > li > button {
-    #{$padding-inline-start}: 16px + 24px + 10px;
+    padding-left: 16px + 24px + 10px;
   }
 }
 
@@ -90,22 +88,22 @@
   > li > button {
     display: block;
     padding-top: 8px;
+    padding-right: 21px;
     padding-bottom: 6px;
+    padding-left: 13px;
     color: inherit;
-    #{$padding-inline-end}: 21px;
-    #{$padding-inline-start}: 13px;
   }
 
   &.menu--with-icons {
     .menu__icon {
       position: absolute;
       top: 3px;
-      #{$inset-inline-start}: 12px;
+      left: 12px;
     }
 
     > li > a,
     > li > button {
-      #{$padding-inline-start}: 13px + 24px + 8px;
+      padding-left: 13px + 24px + 8px;
     }
   }
 }

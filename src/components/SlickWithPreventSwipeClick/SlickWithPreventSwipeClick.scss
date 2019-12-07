@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 
-
 .megamenu {
   width: 100%;
   min-height: 100%;
@@ -11,16 +10,15 @@
   letter-spacing: 0.01em;
   background: $megamenu-bg;
   background-repeat: no-repeat;
-  background-position: $inline-end bottom;
+  background-position: right bottom;
   box-shadow: $megamenu-shadow;
 }
 
 .megamenu--departments {
-  #{$padding-inline-end}: 31px;
-
+  padding-right: 31px;
 
   @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
-    #{$padding-inline-end}: 32px;
+    padding-right: 32px;
   }
 }
 

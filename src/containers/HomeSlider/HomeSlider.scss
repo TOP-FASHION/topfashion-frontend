@@ -13,6 +13,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
   .slick-dots {
     position: absolute;
     bottom: 16px;
+    left: 50%;
     width: auto;
     margin: 0;
     padding: $local-dots-padding;
@@ -20,9 +21,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
     font-size: 0;
     background: $block-slideshow-dots-bg;
     border-radius: $local-dots-height / 2;
-    transform: translateX(-50% * $transform-direction);
-    #{$inset-inline-start}: 50%;
-
+    transform: translateX(-50% * 1);
 
     li {
       display: inline-block;
@@ -50,7 +49,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
     }
 
     li + li {
-      #{$margin-inline-start}: 6px;
+      margin-left: 6px;
     }
   }
 }
@@ -88,7 +87,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 .block-slideshow__slide-content {
   position: absolute;
   bottom: 46px;
-  #{$inset-inline-start}: 46px;
+  left: 46px;
 }
 
 .block-slideshow__slide-title {
@@ -135,7 +134,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
     .block-slideshow__slide-content {
       bottom: 54px;
-      #{$inset-inline-start}: 72px;
+      left: 72px;
     }
 
     .block-slideshow__slide-title {
@@ -154,7 +153,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
     }
 
     .block-slideshow__slide-content {
-      #{$inset-inline-start}: 56px;
+      left: 56px;
     }
   }
 
@@ -165,7 +164,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
     .block-slideshow__slide-content {
       bottom: 56px;
-      #{$inset-inline-start}: 48px;
+      left: 48px;
     }
 
     .block-slideshow__slide-title {
@@ -192,7 +191,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
   @media (min-width: breakpoint(lg-start)) {
     .block-slideshow__body {
-      #{$margin-inline-start}: (30px - $local-margin) * -1;
+      margin-left: (30px - $local-margin) * -1;
     }
   }
 
@@ -216,9 +215,9 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
   .block-slideshow__slide-content {
     top: 30px;
+    right: 5%;
+    left: 5%;
     text-align: center;
-    #{$inset-inline-start}: 5%;
-    #{$inset-inline-end}: 5%;
   }
 
   .block-slideshow__slide-title {

@@ -7,9 +7,8 @@
 
 .review__avatar {
   flex-shrink: 0;
-  #{$margin-inline-start}: 16px;
-  #{$margin-inline-end}: 24px;
-
+  margin-right: 24px;
+  margin-left: 16px;
 
   img {
     width: 70px;
@@ -40,8 +39,7 @@
 
 @media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(sm-end)) {
   .review__avatar {
-    #{$margin-inline-end}: 18px;
-
+    margin-right: 18px;
 
     img {
       width: 60px;

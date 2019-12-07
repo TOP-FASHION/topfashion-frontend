@@ -66,6 +66,7 @@
 .product-card__quickview {
   position: absolute;
   top: 0;
+  right: 0;
   z-index: 2;
   height: 30px;
   padding: 7px;
@@ -78,7 +79,6 @@
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
   fill: currentColor;
-  #{$inset-inline-end}: 0;
   //@include logical-border-radius(0 2px 0 2px);
 
   &:focus {
@@ -122,11 +122,11 @@
 }
 
 .product-card__rating-legend {
+  margin-left: 9px;
   padding-top: 1px;
   font-size: 13px;
   line-height: 1;
   color: $rating-legend-font-color;
-  #{$margin-inline-start}: 9px;
 }
 
 .product-card__prices {
@@ -152,11 +152,11 @@
   margin-top: 24px;
 
   > *:first-child {
-    #{$margin-inline-end}: auto;
+    margin-right: auto;
   }
 
   > * + * {
-    #{$margin-inline-start}: 4px;
+    margin-left: 4px;
   }
 }
 
@@ -175,33 +175,34 @@
   li {
     position: relative;
     padding: 3px 0 3px;
-    #{$padding-inline-start}: 12px;
+    padding-left: 12px;
   }
 
   li::before {
     content: '';
     position: absolute;
     top: 9px;
+    left: 0;
     display: block;
     width: 5px;
     height: 5px;
     border: 1px solid currentColor;
     border-radius: 2.5px;
-    #{$inset-inline-start}: 0;
   }
 }
 
 .product-card__badges-list {
   position: absolute;
   top: 18px;
+  left: 18px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  #{$inset-inline-start}: 18px;
 }
 
 .product-card__badge {
+  margin-right: 4px;
   margin-bottom: 4px;
   padding: 5px 8px 4px;
   font-weight: $font-weight-medium;
@@ -210,7 +211,6 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
   border-radius: 1.5px;
-  #{$margin-inline-end}: 4px;
 }
 
 .product-card__badge--sale {

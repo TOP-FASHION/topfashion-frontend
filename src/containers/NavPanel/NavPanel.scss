@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 
-
 .nav-panel {
   height: $nav-panel-height;
   color: $nav-panel-font-color;
@@ -39,22 +38,22 @@
 
 .nav-panel__logo + .nav-panel__nav-links,
 .nav-panel__departments + .nav-panel__nav-links {
-  #{$margin-inline-start}: 18px;
+  margin-left: 18px;
 }
 
 .nav-panel__nav-links {
-  #{$margin-inline-end}: 18px;
+  margin-right: 18px;
 }
 
 .nav-panel__indicators {
   display: flex;
   height: 100%;
-  #{$margin-inline-start}: auto;
+  margin-left: auto;
 }
 
 @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
   .nav-panel__nav-links {
-    #{$margin-inline-start}: 14px;
-    #{$margin-inline-end}: 14px;
+    margin-right: 14px;
+    margin-left: 14px;
   }
 }

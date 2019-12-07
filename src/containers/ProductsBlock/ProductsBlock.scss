@@ -44,7 +44,6 @@ $local-product-margin: 5px;
   }
 }
 
-
 .block-products__list-item {
   .product-card {
     @include product-card-grid();
@@ -59,7 +58,6 @@ $local-product-margin: 5px;
   }
 }
 
-
 @media (min-width: breakpoint(lg-start)) {
   .block-products__featured-item {
     .product-card {
@@ -69,11 +67,11 @@ $local-product-margin: 5px;
   }
 
   .block-products__featured + .block-products__list {
-    #{$margin-inline-start}: $local-product-margin;
+    margin-left: $local-product-margin;
   }
 
   .block-products__list + .block-products__featured {
-    #{$margin-inline-start}: $local-product-margin * 2;
+    margin-left: $local-product-margin * 2;
   }
 }
 

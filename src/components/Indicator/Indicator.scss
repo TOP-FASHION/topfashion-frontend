@@ -41,12 +41,12 @@ $local-open-transition-duration: 0.2s;
   position: relative;
   top: -11px;
   height: 15px;
+  margin-right: -8px;
+  margin-left: -5px;
   padding: 0 5px;
   font-weight: $font-weight-bold;
   font-size: 10px;
   color: #fff;
-  #{$margin-inline-start}: -5px;
-  #{$margin-inline-end}: -8px;
 
   &::after {
     content: attr(data-count);
@@ -71,11 +71,11 @@ $local-open-transition-duration: 0.2s;
 .indicator__dropdown {
   position: absolute;
   top: 100%;
+  right: 0;
   transform: rotateX(60deg);
   transform-origin: top;
   visibility: hidden;
   opacity: 0;
-  #{$inset-inline-end}: 0;
   transition:
     transform $local-open-transition-duration,
     opacity $local-open-transition-duration,

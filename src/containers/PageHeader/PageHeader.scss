@@ -42,9 +42,7 @@
   }
 }
 
-
 $local-padding: 12px;
-
 
 .breadcrumb {
   margin-bottom: 0;
@@ -56,9 +54,8 @@ $local-padding: 12px;
 
 .breadcrumb-item {
   position: relative;
-  #{$padding-inline-start}: 0;
-  #{$padding-inline-end}: 6px + $local-padding * 2;
-
+  padding-right: 6px + $local-padding * 2;
+  padding-left: 0;
 
   a {
     color: $breadcrumb-link-default-color;
@@ -70,9 +67,8 @@ $local-padding: 12px;
   }
 
   & + & {
-    #{$padding-inline-start}: 0;
-    #{$padding-inline-end}: 6px + $local-padding * 2;
-
+    padding-right: 6px + $local-padding * 2;
+    padding-left: 0;
 
     &::before {
       display: none;
@@ -87,7 +83,7 @@ $local-padding: 12px;
 .breadcrumb-arrow {
   position: absolute;
   top: 4px;
+  right: $local-padding - 1px;
   color: $breadcrumb-arrow-color;
-  #{$inset-inline-end}: $local-padding - 1px;
-  transform: scaleX(1 * $transform-direction);
+  transform: scaleX(1 * 1);
 }

@@ -33,27 +33,27 @@
   .page-link__arrow {
     position: absolute;
     top: 10px;
-    transform: scaleX(1 * $transform-direction);
+    transform: scaleX(1 * 1);
     fill: currentColor;
   }
 
   .page-link__arrow--left {
-    #{$inset-inline-start}: 10px;
+    left: 10px;
   }
 
   .page-link__arrow--right {
-    #{$inset-inline-start}: 11px;
+    left: 11px;
   }
 }
 
 .page-item:first-child .page-link {
+  margin-left: 0;
   border-radius: 2px;
-  #{$margin-inline-start}: 0;
 }
 
 .page-item:last-child .page-link {
+  margin-right: 0;
   border-radius: 2px;
-  #{$margin-inline-end}: 0;
 }
 
 .page-item.active .page-link {

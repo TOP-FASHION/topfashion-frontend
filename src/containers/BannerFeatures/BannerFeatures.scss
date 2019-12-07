@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 
-
 .block-features__list {
   display: flex;
   border: $card-border;
@@ -23,9 +22,9 @@
   flex-shrink: 0;
   width: 48px;
   height: 48px;
+  margin-right: 20px;
   font-size: 32px;
   fill: $block-features-icon-color;
-  #{$margin-inline-end}: 20px;
 
   svg {
     display: block;
@@ -69,8 +68,8 @@
   }
 
   .block-features__icon {
+    margin-right: 0;
     margin-bottom: 12px;
-    #{$margin-inline-end}: 0;
   }
 
   @media (min-width: 480px) and (max-width: breakpoint(md-end)) {
@@ -120,7 +119,7 @@
     }
 
     .block-features__icon {
-      #{$margin-inline-end}: 16px;
+      margin-right: 16px;
     }
 
     .block-features__content {
@@ -155,8 +154,8 @@
       display: flex;
       justify-content: center;
       width: 100%;
+      margin-right: 0;
       margin-bottom: 20px;
-      #{$margin-inline-end}: 0;
     }
   }
 
@@ -172,7 +171,7 @@
     }
 
     .block-features__icon {
-      #{$margin-inline-end}: 24px;
+      margin-right: 24px;
     }
 
     .block-features__divider {

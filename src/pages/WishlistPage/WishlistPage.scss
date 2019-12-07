@@ -11,13 +11,12 @@
 }
 
 .wishlist__product-rating-legend {
+  margin-left: 9px;
   padding-top: 1px;
   font-size: 13px;
   line-height: 1;
   color: $rating-legend-font-color;
-  #{$margin-inline-start}: 9px;
 }
-
 
 @media (min-width: breakpoint(md-start)) {
   .wishlist {
@@ -31,11 +30,11 @@
     border-top: 1px solid $table-border-color;
 
     &:first-child {
-      #{$border-inline-start}: 1px solid $table-border-color;
+      border-left: 1px solid $table-border-color;
     }
 
     &:last-child {
-      #{$border-inline-end}: 1px solid $table-border-color;
+      border-right: 1px solid $table-border-color;
     }
   }
 
@@ -48,11 +47,11 @@
     }
 
     .wishlist__column:first-child {
-      #{$border-start-start-radius}: $table-border-radius;
+      border-top-left-radius: $table-border-radius;
     }
 
     .wishlist__column:last-child {
-      #{$border-start-end-radius}: $table-border-radius;
+      border-top-right-radius: $table-border-radius;
     }
   }
 
@@ -68,11 +67,11 @@
       }
 
       .wishlist__column:first-child {
-        #{$border-end-start-radius}: $table-border-radius;
+        border-bottom-left-radius: $table-border-radius;
       }
 
       .wishlist__column:last-child {
-        #{$border-end-end-radius}: $table-border-radius;
+        border-bottom-right-radius: $table-border-radius;
       }
     }
   }
@@ -94,15 +93,15 @@
 
   .wishlist__column--price {
     width: 170px;
-    text-align: $inline-end;
-    #{$padding-inline-start}: 90px;
+    padding-left: 90px;
+    text-align: right;
   }
 
   .wishlist__column--tocart {
     width: 1px;
+    padding-right: 0;
+    padding-left: 90px;
     white-space: nowrap;
-    #{$padding-inline-start}: 90px;
-    #{$padding-inline-end}: 0;
   }
 
   .wishlist__column--remove {
@@ -117,7 +116,7 @@
 
   .wishlist__column--price,
   .wishlist__column--tocart {
-    #{$padding-inline-start}: 30px;
+    padding-left: 30px;
   }
 }
 
@@ -130,12 +129,12 @@
   .wishlist__column--tocart,
   .wishlist__column--price,
   .wishlist__column--stock {
-    #{$padding-inline-start}: 0;
+    padding-left: 0;
   }
 
   .wishlist__column--remove {
-    #{$padding-inline-start}: 8px;
-    #{$padding-inline-end}: 12px;
+    padding-right: 12px;
+    padding-left: 8px;
   }
 }
 
@@ -204,7 +203,7 @@
   .wishlist__column--remove {
     position: absolute;
     top: 5px;
-    #{$inset-inline-end}: 5px;
+    right: 5px;
   }
 
   .wishlist__product-rating {

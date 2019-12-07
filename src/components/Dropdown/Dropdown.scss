@@ -12,14 +12,14 @@ $local-button-padding: 10px;
   position: relative;
   height: 100%;
   padding: 0;
+  padding-right: $local-button-padding;
+  padding-left: $local-button-padding;
   color: $topbar-dropdown-font-color;
   background: $topbar-dropdown-bg;
   border: none;
   cursor: pointer;
   transition: all 0.1s;
   fill: $topbar-dropdown-arrow-color;
-  #{$padding-inline-start}: $local-button-padding;
-  #{$padding-inline-end}: $local-button-padding;
 
   &:focus {
     outline: none;
@@ -28,19 +28,19 @@ $local-button-padding: 10px;
   svg {
     position: absolute;
     top: calc(50% - 4px);
-    #{$inset-inline-end}: $local-button-padding - 3px;
+    right: $local-button-padding - 3px;
   }
 }
 
 .dropdown__body {
   position: absolute;
   top: 100%;
+  right: 0;
   transform: rotateX(60deg);
   transform-origin: top;
   visibility: hidden;
   opacity: 0;
   transition: transform $local-transition-duration, opacity $local-transition-duration, visibility 0s $local-transition-duration;
-  #{$inset-inline-end}: 0;
 }
 
 .dropdown--opened .topbar-dropdown__btn,

@@ -21,11 +21,11 @@
 }
 
 .input-number__sub {
-  #{$inset-inline-start}: 1px;
+  left: 1px;
 }
 
 .input-number__add {
-  #{$inset-inline-end}: 1px;
+  right: 1px;
 
   &::after {
     width: 2px;

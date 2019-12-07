@@ -53,8 +53,8 @@
 .dropcart__product-info {
   flex-grow: 1;
   margin: 0;
-  #{$padding-inline-end}: 10px;
-  #{$padding-inline-start}: 16px;
+  padding-right: 10px;
+  padding-left: 16px;
 }
 
 .dropcart__product-options {
@@ -79,7 +79,7 @@
 .dropcart__product-remove {
   flex-shrink: 0;
   margin-top: -6px;
-  #{$margin-inline-end}: -6px;
+  margin-right: -6px;
 }
 
 .dropcart__totals {
@@ -88,11 +88,11 @@
   border-top: 1px solid $dropcart-divider-color;
 
   th {
-    #{$padding-inline-end}: 16px;
+    padding-right: 16px;
   }
 
   td {
-    text-align: $inline-end;
+    text-align: right;
   }
 
   table {
@@ -110,6 +110,6 @@
   }
 
   > :first-child {
-    #{$margin-inline-end}: 8px;
+    margin-right: 8px;
   }
 }

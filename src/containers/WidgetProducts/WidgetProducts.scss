@@ -1,7 +1,6 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 
-
 .widget-products {
   padding: 20px;
   border: $card-border;
@@ -23,8 +22,7 @@
 .widget-products__image {
   flex-shrink: 0;
   width: 50px;
-  #{$margin-inline-end}: 12px;
-
+  margin-right: 12px;
 
   img {
     max-width: 100%;
@@ -63,7 +61,6 @@
   color: $price-old-color;
   text-decoration: line-through;
 }
-
 
 .widget {}
 

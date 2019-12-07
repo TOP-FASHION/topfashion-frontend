@@ -44,9 +44,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 20px;
   line-height: 1;
   text-align: center;
-  #{$margin-inline-end}: 20px;
 }
 
 .site-header__phone-title {
@@ -88,6 +88,6 @@
   .site-header__logo {
     justify-content: flex-start;
     width: 210px;
-    #{$margin-inline-end}: 24px;
+    margin-right: 24px;
   }
 }
