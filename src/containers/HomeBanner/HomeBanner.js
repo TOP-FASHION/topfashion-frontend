@@ -23,7 +23,7 @@ class HomeBanner extends Component {
               Hand Tools
             </div>
             <div className='block-banner__text'>
-              Hammers, Chisels, Universal Pliers, Nippers, Jigsaws, Saws
+              Hammers, Chisels, Universal Pliers
             </div>
             <div className='block-banner__button'>
               <span className='btn btn-sm btn-primary'>Shop Now</span>

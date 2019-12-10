@@ -1,6 +1,10 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 
+.block-features {
+  margin-top: 40px;
+}
+
 .block-features__list {
   display: flex;
   border: $card-border;
@@ -24,7 +28,7 @@
   height: 48px;
   margin-right: 20px;
   font-size: 32px;
-  fill: $block-features-icon-color;
+  color: $block-features-icon-color;
 
   svg {
     display: block;

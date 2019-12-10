@@ -3,25 +3,6 @@
 @import '../../styles/mixin/product-card';
 @import '../../styles/mixin/preloader';
 
-.block-products-carousel {
-  .slick-track {
-    padding-bottom: 56px;
-  }
-
-  .slick-list {
-    margin: 0 -5px;
-    margin-bottom: -56px;
-
-    &:hover {
-      z-index: 2;
-    }
-  }
-
-  .slick-slide {
-    padding: 0 5px;
-  }
-}
-
 .block-products-carousel__slider {
   position: relative;
 }

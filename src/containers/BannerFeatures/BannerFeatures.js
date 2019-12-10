@@ -9,11 +9,11 @@ class BannerFeatures extends Component {
   }
 
   static defaultProps = {
-    layout: 'classic'
+    layout: 'boxed'
   }
 
   render () {
-    const { title, layout } = this.props
+    const { layout } = this.props
 
     return (
       <div className={`block block-features block-features--layout--${layout}`}>

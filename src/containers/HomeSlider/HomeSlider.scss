@@ -9,6 +9,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 .block-slideshow {
   position: relative;
   margin-bottom: $block-margin-bottom;
+  padding-top: 0;
 
   .slick-dots {
     position: absolute;

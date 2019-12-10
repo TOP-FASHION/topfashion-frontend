@@ -11,7 +11,7 @@ $light-divider-color:            #ebebeb !default;
 $dark-color:                     $light-opposite-color !default;
 $dark-opposite-color:            $light-color !default;
 // accent
-$accent-color:                   #ffd333 !default;
+$accent-color:                   #c92f67 !default;
 $accent-opposite-color:          $light-opposite-color !default;
 //links
 $link-color:                     #1a66ff !default;
@@ -412,7 +412,7 @@ $breadcrumb-arrow-color:        #d1d1d1 !default;
 // primary
 // default
 $btn-primary-bg-color:          $accent-color !default;
-$btn-primary-font-color:        $accent-opposite-color !default;
+$btn-primary-font-color:        $light-divider-color !default;
 $btn-primary-icon-color:        $btn-primary-font-color !default;
 // hover
 $btn-primary-hover-bg-color:    $dark-color !default;
@@ -594,7 +594,7 @@ $product-card-badge-hot-color:         #fff !default;
 
 $product-card-quickview-color:         #ccc !default;
 $product-card-quickview-default-bg:    $accent-color !default;
-$product-card-quickview-default-color: $accent-opposite-color !default;
+$product-card-quickview-default-color: $light-divider-color !default;
 $product-card-quickview-hover-bg:      $dark-color !default;
 $product-card-quickview-hover-color:   $dark-opposite-color !default;
 
@@ -741,7 +741,7 @@ $filter-title-hover-arrow-color:   #b3b3b3 !default;
 // ----------------------------------------
 // -- .block
 // ----------------------------------------
-$block-margin-bottom:    46px !default;
+$block-margin-bottom:    30px !default;
 $block-margin-bottom-md: 30px !default;
 $block-highlighted-bg:   #f9f9f9 !default;
 
