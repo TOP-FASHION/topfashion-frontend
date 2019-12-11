@@ -12,7 +12,8 @@ class ProductsCarouselTabbs extends Component {
     title: PropTypes.string.isRequired,
     layout: PropTypes.oneOf(['grid-4', 'grid-4-sm', 'grid-5', 'horizontal']),
     rows: PropTypes.number,
-    withSidebar: PropTypes.bool
+    withSidebar: PropTypes.bool,
+    products: PropTypes.array
   };
 
   static defaultProps = {
@@ -28,17 +29,15 @@ class ProductsCarouselTabbs extends Component {
 
     this.state = {
       loading: false,
+      /*
       groups: [
         { id: 1, name: 'All', current: true },
         { id: 2, name: 'Power Tools', current: false },
         { id: 3, name: 'Hand Tools', current: false },
         { id: 4, name: 'Plumbing', current: false }
       ]
+      */
     }
-  }
-
-  componentDidMount () {
-    this.props.productsStore.getProducts()
   }
 
   componentWillUnmount () {
@@ -84,17 +83,12 @@ class ProductsCarouselTabbs extends Component {
     }, 2000)
   };
 
-  get products () {
-    const { products } = this.props.productsStore
-    return products
-  }
-
   render () {
-    return this.products ? (
+    return this.props.products ? (
       <ProductsCarousel
         {...this.props}
         {...this.state}
-        products={this.products}
+        products={this.props.products}
         onGroupClick={this.handleChangeGroup}
       />
     ) : null

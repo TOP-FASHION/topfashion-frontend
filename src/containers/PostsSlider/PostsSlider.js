@@ -70,7 +70,6 @@ class PostsSlider extends Component {
     const { title, layout, posts } = this.props
 
     const postsList = posts.map((post) => <PostCard key={post.id} post={post} />);
-    console.log('postsList', postsList)
     return (
       <div className={`block block-posts block-posts--layout--${layout}`} data-layout={layout}>
         <div className="container">

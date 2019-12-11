@@ -9,6 +9,7 @@ import CategorySidebar from '../../containers/CategorySidebar'
 // import WidgetProducts from '../widgets/WidgetProducts'
 // import categories from '../../data/shopWidgetCategories'
 import { inject, observer } from 'mobx-react'
+import normalizeCategory from '../../utils/normalizeCategory'
 import './ProductCategoryPage.scss'
 
 @inject('productsStore', 'productsCategoriesStore')
@@ -33,32 +34,13 @@ class ProductCategoryPage extends Component {
       'filter[limit]': this.props.productsStore.countProducts,
       category: this.normalizeCategory(this.props.match.params.categoryId)
     })
-    this.props.productsCategoriesStore.categoryId = this.normalizeCategory(this.props.match.params.categoryId)
-  }
-
-  normalizeCategory (id = '') {
-    switch (id) {
-      case 'accessories':
-        return 18
-      case 'hoodies':
-        return 19
-      case 'tshirts':
-        return 20
-      case 'jeans':
-        return 23
-      case 'woman':
-        return 22
-      case 'man':
-        return 24
-      default:
-        return id
-    }
+    this.props.productsCategoriesStore.categoryId = normalizeCategory(this.props.match.params.categoryId)
   }
 
   normalizeParentCategory (id) {
-    if ([23, 22].includes(this.normalizeCategory(id))) {
+    if ([23, 22].includes(normalizeCategory(id))) {
       return 'woman'
-    } else if ([18, 19].includes(this.normalizeCategory(id))) {
+    } else if ([18, 19].includes(normalizeCategory(id))) {
       return 'man'
     } else {
 

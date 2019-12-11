@@ -15,6 +15,7 @@ export default class ProductsStore {
       .then((res) => {
         if (res.data) {
           this.setProducts(res.data)
+          return res.data
         }
         this.totalProducts = res.headers['x-wp-total']
         this.pagesProducts = res.headers['x-wp-totalpages']

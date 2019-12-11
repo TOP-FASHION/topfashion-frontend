@@ -152,7 +152,7 @@
 
 @mixin product-card-grid() {
   .product-card__image {
-    padding: 18px 18px 20px;
+    padding: 0;
   }
 
   .product-card__info {
@@ -184,7 +184,7 @@
 
 @mixin product-card-grid-sm() {
   .product-card__image {
-    padding: 15px;
+    padding: 0;
   }
 
   .product-card__badges-list {
