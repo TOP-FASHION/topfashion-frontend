@@ -11,11 +11,11 @@ class HomeBanner extends Component {
           <Link to='/' className='block-banner__body'>
             <div
               className='block-banner__image block-banner__image--desktop'
-              style={{ backgroundImage: 'url("public/img/banners/banner-1.jpg")' }}
+              style={{ backgroundImage: 'url("/public/img/banners/banner-1.jpg")' }}
             />
             <div
               className='block-banner__image block-banner__image--mobile'
-              style={{ backgroundImage: 'url("public/img/banners/banner-1-mobile.jpg")' }}
+              style={{ backgroundImage: 'url("/public/img/banners/banner-1-mobile.jpg")' }}
             />
             <div className='block-banner__title'>
               Hundreds

@@ -24,23 +24,23 @@ class HomeSlider extends Component {
     {
       title: 'Big choice of<br>Plumbing products',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-      image_classic: 'public/img/slides/slide-1.jpg',
-      image_full: 'public/img/slides/slide-1-full.jpg',
-      image_mobile: 'public/img/slides/slide-1-mobile.jpg'
+      image_classic: '/public/img/slides/slide-1.jpg',
+      image_full: '/public/img/slides/slide-1-full.jpg',
+      image_mobile: '/public/img/slides/slide-1-mobile.jpg'
     },
     {
       title: 'Screwdrivers<br>Professional Tools',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-      image_classic: 'public/img/slides/slide-2.jpg',
-      image_full: 'public/img/slides/slide-2-full.jpg',
-      image_mobile: 'public/img/slides/slide-2-mobile.jpg'
+      image_classic: '/public/img/slides/slide-2.jpg',
+      image_full: '/public/img/slides/slide-2-full.jpg',
+      image_mobile: '/public/img/slides/slide-2-mobile.jpg'
     },
     {
       title: 'One more<br>Unique header',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-      image_classic: 'public/img/slides/slide-3.jpg',
-      image_full: 'public/img/slides/slide-3-full.jpg',
-      image_mobile: 'public/img/slides/slide-3-mobile.jpg'
+      image_classic: '/public/img/slides/slide-3.jpg',
+      image_full: '/public/img/slides/slide-3-full.jpg',
+      image_mobile: '/public/img/slides/slide-3-mobile.jpg'
     }
   ];
 

@@ -4,13 +4,13 @@ import SlickWithPreventSwipeClick from '../../components/SlickWithPreventSwipeCl
 import './Brands.scss'
 
 const brands = [
-  { image: 'public/img/logos/logo-1.svg' },
-  { image: 'public/img/logos/logo-2.svg' },
-  { image: 'public/img/logos/logo-3.svg' },
-  { image: 'public/img/logos/logo-4.svg' },
-  { image: 'public/img/logos/logo-5.svg' },
-  { image: 'public/img/logos/logo-6.svg' },
-  { image: 'public/img/logos/logo-7.svg' }
+  { image: '/public/img/logos/logo-1.svg' },
+  { image: '/public/img/logos/logo-2.svg' },
+  { image: '/public/img/logos/logo-3.svg' },
+  { image: '/public/img/logos/logo-4.svg' },
+  { image: '/public/img/logos/logo-5.svg' },
+  { image: '/public/img/logos/logo-6.svg' },
+  { image: '/public/img/logos/logo-7.svg' }
 ]
 
 const slickSettings = {

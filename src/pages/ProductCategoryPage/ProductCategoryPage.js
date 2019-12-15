@@ -10,6 +10,7 @@ import CategorySidebar from '../../containers/CategorySidebar'
 // import categories from '../../data/shopWidgetCategories'
 import { inject, observer } from 'mobx-react'
 import normalizeCategory from '../../utils/normalizeCategory'
+import normalizeParentCategory from '../../utils/normalizeParentCategory'
 import './ProductCategoryPage.scss'
 
 @inject('productsStore', 'productsCategoriesStore')
@@ -32,26 +33,16 @@ class ProductCategoryPage extends Component {
       page: 1,
       per_page: this.props.productsStore.countProducts,
       'filter[limit]': this.props.productsStore.countProducts,
-      category: this.normalizeCategory(this.props.match.params.categoryId)
+      category: normalizeCategory(this.props.match.params.categoryId)
     })
     this.props.productsCategoriesStore.categoryId = normalizeCategory(this.props.match.params.categoryId)
-  }
-
-  normalizeParentCategory (id) {
-    if ([23, 22].includes(normalizeCategory(id))) {
-      return 'woman'
-    } else if ([18, 19].includes(normalizeCategory(id))) {
-      return 'man'
-    } else {
-
-    }
   }
 
   get breadcrumb () {
     return [
       { title: 'Home', url: '' },
       { title: 'Category', url: '/category' },
-      { title: this.normalizeParentCategory(this.props.match.params.categoryId), url: this.normalizeParentCategory(this.props.match.params.categoryId) },
+      { title: normalizeParentCategory(this.props.match.params.categoryId), url: normalizeParentCategory(this.props.match.params.categoryId) },
       { title: this.props.match.params.categoryId, url: this.props.match.params.categoryId }
     ]
   }
@@ -61,14 +52,14 @@ class ProductCategoryPage extends Component {
     let content
 
     const offcanvas = this.props.columns === 3 ? 'mobile' : 'always'
-
+    console.log('products', products)
     if (this.props.columns > 3) {
       content = (
         <div className='container'>
           <div className='block'>
             <ProductsView
               products={products}
-              layout={viewMode}
+              layout={this.props.viewMode}
               grid={`grid-${this.props.columns}-full`}
               limit={15}
               offcanvas={offcanvas}
@@ -91,7 +82,7 @@ class ProductCategoryPage extends Component {
                 <ProductsView
                   products={products}
                   layout={this.props.viewMode}
-                  grid='grid-3-sidebar'
+                  grid='grid-4-full'
                   limit={15}
                   offcanvas={offcanvas}
                 />

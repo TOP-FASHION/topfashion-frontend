@@ -48,7 +48,7 @@ class Header extends Component {
         <Container>
           <div className='site-header__logo'>
             <Link to='/'>
-              <img src='public/img/logos/shop-logo.svg' width='180px' />
+              <img src='/public/img/logos/shop-logo.svg' width='180px' />
             </Link>
           </div>
           <div className='site-header__phone'>

@@ -1,21 +1,27 @@
 export default function normalizeCategory (id = '') {
   switch (id) {
     case 'accessories':
-      return 18
-    case 'hoodies':
+      return 15
+    case 'blouses':
+      return 50
+    case 'dresses':
+      return 48
+    case 'jackets':
+      return 49
+    case 'jumpers':
       return 19
-    case 'tshirts':
-      return 20
-    case 'jeans':
-      return 23
-    case 'woman':
-      return 22
-    case 'man':
-      return 24
-    case 'bestsellers':
-      return 24
+    case 'new':
+      return 55
+    case 'pants':
+      return 51
+    case 'perfume':
+      return 53
     case 'sale':
-      return 18
+      return 54
+    case 'skirts':
+      return 52
+    case 'bestsellers':
+      return 56
     default:
       return id
   }

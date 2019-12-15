@@ -23,6 +23,7 @@ import CartUpdateProductStore from './CartUpdateProductStore'
 // Others
 import ChangeLanguageStore from './ChangeLanguageStore'
 import ModalStore from './ModalStore'
+import MenuStore from './MenuStore'
 
 class RootStore {
   constructor () {
@@ -51,6 +52,7 @@ class RootStore {
     // Others
     this.changeLanguageStore = new ChangeLanguageStore(this)
     this.modalStore = new ModalStore(this)
+    this.menuStore = new MenuStore(this)
   }
 }
 

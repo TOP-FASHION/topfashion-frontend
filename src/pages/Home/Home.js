@@ -34,23 +34,23 @@ class Home extends Component {
   }
 
   productsBestsellers = async () => {
-    const products = await this.props.productsStore.getProducts({
+    const productsBestsellers = await this.props.productsStore.getProducts({
       page: 1,
       per_page: this.props.productsStore.countProducts,
       'filter[limit]': this.props.productsStore.countProducts,
       category: normalizeCategory('bestsellers')
     })
-    this.setState(() => ({ productsBestsellers: products }))
+    this.setState(() => ({ productsBestsellers: productsBestsellers }))
   }
 
   productsSale = async () => {
-    const products = await this.props.productsStore.getProducts({
+    const productsSale = await this.props.productsStore.getProducts({
       page: 1,
       per_page: this.props.productsStore.countProducts,
       'filter[limit]': this.props.productsStore.countProducts,
       category: normalizeCategory('sale')
     })
-    this.setState(() => ({ productsSale: products }))
+    this.setState(() => ({ productsSale: productsSale }))
   }
 
   render () {
@@ -60,9 +60,9 @@ class Home extends Component {
       <React.Fragment>
         <HomeSlider />
         <BannerFeatures layout='boxed' />
-        {productsBestsellers ? <ProductsCarouselTabbs title={this.messages('bestsellers')} products={productsBestsellers} key='bestsellers' layout='grid-4' /> : null}
+        {productsBestsellers ? <ProductsCarouselTabbs title={this.messages('bestsellers')} products={productsBestsellers} key='bestsellers' layout='grid-5' /> : null}
         <HomeBanner />
-        {productsSale ? <ProductsCarouselTabbs title={this.messages('featured')} products={productsSale} key='sale' layout='grid-4' /> : null}
+        {productsSale ? <ProductsCarouselTabbs title={this.messages('sale')} products={productsSale} key='sale' layout='grid-5' /> : null}
         <PostsSlider title='Latest News' layout='grid-nl' posts={posts} />
         <Brands />
       </React.Fragment>
