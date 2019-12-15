@@ -52,7 +52,7 @@ class ProductCategoryPage extends Component {
     let content
 
     const offcanvas = this.props.columns === 3 ? 'mobile' : 'always'
-    console.log('products', products)
+
     if (this.props.columns > 3) {
       content = (
         <div className='container'>

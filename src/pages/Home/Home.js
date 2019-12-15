@@ -10,11 +10,10 @@ import PostsSlider from '../../containers/PostsSlider'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../utils/setMessages'
 import messages from './Home.messages'
-import posts from '../../data/blogPosts'
 import normalizeCategory from '../../utils/normalizeCategory'
 import './Home.scss'
 
-@inject('productsStore')
+@inject('productsStore', 'postStore')
 @observer
 class Home extends Component {
   constructor (props) {
@@ -31,6 +30,7 @@ class Home extends Component {
   componentDidMount () {
     this.productsBestsellers()
     this.productsSale()
+    this.props.postStore.getPosts()
   }
 
   productsBestsellers = async () => {
@@ -63,7 +63,7 @@ class Home extends Component {
         {productsBestsellers ? <ProductsCarouselTabbs title={this.messages('bestsellers')} products={productsBestsellers} key='bestsellers' layout='grid-5' /> : null}
         <HomeBanner />
         {productsSale ? <ProductsCarouselTabbs title={this.messages('sale')} products={productsSale} key='sale' layout='grid-5' /> : null}
-        <PostsSlider title='Latest News' layout='grid-nl' posts={posts} />
+        {this.props.postStore.posts ? <PostsSlider title='Latest News' layout='grid-nl' posts={this.props.postStore.posts} /> : null}
         <Brands />
       </React.Fragment>
     )

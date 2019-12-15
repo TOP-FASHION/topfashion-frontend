@@ -28,7 +28,7 @@ class ProductsCarouselTabbs extends Component {
     super(props)
 
     this.state = {
-      loading: false,
+      loading: false
       /*
       groups: [
         { id: 1, name: 'All', current: true },

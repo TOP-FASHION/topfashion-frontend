@@ -55,19 +55,19 @@
 
   .post-card__date {
     position: relative;
-    font-size: 15px;
     padding-left: 22px;
+    font-size: 15px;
 
     &::before {
       content: '';
       position: absolute;
       top: 9px;
+      left: 9px;
       display: block;
       width: 4px;
       height: 4px;
       background: currentColor;
       border-radius: 2px;
-      left: 9px;
     }
   }
 
@@ -157,19 +157,19 @@
   .post-card__date {
     position: relative;
     order: -1;
-    font-size: 15px;
     margin-right: 22px;
+    font-size: 15px;
 
     &::before {
       content: '';
       position: absolute;
       top: 9px;
+      left: 9px;
       display: block;
       width: 4px;
       height: 4px;
       background: currentColor;
       border-radius: 2px;
-      left: 9px;
     }
   }
 

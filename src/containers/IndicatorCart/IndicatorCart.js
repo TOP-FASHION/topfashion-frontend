@@ -125,7 +125,7 @@ class IndicatorCart extends Component {
         </div>
 
         <div className='dropcart__buttons'>
-          <Link className='btn btn-secondary' to='/shop/cart'>
+          <Link className='btn btn-secondary' to='/cart'>
             View Cart
           </Link>
           <Link className='btn btn-primary' to='/shop/checkout'>
@@ -145,7 +145,7 @@ class IndicatorCart extends Component {
 
     return (
       <Indicator
-        url='/shop/cart'
+        url='/cart'
         dropdown={this.dropdown}
         value={productsCartCountItems}
         icon={<i className='fas fa-shopping-cart' />}

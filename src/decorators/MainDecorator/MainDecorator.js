@@ -18,6 +18,8 @@ import ProductPage from '../../pages/ProductPage'
 import CartPage from '../../pages/CartPage'
 import WishlistPage from '../../pages/WishlistPage'
 import ProductCategoryPage from '../../pages/ProductCategoryPage'
+import BlogCategoryPage from '../../pages/BlogCategoryPage'
+import BlogPostPage from '../../pages/BlogPostPage'
 import StaticPage from '../../pages/StaticPage'
 
 @inject('loginStore')
@@ -47,10 +49,12 @@ class MainDecorator extends Component {
               <Route path='/' component={Home} exact />
               <Route path='/logout' component={MainDecorator.isLoggedIn(this.props.loginStore, Logout)} exact />
               <Route path='/category/product/:productId' component={ProductPage} exact />
-              <Route path='/category' component={ProductCategoryPage} exact />
+              <Route exact path='/category' render={(props) => (<ProductCategoryPage {...props} columns={3} viewMode='grid' sidebarPosition='start' />)} />
               <Route path='/category/:categoryId' component={ProductCategoryPage} exact />
               <Route path='/cart' component={CartPage} exact />
               <Route path='/wishlist' component={WishlistPage} exact />
+              <Route exact path='/promotions-news' render={(props) => (<BlogCategoryPage {...props} layout='grid' sidebarPosition='end' />)} />
+              <Route exact path='/promotions-news/post' render={(props) => (<BlogPostPage {...props} layout='full' />)} />
               {['about', 'contact-us'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
               <Route component={NotFound} />
             </SwitchLang>

@@ -1,6 +1,7 @@
 // Wordpress
 import LoginStore from './LoginStore'
 import PageStore from './PageStore'
+import PostStore from './PostStore'
 
 // Woocomerce
 import ProductStore from './ProductStore'
@@ -30,6 +31,7 @@ class RootStore {
     // Wordpress
     this.loginStore = new LoginStore(this)
     this.pageStore = new PageStore(this)
+    this.postStore = new PostStore(this)
 
     // Woocomerce
     this.productStore = new ProductStore(this)
