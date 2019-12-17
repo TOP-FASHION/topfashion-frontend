@@ -21,7 +21,9 @@ export default process.env.NODE_ENV === 'production'
     // warning to fire.
     try {
       throw new Error(message)
-    } catch (x) {}
+    } catch (x) {
+      console.error(x)
+    }
   }
 
 //

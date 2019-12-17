@@ -10,6 +10,7 @@ import { inject, observer } from 'mobx-react'
 @observer
 class Static extends Component {
   static propTypes = {
+    pageStore: PropTypes.any,
     page: PropTypes.string
   }
 

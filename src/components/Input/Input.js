@@ -5,7 +5,6 @@ import { Form } from 'react-bootstrap'
 class Input extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
-    error: PropTypes.bool,
     name: PropTypes.string,
     placeholder: PropTypes.string,
     type: PropTypes.string,
@@ -19,7 +18,7 @@ class Input extends Component {
   }
 
   render () {
-    const { name, placeholder, type, value, onChange, className } = this.props
+    const { name, placeholder, type, value, onChange, className, disabled } = this.props
 
     return (
       <Form.Control
@@ -29,6 +28,7 @@ class Input extends Component {
         value={value}
         onChange={onChange}
         className={className}
+        disabled={disabled}
       />
     )
   }

@@ -7,6 +7,25 @@ import { inject, observer } from 'mobx-react'
 @inject('currencyStore', 'productsStore', 'productsCategoriesStore')
 @observer
 class FilterPrice extends Component {
+  static propTypes = {
+    currencyStore: PropTypes.any,
+    productsStore: PropTypes.any,
+    productsCategoriesStore: PropTypes.any,
+    from: PropTypes.number,
+    to: PropTypes.number,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    step: PropTypes.number
+  }
+
+  static defaultProps = {
+    from: undefined,
+    to: undefined,
+    min: 0,
+    max: 100,
+    step: 1
+  }
+
   constructor (props) {
     super(props)
 
@@ -14,7 +33,6 @@ class FilterPrice extends Component {
   }
 
   handleChange = (value) => {
-    const { locale } = this.props
     const { direction } = 'en'
     let { min: from, max: to } = value
 
@@ -41,7 +59,6 @@ class FilterPrice extends Component {
   render () {
     const { from: stateFrom, to: stateTo } = this.state
     const {
-      locale,
       step,
       from: propsFrom,
       to: propsTo
@@ -85,24 +102,6 @@ class FilterPrice extends Component {
       </div>
     )
   }
-}
-
-FilterPrice.propTypes = {
-  from: PropTypes.number,
-  to: PropTypes.number,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
-  /** current locale */
-  locale: PropTypes.string
-}
-
-FilterPrice.defaultProps = {
-  from: undefined,
-  to: undefined,
-  min: 0,
-  max: 100,
-  step: 1
 }
 
 export default FilterPrice

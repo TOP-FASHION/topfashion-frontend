@@ -5,12 +5,12 @@ import ProductsBlockHeader from '../ProductsBlockHeader'
 import ProductCard from '../ProductCard'
 import { injectIntl } from 'react-intl'
 import './ProductsBlock.scss'
-import ProductsList from '../ProductsList'
 
 @inject('productsStore')
 @observer
 class ProductsBlock extends Component {
   static propTypes = {
+    productsStore: PropTypes.any,
     title: PropTypes.string.isRequired,
     layout: PropTypes.oneOf(['large-first', 'large-last'])
   }

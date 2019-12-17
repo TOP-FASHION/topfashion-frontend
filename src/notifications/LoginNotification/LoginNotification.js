@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
 import { inject, observer } from 'mobx-react'
 import { toast } from 'react-toastify'
@@ -9,6 +10,10 @@ import Fragment from '../../components/Fragment'
 @inject('loginStore')
 @observer
 class LoginNotification extends React.Component {
+  static propTypes = {
+    loginStore: PropTypes.any
+  }
+
   messages = setMessages(this, messages, 'app.globalNotification.login.status.')
 
   statusTypes = {

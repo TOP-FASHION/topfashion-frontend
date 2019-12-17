@@ -25,6 +25,11 @@ class Home extends Component {
     }
   }
 
+  static propTypes = {
+    productsStore: PropTypes.object.isRequired,
+    postStore: PropTypes.object.isRequired
+  }
+
   messages = setMessages(this, messages, 'app.page.home.')
 
   componentDidMount () {

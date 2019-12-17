@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -7,17 +7,14 @@ import PropTypes from 'prop-types'
 
 // widgets
 import WidgetFilters from '../../containers/WidgetFilters'
-import WidgetProducts from '../../containers/WidgetProducts'
+// import WidgetProducts from '../../containers/WidgetProducts'
 
 // data stubs
 import filters from '../../data/shopFilters'
-import products from '../../data/shopProducts'
 import './CategorySidebar.scss'
 
 function CategorySidebar (props) {
   const {
-    sidebarClose,
-    sidebarState,
     offcanvas
   } = props
 
@@ -91,7 +88,6 @@ function CategorySidebar (props) {
   return (
     <div className={classes}>
       {/* eslint-disable-next-line max-len */}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div className='block-sidebar__backdrop' ref={backdropRef} />
       <div className='block-sidebar__body' ref={bodyRef}>
         <div className='block-sidebar__header'>
@@ -103,7 +99,7 @@ function CategorySidebar (props) {
         <div className='block-sidebar__item'>
           <WidgetFilters title='Filters' filters={filters} offcanvas={offcanvas} />
         </div>
-        {/*        {offcanvas !== 'always' && (
+        {/* {offcanvas !== 'always' && (
           <div className="block-sidebar__item d-none d-lg-block">
             <WidgetProducts title="Latest Products" products={JSON.parse(localStorage.getItem('lastProducts'))} />
           </div>

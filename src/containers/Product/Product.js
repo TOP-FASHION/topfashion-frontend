@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
+// import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
-import messages from './Product.messages'
+// import messages from './Product.messages'
 import { Link } from 'react-router-dom'
 import InputNumber from '../../components/InputNumber'
 import ProductGallery from '../ProductGallery'
@@ -11,10 +11,12 @@ import Button from '../../components/Button'
 import './Product.scss'
 import { inject, observer } from 'mobx-react'
 
-@inject('modalStore', 'currencyStore', 'cartAddProductStore')
+@inject('currencyStore', 'cartAddProductStore')
 @observer
 class Product extends Component {
   static propTypes = {
+    currencyStore: PropTypes.any.isRequired,
+    cartAddProductStore: PropTypes.any.isRequired,
     /** product object */
     product: PropTypes.object.isRequired,
     /** one of ['standard', 'sidebar', 'columnar', 'quickview'] (default: 'standard') */

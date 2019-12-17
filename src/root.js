@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { addLocaleData, IntlProvider } from 'react-intl'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { observer } from 'mobx-react'
@@ -33,11 +32,6 @@ class Root extends Component {
       </IntlProvider>
     )
   }
-}
-
-Root.propTypes = {
-  /** current locale */
-  locale: PropTypes.string
 }
 
 export default Root

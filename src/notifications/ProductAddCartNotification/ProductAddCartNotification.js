@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
 import { inject, observer } from 'mobx-react'
 import { toast } from 'react-toastify'
@@ -7,6 +8,10 @@ import Fragment from '../../components/Fragment'
 @inject('cartAddProductStore')
 @observer
 class ProductAddCartNotification extends React.Component {
+  static propTypes = {
+    cartAddProductStore: PropTypes.any
+  }
+
   notify = (text) => {
     toast.success(text, {
       position: toast.POSITION.TOP_RIGHT,

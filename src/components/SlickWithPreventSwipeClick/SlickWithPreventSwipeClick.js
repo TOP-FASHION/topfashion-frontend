@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Slick from 'react-slick'
 
 class SlickWithPreventSwipeClick extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    forwardRef: PropTypes.any
+  }
+
   constructor (props) {
     super(props)
 
@@ -71,7 +77,6 @@ class SlickWithPreventSwipeClick extends Component {
     })
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         className={classes}
         onMouseDown={this.onMousedown}

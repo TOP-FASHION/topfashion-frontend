@@ -19,6 +19,8 @@ import './Header.scss'
 @observer
 class Header extends Component {
   static propTypes = {
+    modalStore: PropTypes.any,
+    loginStore: PropTypes.any,
     /** one of ['default', 'compact'] (default: 'default') */
     layout: PropTypes.oneOf(['default', 'compact'])
   }

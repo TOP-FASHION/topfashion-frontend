@@ -35,5 +35,5 @@ class StaticContent extends Component {
 export default injectIntl(StaticContent)
 
 function placeholder (text, data = {}) {
-  return text.replace(/{([a-zA-Z0-9]+)}/g, (placeholder, placeholderId) => data.hasOwnProperty(placeholderId) ? data[placeholderId] : placeholder)
+  return text.replace(/{([a-zA-Z0-9]+)}/g, (placeholder, placeholderId) => data.hasOwnProperty(placeholderId) ? data[placeholderId] : placeholder) // eslint-disable-line no-prototype-builtins
 }

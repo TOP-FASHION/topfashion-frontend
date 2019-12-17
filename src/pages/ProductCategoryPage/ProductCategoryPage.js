@@ -17,9 +17,16 @@ import './ProductCategoryPage.scss'
 @observer
 class ProductCategoryPage extends Component {
   static propTypes = {
+    productsStore: PropTypes.any,
+    productsCategoriesStore: PropTypes.any,
     columns: PropTypes.number,
     viewMode: PropTypes.oneOf(['grid', 'grid-with-features', 'list']),
-    sidebarPosition: PropTypes.oneOf(['start', 'end'])
+    sidebarPosition: PropTypes.oneOf(['start', 'end']),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        categoryId: PropTypes.string
+      })
+    })
   };
 
   static defaultProps = {

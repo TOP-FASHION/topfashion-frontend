@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import { Form } from 'react-bootstrap'
@@ -11,6 +12,10 @@ import setMessages from '../../utils/setMessages'
 @inject('loginStore')
 @observer
 class LoginForm extends Component {
+  static propTypes = {
+    loginStore: PropTypes.any.isRequired
+  }
+
   messages = setMessages(this, messages, 'app.form.login.')
 
   render () {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
+import PropTypes from 'prop-types'
+// import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import InputNumber from '../../components/InputNumber'
 import PageHeader from '../../containers/PageHeader'
@@ -16,6 +17,15 @@ class CartPage extends Component {
     this.state = {
       quantities: []
     }
+  }
+
+  static propTypes = {
+    cartProductsStore: PropTypes.any,
+    cartCountProductsStore: PropTypes.any,
+    currencyStore: PropTypes.any,
+    cartInfoTotalProductsStore: PropTypes.any,
+    cartRemoveProductStore: PropTypes.any,
+    cartUpdateProductStore: PropTypes.any
   }
 
   componentDidMount () {
@@ -63,12 +73,11 @@ class CartPage extends Component {
 
   renderItems () {
     const { productsCart } = this.props.cartProductsStore
-    const { cart, cartRemoveItem } = this.props
     const { currency } = this.props.currencyStore
 
     return productsCart ? Object.keys(productsCart).map((item) => {
       let image
-      let options
+      // let options
 
       if (productsCart[item].product_image.length > 0) {
         image = <Link to={`/category/product/${productsCart[item].product_id}`}><img src={productsCart[item].product_image} alt='' /></Link>
@@ -229,7 +238,6 @@ class CartPage extends Component {
   }
 
   render () {
-    const { cart } = this.props
     const { productsCartCountItems } = this.props.cartCountProductsStore
     const breadcrumb = [
       { title: 'Home', url: '' },

@@ -17,7 +17,9 @@ class Indicator extends Component {
     /** callback function that is called when the dropdown is opened */
     onOpen: PropTypes.func,
     /** callback function that is called when the dropdown is closed */
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    onClick: PropTypes.func,
+    className: PropTypes.string
   }
 
   state = {

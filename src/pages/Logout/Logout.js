@@ -1,11 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Group from '../../components/Group'
 import Fragment from '../../components/Fragment'
 import { inject, observer } from 'mobx-react'
 
 @inject('loginStore')
 @observer
-export default class Logout extends React.Component {
+class Logout extends React.Component {
+  static propTypes = {
+    loginStore: PropTypes.any
+  };
+
   render () {
     return (
       <div className='logout'>
@@ -16,3 +21,5 @@ export default class Logout extends React.Component {
     )
   }
 }
+
+export default Logout

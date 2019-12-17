@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Indicator from '../../components/Indicator/index'
 import { inject, observer } from 'mobx-react'
@@ -10,14 +10,20 @@ import Button from '../../components/Button'
 @inject(
   'cartProductsStore',
   'currencyStore',
-  'cartAddProductStore',
   'cartRemoveProductStore',
-  'productsStore',
   'cartInfoTotalProductsStore',
   'cartCountProductsStore'
 )
 @observer
 class IndicatorCart extends Component {
+  static propTypes = {
+    cartProductsStore: PropTypes.object.isRequired,
+    currencyStore: PropTypes.object.isRequired,
+    cartRemoveProductStore: PropTypes.object.isRequired,
+    cartInfoTotalProductsStore: PropTypes.object.isRequired,
+    cartCountProductsStore: PropTypes.object.isRequired
+  }
+
   componentDidMount () {
     this.props.cartProductsStore.getProductCart()
   }

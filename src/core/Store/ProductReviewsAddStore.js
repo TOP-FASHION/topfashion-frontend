@@ -1,4 +1,4 @@
-import { observable, action, computed, autorun, when, runInAction } from 'mobx'
+import { observable, action } from 'mobx'
 import Api from '../Api'
 
 export default class ProductReviewsAddStore {
@@ -6,6 +6,7 @@ export default class ProductReviewsAddStore {
 
   @observable reviewer
 
+  // eslint-disable-next-line camelcase
   @observable reviewer_email
 
   @observable rating

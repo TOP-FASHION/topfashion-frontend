@@ -7,6 +7,8 @@ import { inject, observer } from 'mobx-react/'
 @observer
 class FilterCategories extends Component {
   static propTypes = {
+    productsCategoriesStore: PropTypes.object.isRequired,
+    productsStore: PropTypes.object.isRequired,
     categories: PropTypes.array
   };
 

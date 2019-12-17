@@ -14,6 +14,26 @@ import './BlogCategoryPage.scss'
 @inject('postStore')
 @observer
 class BlogCategoryPage extends Component {
+  static propTypes = {
+    postStore: PropTypes.any,
+    /**
+     * blog layout
+     * one of ['classic', 'grid', 'list'] (default: 'classic')
+     */
+    layout: PropTypes.oneOf(['classic', 'grid', 'list']),
+    /**
+     * sidebar position (default: 'start')
+     * one of ['start', 'end']
+     * for LTR scripts "start" is "left" and "end" is "right"
+     */
+    sidebarPosition: PropTypes.oneOf(['start', 'end'])
+  }
+
+  static defaultProps = {
+    layout: 'classic',
+    sidebarPosition: 'start'
+  }
+
   constructor (props) {
     super(props)
 
@@ -40,7 +60,7 @@ class BlogCategoryPage extends Component {
       { title: 'Latest News', url: '' }
     ]
 
-    let sidebarStart
+    // let sidebarStart
     let sidebarEnd
 
     // const sidebar = <BlogSidebar position={sidebarPosition} />;
@@ -104,22 +124,3 @@ class BlogCategoryPage extends Component {
 }
 
 export default BlogCategoryPage
-
-BlogCategoryPage.propTypes = {
-  /**
-   * blog layout
-   * one of ['classic', 'grid', 'list'] (default: 'classic')
-   */
-  layout: PropTypes.oneOf(['classic', 'grid', 'list']),
-  /**
-   * sidebar position (default: 'start')
-   * one of ['start', 'end']
-   * for LTR scripts "start" is "left" and "end" is "right"
-   */
-  sidebarPosition: PropTypes.oneOf(['start', 'end'])
-}
-
-BlogCategoryPage.defaultProps = {
-  layout: 'classic',
-  sidebarPosition: 'start'
-}

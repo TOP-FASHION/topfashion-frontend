@@ -13,10 +13,10 @@ class Fragment extends React.Component {
   }
 
   componentWillMount () {
-    if (this.props.hasOwnProperty('show')) {
+    if (this.props.hasOwnProperty('show')) { // eslint-disable-line no-prototype-builtins
       warn('Property `show` has been deprecated, use `hidden` instead.')
     }
-    if (this.props.hasOwnProperty('hide')) {
+    if (this.props.hasOwnProperty('hide')) { // eslint-disable-line no-prototype-builtins
       warn('Property `hide` has been deprecated, use `hidden` instead.')
     }
   }
@@ -27,13 +27,13 @@ class Fragment extends React.Component {
   }
 
   get isShown () {
-    if (this.props.hasOwnProperty('hidden')) {
+    if (this.props.hasOwnProperty('hidden')) { // eslint-disable-line no-prototype-builtins
       return !this.props.hidden
     }
-    if (this.props.hasOwnProperty('show')) {
+    if (this.props.hasOwnProperty('show')) { // eslint-disable-line no-prototype-builtins
       return this.props.show
     }
-    if (this.props.hasOwnProperty('hide')) {
+    if (this.props.hasOwnProperty('hide')) { // eslint-disable-line no-prototype-builtins
       return !this.props.hide
     }
     return true

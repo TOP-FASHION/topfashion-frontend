@@ -8,7 +8,6 @@ class Field extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired, // TODO custom element
     error: PropTypes.node,
-    disabled: PropTypes.bool,
     label: PropTypes.node,
     classNames: PropTypes.object
   }
@@ -31,11 +30,11 @@ class Field extends React.Component {
   }
 
   render () {
-    const { children, error, label } = this.props
+    const { children, error, label, classNames } = this.props
 
     return (
       <Fragment>
-        <Form.Group>
+        <Form.Group className={classNames}>
           <Form.Label>{label}</Form.Label>
           {React.Children.map(children, child => this.modifyChildren(child))}
           <Form.Control.Feedback type='invalid'>

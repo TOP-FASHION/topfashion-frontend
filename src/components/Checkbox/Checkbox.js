@@ -23,14 +23,14 @@ class Checkbox extends Component {
   }
 
   render () {
-    const { label, classes } = this.props
-    const { isChecked } = this.state
+    const { label } = this.props
+    // const { isChecked } = this.state
 
     return (
       <Form.Check
         required
-        name='terms'
-        label='Agree to terms and conditions'
+        name={label}
+        label={label}
         onChange={this.toggleCheckboxChange}
         id='validationFormik0'
       />

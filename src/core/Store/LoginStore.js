@@ -1,3 +1,4 @@
+/* global Event, CustomEvent */
 import { observable, action, computed, autorun, runInAction, toJS } from 'mobx'
 import Api from '../Api'
 import Cookies from 'js-cookie'
@@ -43,8 +44,9 @@ export default class LoginStore {
     try {
       const value = await Api.Wordpress.ValidateAuthCookie({ cookie: this.token })
       this.loggedIn = value.data.valid
+      // eslint-disable-next-line no-new
       new Event('login')
-      var event = new CustomEvent('login', { detail: { status: value.data.valid } })
+      const event = new CustomEvent('login', { detail: { status: value.data.valid } })
       window.dispatchEvent(event)
     } catch (error) {
       runInAction(() => {

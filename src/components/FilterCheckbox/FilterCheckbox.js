@@ -3,9 +3,13 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 
-@inject('brandsStore', 'productsStore')
+@inject('brandsStore')
 @observer
 class FilterCheckbox extends Component {
+  static propTypes = {
+    brandsStore: PropTypes.object.isRequired
+  };
+
   componentDidMount () {
     this.props.brandsStore.getBrands()
   }
@@ -50,10 +54,6 @@ class FilterCheckbox extends Component {
       </div>
     )
   }
-}
-
-FilterCheckbox.propTypes = {
-  items: PropTypes.array
 }
 
 export default FilterCheckbox

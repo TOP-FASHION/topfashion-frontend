@@ -2,19 +2,13 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
-import setMessages from '../../utils/setMessages'
+// import setMessages from '../../utils/setMessages'
 // import messages from './ProductCard.messages'
 import ProductsList from '../ProductsList'
 import Pagination from '../Pagination'
 import './ProductsView.scss'
 import { inject, observer } from 'mobx-react'
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form
-} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 
 @inject('productsStore', 'productsCategoriesStore')
 @observer
@@ -28,6 +22,8 @@ class ProductsView extends Component {
   }
 
   static propTypes = {
+    productsStore: PropTypes.any,
+    productsCategoriesStore: PropTypes.any,
     products: PropTypes.array,
     layout: PropTypes.oneOf(['grid', 'grid-with-features', 'list']),
     grid: PropTypes.oneOf(['grid-3-sidebar', 'grid-4-full', 'grid-5-full']),

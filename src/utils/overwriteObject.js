@@ -10,7 +10,7 @@ export default (dest = {}, src = {}) => {
   if (src !== dest) {
     cleanObject(dest)
     for (const prop in src) {
-      if (src.hasOwnProperty(prop)) {
+      if (src.hasOwnProperty(prop)) { // eslint-disable-line no-prototype-builtins
         dest[prop] = src[prop]
       }
     }

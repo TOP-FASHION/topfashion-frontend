@@ -1,33 +1,42 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../utils/setMessages'
 import messages from './ProductCard.messages'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
-import './ProductCard.scss'
-import { inject, observer } from 'mobx-react'
 import Button from '../../components/Button'
 import Rating from '../../components/Rating'
+import './ProductCard.scss'
 
 @inject('currencyStore', 'cartAddProductStore', 'modalStore')
 @observer
 class ProductCard extends Component {
   static propTypes = {
+    currencyStore: PropTypes.any.isRequired,
+    cartAddProductStore: PropTypes.any.isRequired,
+    modalStore: PropTypes.any.isRequired,
+    /**
+     * product object
+     */
     product: PropTypes.object.isRequired,
-    replace: PropTypes.bool,
-    layout: PropTypes.string
+    /**
+     * product card layout
+     * one of ['grid-sm', 'grid-nl', 'grid-lg', 'list', 'horizontal']
+     */
+    layout: PropTypes.oneOf(['grid-sm', 'grid-nl', 'grid-lg', 'list', 'horizontal'])
   }
 
   messages = setMessages(this, messages, 'app.productCard.')
 
   get containerClasses () {
     return classNames('product-card', {
-      'product-card--layout--grid product-card--size--sm': this.layout === 'grid-sm',
-      'product-card--layout--grid product-card--size--nl': this.layout === 'grid-nl',
-      'product-card--layout--grid product-card--size--lg': this.layout === 'grid-lg',
-      'product-card--layout--list': this.layout === 'list',
-      'product-card--layout--horizontal': this.layout === 'horizontal'
+      'product-card--layout--grid product-card--size--sm': this.props.layout === 'grid-sm',
+      'product-card--layout--grid product-card--size--nl': this.props.layout === 'grid-nl',
+      'product-card--layout--grid product-card--size--lg': this.props.layout === 'grid-lg',
+      'product-card--layout--list': this.props.layout === 'list',
+      'product-card--layout--horizontal': this.props.layout === 'horizontal'
     })
   }
 

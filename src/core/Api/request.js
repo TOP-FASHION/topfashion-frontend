@@ -2,22 +2,6 @@ import axios from 'axios'
 import isPlainObject from 'lodash/isPlainObject'
 import { Base64 } from 'js-base64'
 
-const codeMessage = {
-  200: 'ошибка'
-}
-
-function checkStatus (response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response.data
-  }
-  const errortext = codeMessage[response.status] || response.statusText
-
-  const error = new Error(errortext)
-  error.name = response.status
-  error.message = response
-  throw error
-}
-
 /**
  * Requests a URL, returning a promise.
  *

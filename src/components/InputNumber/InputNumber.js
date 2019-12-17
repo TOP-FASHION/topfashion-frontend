@@ -4,6 +4,25 @@ import PropTypes from 'prop-types'
 import './InputNumber.scss'
 
 class InputNumber extends Component {
+  static propTypes = {
+    onChange: PropTypes.func,
+    size: PropTypes.oneOf(['sm', 'lg']),
+    step: PropTypes.number,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    disabled: PropTypes.bool,
+    readonly: PropTypes.bool,
+    className: PropTypes.string
+  }
+
+  static defaultProps = {
+    value: '',
+    step: 1,
+    max: null,
+    min: null
+  }
+
   handleChange = event => {
     const { min, onChange } = this.props
 
@@ -82,13 +101,10 @@ class InputNumber extends Component {
           onChange={this.handleChange}
           {...otherProps}
         />
-
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
           className='input-number__add'
           onMouseDown={this.handleAddMouseDown}
         />
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
           className='input-number__sub'
           onMouseDown={this.handleSubMouseDown}
@@ -96,24 +112,6 @@ class InputNumber extends Component {
       </div>
     )
   }
-}
-
-InputNumber.propTypes = {
-  onChange: PropTypes.func,
-  size: PropTypes.oneOf(['sm', 'lg']),
-  step: PropTypes.number,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  disabled: PropTypes.bool,
-  readonly: PropTypes.bool
-}
-
-InputNumber.defaultProps = {
-  value: '',
-  step: 1,
-  max: null,
-  min: null
 }
 
 export default InputNumber

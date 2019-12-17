@@ -1,4 +1,4 @@
-import { decorate, observable, action, runInAction, autorun } from 'mobx'
+import { decorate, observable, action, runInAction } from 'mobx'
 import Api from '../Api'
 
 export default class ProductReviewsStore {

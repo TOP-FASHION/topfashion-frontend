@@ -5,7 +5,7 @@
  */
 export default (obj = {}) => {
   for (const prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
+    if (obj.hasOwnProperty(prop)) { // eslint-disable-line no-prototype-builtins
       delete obj[prop]
     }
   }

@@ -6,9 +6,7 @@ class Body extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     scripts: PropTypes.arrayOf(PropTypes.string),
-    cssHash: PropTypes.object,
     state: PropTypes.object,
-    html: PropTypes.node,
     noScriptText: PropTypes.string,
     component: PropTypes.node
   }

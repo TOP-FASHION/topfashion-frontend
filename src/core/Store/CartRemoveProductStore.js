@@ -4,6 +4,7 @@ import Api from '../Api'
 export default class CartRemoveProductStore {
   isProductRemoveCart
 
+  // eslint-disable-next-line camelcase
   cart_item_key
 
   constructor (rootStore) {

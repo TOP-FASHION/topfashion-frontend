@@ -1,9 +1,10 @@
+/* global history, location */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { hot } from 'react-hot-loader/root'
 import { SwitchLang, SetLang } from './routing'
 import { Route } from 'react-router-dom'
-import { observer, inject } from 'mobx-react'
+import { observer } from 'mobx-react'
 import searchParse from '../utils/text/url/searchParse'
 import sessionTabStorage from '../utils/sessionTabStorage'
 import MainDecorator from './MainDecorator'
@@ -11,14 +12,20 @@ import EmptyDecorator from './EmptyDecorator'
 import Modals from '../modals'
 import Notifications from '../notifications'
 import Fragment from '../components/Fragment'
-import DevTools from 'mobx-react-devtools'
+// import DevTools from 'mobx-react-devtools'
 
-@inject('loginStore')
 @observer
 class AppRoot extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
+  }
+
+  static propTypes = {
+    history: PropTypes.shape({
+      listen: PropTypes.func,
+      replace: PropTypes.func
+    })
   }
 
   static childContextTypes = {

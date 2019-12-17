@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Pagination from '../../containers/Pagination'
 import Rating from '../../components/Rating'
 import { inject, observer } from 'mobx-react'
 import { Form, Col } from 'react-bootstrap'
 import Button from '../../components/Button'
-import PropTypes from 'prop-types'
 import './ProductTabReviews.scss'
 
 @inject('productReviewsStore', 'productReviewsAddStore')
@@ -19,6 +19,8 @@ class ProductTabReviews extends Component {
   }
 
   static propTypes = {
+    productReviewsStore: PropTypes.any,
+    productReviewsAddStore: PropTypes.any,
     product: PropTypes.object.isRequired
   }
 
@@ -68,6 +70,7 @@ class ProductTabReviews extends Component {
   }
 
   render () {
+    // eslint-disable-next-line camelcase
     const { rating, review, reviewer, reviewer_email, onReviewerChange, onReviewerEmailChange, onReviewChange, onRatingChange } = this.props.productReviewsAddStore
     const { page } = this.state
 
@@ -112,6 +115,7 @@ class ProductTabReviews extends Component {
                   </Form.Group>
                   <Form.Group controlId='formBasicCheckbox' as={Col} md={4}>
                     <Form.Label>{'Email Address'}</Form.Label>
+                    {/* eslint-disable-next-line camelcase */}
                     <Form.Control type='email' placeholder={'Email Address'} value={reviewer_email} onChange={onReviewerEmailChange} />
                   </Form.Group>
                 </div>

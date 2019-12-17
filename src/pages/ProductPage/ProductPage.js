@@ -9,15 +9,21 @@ import ProductTabs from '../../containers/ProductTabs'
 // import WidgetProducts from '../widgets/WidgetProducts'
 // import categories from '../../data/shopWidgetCategories'
 
-import { inject, observer, to } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { toJS } from 'mobx'
 
-@inject('productsStore', 'productStore')
+@inject('productStore')
 @observer
 class ProductPage extends Component {
   static propTypes = {
+    productStore: PropTypes.any,
     layout: PropTypes.oneOf(['standard', 'sidebar', 'columnar', 'quickview']),
-    sidebarPosition: PropTypes.oneOf(['start', 'end'])
+    // sidebarPosition: PropTypes.oneOf(['start', 'end']),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        productId: PropTypes.string
+      })
+    })
   }
 
   static defaultProps = {
@@ -34,7 +40,7 @@ class ProductPage extends Component {
   }
 
   lastProducts () {
-    const lastProducts = localStorage.getItem('lastProducts')
+    const lastProducts = window.localStorage.getItem('lastProducts')
 
     if (lastProducts) {
       const objLastProducts = JSON.parse(lastProducts)
@@ -45,15 +51,15 @@ class ProductPage extends Component {
         const itemLastProduct = objLastProducts[item]
         Object.keys(itemLastProduct).map(item => {
           if (itemLastProduct.id === this.product.id) {
-            return isAdd = false
+            isAdd = false
           }
         })
       })
 
       isAdd ? arr.unshift(toJS(this.product)) : null
-      isAdd ? localStorage.setItem('lastProducts', JSON.stringify(arr.slice(0, 5))) : null
+      isAdd ? window.localStorage.setItem('lastProducts', JSON.stringify(arr.slice(0, 5))) : null
     } else {
-      localStorage.setItem('lastProducts', JSON.stringify([this.product]))
+      window.localStorage.setItem('lastProducts', JSON.stringify([this.product]))
     }
   }
 
@@ -108,6 +114,7 @@ class ProductPage extends Component {
       //     </div>
       //   </div>
       // );
+      return ''
     } else {
       return (
         <React.Fragment>

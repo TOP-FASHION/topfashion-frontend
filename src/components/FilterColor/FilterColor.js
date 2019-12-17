@@ -4,9 +4,13 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import './FilterColor.scss'
 
-@inject('productAttributesStore', 'productsStore')
+@inject('productAttributesStore')
 @observer
 class FilterColor extends Component {
+  static propTypes = {
+    productAttributesStore: PropTypes.any
+  }
+
   componentDidMount () {
     this.props.productAttributesStore.getAttributeTerms(3)
   }
@@ -43,10 +47,6 @@ class FilterColor extends Component {
       </div>
     )
   }
-}
-
-FilterColor.propTypes = {
-  items: PropTypes.array
 }
 
 export default FilterColor

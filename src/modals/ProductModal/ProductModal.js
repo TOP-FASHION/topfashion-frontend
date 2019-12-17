@@ -8,9 +8,14 @@ import setMessages from '../../utils/setMessages'
 import { inject, observer } from 'mobx-react'
 import './ProductModal.scss'
 
-@inject('modalStore', 'productsStore', 'currencyStore')
+@inject('modalStore', 'productsStore')
 @observer
 class ProductModal extends Component {
+  static propTypes = {
+    modalStore: PropTypes.any,
+    productsStore: PropTypes.any
+  };
+
   messages = setMessages(this, messages, 'modals.login.')
 
   close = () => {

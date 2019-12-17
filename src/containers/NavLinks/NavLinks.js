@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import AppLink from '../../components/AppLink'
 import MegaMenu from '../MegaMenu'
@@ -12,6 +13,10 @@ import './NavLinks.scss'
 @inject('menuStore')
 @observer
 class NavLinks extends Component {
+  static propTypes = {
+    menuStore: PropTypes.any.isRequired
+  }
+
   messages = setMessages(this, messages, 'app.nav.link.')
 
   componentDidMount () {

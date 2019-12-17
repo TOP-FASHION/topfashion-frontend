@@ -4,6 +4,7 @@ import Api from '../Api'
 export default class CartAddProductStore {
   isProductAddCart
 
+  // eslint-disable-next-line camelcase
   product_id
 
   constructor (rootStore) {

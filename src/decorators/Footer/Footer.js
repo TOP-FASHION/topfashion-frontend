@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import { injectIntl } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
 import FooterContacts from './FooterContacts'
 import FooterLinks from './FooterLinks'
 import FooterNewsletter from './FooterNewsletter'
-import setMessages from '../../utils/setMessages'
-import messages from './Footer.messages.js'
+// import setMessages from '../../utils/setMessages'
+// import messages from './Footer.messages.js'
 import './Footer.scss'
 
 function Footer () {

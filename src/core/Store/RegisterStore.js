@@ -29,7 +29,7 @@ export default class RegisterStore {
     Api.Wordpress.login.signIn(postData).then(res => {
       if (res) {
         this.onLoggedIn = true
-        localStorage.setItem('login', res.cookie)
+        window.localStorage.setItem('login', res.cookie)
       }
     })
   }

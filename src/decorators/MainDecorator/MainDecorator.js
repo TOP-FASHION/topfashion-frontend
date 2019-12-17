@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { SwitchLang } from '../routing'
 import Group from '../../components/Group'
-import isShowModalAction from '../../utils/isShowModalAction'
+// import isShowModalAction from '../../utils/isShowModalAction'
 import { observer, inject } from 'mobx-react'
 
 // components
@@ -25,6 +26,10 @@ import StaticPage from '../../pages/StaticPage'
 @inject('loginStore')
 @observer
 class MainDecorator extends Component {
+  static propTypes = {
+    loginStore: PropTypes.object
+  }
+
   static isLoggedIn (loginStore, component, component2 = RedirectToHome) {
     return loginStore.loggedIn ? component : component2
   }

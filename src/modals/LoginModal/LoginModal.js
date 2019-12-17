@@ -14,6 +14,10 @@ import './LoginModal.scss'
 @inject('modalStore')
 @observer
 class LoginModal extends Component {
+  static propTypes = {
+    modalStore: PropTypes.any
+  };
+
   constructor (props) {
     super(props)
 
