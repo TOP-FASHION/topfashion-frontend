@@ -4,6 +4,7 @@ import Login from './Login'
 import Page from './Page'
 import Post from './Post'
 import Posts from './Posts'
+import UserInfo from './UserInfo'
 
 const Wordpress = {
   WPnonce,
@@ -11,7 +12,8 @@ const Wordpress = {
   Login,
   Page,
   Post,
-  Posts
+  Posts,
+  UserInfo
 }
 
 export default Wordpress

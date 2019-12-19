@@ -19,6 +19,7 @@ export default class ModalStore {
   // LOGIN
   @action openLogin () {
     this.isOpenModalLogin = true
+    return Promise.resolve()
   }
 
   @action closeLogin () {

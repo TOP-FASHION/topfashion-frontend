@@ -15,12 +15,13 @@ import Dropdown from '../../components/Dropdown'
 import { inject, observer } from 'mobx-react'
 import './Header.scss'
 
-@inject('modalStore', 'loginStore')
+@inject('modalStore', 'loginStore', 'wishlistGetProductsStore')
 @observer
 class Header extends Component {
   static propTypes = {
     modalStore: PropTypes.any,
     loginStore: PropTypes.any,
+    wishlistGetProductsStore: PropTypes.any,
     /** one of ['default', 'compact'] (default: 'default') */
     layout: PropTypes.oneOf(['default', 'compact'])
   }
@@ -80,7 +81,7 @@ class Header extends Component {
             </Fragment>
             <Indicator
               url='/wishlist'
-              value={10}
+              value={this.props.loginStore.loggedIn && this.props.wishlistGetProductsStore.productsWishlist ? this.props.wishlistGetProductsStore.productsWishlist.length : 0}
               icon={<i className='far fa-heart' />}
             />
             <IndicatorCart />

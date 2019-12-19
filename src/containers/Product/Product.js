@@ -86,15 +86,6 @@ class Product extends Component {
               >
                 <i className='fas fa-heart' />
               </button>
-              <button
-                type='button'
-                data-toggle='tooltip'
-                data-placement='right'
-                title='Compare'
-                className={'btn btn-sm btn-light btn-svg-icon'}
-              >
-                <i className='fas fa-exchange-alt' />
-              </button>
             </div>
             <h1 className='product__name'>{product.name}</h1>
             <div className='product__rating'>
@@ -234,16 +225,6 @@ class Product extends Component {
                       className={'btn btn-secondary btn-svg-icon btn-lg'}
                     >
                       <i className='fas fa-heart' />
-                    </button>
-                  </div>
-                  <div className='product__actions-item product__actions-item--compare'>
-                    <button
-                      type='button'
-                      data-toggle='tooltip'
-                      title='Compare'
-                      className={'btn btn-secondary btn-svg-icon btn-lg'}
-                    >
-                      <i className='fas fa-exchange-alt' />
                     </button>
                   </div>
                 </div>

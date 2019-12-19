@@ -10,13 +10,15 @@ import Button from '../../components/Button'
 import Rating from '../../components/Rating'
 import './ProductCard.scss'
 
-@inject('currencyStore', 'cartAddProductStore', 'modalStore')
+@inject('currencyStore', 'cartAddProductStore', 'modalStore', 'loginStore', 'wishlistAddProductStore')
 @observer
 class ProductCard extends Component {
   static propTypes = {
     currencyStore: PropTypes.any.isRequired,
     cartAddProductStore: PropTypes.any.isRequired,
     modalStore: PropTypes.any.isRequired,
+    loginStore: PropTypes.any.isRequired,
+    wishlistAddProductStore: PropTypes.any.isRequired,
     /**
      * product object
      */
@@ -152,13 +154,13 @@ class ProductCard extends Component {
             </Button>
             <Button
               className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist'}
+              onClick={() => (
+                this.props.loginStore.loggedIn
+                  ? this.props.wishlistAddProductStore.addProduct(product.id)
+                  : this.props.modalStore.openLogin()
+              )}
             >
               <i className='fas fa-heart' />
-            </Button>
-            <Button
-              className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare'}
-            >
-              <i className='fas fa-exchange-alt' />
             </Button>
           </div>
         </div>

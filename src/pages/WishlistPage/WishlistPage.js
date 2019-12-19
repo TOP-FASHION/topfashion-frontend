@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../../containers/PageHeader'
 import Rating from '../../components/Rating'
+import Button from '../../components/Button'
+import './WishlistPage.scss'
 
+@inject('wishlistGetProductsStore', 'cartAddProductStore', 'currencyStore', 'wishlistRemoveProductStore')
+@observer
 class WishlistPage extends Component {
+  static propTypes = {
+    wishlistGetProductsStore: PropTypes.any.isRequired,
+    cartAddProductStore: PropTypes.any.isRequired,
+    currencyStore: PropTypes.any,
+    wishlistRemoveProductStore: PropTypes.any
+  }
+
   render () {
-    const { wishlist, cartAddItem, wishlistRemoveItem } = this.props
+    const { productsWishlist } = this.props.wishlistGetProductsStore
+    const { currency } = this.props.currencyStore
     const breadcrumb = [
       { title: 'Home', url: '' },
       { title: 'Wishlist', url: '' }
@@ -14,41 +27,25 @@ class WishlistPage extends Component {
 
     let content
 
-    if (wishlist.length) {
-      const itemsList = wishlist.map((item) => {
-        let image
+    if (productsWishlist && productsWishlist.length) {
+      const itemsList = productsWishlist.map((item) => {
+        // let image
 
-        if (item.images.length > 0) {
-          image = (
-            <Link to={`/shop/product/${item.id}`}>
-              <img src={item.images[0]} alt='' />
-            </Link>
-          )
-        }
-
-        const renderAddToCarButton = ({ run, loading }) => {
-          const classes = classNames('btn btn-primary btn-sm', {
-            'btn-loading': loading
-          })
-
-          return <button type='button' onClick={run} className={classes}>Add To Cart</button>
-        }
-
-        const renderRemoveButton = ({ run, loading }) => {
-          const classes = classNames('btn btn-light btn-sm btn-svg-icon', {
-            'btn-loading': loading
-          })
-
-          return <button type='button' onClick={run} className={classes} aria-label='Remove'><Cross12Svg /></button>
-        }
+        // if (item.images && item.images.length > 0) {
+        //   image = (
+        //     <Link to={`/shop/product/${item.id}`}>
+        //       <img src={item.images[0]} alt='' />
+        //     </Link>
+        //   )
+        // }
 
         return (
-          <tr key={item.id} className='wishlist__row'>
+          <tr key={item.item_id} className='wishlist__row'>
             <td className='wishlist__column wishlist__column--image'>
-              {image}
+              {/* {image} */}
             </td>
             <td className='wishlist__column wishlist__column--product'>
-              <Link to={`/shop/product/${item.id}`} className='wishlist__product-name'>{item.name}</Link>
+              <Link to={`/shop/product/${item.item_id}`} className='wishlist__product-name'>{item.name}</Link>
               <div className='wishlist__product-rating'>
                 <Rating value={item.rating} />
                 <div className='wishlist__product-rating-legend'>{`${item.reviews} Reviews`}</div>
@@ -57,18 +54,24 @@ class WishlistPage extends Component {
             <td className='wishlist__column wishlist__column--stock'>
               <div className='badge badge-success'>In Stock</div>
             </td>
-            <td className='wishlist__column wishlist__column--price'><Currency value={item.price} /></td>
+            <td className='wishlist__column wishlist__column--price'>{item.price} {currency}</td>
             <td className='wishlist__column wishlist__column--tocart'>
-              <AsyncAction
-                action={() => cartAddItem(item)}
-                render={renderAddToCarButton}
-              />
+              <Button
+                variant='primary'
+                onClick={() => this.props.cartAddProductStore.addProduct(item.item_id)}
+                className={'btn btn-sm'}
+              >
+                Add To Cart
+              </Button>
             </td>
             <td className='wishlist__column wishlist__column--remove'>
-              <AsyncAction
-                action={() => wishlistRemoveItem(item.id)}
-                render={renderRemoveButton}
-              />
+              <Button
+                variant='primary'
+                onClick={() => this.props.wishlistRemoveProductStore.removeProduct(item.item_id)}
+                className={'btn btn-light btn-sm btn-svg-icon'}
+              >
+                <i className='far fa-window-close' />
+              </Button>
             </td>
           </tr>
         )

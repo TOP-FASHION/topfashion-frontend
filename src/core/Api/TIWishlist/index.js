@@ -1,17 +1,13 @@
-import CartProducts from './CartProducts'
-import CartAddProduct from './CartAddProduct'
-import CartRemoveProduct from './CartRemoveProduct'
-import CartUpdateProduct from './CartUpdateProduct'
-import CartInfoTotalProducts from './CartInfoTotalProducts'
-import CartCountProducts from './CartCountProducts'
+import WishlistAddProduct from './WishlistAddProduct'
+import WishlistByUser from './WishlistByUser'
+import WishlistGetProducts from './WishlistGetProducts'
+import WishlistRemoveProduct from './WishlistRemoveProduct'
 
-const CoCart = {
-  CartProducts,
-  CartAddProduct,
-  CartRemoveProduct,
-  CartUpdateProduct,
-  CartInfoTotalProducts,
-  CartCountProducts
+const Wishlist = {
+  WishlistAddProduct,
+  WishlistByUser,
+  WishlistGetProducts,
+  WishlistRemoveProduct
 }
 
-export default CoCart
+export default Wishlist

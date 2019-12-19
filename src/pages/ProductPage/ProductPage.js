@@ -55,8 +55,9 @@ class ProductPage extends Component {
           }
         })
       })
-
+      // eslint-disable-next-line no-unused-expressions
       isAdd ? arr.unshift(toJS(this.product)) : null
+      // eslint-disable-next-line no-unused-expressions
       isAdd ? window.localStorage.setItem('lastProducts', JSON.stringify(arr.slice(0, 5))) : null
     } else {
       window.localStorage.setItem('lastProducts', JSON.stringify([this.product]))

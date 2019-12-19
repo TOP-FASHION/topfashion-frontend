@@ -12,6 +12,7 @@ import ProductReviewsAddStore from './ProductReviewsAddStore'
 import ProductsCategoriesStore from './ProductsCategoriesStore'
 import ProductAttributesStore from './ProductAttributesStore'
 import BrandsStore from './BrandsStore'
+import UserInfoStore from './UserInfoStore'
 
 // CoCart
 import CartAddProductStore from './CartAddProductStore'
@@ -20,6 +21,12 @@ import CartInfoTotalProductsStore from './CartInfoTotalProductsStore'
 import CartProductsStore from './CartProductsStore'
 import CartRemoveProductStore from './CartRemoveProductStore'
 import CartUpdateProductStore from './CartUpdateProductStore'
+
+// Wishlist
+import WishlistAddProductStore from './WishlistAddProductStore'
+import WishlistByUserStore from './WishlistByUserStore'
+import WishlistGetProductsStore from './WishlistGetProductsStore'
+import WishlistRemoveProductStore from './WishlistRemoveProductStore'
 
 // Others
 import ChangeLanguageStore from './ChangeLanguageStore'
@@ -42,6 +49,7 @@ class RootStore {
     this.productsCategoriesStore = new ProductsCategoriesStore(this)
     this.productAttributesStore = new ProductAttributesStore(this)
     this.brandsStore = new BrandsStore(this)
+    this.userInfoStore = new UserInfoStore(this)
 
     // CoCart
     this.cartAddProductStore = new CartAddProductStore(this)
@@ -50,6 +58,12 @@ class RootStore {
     this.cartProductsStore = new CartProductsStore(this)
     this.cartRemoveProductStore = new CartRemoveProductStore(this)
     this.cartUpdateProductStore = new CartUpdateProductStore(this)
+
+    // Wishlist
+    this.wishlistAddProductStore = new WishlistAddProductStore(this)
+    this.wishlistByUserStore = new WishlistByUserStore(this)
+    this.wishlistGetProductsStore = new WishlistGetProductsStore(this)
+    this.wishlistRemoveProductStore = new WishlistRemoveProductStore(this)
 
     // Others
     this.changeLanguageStore = new ChangeLanguageStore(this)

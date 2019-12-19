@@ -48,6 +48,7 @@ export default class LoginStore {
       new Event('login')
       const event = new CustomEvent('login', { detail: { status: value.data.valid } })
       window.dispatchEvent(event)
+      this.rootStore.userInfoStore.getUserInfo()
     } catch (error) {
       runInAction(() => {
         this.status = 'error'
@@ -94,6 +95,7 @@ export default class LoginStore {
           this.messageStatusLogin = res.data.status
           this.statusLogin = res.data.status
           this.rootStore.modalStore.isOpenModalLogin = false
+          this.rootStore.userInfoStore.getUserInfo()
         }
         if (res.data.status === 'error') {
           this.messageStatusLogin = res.data.error
