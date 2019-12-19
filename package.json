@@ -1,5 +1,5 @@
 {
-  "name": "Top-Fashion-App",
+  "name": "top-fashion-app",
   "description": "Top Fashion frontend application",
   "version": "1.0.0",
   "main": "server/index.js",
