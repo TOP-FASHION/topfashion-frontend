@@ -62,7 +62,7 @@ function Footer () {
             </a>
           </div>
           <div className='site-footer__payments'>
-            <img src='../../static/img/payments.png' alt='' />
+            <img src='/public/img/payments.png' alt='' />
           </div>
         </div>
       </Container>

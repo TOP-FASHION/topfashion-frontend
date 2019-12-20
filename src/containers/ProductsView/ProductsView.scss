@@ -10,17 +10,13 @@
   .products-list__item {
     @if ($columns == 1) {
       width: 100%;
-    }
-
-    @else {
-      width: calc(#{100% / $columns} - #{$margin-horizontal*2});
+    } @else {
+      width: calc(#{100% / $columns} - #{$margin-horizontal * 2});
     }
 
     margin: $margin-vertical $margin-horizontal;
   }
 }
-
-.products-list {}
 
 .products-list__body {
   display: flex;
@@ -37,17 +33,17 @@
 }
 
 // Grid
-.products-list[data-layout^="grid-"] {
+.products-list[data-layout^='grid-'] {
   .product-card {
     @include product-card-grid();
   }
 
-  &[data-with-features="true"] .product-card {
+  &[data-with-features='true'] .product-card {
     @include product-card-grid-with-features();
   }
 }
 
-.products-list[data-layout="grid-3-sidebar"] {
+.products-list[data-layout='grid-3-sidebar'] {
   @include local-layout(3, 6px, 6px);
 
   .product-card {
@@ -73,7 +69,7 @@
   }
 }
 
-.products-list[data-layout="grid-4-full"] {
+.products-list[data-layout='grid-4-full'] {
   @include local-layout(4, 6px, 6px);
 
   .product-card {
@@ -99,7 +95,7 @@
   }
 }
 
-.products-list[data-layout="grid-5-full"] {
+.products-list[data-layout='grid-5-full'] {
   @include local-layout(5, 6px, 6px);
 
   @media (min-width: 480px) {
@@ -125,7 +121,7 @@
   }
 }
 
-.products-list[data-layout="list"] {
+.products-list[data-layout='list'] {
   @include local-layout(1, 6px);
 
   .products-list__item {
@@ -136,8 +132,6 @@
     @include product-card-list();
   }
 }
-
-.products-view {}
 
 .products-view__options {
   padding-bottom: 20px;
@@ -227,8 +221,6 @@
     }
   }
 }
-
-.layout-switcher {}
 
 .layout-switcher__list {
   display: flex;

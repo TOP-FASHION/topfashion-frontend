@@ -136,7 +136,8 @@ $local-transition-duration: 0.25s;
   height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: height $local-transition-duration ease-in-out, opacity $local-transition-duration ease-in-out;
+  transition: height $local-transition-duration ease-in-out,
+    opacity $local-transition-duration ease-in-out;
 }
 
 .departments:not(.departments--fixed) {

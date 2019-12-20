@@ -4,8 +4,6 @@
 $local-item-margin-vertical: 32px;
 $local-item-margin-horizontal: 15px;
 
-.posts-list {}
-
 .posts-list__body {
   display: flex;
   flex-wrap: wrap;
@@ -67,7 +65,7 @@ $local-item-margin-horizontal: 15px;
 
 .posts-list--layout--grid {
   .posts-list__item {
-    width: calc(50% - #{$local-item-margin-horizontal*2});
+    width: calc(50% - #{$local-item-margin-horizontal * 2});
   }
 
   @media (max-width: breakpoint(sm-end)) {

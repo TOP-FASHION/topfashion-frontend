@@ -48,8 +48,6 @@ $local-title-vertical-padding: 6px;
 $local-title-horizontal-padding: 10px;
 $local-transition-duration: 0.2s;
 
-.filter {}
-
 .filter__title {
   position: relative;
   display: block;
@@ -93,10 +91,8 @@ $local-transition-duration: 0.2s;
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition:
-    height $local-transition-duration,
-    opacity $local-transition-duration,
-    visibility 0s $local-transition-duration;
+  transition: height $local-transition-duration,
+    opacity $local-transition-duration, visibility 0s $local-transition-duration;
 }
 
 .filter__container {
@@ -117,8 +113,6 @@ $local-transition-duration: 0.2s;
 }
 
 $local-margin: 8px;
-
-.filter-list {}
 
 .filter-list__list {
   margin: -$local-margin 0;
@@ -156,77 +150,5 @@ $local-margin: 8px;
 
   .filter-list__title {
     color: $card-font-muted-color;
-  }
-}
-
-$local-title-vertical-padding: 6px;
-$local-title-horizontal-padding: 10px;
-$local-transition-duration: 0.2s;
-
-.filter {}
-
-.filter__title {
-  position: relative;
-  display: block;
-  width: calc(100% + #{$local-title-horizontal-padding * 2});
-  margin: 0 #{-$local-title-horizontal-padding};
-  padding: $local-title-vertical-padding $local-title-horizontal-padding;
-  font-weight: $font-weight-bold;
-  font-size: 15px;
-  line-height: 18px;
-  text-align: left;
-  color: inherit;
-  background: $filter-title-default-bg;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: background-color 0.2s, fill 0.2s;
-  fill: $filter-title-default-arrow-color;
-
-  &:focus,
-  &:hover {
-    background: $filter-title-hover-bg;
-    transition-duration: 0.1s, 0.1s;
-    fill: $filter-title-hover-arrow-color;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.filter__arrow {
-  position: absolute;
-  top: 5px + $local-title-vertical-padding;
-  right: $local-title-horizontal-padding;
-  transition: transform $local-transition-duration;
-}
-
-.filter__body {
-  height: 0;
-  margin: 0 (-$widget-shop-padding);
-  overflow: hidden;
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    height $local-transition-duration,
-    opacity $local-transition-duration,
-    visibility 0s $local-transition-duration;
-}
-
-.filter__container {
-  padding: 10px $widget-shop-padding 16px;
-}
-
-.filter--opened {
-  .filter__body {
-    height: auto;
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0s, 0s;
-  }
-
-  .filter__arrow {
-    transform: rotateZ(180deg);
   }
 }

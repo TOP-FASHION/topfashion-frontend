@@ -76,8 +76,7 @@ $local-open-transition-duration: 0.2s;
   transform-origin: top;
   visibility: hidden;
   opacity: 0;
-  transition:
-    transform $local-open-transition-duration,
+  transition: transform $local-open-transition-duration,
     opacity $local-open-transition-duration,
     visibility 0s $local-open-transition-duration;
 }

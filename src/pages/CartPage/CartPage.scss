@@ -2,8 +2,6 @@
 @import '../../styles/functions';
 @import '../../styles/mixin/buttons';
 
-.cart {}
-
 .cart__actions {
   display: flex;
   justify-content: space-between;
@@ -336,7 +334,7 @@
     padding: 8px 20px;
 
     &::before {
-      content: attr(data-title) ": ";
+      content: attr(data-title) ': ';
       flex-shrink: 0;
       width: 55%;
       font-weight: $font-weight-medium;
@@ -366,8 +364,6 @@
     display: none;
   }
 }
-
-.block-empty {}
 
 .block-empty__body {
   padding: 18px 0 60px;

@@ -123,8 +123,7 @@ $local-transition-duration: 0.2s;
   background: $input-radio-circle-bg;
   border-radius: $local-circle-size / 2;
   box-shadow: $input-radio-circle-shadow;
-  transition:
-    background $local-transition-duration,
+  transition: background $local-transition-duration,
     box-shadow $local-transition-duration;
 
   &::after {
@@ -139,8 +138,7 @@ $local-transition-duration: 0.2s;
     border-radius: $local-inner-circle-size / 2;
     transform: scale(0);
     visibility: hidden;
-    transition:
-      background $local-transition-duration,
+    transition: background $local-transition-duration,
       transform $local-transition-duration,
       visibility 0s $local-transition-duration;
   }
@@ -203,8 +201,7 @@ $local-transition-duration: 0.15s;
   background: $input-check-box-bg;
   border-radius: $local-border-radius;
   box-shadow: $input-check-box-shadow;
-  transition:
-    background $local-transition-duration,
+  transition: background $local-transition-duration,
     box-shadow $local-transition-duration;
 }
 
@@ -213,8 +210,7 @@ $local-transition-duration: 0.15s;
   top: 1px;
   left: 0;
   transform: scale(0);
-  transition:
-    fill $local-transition-duration,
+  transition: fill $local-transition-duration,
     transform $local-transition-duration,
     visibility 0s $local-transition-duration;
   pointer-events: none;

@@ -4,8 +4,6 @@
 
 $local-product-margin: 5px;
 
-.block-products {}
-
 .block-products__body {
   display: flex;
 }
@@ -41,11 +39,7 @@ $local-product-margin: 5px;
   .product-card {
     flex-shrink: 0;
     width: 100%;
-  }
-}
 
-.block-products__list-item {
-  .product-card {
     @include product-card-grid();
 
     @media (min-width: 480px) {

@@ -35,7 +35,7 @@
     width: 34px;
     height: 34px;
     font-size: 16px;
-    color: inherit;
+    color: $footer-social-link-icon-color;
     border-radius: 17px;
     transition: all 0.2s;
   }
@@ -43,10 +43,6 @@
   a:hover {
     opacity: 0.8;
   }
-}
-
-.footer-newsletter__social-link a {
-  color: $footer-social-link-icon-color;
 }
 
 .footer-newsletter__social-link--facebook a {

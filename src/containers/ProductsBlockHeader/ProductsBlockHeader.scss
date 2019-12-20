@@ -155,7 +155,9 @@
     margin-left: auto;
   }
 
-  .block-header__divider + .block-header__groups-list + .block-header__arrows-list {
+  .block-header__divider
+    + .block-header__groups-list
+    + .block-header__arrows-list {
     margin-left: 16px;
   }
 }

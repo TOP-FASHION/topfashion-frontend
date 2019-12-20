@@ -53,15 +53,12 @@
     flex-wrap: wrap;
   }
 
-  .product-card__addtocart {
-    display: none;
-  }
-
   .product-card__addtocart--list {
     display: block;
   }
 
   .product-card__addtocart {
+    display: none;
     width: 100%;
   }
 

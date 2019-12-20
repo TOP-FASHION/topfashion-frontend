@@ -174,11 +174,6 @@ $local-transition-duration: 0.1s;
     @include preloader();
   }
 
-  /* nl size (default) */
-  &::after {
-    @include preloader-size(22px);
-  }
-
   /* xl size */
   &.btn-xl::after {
     @include preloader-size(42px);
