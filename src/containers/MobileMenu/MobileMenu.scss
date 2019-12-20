@@ -1,0 +1,96 @@
+@import '../../styles/var';
+
+$local-transition-duration: 0.3s;
+
+.mobilemenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transition: visibility 0s $local-transition-duration;
+}
+
+.mobilemenu__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $mobilemenu-backdrop-bg;
+  opacity: 0;
+  transition: opacity $local-transition-duration;
+}
+
+.mobilemenu__body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  height: 100%;
+  background: $mobilemenu-bg;
+  box-shadow: $mobilemenu-shadow;
+  transform: translateX(calc(-100% * 1 - 30px * 1));
+  transition: transform $local-transition-duration;
+}
+
+.mobilemenu__header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  height: $mobilemenu-header-height + 1px;
+  border-bottom: 1px solid $mobilemenu-divider-color;
+}
+
+.mobilemenu__title {
+  flex-grow: 1;
+  padding: 0 20px;
+  font-weight: $font-weight-bold;
+}
+
+.mobilemenu__close {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: $mobilemenu-header-height + 1px;
+  height: $mobilemenu-header-height;
+  background: transparent;
+  border: none;
+  border-left: 1px solid $mobilemenu-divider-color;
+  cursor: pointer;
+  transition: fill 0.2s;
+  fill: $mobilemenu-close-button-default-color;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus,
+  &:hover {
+    fill: $mobilemenu-close-button-hover-color;
+  }
+}
+
+.mobilemenu__content {
+  flex-grow: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobilemenu--open {
+  visibility: visible;
+  transition-delay: 0s;
+
+  .mobilemenu__backdrop {
+    opacity: 0.9;
+  }
+
+  .mobilemenu__body {
+    transform: translateX(0);
+  }
+}

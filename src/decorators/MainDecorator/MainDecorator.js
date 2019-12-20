@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
-import { SwitchLang } from '../routing'
-import Group from '../../components/Group'
-// import isShowModalAction from '../../utils/isShowModalAction'
 import { observer, inject } from 'mobx-react'
+import { SwitchLang } from '../routing'
+// import isShowModalAction from '../../utils/isShowModalAction'
 
 // components
+import Group from '../../components/Group'
+import MobileMenu from '../../containers/MobileMenu'
+import MobileHeader from '../MobileHeader'
 import Header from '../Header'
 import Footer from '../Footer'
 import RedirectToHome from '../../containers/RedirectToHome'
@@ -48,7 +50,13 @@ class MainDecorator extends Component {
     return (
       <Group id='main'>
         <Group className='main-decorator__wrapper'>
-          <Header />
+          <header className='site__header d-lg-none'>
+            <MobileHeader />
+          </header>
+          <header className='site__header d-lg-block d-none'>
+            <Header />
+          </header>
+          <MobileMenu />
           <Group className='main-decorator__content'>
             <SwitchLang>
               <Route path='/' component={Home} exact />

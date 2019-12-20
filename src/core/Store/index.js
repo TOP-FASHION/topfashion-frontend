@@ -32,6 +32,7 @@ import WishlistRemoveProductStore from './WishlistRemoveProductStore'
 import ChangeLanguageStore from './ChangeLanguageStore'
 import ModalStore from './ModalStore'
 import MenuStore from './MenuStore'
+import MobileMenuStore from './MobileMenuStore'
 
 class RootStore {
   constructor () {
@@ -69,6 +70,7 @@ class RootStore {
     this.changeLanguageStore = new ChangeLanguageStore(this)
     this.modalStore = new ModalStore(this)
     this.menuStore = new MenuStore(this)
+    this.mobileMenuStore = new MobileMenuStore(this)
   }
 }
 
