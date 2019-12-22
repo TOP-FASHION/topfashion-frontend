@@ -75,7 +75,7 @@ class NavLinks extends Component {
 
       return (
         <li key={index} className={classes} onMouseEnter={this.handleMouseEnter}>
-          <AppLink to={item.post_name} {...item.props}>
+          <AppLink to={`/${process.env.SHOP_NAV_PARENT_URL}/${item.post_name}`} {...item.props}>
             <span>
               {item.title}
               {arrow}

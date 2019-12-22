@@ -33,7 +33,17 @@ class Menu extends Component {
         link = (
           <AppLink
             {...item.props}
-            to={'/category/' + item.post_name}
+            to={`/${process.env.SHOP_NAV_PARENT_URL}/${item.post_name}`}
+            onClick={() => onClick(item)}
+          >
+            {content}
+          </AppLink>
+        )
+      } else if (item.url) {
+        link = (
+          <AppLink
+            {...item.props}
+            to={item.url}
             onClick={() => onClick(item)}
           >
             {content}

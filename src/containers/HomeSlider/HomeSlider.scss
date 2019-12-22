@@ -149,10 +149,6 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
   }
 
   @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
-    .block-slideshow__slide-image--desktop {
-      background-position: -70px top;
-    }
-
     .block-slideshow__slide-content {
       left: 56px;
     }
@@ -160,7 +156,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
   @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
     .block-slideshow__slide-image--desktop {
-      background-position: -190px top;
+      background-position: right;
     }
 
     .block-slideshow__slide-content {

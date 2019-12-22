@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 // import setMessages from '../../utils/setMessages'
 // import messages from './ProductCard.messages'
 import ProductsList from '../ProductsList'
 import Pagination from '../Pagination'
-import './ProductsView.scss'
-import { inject, observer } from 'mobx-react'
 import { Form } from 'react-bootstrap'
+import './ProductsView.scss'
 
 @inject('productsStore', 'productsCategoriesStore')
 @observer
@@ -26,14 +26,14 @@ class ProductsView extends Component {
     productsCategoriesStore: PropTypes.any,
     products: PropTypes.array,
     layout: PropTypes.oneOf(['grid', 'grid-with-features', 'list']),
-    grid: PropTypes.oneOf(['grid-3-sidebar', 'grid-4-full', 'grid-5-full']),
+    grid: PropTypes.oneOf(['grid-3-sidebar', 'grid-4-sidebar', 'grid-4-full', 'grid-5-full']),
     offcanvas: PropTypes.oneOf(['always', 'mobile'])
   }
 
   static defaultProps = {
     products: [],
     layout: 'grid',
-    grid: 'grid-3-sidebar',
+    grid: 'grid-4-sidebar',
     offcanvas: 'mobile'
   };
 

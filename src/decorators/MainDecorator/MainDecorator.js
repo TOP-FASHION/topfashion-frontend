@@ -63,8 +63,8 @@ class MainDecorator extends Component {
               <Route path='/' component={Home} exact />
               <Route path='/logout' component={MainDecorator.isLoggedIn(this.props.loginStore, Logout)} exact />
               <Route path='/category/product/:productId' component={ProductPage} exact />
-              <Route path='/category' render={(props) => (<ProductCategoryPage {...props} columns={3} viewMode='grid' sidebarPosition='start' />)} exact />
-              <Route path='/category/:categoryId' component={ProductCategoryPage} exact />
+              <Route path='/category' render={(props) => (<ProductCategoryPage {...props} columns={4} viewMode='grid' sidebarPosition='start' />)} exact />
+              <Route path='/category/:categoryId' render={(props) => (<ProductCategoryPage {...props} columns={4} viewMode='grid' sidebarPosition='start' />)} exact />
               <Route path='/cart' component={CartPage} exact />
               <Route path='/wishlist' component={WishlistPage} exact />
               <Route path='/search' component={SearchPage} exact />

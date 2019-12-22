@@ -30,7 +30,7 @@ class ProductCategoryPage extends Component {
   };
 
   static defaultProps = {
-    columns: 3,
+    columns: 4,
     viewMode: 'grid',
     sidebarPosition: 'start'
   };
@@ -58,9 +58,9 @@ class ProductCategoryPage extends Component {
     const { products } = this.props.productsStore
     let content
 
-    const offcanvas = this.props.columns === 3 ? 'mobile' : 'always'
+    const offcanvas = (this.props.columns === 3 || this.props.columns === 4) ? 'mobile' : 'always'
 
-    if (this.props.columns > 3) {
+    if (this.props.columns > 4) {
       content = (
         <div className='container'>
           <div className='block'>
@@ -89,7 +89,7 @@ class ProductCategoryPage extends Component {
                 <ProductsView
                   products={products}
                   layout={this.props.viewMode}
-                  grid='grid-4-full'
+                  grid={`grid-${this.props.columns}-sidebar`}
                   limit={15}
                   offcanvas={offcanvas}
                 />
