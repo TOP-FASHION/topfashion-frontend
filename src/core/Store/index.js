@@ -13,6 +13,7 @@ import ProductsCategoriesStore from './ProductsCategoriesStore'
 import ProductAttributesStore from './ProductAttributesStore'
 import BrandsStore from './BrandsStore'
 import UserInfoStore from './UserInfoStore'
+import ProductSearchStore from './ProductSearchStore'
 
 // CoCart
 import CartAddProductStore from './CartAddProductStore'
@@ -51,6 +52,7 @@ class RootStore {
     this.productAttributesStore = new ProductAttributesStore(this)
     this.brandsStore = new BrandsStore(this)
     this.userInfoStore = new UserInfoStore(this)
+    this.productSearchStore = new ProductSearchStore(this)
 
     // CoCart
     this.cartAddProductStore = new CartAddProductStore(this)

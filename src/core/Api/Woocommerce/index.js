@@ -6,6 +6,7 @@ import ProductReviewsAdd from './ProductReviewsAdd'
 import ProductsCategories from './ProductsCategories'
 import ProductAttributes from './ProductAttributes'
 import ProductAttributeTerms from './ProductAttributeTerms'
+import ProductSearch from './ProductSearch'
 import Brands from './Brands'
 
 const Woocommerce = {
@@ -17,6 +18,7 @@ const Woocommerce = {
   ProductsCategories,
   ProductAttributes,
   ProductAttributeTerms,
+  ProductSearch,
   Brands
 }
 
