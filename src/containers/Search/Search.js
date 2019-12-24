@@ -24,9 +24,7 @@ class Search extends Component {
         } else if (data.length === 0) {
           console.log('ytn')
         }
-      } catch {
-        console.error('error')
-      }
+      } catch {}
     }, { fireImmediately: true })
   }
 

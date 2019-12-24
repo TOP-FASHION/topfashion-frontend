@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 // import { Helmet } from 'react-helmet';
 import PageHeader from '../../containers/PageHeader'
-import { toJS } from 'mobx'
 import { inject, observer } from 'mobx-react'
 import ProductsView from '../../containers/ProductsView/ProductsView'
 

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin') // here so you can see what chunks are built
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 
 module.exports = {
   name: 'client',
@@ -75,7 +76,10 @@ module.exports = {
         NODE_ENV: JSON.stringify('development')
       }
     }),
-    new Dotenv()
+    new Dotenv(),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.resolve(__dirname, '../src/sw.js')
+    })
   ],
   optimization: {
     splitChunks: {

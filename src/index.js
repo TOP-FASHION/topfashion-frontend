@@ -8,6 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'mobx-react'
+import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import App from './decorators'
 import RootStore from './core/Store'
 import Root from './root'
@@ -30,3 +31,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 }
 
 render(App)
+
+if ('serviceWorker' in navigator) {
+  runtime.register()
+}
