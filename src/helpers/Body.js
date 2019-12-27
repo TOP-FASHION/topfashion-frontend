@@ -8,7 +8,7 @@ class Body extends React.Component {
     scripts: PropTypes.arrayOf(PropTypes.string),
     state: PropTypes.object,
     noScriptText: PropTypes.string,
-    component: PropTypes.node
+    html: PropTypes.node
   }
 
   static defaultProps = {
@@ -18,12 +18,12 @@ class Body extends React.Component {
   }
 
   render () {
-    const { className, scripts, state, noScriptText, component } = this.props
+    const { className, scripts, state, noScriptText, html } = this.props
 
     return (
       <body className={`initializing ${className}`.trim()}>
         <noscript>{noScriptText}</noscript>
-        <div id='root' dangerouslySetInnerHTML={{ __html: component }} />
+        <div id='root' dangerouslySetInnerHTML={{ __html: html }} />
         <div className='site-preloader' />
         <AppScripts list={scripts} state={state} />
         <script

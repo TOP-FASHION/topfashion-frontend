@@ -3,6 +3,7 @@ import { addLocaleData, IntlProvider } from 'react-intl'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import App from './decorators'
+import completeObject from './utils/completeObject'
 
 const supportsHistory = 'pushState' in window.history
 const messages = window.__data.messages

@@ -1,57 +1,140 @@
-/* global self, caches, fetch, Response */
+/* global self, caches, fetch, location, URL, Request */
 
-const CACHE = 'offline-fallback-v1'
+// The `serviceWorkerOption` variable is coming from the `serviceworker-webpack-plugin`
+// const {assets: BUILD_ASSETS} = serviceWorkerOption
 
-// При установке воркера мы должны закешировать часть данных (статику).
-self.addEventListener('install', (event) => {
+const CACHE_NAME_PREFIX = 'topfashion-'
+const CACHE_NAME = `${CACHE_NAME_PREFIX}v1`
+
+const OFFLINE_PAGE = new Request('/', {
+  headers: {'x-offline-mode': 'true'}
+})
+const OFFLINE_ASSETS = [
+  '/public/img/logos/shop-logo.svg',
+  '/favicon-32x32.png',
+  '/favicon-16x16.png'
+]
+
+// Install
+self.addEventListener('install', event => {
+  // Pre-cache resources
   event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) => cache.addAll(['/img/background']))
-      // `skipWaiting()` необходим, потому что мы хотим активировать SW
-      // и контролировать его сразу, а не после перезагрузки.
-      .then(() => self.skipWaiting())
+    updateOfflineCache()
   )
 })
 
-self.addEventListener('activate', (event) => {
-  // `self.clients.claim()` позволяет SW начать перехватывать запросы с самого начала,
-  // это работает вместе с `skipWaiting()`, позволяя использовать `fallback` с самых первых запросов.
-  event.waitUntil(self.clients.claim())
+// Activate
+self.addEventListener('activate', event => {
+  // Delete all other caches with same prefix, leave current CACHE_NAME caches only
+  event.waitUntil(
+    removeOutdatedCache()
+  )
 })
 
-self.addEventListener('fetch', function (event) {
-  // Можете использовать любую стратегию описанную выше.
-  // Если она не отработает корректно, то используейте `Embedded fallback`.
-  event.respondWith(networkOrCache(event.request)
-    .catch(() => useFallback()))
+// Fetch
+self.addEventListener('fetch', event => {
+  const request = event.request
+  const requestUrl = new URL(request.url)
+
+  // Skip foreign requests
+  const isNativeOrigin = requestUrl.origin === location.origin
+  if (!isNativeOrigin) {
+    return
+  }
+  // Skip non-GET requests
+  const isGetMethod = request.method === 'GET'
+  if (!isGetMethod) {
+    return
+  }
+  // Skip non-html requests (basically this will catch the page loading itself) and
+  // requests related to non-offline resources
+  const headerAccept = request.headers.get('accept')
+  const isHtmlPage = !!headerAccept && headerAccept.includes('text/html')
+  const isOfflineAsset = OFFLINE_ASSETS.includes(requestUrl.pathname)
+  if (!isHtmlPage && !isOfflineAsset) {
+    return
+  }
+
+  // Define function to get offline cache
+  let getOfflineCache
+  if (isHtmlPage) {
+    getOfflineCache = () => getOfflinePageCache()
+  } else if (isOfflineAsset) {
+    getOfflineCache = () => getOfflineAssetCache(request)
+  } else {
+    getOfflineCache = () => Promise.reject(new Error())
+  }
+
+  // Return "offline" resources if request is rejected (means "offline" mode)
+  event.respondWith(
+    fetch(request).catch(
+      // Basically fetch() will only reject a promise if the user is offline, or some unlikely networking error occurs,
+      // such a DNS lookup failure
+      error => {
+        return getOfflineCache().then(
+          cachedResponse => {
+            // Cache exists
+            if (typeof cachedResponse !== 'undefined') {
+              return cachedResponse
+            }
+            return Promise.reject(error)
+          },
+          () => Promise.reject(error)
+        )
+      }
+    )
+  )
 })
 
-function networkOrCache (request) {
-  return fetch(request)
-    .then((response) => response.ok ? response : fromCache(request))
-    .catch(() => fromCache(request))
+// Message
+self.addEventListener('message', event => {
+  const {command} = event.data || {}
+
+  switch (command) {
+    case 'updateOfflineCache': {
+      updateOfflineCache()
+      break
+    }
+  }
+})
+
+// FUNCTIONS
+
+function updateOfflineCache () {
+  return Promise.all([
+    fetchAndPutInCache(OFFLINE_PAGE),
+    fetchAndPutInCache(OFFLINE_ASSETS)
+  ])
 }
 
-// Наш Fallback вместе с нашим собсвенным Динозавриком.
-const FALLBACK =
-  '<div>' +
-    '<div>App Title</div>' +
-    '<div>you are offline</div>' +
-    '<img src="/svg/or/base64/of/your/dinosaur" alt="dinosaur"/>' +
-  '</div>'
-
-// Он никогда не упадет, т.к мы всегда отдаем заранее подготовленные данные.
-function useFallback () {
-  return Promise.resolve(new Response(FALLBACK, { headers: {
-    'Content-Type': 'text/html; charset=utf-8'
-  } }))
+function getOfflinePageCache () {
+  return getFromCache(OFFLINE_PAGE)
 }
 
-function fromCache (request) {
-  return caches.open(CACHE).then((cache) =>
-    cache.match(request).then((matching) =>
-      // eslint-disable-next-line prefer-promise-reject-errors
-      matching || Promise.reject('no-match')
-    ))
+function getOfflineAssetCache (offlineAsset) {
+  return getFromCache(offlineAsset)
+}
+
+function fetchAndPutInCache (request) {
+  return caches.open(CACHE_NAME).then(
+    cache => Array.isArray(request) ? cache.addAll(request) : cache.add(request)
+  )
+}
+
+function getFromCache (request) {
+  return caches.open(CACHE_NAME).then(
+    cache => cache.match(request)
+  )
+}
+
+function removeOutdatedCache () {
+  return caches.keys().then(
+    keys => Promise.all(
+      keys.map(key => {
+        if (key.startsWith(CACHE_NAME_PREFIX) && key !== CACHE_NAME) {
+          return caches.delete(key)
+        }
+      })
+    )
+  )
 }

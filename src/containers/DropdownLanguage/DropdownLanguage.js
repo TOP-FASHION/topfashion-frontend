@@ -36,13 +36,9 @@ class DropdownLanguage extends React.Component {
 
     const onChange = value => {
       const urlParts = window.location.href.split(/(\/|\?)/)
-      // If there is locale on url like /en/games - then just change en to new locale
       if (urlParts && urlParts[6] === locale) {
         urlParts[6] = value
-
-        // Otherwise (f.e. /games) add new locale before route (f.e. /ru/games)
       } else {
-        // Do not add trailing slash on urls like /en, /ru, etc. if no urlParts[3] given
         urlParts[6] = urlParts[6] ? `${value}/${urlParts[6]}` : value
       }
 

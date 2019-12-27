@@ -109,8 +109,8 @@ async function run() {
       return
     }
     // TODO need to fix for window os
-    //await logAsync(`Preparing`, prepareScriptToRun())
-    //await logAsync(`Extracting messages (${extractedMessagesDirectory})`, extractMessages())
+    await logAsync(`Preparing`, prepareScriptToRun())
+    await logAsync(`Extracting messages (${extractedMessagesDirectory})`, extractMessages())
     const messages = await logAsync(`Reading messages`, readMessages())
     await logAsync(`Authorization in Google API`, authorizeInApi())
     const spreadsheetProps = await logAsync(`Reading spreadsheet properties`, readSpreadsheetProps())
@@ -149,7 +149,7 @@ async function run() {
   }
 
   async function extractMessages() {
-    await runCmd(`webpack --config webpack/client.dev.js`, { cwd: basePath })
+    await runCmd(`$(npm bin)webpack --config webpack/client.dev.js`, { cwd: basePath })
   }
 
   async function readMessages() {

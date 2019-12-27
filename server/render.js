@@ -38,7 +38,9 @@ export default ({ clientStats }) => (req, res) => {
   const history = createMemoryHistory({ initialEntries: [req.path] })
   const context = {}
   const { language } = detectLanguageParams(req, AVAILABLE_LOCALES)
-
+  const offlineMode = req.header('x-offline-mode') === 'true'
+  const messagesBylocale = messages[language]
+  console.log('messagesBylocale', messagesBylocale)
   // Configure React-intl
   const initialNow = Date.now()
 
@@ -84,7 +86,9 @@ export default ({ clientStats }) => (req, res) => {
     <Body
       scripts={scripts}
       state={applicationState}
-      noScriptText={messages['app.common.noScript']}
+      noScriptText={messagesBylocale['app.common.noScript']}
+      className={offlineOnly('offline')}
+      html={offlineOnly(`<span>${messagesBylocale['app.common.offlineMode']}</span>`)}
     />
   )
 
@@ -98,7 +102,7 @@ export default ({ clientStats }) => (req, res) => {
     return {
       now: serverTime,
       locale: language,
-      messages: messages[language],
+      messages: messagesBylocale,
       localeData: LOCALES[language]
     }
   }
@@ -136,5 +140,15 @@ export default ({ clientStats }) => (req, res) => {
     return (
       cookieLocale || acceptLanguage.get(req.headers['accept-language']) || 'en'
     )
+  }
+
+  function onlineOnly (onlineData, offlineData) {
+    const onlineDataFn = typeof onlineData === 'function' ? onlineData : () => onlineData
+    const offlineDataFn = typeof offlineData === 'function' ? offlineData : () => offlineData
+    return offlineMode ? offlineDataFn() : onlineDataFn()
+  }
+
+  function offlineOnly (offlineData, onlineData) {
+    return onlineOnly(onlineData, offlineData)
   }
 }

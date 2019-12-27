@@ -12,5 +12,9 @@ export default defineMessages({
   'modals.login.signUp': {
     id: 'modals.login.signUp',
     defaultMessage: 'Sign Up'
+  },
+  'modals.login.offlineMode': {
+    id: 'modals.login.offlineMode',
+    defaultMessage: 'Please check your network connection'
   }
 })
