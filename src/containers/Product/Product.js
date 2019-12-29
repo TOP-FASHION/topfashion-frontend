@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 // import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
-// import messages from './Product.messages'
+import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import InputNumber from '../../components/InputNumber'
 import ProductGallery from '../ProductGallery'
 import Rating from '../../components/Rating'
 import Button from '../../components/Button'
+// import messages from './Product.messages'
+import { setCurrencies } from '../../translations/currencies.messages'
 import './Product.scss'
-import { inject, observer } from 'mobx-react'
 
 @inject('currencyStore', 'cartAddProductStore')
 @observer
@@ -27,16 +28,14 @@ class Product extends Component {
     layout: 'standard'
   }
 
+  currencies = setCurrencies(this)
+
   constructor (props) {
     super(props)
 
     this.state = {
       quantity: 1
     }
-  }
-
-  componentDidMount () {
-
   }
 
   handleChangeQuantity = quantity => {
@@ -59,15 +58,24 @@ class Product extends Component {
       prices = (
         <React.Fragment>
           <span className='product__new-price'>
-            {currency} {product.regular_price}
+            {this.currencies('value', {
+              value: product.regular_price,
+              currency: this.currencies(currency)
+            })}
           </span>{' '}
           <span className='product__old-price'>
-            {currency} {product.sale_price}
+            {this.currencies('value', {
+              value: product.sale_price,
+              currency: this.currencies(currency)
+            })}
           </span>
         </React.Fragment>
       )
     } else {
-      prices = `${currency} ${product.price}`
+      prices = this.currencies('value', {
+        value: product.price,
+        currency: this.currencies(currency)
+      })
     }
 
     return (

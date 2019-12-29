@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { inject, observer } from 'mobx-react'
 import InputRange from 'react-input-range'
 import PropTypes from 'prop-types'
+import { injectIntl } from 'react-intl'
+import { setCurrencies } from '../../translations/currencies.messages'
 import './FilterPrice.scss'
-import { inject, observer } from 'mobx-react'
 
 @inject('currencyStore', 'productsStore', 'productsCategoriesStore')
 @observer
@@ -25,6 +27,8 @@ class FilterPrice extends Component {
     max: 100,
     step: 1
   }
+
+  currencies = setCurrencies(this)
 
   constructor (props) {
     super(props)
@@ -95,13 +99,13 @@ class FilterPrice extends Component {
         <div className='filter-price__title'>
           Price:
           {' '}
-          <span className='filter-price__min-value'>{currency} {fromLabel}</span>
+          <span className='filter-price__min-value'>{this.currencies(currency)} {fromLabel}</span>
           {' – '}
-          <span className='filter-price__max-value'>{currency} {toLabel}</span>
+          <span className='filter-price__max-value'>{this.currencies(currency)} {toLabel}</span>
         </div>
       </div>
     )
   }
 }
 
-export default FilterPrice
+export default injectIntl(FilterPrice)

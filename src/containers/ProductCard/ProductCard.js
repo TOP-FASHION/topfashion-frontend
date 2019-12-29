@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../utils/setMessages'
+import { setCurrencies } from '../../translations/currencies.messages'
 import messages from './ProductCard.messages'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
@@ -31,6 +32,8 @@ class ProductCard extends Component {
   }
 
   messages = setMessages(this, messages, 'app.productCard.')
+
+  currencies = setCurrencies(this)
 
   get containerClasses () {
     return classNames('product-card', {
@@ -85,15 +88,24 @@ class ProductCard extends Component {
     return product.sale_price ? (
       <div className='product-card__prices'>
         <span className='product-card__new-price'>
-          {currency} {product.regular_price}
+          {this.currencies('value', {
+            value: product.regular_price,
+            currency: this.currencies(currency)
+          })}
         </span>{' '}
         <span className='product-card__old-price'>
-          {currency} {product.sale_price}
+          {this.currencies('value', {
+            value: product.sale_price,
+            currency: this.currencies(currency)
+          })}
         </span>
       </div>
     ) : (
       <div className='product-card__prices'>
-        {currency} {product.price}
+        {this.currencies('value', {
+          value: product.price,
+          currency: this.currencies(currency)
+        })}
       </div>
     )
   }

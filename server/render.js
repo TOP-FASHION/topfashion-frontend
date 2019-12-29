@@ -40,7 +40,7 @@ export default ({ clientStats }) => (req, res) => {
   const { language } = detectLanguageParams(req, AVAILABLE_LOCALES)
   const offlineMode = req.header('x-offline-mode') === 'true'
   const messagesBylocale = messages[language]
-  console.log('messagesBylocale', messagesBylocale)
+
   // Configure React-intl
   const initialNow = Date.now()
 

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Indicator from '../../components/Indicator/index'
+import { injectIntl } from 'react-intl'
 import { inject, observer } from 'mobx-react'
-import './IndicatorCart.scss'
+import Indicator from '../../components/Indicator/index'
 import Fragment from '../../components/Fragment'
 import Button from '../../components/Button'
+import { setCurrencies } from '../../translations/currencies.messages'
+import './IndicatorCart.scss'
 
 @inject(
   'cartProductsStore',
@@ -24,6 +26,8 @@ class IndicatorCart extends Component {
     cartCountProductsStore: PropTypes.object.isRequired
   }
 
+  currencies = setCurrencies(this)
+
   componentDidMount () {
     this.props.cartProductsStore.getProductCart()
   }
@@ -37,19 +41,28 @@ class IndicatorCart extends Component {
         <tr>
           <th>Subtotal</th>
           <td>
-            {productsCartInfoTotal.subtotal} {currency}
+            {this.currencies('value', {
+              value: productsCartInfoTotal.subtotal,
+              currency: this.currencies(currency)
+            })}
           </td>
         </tr>
         <tr>
           <th>Shiping</th>
           <td>
-            {productsCartInfoTotal.shipping_total} {currency}
+            {this.currencies('value', {
+              value: productsCartInfoTotal.shipping_total,
+              currency: this.currencies(currency)
+            })}
           </td>
         </tr>
         <tr>
           <th>Total</th>
           <td>
-            {productsCartInfoTotal.total} {currency}
+            {this.currencies('value', {
+              value: productsCartInfoTotal.total,
+              currency: this.currencies(currency)
+            })}
           </td>
         </tr>
       </Fragment>
@@ -160,4 +173,4 @@ class IndicatorCart extends Component {
   }
 }
 
-export default IndicatorCart
+export default injectIntl(IndicatorCart)

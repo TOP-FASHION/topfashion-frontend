@@ -1,8 +1,8 @@
-import { decorate, observable, action, autorun, runInAction } from 'mobx'
+import { observable, action, autorun, runInAction } from 'mobx'
 import Api from '../Api'
 
 export default class CurrencyStores {
-  currency
+  @observable currency
 
   constructor () {
     autorun(() => this.getCurrency())
@@ -18,12 +18,7 @@ export default class CurrencyStores {
     })
   }
 
-  setCurrency = data => {
+  @action setCurrency = data => {
     this.currency = data
   }
 }
-
-decorate(CurrencyStores, {
-  currency: observable,
-  setData: action
-})

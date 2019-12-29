@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import classNames from 'classnames'
 import { Link } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
+import { injectIntl } from 'react-intl'
 import InputNumber from '../../components/InputNumber'
 import PageHeader from '../../containers/PageHeader'
-import './CartPage.scss'
-import { inject, observer } from 'mobx-react'
 import Button from '../../components/Button/Button'
+import { setCurrencies } from '../../translations/currencies.messages'
+import './CartPage.scss'
 
 @inject('cartProductsStore', 'cartCountProductsStore', 'currencyStore', 'cartInfoTotalProductsStore', 'cartRemoveProductStore', 'cartUpdateProductStore')
 @observer
@@ -27,6 +29,8 @@ class CartPage extends Component {
     cartRemoveProductStore: PropTypes.any,
     cartUpdateProductStore: PropTypes.any
   }
+
+  currencies = setCurrencies(this)
 
   componentDidMount () {
     this.props.cartProductsStore.getProductCart()
@@ -115,7 +119,10 @@ class CartPage extends Component {
             />
           </td>
           <td className='cart-table__column cart-table__column--total' data-title='Total'>
-            {currency} {productsCart[item].line_total}
+            {this.currencies('value', {
+              value: productsCart[item].line_total,
+              currency: this.currencies(currency)
+            })}
           </td>
           <td className='cart-table__column cart-table__column--remove'>
             <Button
@@ -162,7 +169,12 @@ class CartPage extends Component {
         <thead className='cart__totals-header'>
           <tr>
             <th>Subtotal</th>
-            <td>{productsCartInfoTotal.subtotal} {currency}</td>
+            <td>
+              {this.currencies('value', {
+                value: productsCartInfoTotal.subtotal,
+                currency: this.currencies(currency)
+              })}
+            </td>
           </tr>
         </thead>
         <tbody className='cart__totals-body'>
@@ -221,7 +233,12 @@ class CartPage extends Component {
                     <tfoot className='cart__totals-footer'>
                       <tr>
                         <th>Total</th>
-                        <td>{productsCartInfoTotal.total} {currency}</td>
+                        <td>
+                          {this.currencies('value', {
+                            value: productsCartInfoTotal.total,
+                            currency: this.currencies(currency)
+                          })}
+                        </td>
                       </tr>
                     </tfoot>
                   </table>
@@ -272,4 +289,4 @@ class CartPage extends Component {
   }
 }
 
-export default CartPage
+export default injectIntl(CartPage)

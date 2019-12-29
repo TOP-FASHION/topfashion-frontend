@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
+import { injectIntl } from 'react-intl'
 import PageHeader from '../../containers/PageHeader'
 import Rating from '../../components/Rating'
 import Button from '../../components/Button'
+import { setCurrencies } from '../../translations/currencies.messages'
 import './WishlistPage.scss'
 
 @inject('wishlistGetProductsStore', 'cartAddProductStore', 'currencyStore', 'wishlistRemoveProductStore')
@@ -16,6 +18,8 @@ class WishlistPage extends Component {
     currencyStore: PropTypes.any,
     wishlistRemoveProductStore: PropTypes.any
   }
+
+  currencies = setCurrencies(this)
 
   render () {
     const { productsWishlist } = this.props.wishlistGetProductsStore
@@ -54,7 +58,12 @@ class WishlistPage extends Component {
             <td className='wishlist__column wishlist__column--stock'>
               <div className='badge badge-success'>In Stock</div>
             </td>
-            <td className='wishlist__column wishlist__column--price'>{item.price} {currency}</td>
+            <td className='wishlist__column wishlist__column--price'>
+              {this.currencies('value', {
+                value: item.price,
+                currency: this.currencies(currency)
+              })}
+            </td>
             <td className='wishlist__column wishlist__column--tocart'>
               <Button
                 variant='primary'
@@ -122,4 +131,4 @@ class WishlistPage extends Component {
   }
 }
 
-export default WishlistPage
+export default injectIntl(WishlistPage)
