@@ -14,8 +14,11 @@ export default class WishlistGetProductsStore {
       const share_key = this.rootStore.wishlistByUserStore.wishlistUser[0].share_key
       return Api.Wishlist.WishlistGetProducts(share_key)
         .then(res => {
-          this.productsWishlist = res.data
-          return res.data
+          if (res) {
+            this.productsWishlist = res.data
+            return res.data
+          }
+          return null
         })
         .catch(error => {
           console.log('Error====', error)

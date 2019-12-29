@@ -18,7 +18,7 @@ export default async function request (url, options) {
     const newOptions = { ...defaultOptions, ...options }
 
     newOptions.headers = {
-      Authorization: `Basic ${Base64.encode(`ck_83f4bd53fb1c969a67523637f6e13a9e607fc925:cs_c0a3dcc4a48b4ae106f7a81e9cf2a69ce3b8f67f`)}`
+      Authorization: `Basic ${Base64.encode(`${process.env.API_KEY}:${process.env.API_SECRET}`)}`
     }
     if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
       if (typeof window !== 'undefined' && !(newOptions.data instanceof window.FormData)) {
@@ -52,7 +52,7 @@ export default async function request (url, options) {
 
     return response
   } catch (err) {
-    return console.log('Error===', err)
+    return null
   }
 }
 
