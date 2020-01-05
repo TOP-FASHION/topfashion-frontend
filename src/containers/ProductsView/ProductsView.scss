@@ -21,6 +21,10 @@
 .products-list__body {
   display: flex;
   flex-wrap: wrap;
+
+  &--loading {
+    opacity: 0.6;
+  }
 }
 
 .products-list__item {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import { Helmet } from 'react-helmet';
+import { reaction } from 'mobx'
+import { inject, observer } from 'mobx-react'
 import PageHeader from '../../containers/PageHeader'
 import ProductsView from '../../containers/ProductsView'
 import CategorySidebar from '../../containers/CategorySidebar'
@@ -8,7 +10,6 @@ import CategorySidebar from '../../containers/CategorySidebar'
 // import WidgetCategories from '../widgets/WidgetCategories'
 // import WidgetProducts from '../widgets/WidgetProducts'
 // import categories from '../../data/shopWidgetCategories'
-import { inject, observer } from 'mobx-react'
 import normalizeCategory from '../../utils/normalizeCategory'
 import normalizeParentCategory from '../../utils/normalizeParentCategory'
 import './ProductCategoryPage.scss'
@@ -36,13 +37,17 @@ class ProductCategoryPage extends Component {
   };
 
   componentDidMount () {
-    this.props.productsStore.getProducts({
-      page: 1,
-      per_page: this.props.productsStore.countProducts,
-      'filter[limit]': this.props.productsStore.countProducts,
-      category: normalizeCategory(this.props.match.params.categoryId)
-    })
-    this.props.productsCategoriesStore.categoryId = normalizeCategory(this.props.match.params.categoryId)
+    reaction(() => this.props.match.params.categoryId, async (data) => {
+      try {
+        this.props.productsStore.getProducts({
+          page: 1,
+          per_page: this.props.productsStore.countProducts,
+          'filter[limit]': this.props.productsStore.countProducts,
+          category: normalizeCategory(this.props.match.params.categoryId)
+        })
+        this.props.productsCategoriesStore.categoryId = normalizeCategory(this.props.match.params.categoryId)
+      } catch {}
+    }, { fireImmediately: true })
   }
 
   get breadcrumb () {
@@ -57,7 +62,7 @@ class ProductCategoryPage extends Component {
   get content () {
     const { products } = this.props.productsStore
     let content
-
+    console.log('products', products)
     const offcanvas = (this.props.columns === 3 || this.props.columns === 4) ? 'mobile' : 'always'
 
     if (this.props.columns > 4) {

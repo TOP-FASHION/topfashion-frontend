@@ -8,21 +8,11 @@ import { inject, observer } from 'mobx-react/'
 class FilterCategories extends Component {
   static propTypes = {
     productsCategoriesStore: PropTypes.object.isRequired,
-    productsStore: PropTypes.object.isRequired,
     categories: PropTypes.array
   };
 
   componentDidMount () {
     this.props.productsCategoriesStore.getCategories({})
-  }
-
-  submit = (category) => {
-    this.props.productsStore.getProducts({
-      page: 1,
-      per_page: this.props.productsStore.countProducts,
-      'filter[limit]': this.props.productsStore.countProducts,
-      category: category.id
-    })
   }
 
   render () {
@@ -34,17 +24,17 @@ class FilterCategories extends Component {
           {categories.map((category) => {
             let arrow
 
-            if (category.type === 'parent') {
-              arrow = ''
+            if (category.parent === 0) {
+              arrow = '----'
             }
 
-            return category.parent !== 0 ? (
+            return (
               <li key={category.id} className={`filter-categories__item filter-categories__item--${category.type}`}>
                 {arrow}
-                <Link to={`/category/${category.slug}`} onClick={() => this.submit(category)}>{category.name}</Link>
+                <Link to={`/category/${category.slug}`}>{category.name}</Link>
                 <div className='filter-categories__counter'>{category.count}</div>
               </li>
-            ) : null
+            )
           })}
         </ul>
       </div>

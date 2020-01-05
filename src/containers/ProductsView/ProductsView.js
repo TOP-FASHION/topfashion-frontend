@@ -9,6 +9,8 @@ import ProductsList from '../ProductsList'
 import Pagination from '../Pagination'
 import { Form } from 'react-bootstrap'
 import './ProductsView.scss'
+import normalizeCategory from '../../utils/normalizeCategory'
+import { withRouter } from 'react-router'
 
 @inject('productsStore', 'productsCategoriesStore')
 @observer
@@ -27,7 +29,12 @@ class ProductsView extends Component {
     products: PropTypes.array,
     layout: PropTypes.oneOf(['grid', 'grid-with-features', 'list']),
     grid: PropTypes.oneOf(['grid-3-sidebar', 'grid-4-sidebar', 'grid-4-full', 'grid-5-full']),
-    offcanvas: PropTypes.oneOf(['always', 'mobile'])
+    offcanvas: PropTypes.oneOf(['always', 'mobile']),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        categoryId: PropTypes.string
+      })
+    })
   }
 
   static defaultProps = {
@@ -46,7 +53,8 @@ class ProductsView extends Component {
       page: page,
       per_page: this.state.limitPage || this.props.productsStore.countProducts,
       'filter[limit]': this.state.limitPage || this.props.productsStore.countProducts,
-      order: this.state.order || 'desc'
+      order: this.state.order || 'desc',
+      category: normalizeCategory(this.props.match.params.categoryId)
     })
     this.setState(() => ({ page }))
   };
@@ -118,6 +126,12 @@ class ProductsView extends Component {
     })
   }
 
+  get loadClasses () {
+    return classNames('products-list__body', {
+      'products-list__body--loading': this.props.productsStore.isLoadingProducts
+    })
+  }
+
   render () {
     const { products, grid, layout: propsLayout } = this.props
     const { page, layout: stateLayout } = this.state
@@ -180,7 +194,7 @@ class ProductsView extends Component {
           data-layout={layout !== 'list' ? grid : layout}
           data-with-features={layout === 'grid-with-features' ? 'true' : 'false'}
         >
-          <div className='products-list__body'>
+          <div className={this.loadClasses}>
             <ProductsList products={products} layout='grid-sm' />
           </div>
         </div>
@@ -198,4 +212,4 @@ class ProductsView extends Component {
   }
 }
 
-export default injectIntl(ProductsView)
+export default withRouter(ProductsView)
