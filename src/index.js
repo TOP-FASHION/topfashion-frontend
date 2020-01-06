@@ -12,13 +12,24 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import App from './decorators'
 import RootStore from './core/Store'
 import Root from './root'
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-boost'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'https://localhost:8443/graphql' }),
+  cache: new InMemoryCache()
+})
 
 const render = () =>
   ReactDOM.render( // TODO SSR
     <AppContainer>
-      <Provider {...RootStore}>
-        <Root />
-      </Provider>
+      <ApolloProvider client={client}>
+        <Provider {...RootStore}>
+          <Root />
+        </Provider>
+      </ApolloProvider>
     </AppContainer>,
     document.getElementById('root')
   )

@@ -7,11 +7,11 @@ import { SwitchLang } from '../routing'
 
 // components
 import Group from '../../components/Group'
-import MobileMenu from '../../containers/MobileMenu'
+import MobileMenu from '../../containers/shared/MobileMenu'
 import MobileHeader from '../MobileHeader'
 import Header from '../Header'
 import Footer from '../Footer'
-import RedirectToHome from '../../containers/RedirectToHome'
+import RedirectToHome from '../../containers/shared/RedirectToHome'
 
 // pages
 import Home from '../../pages/Home'

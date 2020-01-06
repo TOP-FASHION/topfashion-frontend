@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Fragment from '../../components/Fragment'
-import Static from '../../containers/Static'
+import Static from '../../containers/shared/Static'
 
 class StaticPage extends Component {
   static propTypes = {

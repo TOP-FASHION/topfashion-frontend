@@ -1,0 +1,48 @@
+@import '../../../styles/var';
+@import '../../../styles/functions';
+
+$local-close-button-size: 50px;
+
+.quickview {
+  position: relative;
+  padding: 60px;
+}
+
+.quickview__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $local-close-button-size;
+  height: $local-close-button-size;
+  background: $quickview-bg;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  fill: $quickview-close-default-color;
+
+  &:focus,
+  &:hover {
+    fill: $quickview-close-hover-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(lg-end)) {
+  .quickview {
+    padding: 30px;
+  }
+}
+
+@media (max-width: breakpoint(xs-end)) {
+  .quickview {
+    padding: 20px;
+  }
+}

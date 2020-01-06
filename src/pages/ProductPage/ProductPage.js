@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import { Helmet } from 'react-helmet';
-import PageHeader from '../../containers/PageHeader'
-import Product from '../../containers/Product'
-import ProductTabs from '../../containers/ProductTabs'
+import PageHeader from '../../containers/shared/PageHeader'
+import Product from '../../containers/shared/Product'
+import ProductTabs from '../../containers/shared/ProductTabs'
 // import BlockProductsCarousel from '../blocks/BlockProductsCarousel'
 // import WidgetCategories from '../widgets/WidgetCategories'
 // import WidgetProducts from '../widgets/WidgetProducts'

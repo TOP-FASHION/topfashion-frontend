@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import PageHeader from '../../containers/PageHeader'
-import BlogPost from '../../containers/BlogPost'
+import PageHeader from '../../containers/shared/PageHeader'
+import BlogPost from '../../containers/shared/BlogPost'
 // import BlogSidebar from './BlogSidebar'
 
 export default function BlogPagePost (props) {

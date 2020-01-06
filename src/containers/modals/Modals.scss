@@ -1,0 +1,11 @@
+@import '../../styles/var';
+
+.modal {
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content {
+  border: none;
+  border-radius: $modal-border-radius;
+  box-shadow: $modal-shadow;
+}

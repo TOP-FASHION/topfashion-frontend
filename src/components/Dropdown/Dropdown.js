@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import Menu from '../../containers/Menu'
+import Menu from '../../containers/shared/Menu'
 import './Dropdown.scss'
 
 class Dropdown extends Component {

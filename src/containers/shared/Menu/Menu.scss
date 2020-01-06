@@ -1,0 +1,109 @@
+@import '../../../styles/var';
+
+.menu {
+  width: 190px;
+  padding: 10px 0;
+  list-style: none;
+  font-weight: $font-weight-medium;
+  font-size: 14px;
+  line-height: 16px;
+  color: $menu-font-color;
+  letter-spacing: 0.02em;
+  background: $menu-bg;
+  box-shadow: $menu-shadow;
+
+  > li {
+    position: relative;
+  }
+
+  > li > a,
+  > li > button {
+    display: block;
+    width: 100%;
+    padding-top: 8px;
+    padding-right: 24px;
+    padding-bottom: 6px;
+    padding-left: 16px;
+    font-weight: inherit;
+    text-align: left;
+    color: inherit;
+    background: transparent;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  > li:hover > a,
+  > li:hover > button {
+    background: $menu-item-hover-bg;
+  }
+
+  > li:hover .menu__submenu {
+    transform: rotateY(0deg);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.menu__icon {
+  position: absolute;
+  top: 3px;
+  left: 15px;
+}
+
+.menu__arrow {
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 12px;
+  transform: scaleX(1 * 1);
+  fill: $menu-item-arrow-color;
+}
+
+.menu__submenu {
+  position: absolute;
+  top: -10px;
+  left: 100%;
+  transform: rotateY(45deg);
+  transform-origin: #{left};
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.menu--with-icons {
+  > li > a,
+  > li > button {
+    padding-left: 16px + 24px + 10px;
+  }
+}
+
+.menu--layout--topbar {
+  width: 150px;
+  padding: 6px 0;
+  box-shadow: $menu-topbar-shadow;
+
+  > li > a,
+  > li > button {
+    display: block;
+    padding-top: 8px;
+    padding-right: 21px;
+    padding-bottom: 6px;
+    padding-left: 13px;
+    color: inherit;
+  }
+
+  &.menu--with-icons {
+    .menu__icon {
+      position: absolute;
+      top: 3px;
+      left: 12px;
+    }
+
+    > li > a,
+    > li > button {
+      padding-left: 13px + 24px + 8px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./tmp/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true
+  },
+  "include": ["src/components/FilterCategories", "types"]
+}
+

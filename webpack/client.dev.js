@@ -30,6 +30,11 @@ module.exports = {
         use: 'babel-loader'
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
@@ -63,7 +68,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.css', '.scss']
+    extensions: ['.js', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [
     new WriteFilePlugin(),

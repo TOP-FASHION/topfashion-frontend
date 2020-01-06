@@ -111,6 +111,17 @@ app.use('/api/', (req, res) => {
   )
 })
 
+app.use('/graphql/', (req, res) => {
+  proxy.web(
+    req,
+    res,
+    { target: process.env.GRAPHQL_URL, changeOrigin: true, secure: false },
+    proxyError => {
+      res.status(500).json({ error: 'ProxyException', details: proxyError })
+    }
+  )
+})
+
 app.use(
   '/',
   express.static(path.resolve(__dirname, process.env.STATIC_PATH))

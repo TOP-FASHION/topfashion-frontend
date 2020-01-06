@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 // import { Helmet } from 'react-helmet';
 import { reaction } from 'mobx'
 import { inject, observer } from 'mobx-react'
-import PageHeader from '../../containers/PageHeader'
-import ProductsView from '../../containers/ProductsView'
-import CategorySidebar from '../../containers/CategorySidebar'
+import PageHeader from '../../containers/shared/PageHeader'
+import ProductsView from '../../containers/shared/ProductsView'
+import CategorySidebar from '../../containers/shared/CategorySidebar'
 // import BlockProductsCarousel from '../blocks/BlockProductsCarousel'
 // import WidgetCategories from '../widgets/WidgetCategories'
 // import WidgetProducts from '../widgets/WidgetProducts'
@@ -62,7 +62,7 @@ class ProductCategoryPage extends Component {
   get content () {
     const { products } = this.props.productsStore
     let content
-    console.log('products', products)
+
     const offcanvas = (this.props.columns === 3 || this.props.columns === 4) ? 'mobile' : 'always'
 
     if (this.props.columns > 4) {

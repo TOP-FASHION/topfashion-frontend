@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 // import { Helmet } from 'react-helmet';
-import PageHeader from '../../containers/PageHeader'
+import PageHeader from '../../containers/shared/PageHeader'
 import { inject, observer } from 'mobx-react'
-import ProductsView from '../../containers/ProductsView/ProductsView'
+import ProductsView from '../../containers/shared/ProductsView/ProductsView'
 
 @inject('productSearchStore')
 @observer
