@@ -134,7 +134,7 @@ $local-transition-duration: 0.3s;
   }
 }
 
-$local-item-padding-left: 14px;
+$local-item-padding-left: 25px;
 
 .filter-categories__list {
   margin: 0;
@@ -164,10 +164,9 @@ $local-item-padding-left: 14px;
 
 .filter-categories__item--parent {
   position: relative;
-  padding-left: $local-item-padding-left;
 }
 
-.filter-categories__item--current {
+.filter-categories__item--current > a {
   font-weight: $font-weight-bold;
 }
 
@@ -179,11 +178,11 @@ $local-item-padding-left: 14px;
 }
 
 .filter-categories__arrow {
-  position: absolute;
-  top: 10px;
+  padding-right: 6px;
+  top: 7px;
   left: 0;
   transform: scaleX(1 * 1);
-  fill: $filter-title-default-arrow-color;
+  color: $filter-title-default-arrow-color;
 }
 
 .filter-categories__counter {
@@ -192,4 +191,7 @@ $local-item-padding-left: 14px;
   font-size: 12px;
   line-height: 12px;
   color: $card-font-muted-color;
+  display: inline-block;
+  position: absolute;
+  right: 0;
 }

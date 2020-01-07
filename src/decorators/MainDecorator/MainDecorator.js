@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import { SwitchLang } from '../routing'
-// import isShowModalAction from '../../utils/isShowModalAction'
 
 // components
 import Group from '../../components/Group'
@@ -40,12 +39,6 @@ class MainDecorator extends Component {
   static isLoggedOut (loginStore, component, component2 = RedirectToHome) {
     return loginStore.loggedIn ? component2 : component
   }
-
-  /* error mobx-react ---> 6.1.4
-  shouldComponentUpdate (nextProps, nextState) {
-    return !isShowModalAction(nextProps, nextState)
-  }
-  */
 
   render () {
     return (

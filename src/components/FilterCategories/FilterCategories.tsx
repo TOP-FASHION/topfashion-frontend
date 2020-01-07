@@ -1,50 +1,69 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CATEGORIES } from '../../queries/categories'
+import classNames from 'classnames'
 
-interface IFilterCategoryProp {
-  nodes: Array<any>;
+type MyType = {
+  id: number;
+  name: string;
+  slug: string;
+  count: string;
+  children: {
+    nodes: [
+      {
+        id: number;
+        name: string;
+        slug: string;
+        count: string;
+      }
+    ]
+  };
+}
+
+type IFilterCategoryProp = {
+  nodes: Array<MyType>;
 }
 
 interface IFilterCategoriesProps {
-  productCategories: IFilterCategoryProp
+  productCategories: IFilterCategoryProp;
+  match: string;
 }
 
-const FilterCategories = () => {
-  const { loading, data, error } = useQuery<IFilterCategoriesProps>(GET_CATEGORIES);
+type TParams = RouteComponentProps<any>
+
+const FilterCategories = ({ match }: TParams) => {
+  const { loading, data, error } = useQuery<IFilterCategoriesProps>(GET_CATEGORIES)
 
   if (loading) return null
   if (!data) return null
+  if (error) return null
+
+  const classes = (slug, count) => classNames('filter-categories__item', {
+    'filter-categories__item--current': match.params.categoryId === slug,
+    'd-none': count === null
+  })
 
   return (
     <div className='filter-categories'>
       <ul className='filter-categories__list'>
         {data.productCategories.nodes.map((category) => {
-          let arrow: {}
-
-          if (category.parent === 0) {
-            arrow = '--+--'
-          }
-
           return (
-            <li key={category.id} className={`filter-categories__item filter-categories__item--parent`}>
-              {arrow}
+            <li key={category.id} className={`${classes(category.slug, '')} filter-categories__item--parent`}>
+              <i className='fas fa-angle-left filter-categories__arrow' />
               <Link to={`/category/${category.slug}`}>{category.name}</Link>
               <div className='filter-categories__counter'>{category.count}</div>
-              {
-                category ? (category.children.nodes.map((childCategory) => {
-                  return (
-                    <div key={childCategory.id} className={`filter-categories__item--wrapper`}>
-                      <div className={`filter-categories__item filter-categories__item--child`}>
-                        {arrow}
-                        <Link to={`/category/${childCategory.slug}`}>{childCategory.name}</Link>
-                        <div className='filter-categories__counter'>{childCategory.count}</div>
-                      </div>
+              {category.children.nodes.map((childCategory) => {
+                return (
+                  <div key={childCategory.id} className={`filter-categories__item--wrapper`}>
+                    <div className={`${classes(childCategory.slug, childCategory.count)} filter-categories__item--child`}>
+                      <Link to={`/category/${childCategory.slug}`}>{childCategory.name}</Link>
+                      <div className='filter-categories__counter'>{childCategory.count}</div>
                     </div>
-                  )
-                })) : null
-              }
+                  </div>
+                )
+              })}
             </li>
           )
         })}
@@ -53,4 +72,4 @@ const FilterCategories = () => {
   )
 }
 
-export default FilterCategories
+export default withRouter(FilterCategories)

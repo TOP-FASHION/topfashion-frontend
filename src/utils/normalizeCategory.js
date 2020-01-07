@@ -1,7 +1,9 @@
 export default function normalizeCategory (id = '') {
   switch (id) {
+    case 'woman':
+      return 23
     case 'accessories':
-      return 15
+      return 18
     case 'blouses':
       return 50
     case 'dresses':
