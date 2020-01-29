@@ -29,11 +29,13 @@ class Menu extends Component {
     const renderLink = (item, content) => {
       let link
 
-      if (item.post_name) {
+      if (item.label) {
         link = (
           <AppLink
             {...item.props}
-            to={`/${process.env.SHOP_NAV_PARENT_URL}/${item.post_name}`}
+            to={`/${
+              process.env.SHOP_NAV_PARENT_URL
+            }/${item.label.toLowerCase()}`}
             onClick={() => onClick(item)}
           >
             {content}
@@ -41,16 +43,16 @@ class Menu extends Component {
         )
       } else if (item.url) {
         link = (
-          <AppLink
-            {...item.props}
-            to={item.url}
-            onClick={() => onClick(item)}
-          >
+          <AppLink {...item.props} to={item.url} onClick={() => onClick(item)}>
             {content}
           </AppLink>
         )
       } else {
-        link = <button type='button' onClick={() => onClick(item)}>{content}</button>
+        link = (
+          <button type='button' onClick={() => onClick(item)}>
+            {content}
+          </button>
+        )
       }
 
       return link
@@ -70,7 +72,9 @@ class Menu extends Component {
       }
 
       if (item.submenu) {
-        arrow = <i className='fa fa-angle-right ml-2 opacity-5 departments__link-arrow' />
+        arrow = (
+          <i className='fa fa-angle-right ml-2 opacity-5 departments__link-arrow' />
+        )
       }
 
       if (withIcons && item.icon) {
@@ -83,13 +87,14 @@ class Menu extends Component {
 
       return (
         <li key={index}>
-          {renderLink(item, (
+          {renderLink(
+            item,
             <React.Fragment>
               {icon}
-              {item.title}
+              {item.label}
               {arrow}
             </React.Fragment>
-          ))}
+          )}
           {submenu}
         </li>
       )
@@ -99,11 +104,7 @@ class Menu extends Component {
       'menu--with-icons': withIcons
     })
 
-    return (
-      <ul className={classes}>
-        {itemsList}
-      </ul>
-    )
+    return <ul className={classes}>{itemsList}</ul>
   }
 }
 
