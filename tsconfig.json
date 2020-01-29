@@ -10,8 +10,8 @@
     "experimentalDecorators": true
   },
   "include": [
-    "src/components/FilterCategories",
-    "src/containers/shared/NavLinks",
+    "src/client/components/FilterCategories",
+    "src/client/shared/NavLinks",
     "types"
   ]
 }

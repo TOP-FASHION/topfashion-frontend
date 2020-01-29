@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    build: .
+    ports:
+      - "3091:3091"
+    environment:
+      NODE_ENV: production
+      PORT: 3091
+      APP_PORT: 3091

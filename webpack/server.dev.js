@@ -1,13 +1,18 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
+const postcssPresetEnv = require('postcss-preset-env')
 
 const res = p => path.resolve(__dirname, p)
 
 const nodeModules = res('../node_modules')
-const entry = res('../server/render.js')
-const output = res('../tmp/buildServer')
+const entry = res('../src/server/middlewares/render/index.js')
+const entryApp = res('../src/server/index.js')
+const output = res('../tmp/server')
+
+const BUILT_ASSETS_FOLDER = '/'
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
@@ -28,13 +33,20 @@ module.exports = {
   devtool: 'source-map',
   target: 'node',
   mode: 'development',
-  entry: ['regenerator-runtime/runtime.js', entry],
+  node: {
+    __dirname: false,
+    __filename: false
+  },
+  entry: {
+    main: ['babel-polyfill', entry],
+    app: ['babel-polyfill', entryApp]
+  },
   externals,
   output: {
     path: output,
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    publicPath: '/'
+    publicPath: BUILT_ASSETS_FOLDER
   },
   module: {
     rules: [
@@ -59,6 +71,13 @@ module.exports = {
             }
           },
           {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [postcssPresetEnv()]
+            }
+          },
+          {
             loader: 'sass-loader'
           }
         ]
@@ -76,13 +95,15 @@ module.exports = {
   },
   plugins: [
     new WriteFilePlugin(),
+    new Dotenv({
+      path: path.resolve(__dirname, '../.env'),
+      safe: false
+    }),
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
+      'process.env.NODE_ENV': JSON.stringify('development')
     })
   ]
 }

@@ -1,0 +1,181 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:latest-browsers
+  working_directory: ~/repo
+
+version: 2
+jobs:
+  build-frontend:
+    docker:
+      - image: circleci/node:11.10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: lint:css
+          command: npm run lint:css
+      - run:
+          name: lint:js
+          command: npm run lint:js
+      - run:
+          name: Build frontend
+          command: npm run build
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+  build-docker-stage:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build docker image
+          command: docker build -t 12evgen/pokemon:latest .
+      - deploy:
+          name: Push Pokemon to DockerHub
+          command: |
+            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+            docker push 12evgen/pokemon:latest
+
+  build-docker-prod:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build docker image
+          command: |
+            PACKAGE_VERSION=$(node -p "require('./package.json').version")
+            docker build -t 12evgen/pokemon:$PACKAGE_VERSION .
+      - deploy:
+          name: Push Pokemon to DockerHub
+          command: |
+            PACKAGE_VERSION=$(node -p "require('./package.json').version")
+            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+            docker push 12evgen/pokemon:$PACKAGE_VERSION
+
+  deploy-to-staging:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - bundles-{{ .Revision }}
+      - run:
+          name: Login registry.heroku.com
+          command: docker login --username=${HEROKU_LOGIN} --password=${HEROKU_API_KEY} registry.heroku.com
+      - run:
+          name: Pull docker image from Docker Hub
+          command: |
+            docker pull 12evgen/pokemon:latest
+      - run:
+          name: Tag image for Heroku
+          command: |
+            docker tag 12evgen/pokemon:latest registry.heroku.com/${HEROKU_APP_NAME_STAGE}/web
+      - run:
+          name: Push image to Heroku
+          command: |
+            docker push registry.heroku.com/${HEROKU_APP_NAME_STAGE}/web
+      - run:
+          name: Release new container
+          command: |
+            heroku container:release web -a ${HEROKU_APP_NAME_STAGE}
+
+  deploy-to-production:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - bundles-{{ .Revision }}
+      - run:
+          name: Login registry.heroku.com
+          command: docker login --username=${HEROKU_LOGIN} --password=${HEROKU_API_KEY} registry.heroku.com
+      - run:
+          name: Pull docker image from Docker Hub
+          command: |
+            docker pull 12evgen/pokemon:latest
+      - run:
+          name: Tag image for Heroku
+          command: |
+            docker tag 12evgen/pokemon:latest registry.heroku.com/${HEROKU_APP_NAME}/web
+      - run:
+          name: Push image to Heroku
+          command: |
+            docker push registry.heroku.com/${HEROKU_APP_NAME}/web
+      - run:
+          name: Release new container
+          command: |
+            heroku container:release web -a ${HEROKU_APP_NAME}
+
+workflows:
+  version: 2
+  development:
+    jobs:
+      - build-frontend:
+          filters:
+            branches:
+              ignore: master
+      - hold-deploy-stage:
+          type: approval
+          requires:
+            - build-frontend
+          filters:
+            branches:
+              ignore: master
+      - build-docker-stage:
+          requires:
+            - hold-deploy-stage
+          filters:
+            branches:
+              ignore: master
+      - deploy-to-staging:
+          requires:
+            - build-frontend
+            - hold-deploy-stage
+            - build-docker-stage
+          filters:
+            branches:
+              ignore: master
+
+  release:
+    jobs:
+      - build-frontend:
+          filters:
+            branches:
+              only: master
+      - hold-deploy-prod:
+          type: approval
+          requires:
+            - build-frontend
+          filters:
+            branches:
+              only: master
+      - build-docker-prod:
+          requires:
+            - hold-deploy-prod
+          filters:
+            branches:
+              only: master
+      - deploy-to-production:
+          requires:
+            - build-frontend
+            - hold-deploy-prod
+            - build-docker-prod
+          filters:
+            branches:
+              only: master

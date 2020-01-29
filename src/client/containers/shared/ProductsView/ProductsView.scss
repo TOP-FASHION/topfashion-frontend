@@ -1,0 +1,307 @@
+@import '../../../styles/var';
+@import '../../../styles/functions';
+@import '../../../styles/mixin/product-card';
+
+@mixin local-layout($columns: 1, $margin-vertical: 0, $margin-horizontal: 0) {
+  .products-list__body {
+    margin: #{-$margin-vertical} #{-$margin-horizontal};
+  }
+
+  .products-list__item {
+    @if ($columns == 1) {
+      width: 100%;
+    }
+
+    @else {
+      width: calc(#{100% / $columns} - #{$margin-horizontal * 2});
+    }
+
+    margin: $margin-vertical $margin-horizontal;
+  }
+}
+
+.products-list__body {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--loading {
+    opacity: 0.6;
+  }
+}
+
+.products-list__item {
+  display: flex;
+
+  .product-card {
+    flex-shrink: 0;
+    width: 100%;
+  }
+}
+
+// Grid
+.products-list[data-layout^='grid-'] {
+  .product-card {
+    @include product-card-grid();
+  }
+
+  &[data-with-features='true'] .product-card {
+    @include product-card-grid-with-features();
+  }
+}
+
+.products-list[data-layout='grid-3-sidebar'] {
+  @include local-layout(3, 6px, 6px);
+
+  .product-card {
+    @include product-card-grid-nl();
+  }
+
+  @media (max-width: breakpoint(lg-end)) and (min-width: 480px) {
+    .product-card {
+      @include product-card-grid-sm();
+    }
+  }
+
+  @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
+    @include local-layout(3, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
+    @include local-layout(2, 6px, 6px);
+  }
+
+  @media (max-width: 479px) {
+    @include local-layout(1, 6px, 6px);
+  }
+}
+
+.products-list[data-layout='grid-4-sidebar'] {
+  @include local-layout(4, 6px, 6px);
+
+  .product-card {
+    @include product-card-grid-nl();
+  }
+
+  @media (max-width: breakpoint(xl-end)) and (min-width: breakpoint(xl-start)) {
+    @include local-layout(3, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(lg-end)) and (min-width: breakpoint(lg-start)) {
+    @include local-layout(3, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
+    @include local-layout(3, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
+    @include local-layout(2, 6px, 6px);
+  }
+
+  @media (max-width: 479px) {
+    @include local-layout(1, 6px, 6px);
+  }
+}
+
+.products-list[data-layout='grid-4-full'] {
+  @include local-layout(4, 6px, 6px);
+
+  .product-card {
+    @include product-card-grid-nl();
+  }
+
+  @media (max-width: breakpoint(lg-end)) and (min-width: 480px) {
+    .product-card {
+      @include product-card-grid-sm();
+    }
+  }
+
+  @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
+    @include local-layout(3, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
+    @include local-layout(2, 6px, 6px);
+  }
+
+  @media (max-width: 479px) {
+    @include local-layout(1, 6px, 6px);
+  }
+}
+
+.products-list[data-layout='grid-5-full'] {
+  @include local-layout(5, 6px, 6px);
+
+  @media (min-width: 480px) {
+    .product-card {
+      @include product-card-grid-sm();
+    }
+  }
+
+  @media (max-width: breakpoint(lg-end)) and (min-width: breakpoint(lg-start)) {
+    @include local-layout(4, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
+    @include local-layout(3, 6px, 6px);
+  }
+
+  @media (max-width: breakpoint(sm-end)) and (min-width: 480px) {
+    @include local-layout(2, 6px, 6px);
+  }
+
+  @media (max-width: 479px) {
+    @include local-layout(1, 6px, 6px);
+  }
+}
+
+.products-list[data-layout='list'] {
+  @include local-layout(1, 6px);
+
+  .products-list__item {
+    display: block;
+  }
+
+  .product-card {
+    @include product-card-list();
+  }
+}
+
+.products-view__options {
+  padding-bottom: 20px;
+}
+
+.products-view__pagination {
+  padding-top: 30px;
+}
+
+.view-options {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.view-options__legend {
+  margin-left: 20px;
+}
+
+.view-options__divider {
+  flex-grow: 1;
+}
+
+.view-options__filters-button {
+  margin-right: 12px;
+}
+
+.view-options__control {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+
+  label {
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: breakpoint(md-end)) {
+  .view-options {
+    flex-wrap: wrap;
+  }
+
+  .view-options__legend {
+    margin-left: auto;
+  }
+
+  .view-options__divider {
+    width: 100%;
+    height: 12px;
+  }
+
+  .view-options__control {
+    margin-left: auto;
+
+    & + & {
+      margin-left: 24px;
+    }
+  }
+}
+
+@media (max-width: 474px) {
+  .view-options__legend {
+    width: 100%;
+    padding-top: 12px;
+  }
+
+  .view-options__divider {
+    height: 8px;
+  }
+
+  .view-options__control {
+    display: block;
+    margin-right: 24px;
+    margin-left: 0;
+
+    & + & {
+      margin-left: 0;
+    }
+  }
+}
+
+.view-options--offcanvas--mobile {
+  @media (min-width: breakpoint(lg-start)) {
+    .view-options__filters-button {
+      display: none;
+    }
+  }
+}
+
+.layout-switcher__list {
+  display: flex;
+}
+
+.layout-switcher__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  padding: 0 9px;
+  background: $layout-switcher-default-bg;
+  border: 1px solid $layout-switcher-default-border-color;
+  border-radius: 0;
+  cursor: pointer;
+  fill: $layout-switcher-default-color;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: $layout-switcher-hover-bg;
+    border-color: $layout-switcher-hover-border-color;
+    fill: $layout-switcher-hover-color;
+  }
+
+  &:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+  & + & {
+    margin-left: -1px;
+  }
+}
+
+.layout-switcher__button--active,
+.layout-switcher__button--active:hover {
+  z-index: 1;
+  background: $layout-switcher-active-bg;
+  border-color: $layout-switcher-active-border-color;
+  cursor: default;
+  fill: $layout-switcher-active-color;
+}

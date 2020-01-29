@@ -1,0 +1,50 @@
+// Initial styling
+
+body {
+  &.initializing,
+  &.preloading,
+  &.offline {
+    overflow: hidden;
+
+    // Logo
+    &::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99999;
+      background:
+        url(/assets/img/logos/shop-logo.svg) center center / 250px
+        no-repeat #fff;
+    }
+  }
+
+  // Text
+  & > noscript,
+  &.offline #root > span {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    left: 0;
+    z-index: 100000;
+    margin-top: 40px;
+    font-size: 12px;
+    text-align: center;
+    color: #777;
+    text-transform: uppercase;
+  }
+
+  // Offline
+  &.offline {
+    // Logo
+    &::after {
+      filter: grayscale(100%);
+    }
+
+    & > noscript {
+      display: none;
+    }
+  }
+}
