@@ -1,0 +1,11 @@
+version: '3'
+services:
+  frontend:
+    image: 12evgen/topfashion-frontend:1.0.1
+    container_name: "pokemon_frontend"
+    ports:
+      - "80:8000"
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 8000

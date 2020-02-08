@@ -40,12 +40,12 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build docker image
-          command: docker build -t 12evgen/pokemon:latest .
+          command: docker build -t 12evgen/topfashion-frontend:latest .
       - deploy:
-          name: Push Pokemon to DockerHub
+          name: Push image to DockerHub
           command: |
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-            docker push 12evgen/pokemon:latest
+            docker push 12evgen/topfashion-frontend:latest
 
   build-docker-prod:
     <<: *defaults
@@ -56,13 +56,13 @@ jobs:
           name: Build docker image
           command: |
             PACKAGE_VERSION=$(node -p "require('./package.json').version")
-            docker build -t 12evgen/pokemon:$PACKAGE_VERSION .
+            docker build -t 12evgen/topfashion-frontend:$PACKAGE_VERSION .
       - deploy:
-          name: Push Pokemon to DockerHub
+          name: Push image to DockerHub
           command: |
             PACKAGE_VERSION=$(node -p "require('./package.json').version")
             docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-            docker push 12evgen/pokemon:$PACKAGE_VERSION
+            docker push 12evgen/topfashion-frontend:$PACKAGE_VERSION
 
   deploy-to-staging:
     machine:
@@ -79,11 +79,11 @@ jobs:
       - run:
           name: Pull docker image from Docker Hub
           command: |
-            docker pull 12evgen/pokemon:latest
+            docker pull 12evgen/topfashion-frontend:latest
       - run:
           name: Tag image for Heroku
           command: |
-            docker tag 12evgen/pokemon:latest registry.heroku.com/${HEROKU_APP_NAME_STAGE}/web
+            docker tag 12evgen/topfashion-frontend:latest registry.heroku.com/${HEROKU_APP_NAME_STAGE}/web
       - run:
           name: Push image to Heroku
           command: |
@@ -108,11 +108,11 @@ jobs:
       - run:
           name: Pull docker image from Docker Hub
           command: |
-            docker pull 12evgen/pokemon:latest
+            docker pull 12evgen/topfashion-frontend:latest
       - run:
           name: Tag image for Heroku
           command: |
-            docker tag 12evgen/pokemon:latest registry.heroku.com/${HEROKU_APP_NAME}/web
+            docker tag 12evgen/topfashion-frontend:latest registry.heroku.com/${HEROKU_APP_NAME}/web
       - run:
           name: Push image to Heroku
           command: |
@@ -143,14 +143,14 @@ workflows:
           filters:
             branches:
               ignore: master
-      - deploy-to-staging:
-          requires:
-            - build-frontend
-            - hold-deploy-stage
-            - build-docker-stage
-          filters:
-            branches:
-              ignore: master
+#      - deploy-to-staging:
+#          requires:
+#            - build-frontend
+#            - hold-deploy-stage
+#            - build-docker-stage
+#          filters:
+#            branches:
+#              ignore: master
 
   release:
     jobs:
@@ -171,11 +171,11 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy-to-production:
-          requires:
-            - build-frontend
-            - hold-deploy-prod
-            - build-docker-prod
-          filters:
-            branches:
-              only: master
+#      - deploy-to-production:
+#          requires:
+#            - build-frontend
+#            - hold-deploy-prod
+#            - build-docker-prod
+#          filters:
+#            branches:
+#              only: master
