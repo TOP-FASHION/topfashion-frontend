@@ -7,7 +7,7 @@ const CACHE_NAME_PREFIX = 'topfashion-'
 const CACHE_NAME = `${CACHE_NAME_PREFIX}v1`
 
 const OFFLINE_PAGE = new Request('/', {
-  headers: {'x-offline-mode': 'true'}
+  headers: { 'x-offline-mode': 'true' }
 })
 const OFFLINE_ASSETS = [
   '/assets/img/logos/shop-logo.svg',
@@ -88,7 +88,7 @@ self.addEventListener('fetch', event => {
 
 // Message
 self.addEventListener('message', event => {
-  const {command} = event.data || {}
+  const { command } = event.data || {}
 
   switch (command) {
     case 'updateOfflineCache': {

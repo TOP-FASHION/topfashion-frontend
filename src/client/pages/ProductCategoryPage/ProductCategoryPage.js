@@ -46,7 +46,9 @@ class ProductCategoryPage extends Component {
           category: normalizeCategory(this.props.match.params.categoryId)
         })
         this.props.productsCategoriesStore.categoryId = normalizeCategory(this.props.match.params.categoryId)
-      } catch {}
+      } catch {
+        console.log('error')
+      }
     }, { fireImmediately: true })
   }
 

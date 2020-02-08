@@ -1,17 +1,17 @@
 import React from 'react'
-import { Provider, useStaticRendering } from 'mobx-react'
-import { renderToStaticMarkup, renderToString } from 'react-dom/server'
-import { StaticRouter } from 'react-router'
-import { createMemoryHistory } from 'history'
+import { useStaticRendering } from 'mobx-react'
+import { renderToStaticMarkup } from 'react-dom/server'
+// import { StaticRouter } from 'react-router'
+// import { createMemoryHistory } from 'history'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
 import Head from '../../helpers/Head'
 import Body from '../../helpers/Body'
-import { addLocaleData, IntlProvider } from 'react-intl'
+import { addLocaleData } from 'react-intl'
 import acceptLanguage from 'accept-language'
 import en from 'react-intl/locale-data/en'
 import ru from 'react-intl/locale-data/ru'
-import allStore from '../../../../src/client/core/Store'
+// import allStore from '../../../../src/client/core/Store'
 // import App from '../src/decorators'
 
 const LOCALES = {
@@ -35,14 +35,14 @@ AVAILABLE_LOCALES.forEach(locale => {
 acceptLanguage.languages(AVAILABLE_LOCALES)
 
 export default ({ clientStats }) => (req, res) => {
-  const history = createMemoryHistory({ initialEntries: [req.path] })
-  const context = {}
+  // const history = createMemoryHistory({ initialEntries: [req.path] })
+  // const context = {}
   const { language } = detectLanguageParams(req, AVAILABLE_LOCALES)
   const offlineMode = req.header('x-offline-mode') === 'true'
   const messagesBylocale = messages[language]
 
   // Configure React-intl
-  const initialNow = Date.now()
+  // const initialNow = Date.now()
 
   // const app = renderToString(
   //   <Provider {...allStore}>

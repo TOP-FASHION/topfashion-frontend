@@ -8,6 +8,7 @@ export default function completeObject (acceptor, donor) {
   acceptor = acceptor || {}
   donor = donor || {}
   for (const prop in donor) {
+    // eslint-disable-next-line no-prototype-builtins
     if (donor.hasOwnProperty(prop) && !acceptor.hasOwnProperty(prop)) {
       acceptor[prop] = donor[prop]
     }
