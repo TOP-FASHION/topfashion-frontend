@@ -42,7 +42,7 @@ class IndicatorSearch extends Component {
             autoComplete='off'
           />
           <button className='drop-search__button drop-search__button--submit' type='submit'>
-        kk
+            kk
           </button>
         </form>
       </div>
