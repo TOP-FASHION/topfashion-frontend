@@ -1,12 +1,11 @@
 node_modules
 *.log
-buildClient
-buildServer
 .vscode
 .idea
 .DS_Store
 .history
 tmp
+_build_prod/
 
 # Logs
 npm-debug.log*

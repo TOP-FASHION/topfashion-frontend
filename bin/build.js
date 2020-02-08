@@ -57,6 +57,7 @@ function copyStaticFiles () {
     shell.cp('-R', 'src/server/static', '_build_prod/server')
     shell.cp('-R', 'src/client/assets', '_build_prod/client')
     shell.cp('-R', 'package-lock.json', '_build_prod')
+    shell.cp('-R', 'tsconfig.json', '_build_prod')
     shell.cp('-R', 'README.md', '_build_prod')
     shell.cp('-R', 'LICENSE', '_build_prod')
 
