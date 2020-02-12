@@ -21,6 +21,6 @@ WORKDIR /app
 COPY --from=0 /src/_build_prod/ ./
 RUN npm install --only=production
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD ["npm", "run", "start"]
