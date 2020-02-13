@@ -18,10 +18,7 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: process.env.HTTPS === 'true'
-    ? `${process.env.HTTPS_HOST}:${process.env.HTTPS_PORT}/graphql`
-    : `${process.env.APP_HOST}:${process.env.APP_PORT}/graphql`
-  }),
+  link: new HttpLink({ uri: '/graphql' }),
   cache: new InMemoryCache()
 })
 

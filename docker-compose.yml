@@ -2,9 +2,14 @@ version: '3'
 services:
   frontend:
     build: .
-    ports:
-      - "3091:3091"
     environment:
+      API_URL_WP: http://wp.docker.localhost/wp-json/
+      API_URL_AUTH: https://wp.docker.localhost/api/
+      GRAPHQL_URL: https://wp.docker.localhost/graphql/
+      HTTPS: 'true'
+      APP_HOST: 'http://localhost'
+      APP_PORT: '3099'
+      CMS_PATH: ../src/server/static
+      STATIC_PATH: ../src/client/assets
       NODE_ENV: production
-      PORT: 3091
-      APP_PORT: 3091
+    network_mode: host

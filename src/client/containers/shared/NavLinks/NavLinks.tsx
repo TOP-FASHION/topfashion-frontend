@@ -74,7 +74,7 @@ const NavLinks = ({ match }: TParam) => {
 
     return (
       <li key={index} className={classes} onMouseEnter={handleMouseEnter}>
-        <AppLink to={`/${process.env.SHOP_NAV_PARENT_URL}/${item.node.label.toLowerCase()}`} {...item.props}>
+        <AppLink to={`/category/${item.node.label.toLowerCase()}`} {...item.props}>
           <span>
             {item.node.label}
             {arrow}

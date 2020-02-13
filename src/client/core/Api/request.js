@@ -1,6 +1,7 @@
 import axios from 'axios'
 import isPlainObject from 'lodash/isPlainObject'
 import { Base64 } from 'js-base64'
+import Config from '../../config'
 
 /**
  * Requests a URL, returning a promise.
@@ -18,7 +19,7 @@ export default async function request (url, options) {
     const newOptions = { ...defaultOptions, ...options }
 
     newOptions.headers = {
-      Authorization: `Basic ${Base64.encode(`${process.env.API_KEY}:${process.env.API_SECRET}`)}`
+      Authorization: `Basic ${Base64.encode(`${Config.WooCommerce.API_KEY}:${Config.WooCommerce.API_SECRET}`)}`
     }
     if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
       if (typeof window !== 'undefined' && !(newOptions.data instanceof window.FormData)) {
@@ -44,12 +45,8 @@ export default async function request (url, options) {
     } else {
       url = url + (newOptions.data && Object.keys(newOptions.data).length ? '?' + convertArguments(newOptions.data) : '')
     }
-    let response
-    if (process.env.HTTPS === 'true') {
-      response = await axios(`${process.env.HTTPS_HOST}:${process.env.HTTPS_PORT}${url}`, newOptions)
-    } else {
-      response = await axios(`${process.env.APP_HOST}:${process.env.APP_PORT}${url}`, newOptions)
-    }
+
+    const response = await axios(url, newOptions)
 
     if (response.status === 401) {
       return
