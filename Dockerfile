@@ -17,7 +17,9 @@ RUN npm run build
 #
 FROM node:12.14-alpine
 
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app/
+
 COPY --from=0 /src/_build_prod/ ./
 RUN npm install --only=production
 
