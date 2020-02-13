@@ -44,8 +44,13 @@ export default async function request (url, options) {
     } else {
       url = url + (newOptions.data && Object.keys(newOptions.data).length ? '?' + convertArguments(newOptions.data) : '')
     }
+    let response
+    if (process.env.HTTPS === 'true') {
+      response = await axios(`${process.env.HTTPS_HOST}:${process.env.HTTPS_PORT}${url}`, newOptions)
+    } else {
+      response = await axios(`${process.env.APP_HOST}:${process.env.APP_PORT}${url}`, newOptions)
+    }
 
-    const response = await axios(`https://localhost:8443${url}`, newOptions)
     if (response.status === 401) {
       return
     }
