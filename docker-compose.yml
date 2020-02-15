@@ -3,13 +3,29 @@ services:
   frontend:
     build: .
     environment:
-      API_URL_WP: http://wp.docker.localhost/wp-json/
+      API_URL_WP: https://wp.docker.localhost/wp-json/
       API_URL_AUTH: https://wp.docker.localhost/api/
       GRAPHQL_URL: https://wp.docker.localhost/graphql/
       HTTPS: 'true'
-      APP_HOST: 'http://localhost'
+      APP_HOST: 'https://localhost'
       APP_PORT: '3099'
       CMS_PATH: ../src/server/static
       STATIC_PATH: ../src/client/assets
       NODE_ENV: production
-    network_mode: host
+    networks:
+      - web
+      - backend
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy_webgateway'
+      - "traefik.http.services.frontend.loadbalancer.server.port=3099"
+      - 'traefik.http.routers.top_fashion_frontend.rule=Host(`frontend.wp.docker.localhost`)'
+      - 'traefik.http.routers.top_fashion_frontend.entrypoints=websecure'
+      - 'traefik.http.routers.top_fashion_frontend.tls.certresolver=mytlschallenge'
+
+networks:
+  web:
+    external:
+      name: proxy_webgateway
+  backend:
+    driver: bridge
