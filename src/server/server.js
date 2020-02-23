@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const compression = require('compression')
 const httpProxy = require('http-proxy')
+const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const allToGet = require('./middlewares/allToGet')
@@ -12,6 +13,7 @@ const proxy = httpProxy.createProxyServer()
 app.disable('x-powered-by')
 
 app.use(compression())
+app.use(cors())
 
 app.use('/wp-json/', (req, res) => {
   proxy.web(
@@ -74,6 +76,10 @@ app.use(
     maxAge: '2m'
   })
 )
+
+proxy.on('error', function (e) {
+  console.log('error', e)
+})
 
 module.exports = {
   app
