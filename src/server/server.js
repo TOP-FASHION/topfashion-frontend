@@ -77,10 +77,6 @@ app.use(
   })
 )
 
-proxy.on('error', function (e) {
-  console.log('error', e)
-})
-
 module.exports = {
   app
 }
