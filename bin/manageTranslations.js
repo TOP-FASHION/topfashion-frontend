@@ -10,7 +10,7 @@ const { exec } = require('child_process')
 const { readMessageFiles, getDefaultMessages } = require('react-intl-translations-manager')
 const { google } = require('googleapis')
 const chalk = require('chalk')
-const out = require('cli-output');
+const out = require('cli-output')
 
 //
 // SETTINGS
@@ -425,15 +425,6 @@ async function run() {
     return row
   }
 
-  async function readSpreadsheetRColumnsValues(options = {}) {
-    const { values: rows = [] } = await spreadsheetManager('values.get', {
-      majorDimension: 'COLUMNS',
-      valueRenderOption: 'UNFORMATTED_VALUE',
-      ...options
-    })
-    return rows // ValueRange
-  }
-
   async function readSpreadsheetRowsValues (options = {}) {
     const {values: rows = []} = await spreadsheetManager('values.get', {
       majorDimension: 'ROWS',
@@ -476,14 +467,14 @@ async function run() {
       return contents;
     })
     .then(function(result) {
-      if (!fs.existsSync('./src/translations/locales')) {
-        fs.mkdirSync('./src/translations/locales');
+      if (!fs.existsSync('./src/client/translations/locales')) {
+        fs.mkdirSync('./src/client/translations/locales');
       }
 
       Object.keys(result).forEach(function(value) {
         const content = JSON.stringify(result[value], null,  null);
         const extension = '.json';
-        const file = './src/translations/locales' + '/' + value + extension;
+        const file = './src/client/translations/locales' + '/' + value + extension;
 
         if (!fs.existsSync(file)) {
           return fs.writeFile(file, content, (err) => {
