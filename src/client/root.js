@@ -14,10 +14,9 @@ class Root extends Component {
   componentDidMount () {
     // preloader
     setTimeout(() => {
-      const preloader = document.querySelector('.site-preloader')
       window.addEventListener('login', (event) => {
         if (event.detail) {
-          preloader.parentNode.removeChild(preloader)
+          document.body.classList.remove('preloading')
         }
       })
     })

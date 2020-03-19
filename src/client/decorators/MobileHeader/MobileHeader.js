@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import Indicator from '../../components/Indicator'
+import Search from '../../containers/shared/Search'
 import './MobileHeader.scss'
 
 @inject('cartCountProductsStore', 'wishlistGetProductsStore', 'loginStore', 'mobileMenuStore')
@@ -40,14 +41,6 @@ class MobileHeader extends Component {
     document.removeEventListener('mousedown', this.handleOutsideClick)
   }
 
-  setSearchWrapperRef = (node) => {
-    this.searchWrapperRef = node
-  };
-
-  setSearchInputRef = (node) => {
-    this.searchInputRef = node
-  };
-
   handleOutsideClick = (event) => {
     if (this.searchWrapperRef && !this.searchWrapperRef.contains(event.target)) {
       this.setState(() => ({ searchOpen: false }))
@@ -60,12 +53,6 @@ class MobileHeader extends Component {
 
   handleCloseSearch = () => {
     this.setState(() => ({ searchOpen: false }))
-  };
-
-  handleSearchKeyDown = (event) => {
-    if (event.which === 27) {
-      this.setState(() => ({ searchOpen: false }))
-    }
   };
 
   render () {
@@ -86,35 +73,14 @@ class MobileHeader extends Component {
               <Link to='/' className='mobile-header__logo'>
                 <img src='/assets/img/logos/shop-logo.svg' width='100px' />
               </Link>
-              <div className={searchClasses} ref={this.setSearchWrapperRef}>
-                <form className='mobile-header__search-form' action=''>
-                  <input
-                    className='mobile-header__search-input'
-                    name='search'
-                    placeholder='Search over 10,000 products'
-                    aria-label='Site search'
-                    type='text'
-                    autoComplete='off'
-                    onKeyDown={this.handleSearchKeyDown}
-                    ref={this.setSearchInputRef}
-                  />
-                  <button type='submit' className='mobile-header__search-button mobile-header__search-button--submit'>
-                    <i className='fas fa-search' />
-                  </button>
-                  <button
-                    type='button'
-                    className='mobile-header__search-button mobile-header__search-button--close'
-                    onClick={this.handleCloseSearch}
-                  >
-                    <i className='fas fa-plus' />
-                  </button>
-                  <div className='mobile-header__search-body' />
-                </form>
-              </div>
-
+              <Search
+                context='mobile-header'
+                className={searchClasses}
+                onClose={this.handleCloseSearch}
+              />
               <div className='mobile-header__indicators'>
                 <Indicator
-                  className='indicator--mobile indicator--mobile-search d-sm-none'
+                  className='indicator--mobile indicator--mobile-search d-md-none'
                   onClick={this.handleOpenSearch}
                   icon={<i className='fas fa-search' />}
                 />

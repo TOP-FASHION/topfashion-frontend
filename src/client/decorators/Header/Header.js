@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../utils/setMessages'
-import { Container } from 'reactstrap'
 import NavPanel from '../../containers/shared/NavPanel'
 import Search from '../../containers/shared/Search'
 import Topbar from '../../containers/shared/Topbar'
@@ -48,7 +47,7 @@ class Header extends Component {
   get bannerSection () {
     return (
       <div className='site-header__middle'>
-        <Container>
+        <div className='container'>
           <div className='site-header__logo'>
             <Link to='/'>
               <img src='/assets/img/logos/shop-logo.svg' width='180px' />
@@ -86,7 +85,7 @@ class Header extends Component {
             />
             <IndicatorCart />
           </div>
-        </Container>
+        </div>
       </div>
     )
   }

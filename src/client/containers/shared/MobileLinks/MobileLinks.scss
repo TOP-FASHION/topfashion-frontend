@@ -45,12 +45,12 @@ $local-expand-transition-duration: 0.3s;
   align-items: center;
   width: 55px;
   padding: 0;
+  color: $mobilemenu-font-muted-color;
   background: transparent;
   border: none;
   border-left: 1px solid $mobilemenu-divider-color;
   cursor: inherit;
   transition: fill 0.2s;
-  fill: $mobilemenu-font-muted-color;
 
   &:focus {
     outline: none;

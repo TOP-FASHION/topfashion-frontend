@@ -69,7 +69,8 @@ class ProductCard extends Component {
     return product.images && product.images.length > 0 ? (
       <div className='product-card__image'>
         <Link to={`/category/product/${product.id}`}>
-          <img src={product.images[0].src} alt='' />
+          <img className='product-card__image--primary' src={product.images[0].src} alt='' />
+          <img className='product-card__image--optional' src={product.images[1].src} alt='' />
         </Link>
       </div>
     ) : (
@@ -121,6 +122,45 @@ class ProductCard extends Component {
     ) : null
   }
 
+  get attributeSize () {
+    const product = this.props.product
+    let attributeSize = []
+    product.attributes.map((item, index) => {
+      if (item.name === 'Size') {
+        attributeSize = item.options
+      }
+    })
+
+    return attributeSize.length ? (
+      <div className='product-card__size'>Size: {attributeSize.join(', ')}</div>
+    ) : null
+  }
+
+  get attributeColor () {
+    const product = this.props.product
+    const attributeColor = []
+    product.attributes.map((item, index) => {
+      if (item.name === 'Color') {
+        item.options.map((item, index) => {
+          attributeColor.push(
+            <span
+              key={index}
+              className={`product-card__color-item product-card__color-item--${item}`}
+              style={{ backgroundColor: item }}
+              title={item}
+            />
+          )
+        })
+      }
+    })
+
+    return attributeColor.length ? (
+      <div className='product-card__color'>
+        {attributeColor}
+      </div>
+    ) : null
+  }
+
   render () {
     const { product } = this.props
 
@@ -138,42 +178,38 @@ class ProductCard extends Component {
           <div className='product-card__name'>
             <Link to={`/category/product/${product.id}`}>{product.name}</Link>
           </div>
+          {this.price}
           <div className='product-card__rating'>
             <Rating value={product.rating_count} />
-            <div className=' product-card__rating-legend'>{`${product.rating_count} Reviews`}</div>
+            <div className=' product-card__rating-legend'>{`(${product.rating_count})`}</div>
+            <div className='product-card__buttons'>
+              <Button
+                className={'btn btn-light btn__addtocart'}
+                onClick={() => this.props.cartAddProductStore.addProduct(product.id)}
+              >
+                <i className='fas fa-shopping-cart' />
+              </Button>
+              <Button
+                className={'btn btn-light btn__wishlist'}
+                onClick={() => (
+                  this.props.loginStore.loggedIn
+                    ? this.props.wishlistAddProductStore.addProduct(product.id)
+                    : this.props.modalStore.openLogin()
+                )}
+              >
+                <i className='far fa-heart' />
+              </Button>
+            </div>
           </div>
           {this.features}
         </div>
         <div className='product-card__actions'>
           <div className='product-card__availability'>
-            Availability:
-            <span className='text-success'>In Stock</span>
+            Availability: <span className='text-success'>In Stock</span>
           </div>
-          {this.price}
-          <div className='product-card__buttons'>
-            <Button
-              variant='primary'
-              onClick={() => this.props.cartAddProductStore.addProduct(product.id)}
-              className={'product-card__addtocart'}
-            >
-              Add To Cart
-            </Button>
-            <Button
-              variant='secondary'
-              className={'product-card__addtocart product-card__addtocart--list'}
-            >
-              Add To Cart
-            </Button>
-            <Button
-              className={'btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist'}
-              onClick={() => (
-                this.props.loginStore.loggedIn
-                  ? this.props.wishlistAddProductStore.addProduct(product.id)
-                  : this.props.modalStore.openLogin()
-              )}
-            >
-              <i className='fas fa-heart' />
-            </Button>
+          <div className='product-card__attributes'>
+            {this.attributeSize}
+            {this.attributeColor}
           </div>
         </div>
       </div>

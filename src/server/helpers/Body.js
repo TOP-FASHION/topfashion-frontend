@@ -24,7 +24,7 @@ class Body extends React.Component {
       <body className={`initializing ${className}`.trim()}>
         <noscript>{noScriptText}</noscript>
         <div id='root' dangerouslySetInnerHTML={{ __html: html }} />
-        <div className='site-preloader' />
+        <div id='site-preloader' />
         <AppScripts list={scripts} state={state} />
         <script
           dangerouslySetInnerHTML={{

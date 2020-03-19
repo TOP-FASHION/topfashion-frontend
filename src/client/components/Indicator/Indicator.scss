@@ -59,7 +59,7 @@ $local-open-transition-duration: 0.2s;
     margin-top: -2px;
     font-weight: 400;
     font-size: 14px;
-    line-height: 24px;
+    line-height: 26px;
     text-align: center;
     color: #fff;
     text-decoration: none;
@@ -123,13 +123,6 @@ $local-open-transition-duration: 0.2s;
   .indicator__icon:not(.indicator__icon--open) {
     transform: scale(0);
     opacity: 0;
-  }
-}
-
-.indicator--mobile {
-  .indicator__area {
-    height: 36px;
-    padding: 0 10px;
   }
 }
 

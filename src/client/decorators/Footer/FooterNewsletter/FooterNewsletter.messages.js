@@ -1,36 +1,20 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  'app.footerMenu.about-us': {
-    id: 'app.footerMenu.about-us',
-    defaultMessage: 'About us'
+  'app.footer.newsletter.title': {
+    id: 'app.footer.newsletter.title',
+    defaultMessage: 'KNOW IT ALL FIRST!'
   },
-  'app.footerMenu.privacy-policy': {
-    id: 'app.footerMenu.privacy-policy',
-    defaultMessage: 'Privacy Policy'
+  'app.footer.newsletter.templates': {
+    id: 'app.footer.newsletter.templates',
+    defaultMessage: 'Never Miss Anything From Multikart By Signing Up To Our Newsletter.'
   },
-  'app.footerMenu.responsible-gambling': {
-    id: 'app.footerMenu.responsible-gambling',
-    defaultMessage: 'Responsible Gambling'
+  'app.footer.newsletter.subscribe': {
+    id: 'app.footer.newsletter.subscribe',
+    defaultMessage: 'Subscribe'
   },
-  'app.footerMenu.terms-conditions': {
-    id: 'app.footerMenu.terms-conditions',
-    defaultMessage: 'Terms & Conditions'
-  },
-  'app.footerMenu.banking': {
-    id: 'app.footerMenu.banking',
-    defaultMessage: 'Banking'
-  },
-  'app.footerMenu.faq': {
-    id: 'app.footerMenu.faq',
-    defaultMessage: 'FAQ'
-  },
-  'app.footerMenu.support': {
-    id: 'app.footerMenu.support',
-    defaultMessage: 'Contact us'
-  },
-  'app.footerMenu.affiliates': {
-    id: 'app.footerMenu.affiliates',
-    defaultMessage: 'Affiliates'
+  'app.footer.newsletter.email': {
+    id: 'app.footer.newsletter.email',
+    defaultMessage: 'Email Address'
   }
 })

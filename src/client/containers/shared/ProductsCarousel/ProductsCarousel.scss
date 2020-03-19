@@ -6,8 +6,6 @@
 .block-products-carousel {
   padding-top: 25px;
   background-color: #f7f6f9;
-  border-top: 1px solid #e9e8ea;
-  border-bottom: 1px solid #e9e8ea;
 
   .slick-track {
     padding-bottom: 56px;
@@ -23,6 +21,19 @@
 
   .slick-slide {
     padding: 0 5px;
+  }
+
+  .slick-prev,
+  .slick-next {
+    top: 40%;
+  }
+
+  .slick-prev {
+    left: -25px;
+  }
+
+  .slick-next {
+    right: -25px;
   }
 }
 

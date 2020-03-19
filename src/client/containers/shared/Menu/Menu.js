@@ -29,7 +29,7 @@ class Menu extends Component {
     const renderLink = (item, content) => {
       let link
 
-      if (item.label) {
+      if (item.post_name) {
         link = (
           <AppLink
             {...item.props}

@@ -28,7 +28,7 @@ function MobileLinks (props) {
             if (link.children && link.children.length > 0) {
               arrow = (
                 <button className='mobile-links__item-toggle' type='button' onClick={toggle}>
-                  -->
+                  <i className='mobile-links__item-arrow fas fa-angle-down' />
                 </button>
               )
 

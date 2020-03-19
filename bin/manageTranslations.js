@@ -149,7 +149,7 @@ async function run() {
   }
 
   async function extractMessages() {
-    await runCmd(`$(npm bin)webpack --config webpack/client.dev.js`, { cwd: basePath })
+    await runCmd(`webpack --config webpack/client.dev.js`, { cwd: basePath })
   }
 
   async function readMessages() {

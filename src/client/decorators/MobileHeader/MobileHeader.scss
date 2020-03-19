@@ -23,16 +23,17 @@
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 45px;
   margin: 0;
   padding: 0;
+  font-size: 25px;
+  color: $mobile-header-menu-button-default-color;
   background: $mobile-header-menu-button-default-bg;
   border: none;
   border-radius: $mobile-header-menu-button-border-radius;
   cursor: pointer;
   transition: fill 0.2s, background 0.2s;
-  fill: $mobile-header-menu-button-default-color;
 
   &:focus {
     outline: none;
@@ -40,8 +41,8 @@
 
   &:focus,
   &:hover {
+    color: $mobile-header-menu-button-hover-color;
     background: $mobile-header-menu-button-hover-bg;
-    fill: $mobile-header-menu-button-hover-color;
   }
 }
 
@@ -66,93 +67,10 @@
   }
 }
 
-@media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(md-end)) {
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
   .mobile-header__search {
-    position: relative;
-    flex-grow: 1;
     height: 36px;
     margin-right: 8px;
-
-    input {
-      position: relative;
-      z-index: 1;
-      flex-grow: 1;
-      flex-basis: 0;
-      width: 0;
-      margin: 0;
-      padding: 0 12px;
-      font-size: 15px;
-      font-family: inherit;
-      color: $mobile-header-search-input-default-font-color;
-      background: transparent;
-      border: none;
-
-      &::placeholder {
-        color: $mobile-header-search-input-default-placeholder;
-      }
-
-      &:hover {
-        color: $mobile-header-search-input-hover-font-color;
-
-        &::placeholder {
-          color: $mobile-header-search-input-hover-placeholder;
-        }
-      }
-
-      &:focus {
-        color: $mobile-header-search-input-focus-font-color;
-        outline: none;
-
-        &::placeholder {
-          color: $mobile-header-search-input-focus-placeholder;
-        }
-      }
-    }
-
-    input:hover ~ {
-      & .mobile-header__search-button {
-        fill: $mobile-header-search-input-hover-icon-color;
-
-        &:focus,
-        &:hover {
-          fill: $mobile-header-search-input-hover-icon-hover-color;
-        }
-      }
-
-      & div {
-        background: $mobile-header-search-input-hover-bg;
-        box-shadow: $mobile-header-search-input-hover-shadow;
-      }
-    }
-
-    input:focus ~ {
-      & .mobile-header__search-button {
-        fill: $mobile-header-search-input-focus-icon-color;
-
-        &:focus,
-        &:hover {
-          fill: $mobile-header-search-input-focus-icon-hover-color;
-        }
-      }
-
-      & div {
-        background: $mobile-header-search-input-focus-bg;
-        box-shadow: $mobile-header-search-input-focus-shadow;
-      }
-    }
-
-    div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: $mobile-header-search-input-default-bg;
-      border-radius: 2px;
-      box-shadow: $mobile-header-search-input-default-shadow;
-      transition: all 0.2s;
-      pointer-events: none;
-    }
   }
 
   .mobile-header__search-form {
@@ -191,7 +109,7 @@
   }
 }
 
-@media (max-width: breakpoint(xs-end)) {
+@media (max-width: breakpoint(sm-end)) {
   .mobile-header__search {
     position: absolute;
     top: 0;
@@ -214,10 +132,14 @@
       flex-grow: 1;
       flex-basis: 0;
       width: 0;
+      height: 100%;
       padding: 0;
       padding-left: 15px;
+      padding-left: 20px;
+      font-size: 16px;
       background: transparent;
       border: none;
+      border-radius: 0;
 
       &:focus {
         outline: none;
@@ -242,10 +164,10 @@
     justify-content: center;
     align-items: center;
     width: 54px;
+    color: $offcanvas-search-button-default-color;
     background: transparent;
     border: none;
     cursor: pointer;
-    fill: $offcanvas-search-button-default-color;
 
     &:focus {
       outline: none;
@@ -253,11 +175,23 @@
 
     &:focus,
     &:hover {
-      fill: $offcanvas-search-button-hover-color;
+      color: $offcanvas-search-button-hover-color;
     }
   }
 
   .mobile-header__search-button--close {
+    font-size: 20px;
     border-left: 1px solid $offcanvas-search-divider-color;
+  }
+
+  .search__button {
+    position: relative;
+    width: 54px;
+    height: 100%;
+    font-size: 20px;
+  }
+
+  .indicator--mobile-search .indicator__area {
+    padding-right: 10px;
   }
 }

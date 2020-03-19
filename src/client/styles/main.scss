@@ -20,6 +20,10 @@
 @import 'typography';
 @import 'forms';
 
+$preloading-width: 120px;
+$preloading-height: 4px;
+$preloading-time: 5s;
+
 html {
   height: 100%;
 }
@@ -35,44 +39,37 @@ body {
   color: $body-font-color;
   background: $body-bg;
   backface-visibility: hidden;
+
+  &.preloading #site-preloader::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100000;
+    box-sizing: border-box;
+    width: $preloading-width;
+    height: $preloading-height;
+    margin-top: 60px;
+    margin-left: -($preloading-width/2);
+    background: #eee;
+    border-left: 0 solid color(red, green);
+    animation: preloading $preloading-time cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
 }
 
 #root {
   height: 100%;
 }
 
-.site-preloader {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 99999;
-  background-color: #fff;
-  opacity: 1;
-}
+@function color($color-name, $color-variant: null) {
+  // color variant is optional
+  @if ($color-variant != null) {
+    @return map-get(map-get($colors, $color-name), $color-variant);
+  }
 
-.site-preloader::before {
-  content: '';
-  position: absolute;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  display: block;
-  box-sizing: border-box;
-  width: 100px;
-  height: 100px;
-  border: 3px solid rgba(0, 0, 0, 0.2);
-  border-top-color: rgba(0, 0, 0, 0.6);
-  border-radius: 50px;
-  animation-name: site-preloader-animation;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.site-preloader__fade {
-  opacity: 0;
-  transition: opacity 0.3s;
+  @else {
+    @return map-get($colors, $color-name);
+  }
 }
 
 svg {
@@ -197,15 +194,5 @@ h6 {
 
   @if ($h6-font-style != null) {
     font-style: $h6-font-style;
-  }
-}
-
-@keyframes site-preloader-animation {
-  from {
-    transform: rotateZ(0);
-  }
-
-  to {
-    transform: rotateZ(360deg);
   }
 }

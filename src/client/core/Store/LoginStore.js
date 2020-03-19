@@ -34,6 +34,7 @@ export default class LoginStore {
   }
 
   constructor (rootStore) {
+    document.body.classList.add('preloading')
     this.rootStore = rootStore
     this.token = Cookies.get('auth')
     autorun(() => this.validateAuth())

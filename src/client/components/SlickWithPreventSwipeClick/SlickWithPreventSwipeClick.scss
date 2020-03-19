@@ -1,71 +1,71 @@
 @import '../../styles/var';
 @import '../../styles/functions';
 
-.megamenu {
-  width: 100%;
-  min-height: 100%;
-  padding: 26px 30px;
-  line-height: 1.5;
-  color: $megamenu-font-color;
-  letter-spacing: 0.01em;
-  background: $megamenu-bg;
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  box-shadow: $megamenu-shadow;
-}
-
-.megamenu--departments {
-  padding-right: 31px;
-
-  @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
-    padding-right: 32px;
-  }
-}
-
-.megamenu__links {
-  margin: 0;
+/* Arrows */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+  display: block;
+  width: 20px;
+  height: 20px;
   padding: 0;
-  list-style: none;
-
-  a {
-    color: $megamenu-primary-link-color;
-    transition: color 0.15s;
-
-    &:hover {
-      color: $link-hover-color;
-    }
-  }
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  background: transparent;
+  border: none;
+  outline: none;
+  transform: translate(0, -50%);
+  cursor: pointer;
 }
 
-.megamenu__links--level--0 {
-  & > .megamenu__item + .megamenu__item--with-submenu,
-  & > .megamenu__item--with-submenu + .megamenu__item {
-    margin-top: 20px;
-  }
-
-  & > .megamenu__item {
-    padding: 1px 0;
-  }
-
-  & > .megamenu__item > a {
-    font-weight: $font-weight-medium;
-  }
-
-  & > .megamenu__item > a + .megamenu__links {
-    margin-top: 3px;
-    padding-top: 10px;
-    border-top: 1px solid $megamenu-divider-color;
-  }
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  color: transparent;
+  background: transparent;
+  outline: none;
 }
 
-.megamenu__links--level--1 {
-  & > .megamenu__item > a {
-    font-size: 14px;
-    color: $megamenu-secondary-link-color;
-    transition: color 0.15s;
+.slick-prev:hover::before,
+.slick-prev:focus::before,
+.slick-next:hover::before,
+.slick-next:focus::before {
+  opacity: 1;
+}
 
-    &:hover {
-      color: $link-hover-color;
-    }
-  }
+.slick-prev.slick-disabled::before,
+.slick-next.slick-disabled::before {
+  opacity: 0.25;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1;
+  font-family: 'Font Awesome 5 Free';
+  color: #c92f67;
+  opacity: 0.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+  left: 25px;
+}
+
+.slick-prev::before {
+  content: '\f053';
+}
+
+.slick-next {
+  right: 25px;
+}
+
+.slick-next::before {
+  content: '\f054';
 }

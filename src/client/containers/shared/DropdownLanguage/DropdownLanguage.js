@@ -21,15 +21,15 @@ class DropdownLanguage extends React.Component {
 
     const languages = [
       {
-        title: this.messages('en'),
+        label: this.messages('en'),
         locale: 'en',
-        icon: 'images/languages/language-1.png',
+        icon: '/assets/img/languages//language-1.png',
         icon_srcset: '/assets/img/languages/language-1.png 1x, images/languages/language-1@2x.png 2x'
       },
       {
-        title: this.messages('ru'),
+        label: this.messages('ru'),
         locale: 'ru',
-        icon: 'images/languages/language-2.png',
+        icon: '/assets/img/languages//language-2.png',
         icon_srcset: '/assets/img/languages/language-2.png 1x, images/languages/language-2@2x.png 2x'
       }
     ]
@@ -50,9 +50,9 @@ class DropdownLanguage extends React.Component {
 
     const title = (
       <React.Fragment>
-        Language
-        {': '}
-        <span className='topbar__item-value'>{language.locale}</span>
+        <span className='topbar__item-value'>
+          <img src={language.icon} width='33px' />
+        </span>
       </React.Fragment>
     )
 

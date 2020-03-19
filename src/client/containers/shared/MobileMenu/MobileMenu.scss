@@ -59,12 +59,12 @@ $local-transition-duration: 0.3s;
   align-items: center;
   width: $mobilemenu-header-height + 1px;
   height: $mobilemenu-header-height;
+  color: $mobilemenu-close-button-default-color;
   background: transparent;
   border: none;
   border-left: 1px solid $mobilemenu-divider-color;
   cursor: pointer;
   transition: fill 0.2s;
-  fill: $mobilemenu-close-button-default-color;
 
   &:focus {
     outline: none;
@@ -72,7 +72,7 @@ $local-transition-duration: 0.3s;
 
   &:focus,
   &:hover {
-    fill: $mobilemenu-close-button-hover-color;
+    color: $mobilemenu-close-button-hover-color;
   }
 }
 

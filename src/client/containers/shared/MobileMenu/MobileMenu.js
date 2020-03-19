@@ -56,7 +56,7 @@ class MobileMenu extends Component {
           <div className='mobilemenu__header'>
             <div className='mobilemenu__title'>Menu</div>
             <button type='button' className='mobilemenu__close' onClick={() => this.props.mobileMenuStore.closeMobileMenu()}>
-              9999
+              <i className='fas fa-times' />
             </button>
           </div>
           <div className='mobilemenu__content'>

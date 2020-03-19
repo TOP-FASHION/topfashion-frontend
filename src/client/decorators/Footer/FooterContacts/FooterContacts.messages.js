@@ -1,36 +1,29 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  'app.footerMenu.about-us': {
-    id: 'app.footerMenu.about-us',
-    defaultMessage: 'About us'
+  'app.footer.contacts.title': {
+    id: 'app.footer.contacts.title',
+    defaultMessage: 'Contact Us'
   },
-  'app.footerMenu.privacy-policy': {
-    id: 'app.footerMenu.privacy-policy',
-    defaultMessage: 'Privacy Policy'
+  'app.footer.contacts.text': {
+    id: 'app.footer.contacts.text',
+    defaultMessage:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat tellus.'
   },
-  'app.footerMenu.responsible-gambling': {
-    id: 'app.footerMenu.responsible-gambling',
-    defaultMessage: 'Responsible Gambling'
+  'app.footer.contacts.address': {
+    id: 'app.footer.contacts.address',
+    defaultMessage: '715 Fake Street, New York 10021 USA'
   },
-  'app.footerMenu.terms-conditions': {
-    id: 'app.footerMenu.terms-conditions',
-    defaultMessage: 'Terms & Conditions'
+  'app.footer.contacts.email': {
+    id: 'app.footer.contacts.email',
+    defaultMessage: '1212evgen@gmail.com'
   },
-  'app.footerMenu.banking': {
-    id: 'app.footerMenu.banking',
-    defaultMessage: 'Banking'
+  'app.footer.contacts.phone': {
+    id: 'app.footer.contacts.phone',
+    defaultMessage: '(800) 060-0730, (800) 060-0730'
   },
-  'app.footerMenu.faq': {
-    id: 'app.footerMenu.faq',
-    defaultMessage: 'FAQ'
-  },
-  'app.footerMenu.support': {
-    id: 'app.footerMenu.support',
-    defaultMessage: 'Contact us'
-  },
-  'app.footerMenu.affiliates': {
-    id: 'app.footerMenu.affiliates',
-    defaultMessage: 'Affiliates'
+  'app.footer.contacts.time': {
+    id: 'app.footer.contacts.time',
+    defaultMessage: 'Mon-Sat 10:00pm - 7:00pm'
   }
 })

@@ -10,107 +10,96 @@ import './ProductsCarousel.scss'
 const slickSettings = {
   'grid-4': {
     dots: false,
-    arrows: false,
+    arrows: true,
     infinite: true,
     speed: 400,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
+          slidesToShow: 4
         }
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: 3
         }
       },
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: 2
         }
       },
       {
         breakpoint: 479,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 1
         }
       }
     ]
   },
   'grid-4-sm': {
     dots: false,
-    arrows: false,
+    arrows: true,
     infinite: true,
     speed: 400,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: 3
         }
       },
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: 2
         }
       },
       {
         breakpoint: 474,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 1
         }
       }
     ]
   },
   'grid-5': {
     dots: false,
-    arrows: false,
+    arrows: true,
     infinite: true,
     speed: 400,
     slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
+          slidesToShow: 4
         }
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: 3
         }
       },
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: 2
         }
       },
       {
         breakpoint: 479,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 1
         }
       }
     ]
@@ -121,13 +110,13 @@ const slickSettings = {
     infinite: true,
     speed: 400,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 991,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToScroll: 1
         }
       },
       {
@@ -147,7 +136,8 @@ class ProductsCarousel extends Component {
     layout: PropTypes.oneOf(['grid-4', 'grid-4-sm', 'grid-5', 'horizontal']),
     rows: PropTypes.number,
     products: PropTypes.array,
-    groups: PropTypes.array,
+    group: PropTypes.string,
+    allProducts: PropTypes.bool,
     withSidebar: PropTypes.bool,
     loading: PropTypes.bool,
     onGroupClick: PropTypes.func
@@ -157,23 +147,10 @@ class ProductsCarousel extends Component {
     layout: 'grid-4',
     rows: 1,
     products: [],
-    groups: [],
+    allProducts: false,
     withSidebar: false,
-    loading: false,
-    onGroupClick: undefined
+    loading: false
   }
-
-  handleNextClick = () => {
-    if (this.slickRef) {
-      this.slickRef.slickNext()
-    }
-  };
-
-  handlePrevClick = () => {
-    if (this.slickRef) {
-      this.slickRef.slickPrev()
-    }
-  };
 
   setSlickRef = (ref) => {
     this.slickRef = ref
@@ -212,7 +189,7 @@ class ProductsCarousel extends Component {
   }
 
   render () {
-    const { products, layout, title, withSidebar, onGroupClick, groups, loading } = this.props
+    const { products, layout, title, withSidebar, group, allProducts, loading } = this.props
 
     const blockClasses = classNames('block block-products-carousel', {
       'block-products-carousel--loading': loading
@@ -226,11 +203,8 @@ class ProductsCarousel extends Component {
         <div className={containerClasses}>
           <ProductsBlockHeader
             title={title}
-            groups={groups}
-            arrows
-            onNext={this.handleNextClick}
-            onPrev={this.handlePrevClick}
-            onGroupClick={onGroupClick}
+            allProducts={allProducts}
+            group={group}
           />
 
           <div className='block-products-carousel__slider'>

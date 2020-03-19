@@ -9,7 +9,6 @@
 
 .block-header__title {
   margin-bottom: 0;
-  font-size: 20px;
 }
 
 .block-header__divider {
@@ -35,14 +34,10 @@
 .block-header__group {
   display: block;
   padding: 2px 11px 1px;
-  font-weight: inherit;
-  font-size: inherit;
-  font-family: inherit;
+  font-size: 18px;
   color: inherit;
-  background: transparent;
   border: none;
-  border-radius: 12px;
-  box-shadow: $block-header-filter-default-shadow;
+  border-radius: 4px;
   cursor: pointer;
 
   &:focus {
@@ -73,7 +68,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 27px;
+  width: 40px;
   height: 29px;
   margin: 0;
   padding: 0;
@@ -90,8 +85,8 @@
 
   &:focus,
   &:hover {
+    color: $block-header-arrow-default-bg;
     background: $block-header-arrow-hover-bg;
-    fill: $block-header-arrow-hover-color;
   }
 
   &:active {
@@ -109,14 +104,24 @@
   }
 }
 
-.block-header__arrow--left svg {
-  position: relative;
-  left: -1px;
+.block-header__arrow--left {
+  border-top-left-radius: 17px;
+  border-bottom-left-radius: 15px;
+
+  svg {
+    position: relative;
+    left: -1px;
+  }
 }
 
-.block-header__arrow--right svg {
-  position: relative;
-  left: 1px;
+.block-header__arrow--right {
+  border-top-right-radius: 17px;
+  border-bottom-right-radius: 15px;
+
+  svg {
+    position: relative;
+    left: 1px;
+  }
 }
 
 .block-header__title + .block-header__divider {

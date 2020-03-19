@@ -8,11 +8,11 @@ import { inject, observer } from 'mobx-react'
 import ProductsList from '../ProductsList'
 import Pagination from '../Pagination'
 import { Form } from 'react-bootstrap'
-import './ProductsView.scss'
 import normalizeCategory from '../../../utils/normalizeCategory'
 import { withRouter } from 'react-router'
+import './ProductsView.scss'
 
-@inject('productsStore', 'productsCategoriesStore')
+@inject('productsStore', 'productsCategoriesStore', 'mobileMenuStore')
 @observer
 class ProductsView extends Component {
   constructor (props) {
@@ -26,6 +26,7 @@ class ProductsView extends Component {
   static propTypes = {
     productsStore: PropTypes.any,
     productsCategoriesStore: PropTypes.any,
+    mobileMenuStore: PropTypes.any,
     products: PropTypes.array,
     layout: PropTypes.oneOf(['grid', 'grid-with-features', 'list']),
     grid: PropTypes.oneOf(['grid-3-sidebar', 'grid-4-sidebar', 'grid-4-full', 'grid-5-full']),
@@ -89,6 +90,10 @@ class ProductsView extends Component {
     this.state.limitPage = e.target.value
   };
 
+  openMobileFilter = () => {
+    this.props.mobileMenuStore.openMobileFilter()
+  }
+
   get viewModes () {
     const { layout: propsLayout } = this.props
     const { layout: stateLayout } = this.state
@@ -96,8 +101,7 @@ class ProductsView extends Component {
 
     const viewModes = [
       { key: 'grid', title: 'Grid', icon: <i className='fas fa-th-large' /> },
-      { key: 'grid-with-features', title: 'Grid With Features', icon: <i className='fas fa-grip-lines-vertical' /> },
-      { key: 'list', title: 'List', icon: <i className='fas fa-grip-lines' /> }
+      { key: 'list', title: 'List', icon: <i className='fas fa-equals' /> }
     ]
 
     return viewModes.map((viewMode) => {
@@ -142,8 +146,8 @@ class ProductsView extends Component {
         <div className='products-view__options'>
           <div className={this.viewOptionsClasses}>
             <div className='view-options__filters-button'>
-              <button type='button' className='filters-button'>
-                {/* <Filters16Svg className="filters-button__icon" /> */}
+              <button type='button' className='filters-button' onClick={() => this.openMobileFilter()}>
+                <i className='filters-button__icon fas fa-sliders-h' />
                 <span className='filters-button__title'>Filters</span>
                 <span className='filters-button__counter'>3</span>
               </button>

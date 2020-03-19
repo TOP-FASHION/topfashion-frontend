@@ -1,7 +1,7 @@
 @import '../../../styles/var';
 @import '../../../styles/functions';
 
-$item-padding: 14px;
+$item-padding: 25px;
 
 .nav-links {
   height: 100%;
@@ -24,8 +24,7 @@ $item-padding: 14px;
     align-items: center;
     height: 100%;
     font-weight: $nav-links-item-font-weight;
-    font-size: 15px;
-    line-height: 1;
+    font-size: 16px;
     color: $nav-links-item-default-font-color;
     text-transform: uppercase;
     letter-spacing: 0.02em;

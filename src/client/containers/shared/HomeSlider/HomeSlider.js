@@ -8,7 +8,7 @@ import './HomeSlider.scss'
 
 const slickSettings = {
   dots: true,
-  arrows: false,
+  arrows: true,
   infinite: true,
   speed: 400,
   slidesToShow: 1,

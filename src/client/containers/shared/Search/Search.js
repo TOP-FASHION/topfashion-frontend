@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 import { reaction } from 'mobx'
 import { Form } from 'react-bootstrap'
+import classNames from 'classnames'
 import Button from '../../../components/Button'
 import Input from '../../../components/Input'
 import './Search.scss'
@@ -13,7 +14,10 @@ import './Search.scss'
 class Search extends Component {
   static propTypes = {
     history: PropTypes.object,
-    productSearchStore: PropTypes.any.isRequired
+    productSearchStore: PropTypes.any.isRequired,
+    onClose: PropTypes.func,
+    className: PropTypes.string,
+    context: PropTypes.string
   }
 
   componentDidMount () {
@@ -37,9 +41,20 @@ class Search extends Component {
 
   render () {
     const { onFieldChange, form } = this.props.productSearchStore
+    const rootClasses = classNames(`search search--location--${this.props.context}`, this.props.className)
+
+    const closeButton = this.props.context !== 'mobile-header' ? '' : (
+      <button
+        type='button'
+        className='mobile-header__search-button mobile-header__search-button--close'
+        onClick={this.props.onClose}
+      >
+        <i className='fas fa-times' />
+      </button>
+    )
 
     return (
-      <div className='search'>
+      <div className={rootClasses}>
         <Form className='search__form'>
           <Input
             className='search__input'
@@ -58,6 +73,7 @@ class Search extends Component {
           >
             <i className='fas fa-search' />
           </Button>
+          {closeButton}
           <div className='search__border' />
         </Form>
       </div>

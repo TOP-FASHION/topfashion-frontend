@@ -10,8 +10,8 @@
   padding: 0;
   padding-right: 20px;
   list-style: none;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: 17px;
+  line-height: 32px;
 
   a {
     color: inherit;
@@ -22,8 +22,8 @@
   margin: 16px 0 0;
   padding: 0;
   list-style: none;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 17px;
+  line-height: 32px;
 
   a {
     color: inherit;
@@ -38,18 +38,18 @@
 .footer-contacts__icon {
   display: inline-block;
   width: 22px;
-  margin-right: 2px;
+  margin-right: 5px;
   text-align: center;
 }
 
 @media (max-width: breakpoint(sm-end)) {
   .footer-contacts {
+    margin-top: 40px;
     text-align: center;
   }
 
   .footer-contacts__title {
     margin-bottom: 16px;
-    font-size: 28px;
   }
 
   .footer-contacts__text {

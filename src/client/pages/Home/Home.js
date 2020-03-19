@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
+import { Helmet } from 'react-helmet'
 import HomeSlider from '../../containers/shared/HomeSlider'
 import BannerFeatures from '../../containers/shared/BannerFeatures'
 import ProductsCarouselTabbs from '../../containers/shared/ProductsCarouselTabbs'
@@ -63,12 +64,38 @@ class Home extends Component {
 
     return (
       <React.Fragment>
+        <Helmet>
+          <title>{`Home Page`}</title>
+        </Helmet>
         <HomeSlider />
         <BannerFeatures layout='boxed' />
-        {productsBestsellers ? <ProductsCarouselTabbs title={this.messages('bestsellers')} products={productsBestsellers} key='bestsellers' layout='grid-5' /> : null}
+        {productsBestsellers
+          ? <ProductsCarouselTabbs
+            title={this.messages('bestsellers')}
+            products={productsBestsellers}
+            group='bestsellers'
+            allProducts
+            key='bestsellers'
+            layout='grid-5'
+          /> : null
+        }
         <HomeBanner />
-        {productsSale ? <ProductsCarouselTabbs title={this.messages('sale')} products={productsSale} key='sale' layout='grid-5' /> : null}
-        {this.props.postStore.posts ? <PostsSlider title='Latest News' layout='grid-nl' posts={this.props.postStore.posts} /> : null}
+        {productsSale
+          ? <ProductsCarouselTabbs
+            title={this.messages('sale')}
+            products={productsSale}
+            group='sale'
+            allProducts
+            key='sale'
+            layout='grid-5'
+          /> : null
+        }
+        {this.props.postStore.posts
+          ? <PostsSlider
+            title='Latest News'
+            layout='grid-nl'
+            posts={this.props.postStore.posts}
+          /> : null}
         <Brands />
       </React.Fragment>
     )

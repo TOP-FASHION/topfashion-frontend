@@ -122,7 +122,7 @@ $search-input-focus-icon-hover-color: $search-input-hover-icon-hover-color !defa
 // ----------------------------------------
 // -- .nav-panel, .mobile-header
 // ----------------------------------------
-$nav-panel-bg: $accent-color !default;
+$nav-panel-bg: #f7f7f7 !default;
 $nav-panel-shadow: 0 1px rgba(#000, 0.04), inset 0 -1px rgba(#000, 0.04) !default;
 $nav-panel-stuck-shadow: 0 1px rgba(#000, 0.04), inset 0 -1px rgba(#000, 0.04),
   0 1px 20px rgba(#000, 0.15) !default;
@@ -192,7 +192,7 @@ $drop-search-button-hover-color: $light-opposite-color !default;
 $mobile-header-menu-button-border-radius: 2px !default;
 $mobile-header-menu-button-default-bg: transparent !default;
 $mobile-header-menu-button-default-color: $nav-panel-font-color !default;
-$mobile-header-menu-button-hover-bg: rgba(#fff, 0.5) !default;
+$mobile-header-menu-button-hover-bg: rgba(#ccc, 0.5) !default;
 $mobile-header-menu-button-hover-color: $mobile-header-menu-button-default-color !default;
 // search input default
 $mobile-header-search-input-default-bg: rgba(#fff, 0.5) !default;
@@ -272,7 +272,7 @@ $megamenu-secondary-link-color: #5c6b73 !default;
 // ----------------------------------------
 // -- footer
 // ----------------------------------------
-$footer-bg: transparent !default;
+$footer-bg: #f9f9f9 !default;
 $footer-border-top: 1px solid $light-divider-color !default;
 $footer-copyright-border: 1px solid $light-divider-color !default;
 // social links

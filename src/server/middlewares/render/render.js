@@ -68,8 +68,8 @@ export default ({ clientStats }) => (req, res) => {
 
   const headHtml = renderToStaticMarkup(
     <Head
-      siteName={'Сайт'}
-      siteDescription={'описание'}
+      siteName={'Top Fashion'}
+      siteDescription={'Описание'}
       stylesheets={extendedStylesheets}
     />
   )

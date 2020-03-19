@@ -18,12 +18,10 @@ class HomeBanner extends Component {
               style={{ backgroundImage: 'url("/assets/img/banners/banner-1-mobile.jpg")' }}
             />
             <div className='block-banner__title'>
-              Hundreds
-              <br className='block-banner__mobile-br' />
-              Hand Tools
+              Cocktail Dresses
             </div>
             <div className='block-banner__text'>
-              Hammers, Chisels, Universal Pliers
+              The most beautiful finds for parties, <br /> weddings and premieres
             </div>
             <div className='block-banner__button'>
               <span className='btn btn-sm btn-primary'>Shop Now</span>

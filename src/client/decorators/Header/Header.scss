@@ -70,6 +70,19 @@
   display: flex;
 }
 
+.site-header__item {
+  .dropdown__btn {
+    margin-left: 15px;
+    text-transform: uppercase;
+  }
+
+  .dropdown__btn:hover,
+  .dropdown__btn:focus {
+    color: #c92f67;
+    background: transparent;
+  }
+}
+
 .site-header__item--link {
   display: flex;
   align-items: center;

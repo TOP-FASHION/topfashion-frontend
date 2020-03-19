@@ -1,73 +1,66 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { injectIntl } from 'react-intl'
-import { Col, Container, Row } from 'reactstrap'
+import FooterNewsletter from './FooterNewsletter'
+import FooterSocial from './FooterSocial'
 import FooterContacts from './FooterContacts'
 import FooterLinks from './FooterLinks'
-import FooterNewsletter from './FooterNewsletter'
-// import setMessages from '../../utils/setMessages'
-// import messages from './Footer.messages.js'
+import setMessages from '../../utils/setMessages'
+import messages from './Footer.messages.js'
 import './Footer.scss'
 
-function Footer () {
-  const informationLinks = [
-    { title: 'About Us', url: '' },
-    { title: 'Delivery Information', url: '' },
-    { title: 'Privacy Policy', url: '' },
-    { title: 'Brands', url: '' },
-    { title: 'Contact Us', url: '' },
-    { title: 'Returns', url: '' },
-    { title: 'Site Map', url: '' }
+class Footer extends Component {
+  messages = setMessages(this, messages, 'app.footer.')
+
+  informationLinks = [
+    { title: this.messages('information.aboutUs'), url: '' },
+    { title: this.messages('information.policy'), url: '' },
+    { title: this.messages('information.brands'), url: '' },
+    { title: this.messages('information.contactUs'), url: '' },
+    { title: this.messages('information.siteMap'), url: '' }
   ]
 
-  const accountLinks = [
-    { title: 'Store Location', url: '' },
-    { title: 'Order History', url: '' },
-    { title: 'Wish List', url: '' },
-    { title: 'Newsletter', url: '' },
-    { title: 'Specials', url: '' },
-    { title: 'Gift Certificates', url: '' },
-    { title: 'Affiliate', url: '' }
+  accountLinks = [
+    { title: this.messages('myAccount.storeLocation'), url: '' },
+    { title: this.messages('myAccount.orderHistory'), url: '' },
+    { title: this.messages('myAccount.wishList'), url: '' },
+    { title: this.messages('myAccount.newsletter'), url: '' },
+    { title: this.messages('myAccount.specials'), url: '' }
   ]
 
-  return (
-    <div className='site-footer'>
-      <Container>
-        <div className='site-footer__widgets'>
-          <Row>
-            <Col xs='12' md='6' lg='4'>
-              <FooterContacts />
-            </Col>
-            <Col xs='6' md='3' lg='2'>
-              <FooterLinks title='Information' items={informationLinks} />
-            </Col>
-            <Col xs='6' md='3' lg='2'>
-              <FooterLinks title='My Account' items={accountLinks} />
-            </Col>
-            <Col xs='12' md='12' lg='4'>
-              <FooterNewsletter />
-            </Col>
-          </Row>
-        </div>
+  render () {
+    return (
+      <div className='site-footer'>
+        <div className='container'>
+          <FooterNewsletter />
+          <div className='site-footer__widgets'>
+            <div className='row'>
+              <div className='col-12 col-md-6 col-lg-4'>
+                <FooterSocial />
+              </div>
+              <div className='col-6 col-md-3 col-lg-2'>
+                <FooterLinks title={this.messages('information.title')} items={this.informationLinks} />
+              </div>
+              <div className='col-6 col-md-3 col-lg-2'>
+                <FooterLinks title={this.messages('myAccount.title')} items={this.accountLinks} />
+              </div>
+              <div className='col-12 col-md-12 col-lg-4'>
+                <FooterContacts />
+              </div>
+            </div>
+          </div>
 
-        <div className='site-footer__bottom'>
-          <div className='site-footer__copyright'>
-            Powered by
-            {' '}
-            <a href='https://reactjs.org/' rel='noopener noreferrer' target='_blank'>React</a>
-            {' '}
-            — Design by
-            {' '}
-            <a href='/' target='_blank' rel='noopener noreferrer'>
-              Me
-            </a>
-          </div>
-          <div className='site-footer__payments'>
-            <img src='/assets/img/payments.png' alt='' />
+          <div className='site-footer__bottom'>
+            <div className='site-footer__copyright'>
+              Powered by <a href='https://reactjs.org/' target='_blank'>React</a> — Design by <a href='/' target='_blank'>Me</a>
+            </div>
+            <div className='site-footer__payments'>
+              <img src='/assets/img/payments.png' alt='' />
+            </div>
           </div>
         </div>
-      </Container>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 export default injectIntl(Footer)
