@@ -22,15 +22,17 @@ class HomeSlider extends Component {
 
   slides = [
     {
-      title: 'Big choice of<br>Plumbing products',
+      title: 'Big choice of dresses',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
+      url: '/category/new',
       image_classic: '/assets/img/slides/slide-1.jpg',
       image_full: '/assets/img/slides/slide-1-full.jpg',
       image_mobile: '/assets/img/slides/slide-1-mobile.jpg'
     },
     {
-      title: 'Screwdrivers<br>Professional Tools',
+      title: 'Accessories <br> Perfume, costume jewelry',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
+      url: '/category/new',
       image_classic: '/assets/img/slides/slide-2.jpg',
       image_full: '/assets/img/slides/slide-2-full.jpg',
       image_mobile: '/assets/img/slides/slide-2-mobile.jpg'
@@ -38,6 +40,7 @@ class HomeSlider extends Component {
     {
       title: 'One more<br>Unique header',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
+      url: '/category/new',
       image_classic: '/assets/img/slides/slide-3.jpg',
       image_full: '/assets/img/slides/slide-3-full.jpg',
       image_mobile: '/assets/img/slides/slide-3-mobile.jpg'
@@ -123,7 +126,7 @@ class HomeSlider extends Component {
                 dangerouslySetInnerHTML={{ __html: slide.text }}
               />
               <div className='block-slideshow__slide-button'>
-                <Link to='/' className='btn btn-primary btn-lg'>Shop Now</Link>
+                <Link to={slide.url} className='btn btn-primary btn-lg'>Shop Now</Link>
               </div>
             </div>
           </div>

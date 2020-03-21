@@ -55,7 +55,7 @@ $local-transition-duration: 0.2s;
   margin: 0 #{-$local-title-horizontal-padding};
   padding: $local-title-vertical-padding $local-title-horizontal-padding;
   font-weight: $font-weight-bold;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 18px;
   text-align: left;
   color: inherit;
@@ -80,7 +80,7 @@ $local-transition-duration: 0.2s;
 
 .filter__arrow {
   position: absolute;
-  top: 5px + $local-title-vertical-padding;
+  top: 6px;
   right: $local-title-horizontal-padding;
   transition: transform $local-transition-duration;
 }
@@ -136,7 +136,7 @@ $local-margin: 8px;
   flex-grow: 1;
   padding: 1px 0;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 20px;
 }
 
 .filter-list__counter {

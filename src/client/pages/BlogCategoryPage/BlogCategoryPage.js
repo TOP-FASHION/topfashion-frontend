@@ -5,10 +5,7 @@ import { observer, inject } from 'mobx-react'
 import PageHeader from '../../containers/shared/PageHeader'
 import Pagination from '../../containers/shared/Pagination'
 import PostCard from '../../components/PostCard'
-// import BlogSidebar from './BlogSidebar'
 
-// data stubs
-// import posts from '../../data/blogPosts'
 import './BlogCategoryPage.scss'
 
 @inject('postStore')
@@ -51,7 +48,7 @@ class BlogCategoryPage extends Component {
   };
 
   render () {
-    const { layout, sidebarPosition } = this.props
+    const { layout } = this.props
     const { page } = this.state
 
     const breadcrumb = [
@@ -59,17 +56,6 @@ class BlogCategoryPage extends Component {
       { title: 'Blog', url: '' },
       { title: 'Latest News', url: '' }
     ]
-
-    // let sidebarStart
-    let sidebarEnd
-
-    // const sidebar = <BlogSidebar position={sidebarPosition} />;
-
-    if (sidebarPosition === 'start') {
-      // sidebarStart = <div className="col-12 col-lg-4 order-1 order-lg-0">{sidebar}</div>;
-    } else if (sidebarPosition === 'end') {
-      // sidebarEnd = <div className="col-12 col-lg-4">{sidebar}</div>;
-    }
 
     const postsList = this.props.postStore.posts ? this.props.postStore.posts.map((post) => {
       const postLayout = {
@@ -95,8 +81,7 @@ class BlogCategoryPage extends Component {
 
         <div className='container'>
           <div className='row'>
-            {/* {sidebarStart} */}
-            <div className='col-12 col-lg-8'>
+            <div className='col-12 col-lg-12'>
               <div className='block'>
                 <div className='posts-view'>
                   <div className={`posts-view__list posts-list posts-list--layout--${layout}`}>
@@ -115,7 +100,6 @@ class BlogCategoryPage extends Component {
                 </div>
               </div>
             </div>
-            {sidebarEnd}
           </div>
         </div>
       </React.Fragment>

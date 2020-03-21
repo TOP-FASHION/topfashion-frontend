@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import warn from '../utils/warn'
 
 class Fragment extends React.Component {
   static propTypes = {
@@ -10,15 +9,6 @@ class Fragment extends React.Component {
     // TODO: remove 'hide' property before major release
     hide: PropTypes.bool,
     children: PropTypes.any
-  }
-
-  componentWillMount () {
-    if (this.props.hasOwnProperty('show')) { // eslint-disable-line no-prototype-builtins
-      warn('Property `show` has been deprecated, use `hidden` instead.')
-    }
-    if (this.props.hasOwnProperty('hide')) { // eslint-disable-line no-prototype-builtins
-      warn('Property `hide` has been deprecated, use `hidden` instead.')
-    }
   }
 
   get children () {

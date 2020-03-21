@@ -7,8 +7,8 @@
 
 .footer-social__text {
   margin-bottom: 14px;
-  font-size: 17px;
-  line-height: 32px;
+  font-size: 16px;
+  line-height: 30px;
 }
 
 .footer-social__text--social {
@@ -45,25 +45,25 @@
   }
 }
 
-//.footer-social__social-link--facebook a {
-//  background: $footer-social-link-facebook-color;
-//}
-//
-//.footer-social__social-link--twitter a {
-//  background: $footer-social-link-twitter-color;
-//}
-//
-//.footer-social__social-link--youtube a {
-//  background: $footer-social-link-youtube-color;
-//}
-//
-//.footer-social__social-link--instagram a {
-//  background: $footer-social-link-instagram-color;
-//}
-//
-//.footer-social__social-link--rss a {
-//  background: $footer-social-link-rss-color;
-//}
+.footer-social__social-link--facebook a {
+  background: $footer-social-link-facebook-color;
+}
+
+.footer-social__social-link--twitter a {
+  background: $footer-social-link-twitter-color;
+}
+
+.footer-social__social-link--youtube a {
+  background: $footer-social-link-youtube-color;
+}
+
+.footer-social__social-link--instagram a {
+  background: $footer-social-link-instagram-color;
+}
+
+.footer-social__social-link--rss a {
+  background: $footer-social-link-rss-color;
+}
 
 @media (max-width: breakpoint(md-end)) {
   .footer-social {
@@ -72,7 +72,7 @@
   }
 
   .footer-social__title {
-    margin-bottom: 16px;
+    margin-bottom: 22px;
   }
 }
 

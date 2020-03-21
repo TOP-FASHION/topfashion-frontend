@@ -51,7 +51,7 @@ $local-handle-inner-size: 6px;
     width: $local-handle-inner-size;
     height: $local-handle-inner-size;
     margin: ($local-handle-size - $local-handle-inner-size) / 2;
-    background: $nouislider-handle-color;
+    background: #fff;
     border-radius: $local-handle-inner-size / 2;
     transition: transform 0.2s;
   }

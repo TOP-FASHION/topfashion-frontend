@@ -171,7 +171,7 @@ $local-transition-duration: 0.2s;
   }
 }
 
-$local-box-size: 16px;
+$local-box-size: 20px;
 $local-border-radius: 1.2px;
 $local-transition-duration: 0.15s;
 
@@ -210,8 +210,8 @@ $local-transition-duration: 0.15s;
 
 .input-check__icon {
   position: absolute;
-  top: 1px;
-  left: 0;
+  top: 2px;
+  left: 2px;
   transform: scale(0);
   transition:
     fill $local-transition-duration,
@@ -230,7 +230,7 @@ $local-transition-duration: 0.15s;
   .input-check__icon {
     transform: scale(0.7);
     transition-delay: 0s, 0s, 0s;
-    fill: $input-check-checked-icon-color;
+    color: #fff;
   }
 }
 

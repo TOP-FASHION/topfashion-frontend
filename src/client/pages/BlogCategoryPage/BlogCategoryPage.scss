@@ -65,7 +65,7 @@ $local-item-margin-horizontal: 15px;
 
 .posts-list--layout--grid {
   .posts-list__item {
-    width: calc(50% - #{$local-item-margin-horizontal * 2});
+    width: calc(33.3% - #{$local-item-margin-horizontal * 2});
   }
 
   @media (max-width: breakpoint(sm-end)) {

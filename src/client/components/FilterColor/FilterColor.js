@@ -22,7 +22,7 @@ class FilterColor extends Component {
       <div key={item} className='filter-color__item'>
         <span
           className={classNames('filter-color__check input-check-color', {
-            'input-check-color--white': item,
+            'input-check-color--white': item === 'White',
             'input-check-color--light': item
           })}
           style={{ color: item }}

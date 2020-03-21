@@ -3,33 +3,18 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import PageHeader from '../../containers/shared/PageHeader'
 import BlogPost from '../../containers/shared/BlogPost'
-// import BlogSidebar from './BlogSidebar'
 
-export default function BlogPagePost (props) {
-  const { layout, sidebarPosition } = props
+export default function BlogPostPage (props) {
+  const { layout } = props
 
   let content
 
   if (layout === 'classic') {
-    // const sidebar = <BlogSidebar position={sidebarPosition} />;
-
-    let sidebarStart
-    let sidebarEnd
-
-    if (sidebarPosition === 'start') {
-      // sidebarStart = <div className="col-12 col-lg-4 order-1 order-lg-0">{sidebar}</div>;
-    }
-    if (sidebarPosition === 'end') {
-      // sidebarEnd = <div className="col-12 col-lg-4">{sidebar}</div>;
-    }
-
     content = (
       <div className='row'>
-        {sidebarStart}
         <div className='col-12 col-lg-8'>
           <BlogPost layout={layout} />
         </div>
-        {sidebarEnd}
       </div>
     )
   } else if (layout === 'full') {
@@ -53,15 +38,13 @@ export default function BlogPagePost (props) {
       <Helmet>
         <title>{`Blog Post Page — `}</title>
       </Helmet>
-
-      <PageHeader breadcrumb={breadcrumbs} />
-
+      <PageHeader header='Post' breadcrumb={breadcrumbs} />
       <div className='container'>{content}</div>
     </React.Fragment>
   )
 }
 
-BlogPagePost.propTypes = {
+BlogPostPage.propTypes = {
   /**
    * post layout
    * one of ['classic', 'full'] (default: 'classic')
@@ -75,7 +58,7 @@ BlogPagePost.propTypes = {
   sidebarPosition: PropTypes.oneOf(['start', 'end'])
 }
 
-BlogPagePost.defaultProps = {
+BlogPostPage.defaultProps = {
   layout: 'classic',
   sidebarPosition: 'start'
 }
