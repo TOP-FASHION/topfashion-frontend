@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { injectIntl } from 'react-intl'
 import ProductsBlockHeader from '../ProductsBlockHeader'
 import ProductCard from '../ProductCard'
 import SlickWithPreventSwipeClick from '../../../components/SlickWithPreventSwipeClick'
-import { injectIntl } from 'react-intl'
 import './ProductsCarousel.scss'
 
 const slickSettings = {
@@ -87,13 +87,13 @@ const slickSettings = {
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: 4
+          slidesToShow: 3
         }
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 2
         }
       },
       {

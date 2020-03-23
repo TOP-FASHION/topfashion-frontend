@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
+import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 import setMessages from '../../../utils/setMessages'
 import { setCurrencies } from '../../../translations/currencies.messages'
 import messages from './ProductCard.messages'
-import classNames from 'classnames'
-import { Link } from 'react-router-dom'
 import Button from '../../../components/Button'
 import Rating from '../../../components/Rating'
 import './ProductCard.scss'
@@ -48,7 +48,7 @@ class ProductCard extends Component {
   get badges () {
     const product = this.props.product
     const badges = []
-    product.tags.map((item, index) =>
+    product.tags.map((item) =>
       badges.push(
         <div
           key={item.id}
@@ -166,51 +166,45 @@ class ProductCard extends Component {
 
     return (
       <div className={this.containerClasses}>
-        <button
-          onClick={() => this.props.modalStore.openProduct(product.id)}
-          className={'product-card__quickview'}
-        >
-          <i className='fas fa-expand' />
-        </button>
+        <div className='product-card__buttons'>
+          <Button
+            className={'btn__addtocart'}
+            onClick={() => this.props.cartAddProductStore.addProduct(product.id)}
+          >
+            <i className='fas fa-shopping-cart' />
+          </Button>
+          <Button
+            className={'btn__wishlist'}
+            onClick={() => (
+              this.props.loginStore.loggedIn
+                ? this.props.wishlistAddProductStore.addProduct(product.id)
+                : this.props.modalStore.openLogin()
+            )}
+          >
+            <i className='far fa-heart' />
+          </Button>
+        </div>
         {this.badges}
         {this.image}
+        {this.attributeColor}
+        <div className='product-card__quick'>
+          <button
+            onClick={() => this.props.modalStore.openProduct(product.id)}
+            className={'product-card__quickview'}
+          >
+            Quick view
+          </button>
+        </div>
         <div className='product-card__info'>
           <div className='product-card__name'>
             <Link to={`/category/product/${product.id}`}>{product.name}</Link>
           </div>
           {this.price}
           <div className='product-card__rating'>
+            <div className=' product-card__rating-legend'>{`Review: ${product.rating_count}`}</div>
             <Rating value={product.rating_count} />
-            <div className=' product-card__rating-legend'>{`(${product.rating_count})`}</div>
-            <div className='product-card__buttons'>
-              <Button
-                className={'btn btn-light btn__addtocart'}
-                onClick={() => this.props.cartAddProductStore.addProduct(product.id)}
-              >
-                <i className='fas fa-shopping-cart' />
-              </Button>
-              <Button
-                className={'btn btn-light btn__wishlist'}
-                onClick={() => (
-                  this.props.loginStore.loggedIn
-                    ? this.props.wishlistAddProductStore.addProduct(product.id)
-                    : this.props.modalStore.openLogin()
-                )}
-              >
-                <i className='far fa-heart' />
-              </Button>
-            </div>
           </div>
           {this.features}
-        </div>
-        <div className='product-card__actions'>
-          <div className='product-card__availability'>
-            Availability: <span className='text-success'>In Stock</span>
-          </div>
-          <div className='product-card__attributes'>
-            {this.attributeSize}
-            {this.attributeColor}
-          </div>
         </div>
       </div>
     )

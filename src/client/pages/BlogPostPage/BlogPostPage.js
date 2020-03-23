@@ -49,13 +49,7 @@ BlogPostPage.propTypes = {
    * post layout
    * one of ['classic', 'full'] (default: 'classic')
    */
-  layout: PropTypes.oneOf(['classic', 'full']),
-  /**
-   * sidebar position (default: 'start')
-   * one of ['start', 'end']
-   * for LTR scripts "start" is "left" and "end" is "right"
-   */
-  sidebarPosition: PropTypes.oneOf(['start', 'end'])
+  layout: PropTypes.oneOf(['classic', 'full'])
 }
 
 BlogPostPage.defaultProps = {

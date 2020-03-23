@@ -19,14 +19,15 @@ const slickSettingsThumbnails = {
     arrows: false,
     infinite: false,
     speed: 400,
+    vertical: true,
     slidesToShow: 5,
     slidesToScroll: 1,
     responsive: [
-      { breakpoint: 1199, settings: { slidesToShow: 4 } },
-      { breakpoint: 991, settings: { slidesToShow: 3 } },
-      { breakpoint: 767, settings: { slidesToShow: 5 } },
-      { breakpoint: 479, settings: { slidesToShow: 4 } },
-      { breakpoint: 379, settings: { slidesToShow: 3 } }
+      { breakpoint: 1199, settings: { slidesToShow: 4, vertical: false } },
+      { breakpoint: 991, settings: { slidesToShow: 3, vertical: false } },
+      { breakpoint: 767, settings: { slidesToShow: 5, vertical: false } },
+      { breakpoint: 479, settings: { slidesToShow: 4, vertical: false } },
+      { breakpoint: 379, settings: { slidesToShow: 3, vertical: false } }
     ]
   },
   sidebar: {
@@ -34,13 +35,14 @@ const slickSettingsThumbnails = {
     arrows: false,
     infinite: false,
     speed: 400,
+    vertical: true,
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
-      { breakpoint: 1199, settings: { slidesToShow: 3 } },
-      { breakpoint: 767, settings: { slidesToShow: 5 } },
-      { breakpoint: 479, settings: { slidesToShow: 4 } },
-      { breakpoint: 379, settings: { slidesToShow: 3 } }
+      { breakpoint: 1199, settings: { slidesToShow: 4, vertical: false } },
+      { breakpoint: 767, settings: { slidesToShow: 5, vertical: false } },
+      { breakpoint: 479, settings: { slidesToShow: 4, vertical: false } },
+      { breakpoint: 379, settings: { slidesToShow: 3, vertical: false } }
     ]
   },
   columnar: {
@@ -62,13 +64,14 @@ const slickSettingsThumbnails = {
     arrows: false,
     infinite: false,
     speed: 400,
+    vertical: true,
     slidesToShow: 5,
     slidesToScroll: 1,
     responsive: [
-      { breakpoint: 1199, settings: { slidesToShow: 4 } },
-      { breakpoint: 767, settings: { slidesToShow: 5 } },
-      { breakpoint: 479, settings: { slidesToShow: 4 } },
-      { breakpoint: 379, settings: { slidesToShow: 3 } }
+      { breakpoint: 1199, settings: { slidesToShow: 4, vertical: false } },
+      { breakpoint: 767, settings: { slidesToShow: 5, vertical: false } },
+      { breakpoint: 479, settings: { slidesToShow: 4, vertical: false } },
+      { breakpoint: 379, settings: { slidesToShow: 3, vertical: false } }
     ]
   }
 }

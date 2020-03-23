@@ -15,10 +15,6 @@ class ProductTabs extends Component {
     }
   }
 
-  static propTypes = {
-    product: PropTypes.object.isRequired
-  }
-
   setTab = (newTab) => {
     this.setState(() => ({ currentTab: newTab }))
   };
@@ -66,6 +62,7 @@ class ProductTabs extends Component {
 }
 
 ProductTabs.propTypes = {
+  product: PropTypes.object.isRequired,
   withSidebar: PropTypes.bool
 }
 

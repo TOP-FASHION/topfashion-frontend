@@ -5,7 +5,6 @@ import { observer, inject } from 'mobx-react'
 import PageHeader from '../../containers/shared/PageHeader'
 import Pagination from '../../containers/shared/Pagination'
 import PostCard from '../../components/PostCard'
-
 import './BlogCategoryPage.scss'
 
 @inject('postStore')
@@ -17,13 +16,7 @@ class BlogCategoryPage extends Component {
      * blog layout
      * one of ['classic', 'grid', 'list'] (default: 'classic')
      */
-    layout: PropTypes.oneOf(['classic', 'grid', 'list']),
-    /**
-     * sidebar position (default: 'start')
-     * one of ['start', 'end']
-     * for LTR scripts "start" is "left" and "end" is "right"
-     */
-    sidebarPosition: PropTypes.oneOf(['start', 'end'])
+    layout: PropTypes.oneOf(['classic', 'grid', 'list'])
   }
 
   static defaultProps = {
@@ -74,7 +67,7 @@ class BlogCategoryPage extends Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>{`Blog Category Page — Stroyka`}</title>
+          <title>{`Blog Category Page `}</title>
         </Helmet>
 
         <PageHeader header='Latest News' breadcrumb={breadcrumb} />

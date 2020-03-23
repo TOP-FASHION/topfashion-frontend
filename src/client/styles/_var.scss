@@ -675,7 +675,7 @@ $category-card-counter-font-color: $light-opposite-muted-color !default;
 // ----------------------------------------
 $product-gallery-item-border-radius: 2px !default;
 $product-gallery-item-default-shadow: 0 0 0 2px #f2f2f2 inset !default;
-$product-gallery-item-active-shadow: 0 0 0 2px $accent-color inset !default;
+$product-gallery-item-active-shadow: 0 0 0 2px $accent-color !default;
 
 // ----------------------------------------
 // -- .product-tabs

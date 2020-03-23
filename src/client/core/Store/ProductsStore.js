@@ -1,8 +1,10 @@
-import { decorate, observable, action } from 'mobx'
+import { decorate, observable, action, computed, toJS } from 'mobx'
 import Api from '../Api'
 
 export default class ProductsStore {
-  products
+  products = []
+
+  allLoadedProducts = []
 
   totalProducts
 
@@ -30,6 +32,11 @@ export default class ProductsStore {
   setProducts = data => {
     this.products = data
   }
+
+  get allProducts () {
+    this.allLoadedProducts = this.allLoadedProducts.concat(toJS(this.products))
+    return this.allLoadedProducts
+  }
 }
 
 decorate(ProductsStore, {
@@ -38,5 +45,6 @@ decorate(ProductsStore, {
   pagesProducts: observable,
   countProducts: observable,
   isLoadingProducts: observable,
-  setData: action
+  setData: action,
+  allProducts: computed
 })

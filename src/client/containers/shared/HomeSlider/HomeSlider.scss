@@ -20,12 +20,17 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
     padding: $local-dots-padding;
     list-style: none;
     font-size: 0;
-    background: $block-slideshow-dots-bg;
     border-radius: $local-dots-height / 2;
     transform: translateX(-50% * 1);
 
     li {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      border-radius: 100%;
     }
 
     button {
@@ -130,7 +135,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
   @media (min-width: breakpoint(md-start)) {
     .block-slideshow__body,
     .block-slideshow__slide {
-      height: 640px;
+      height: 550px;
     }
 
     .block-slideshow__slide-content {

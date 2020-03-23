@@ -21,7 +21,7 @@ function ProductTabSpecification () {
   return (
     <div className='spec'>
       <h3 className='spec__header'>Specification</h3>
-      {/*{sections}*/}
+      {/* {sections} */}
       <div className='spec__disclaimer'>
         Information on technical characteristics, the delivery set, the country of
         manufacture and the appearance of the goods is for reference only and is based on

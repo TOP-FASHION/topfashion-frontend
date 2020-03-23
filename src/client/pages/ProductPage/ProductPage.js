@@ -1,24 +1,34 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
+import { inject, observer } from 'mobx-react'
+import { toJS } from 'mobx'
 import PageHeader from '../../containers/shared/PageHeader'
 import Product from '../../containers/shared/Product'
 import ProductTabs from '../../containers/shared/ProductTabs'
-// import BlockProductsCarousel from '../blocks/BlockProductsCarousel'
-// import WidgetCategories from '../widgets/WidgetCategories'
-// import WidgetProducts from '../widgets/WidgetProducts'
-// import categories from '../../data/shopWidgetCategories'
+import ProductsCarousel from '../../containers/shared/ProductsCarousel'
+import WidgetCategories from '../../containers/shared/WidgetCategories'
+import WidgetProducts from '../../containers/shared/WidgetProducts'
+import categories from '../../data/shopWidgetCategories'
+import normalizeCategory from '../../utils/normalizeCategory'
+import './ProductPage.scss'
 
-import { inject, observer } from 'mobx-react'
-import { toJS } from 'mobx'
-
-@inject('productStore')
+@inject('productStore', 'productsStore')
 @observer
 class ProductPage extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      productsBestsellers: []
+    }
+  }
+
   static propTypes = {
     productStore: PropTypes.any,
+    productsStore: PropTypes.any,
     layout: PropTypes.oneOf(['standard', 'sidebar', 'columnar', 'quickview']),
-    // sidebarPosition: PropTypes.oneOf(['start', 'end']),
+    sidebarPosition: PropTypes.oneOf(['start', 'end']),
     match: PropTypes.shape({
       params: PropTypes.shape({
         productId: PropTypes.string
@@ -27,16 +37,27 @@ class ProductPage extends Component {
   }
 
   static defaultProps = {
-    layout: 'standard',
+    layout: 'sidebar',
     sidebarPosition: 'start'
   }
 
   componentDidMount () {
     this.props.productStore.getProduct(this.props.match.params.productId)
+    this.productsBestsellers()
   }
 
   componentWillUnmount () {
     this.lastProducts()
+  }
+
+  productsBestsellers = async () => {
+    const productsBestsellers = await this.props.productsStore.getProducts({
+      page: 1,
+      per_page: this.props.productsStore.countProducts,
+      'filter[limit]': this.props.productsStore.countProducts,
+      category: normalizeCategory('bestsellers')
+    })
+    this.setState(() => ({ productsBestsellers: productsBestsellers }))
   }
 
   lastProducts () {
@@ -80,52 +101,43 @@ class ProductPage extends Component {
     return this.props.productStore.product
   }
 
-  get layout () {
-    return this.props.layout
-  }
-
   get content () {
-    if (this.layout === 'sidebar') {
-      // const sidebar = (
-      //   <div className="shop-layout__sidebar">
-      //     <div className="block block-sidebar">
-      //       <div className="block-sidebar__item">
-      //         <WidgetCategories categories={categories} location="shop" />
-      //       </div>
-      //       <div className="block-sidebar__item d-none d-lg-block">
-      //         <WidgetProducts title="Latest Products" products={products.slice(0, 5)} />
-      //       </div>
-      //     </div>
-      //   </div>
-      // );
-      //
-      // return (
-      //   <div className="container">
-      //     <div className={`shop-layout shop-layout--sidebar--${sidebarPosition}`}>
-      //       {sidebarPosition === 'start' && sidebar}
-      //       <div className=" shop-layout__content">
-      //         <div className=" block">
-      //           <Product product={product} layout={layout} />
-      //           <ProductTabs withSidebar />
-      //         </div>
-      //
-      //         <BlockProductsCarousel title="Related Products" layout="grid-4-sm" products={products} withSidebar />
-      //       </div>
-      //       {sidebarPosition === 'end' && sidebar}
-      //     </div>
-      //   </div>
-      // );
-      return ''
+    const { layout, sidebarPosition } = this.props
+    if (layout === 'sidebar') {
+      const sidebar = (
+        <div className='shop-layout__sidebar'>
+          <div className='block block-sidebar'>
+            <div className='block-sidebar__item'>
+              <WidgetCategories categories={categories} location='shop' />
+            </div>
+            <div className='block-sidebar__item d-none d-lg-block'>
+              <WidgetProducts title='Latest Products' products={this.state.productsBestsellers.slice(0, 5)} />
+            </div>
+          </div>
+        </div>
+      )
+
+      return (
+        <div className='container'>
+          <div className={`shop-layout shop-layout--sidebar--${sidebarPosition}`}>
+            {sidebarPosition === 'start' && sidebar}
+            <div className='shop-layout__content'>
+              <Product product={this.product} layout={layout} />
+              <ProductTabs product={this.product} withSidebar />
+              <ProductsCarousel title='Related Products' layout='grid-4-sm' products={this.state.productsBestsellers} withSidebar />
+            </div>
+            {sidebarPosition === 'end' && sidebar}
+          </div>
+        </div>
+      )
     } else {
       return (
         <React.Fragment>
-          <div className='block'>
-            <div className='container'>
-              <Product product={this.product} layout={this.layout} />
-              <ProductTabs product={this.product} />
-            </div>
+          <div className='container'>
+            <Product product={this.product} layout={this.layout} />
+            <ProductTabs product={this.product} />
           </div>
-          {/* <BlockProductsCarousel title="Related Products" layout="grid-5" products={products} /> */}
+          <ProductsCarousel title='Related Products' layout='grid-5' products={this.state.productsBestsellers} />
         </React.Fragment>
       )
     }
@@ -134,6 +146,10 @@ class ProductPage extends Component {
   render () {
     return this.product ? (
       <React.Fragment>
+        <Helmet>
+          <title>{`Product Page`}</title>
+        </Helmet>
+
         <PageHeader breadcrumb={this.breadcrumb} />
         {this.content}
       </React.Fragment>

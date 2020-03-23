@@ -48,15 +48,6 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-
-          <div className='site-footer__bottom'>
-            <div className='site-footer__copyright'>
-              Powered by <a href='https://reactjs.org/' target='_blank'>React</a> — Design by <a href='/' target='_blank'>Me</a>
-            </div>
-            <div className='site-footer__payments'>
-              <img src='/assets/img/payments.png' alt='' />
-            </div>
-          </div>
         </div>
       </div>
     )

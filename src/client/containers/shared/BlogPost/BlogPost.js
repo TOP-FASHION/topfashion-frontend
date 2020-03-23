@@ -101,7 +101,7 @@ export default function BlogPost (props) {
         <h4 className='post__section-title'>Related Posts</h4>
         <div className='related-posts'>
           <div className='related-posts__list'>
-            {/*{relatedPostsList}*/}
+            {/* {relatedPostsList} */}
           </div>
         </div>
       </section>

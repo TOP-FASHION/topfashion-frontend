@@ -26,9 +26,14 @@
 ) {
   content: '';
   position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
   display: block;
+  width: 16px;
+  height: 16px;
   border: $thickness solid $color-1;
   border-top-color: $color-2;
+  border-radius: 8px;
   transition: border-color 0.1s;
   animation-name: preloader-animation;
   animation-duration: 0.5s;

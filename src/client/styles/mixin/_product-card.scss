@@ -152,7 +152,7 @@
   }
 
   .product-card__info {
-    padding: 0 24px 0;
+    padding: 10px 14px 10px;
   }
 
   .product-card__actions {
@@ -189,7 +189,7 @@
   }
 
   .product-card__info {
-    padding: 0 15px 0;
+    padding: 10px 15px 10px;
   }
 
   .product-card__actions {
@@ -201,15 +201,7 @@
   }
 
   @media (hover: hover) {
-    .product-card__attributes {
-      display: none;
-    }
-
     &:hover {
-      position: relative;
-      z-index: 3;
-      margin-bottom: -50px;
-
       .product-card__attributes {
         display: flex;
       }
@@ -229,15 +221,7 @@
   }
 
   @media (hover: hover) {
-    .product-card__attributes {
-      display: none;
-    }
-
     &:hover {
-      position: relative;
-      z-index: 3;
-      margin-bottom: -36px;
-
       .product-card__attributes {
         display: flex;
       }

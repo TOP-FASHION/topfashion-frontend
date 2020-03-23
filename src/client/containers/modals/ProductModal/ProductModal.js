@@ -23,13 +23,11 @@ class ProductModal extends Component {
   }
 
   get products () {
-    return this.props.productsStore.products
+    return this.props.productsStore.allProducts
   }
 
   get product () {
-    return this.products
-      ? this.products.find(x => x.id === this.props.modalStore.productIdModal)
-      : []
+    return this.products ? this.products.find(x => x.id === this.props.modalStore.productIdModal) : []
   }
 
   render () {
@@ -52,7 +50,7 @@ class ProductModal extends Component {
             >
               <i className='fas fa-times' />
             </button>
-            <Product product={this.product} layout='quickview' />
+            {this.product ? <Product product={this.product} layout='quickview' /> : null}
           </div>
         </Modal.Body>
       </Modal>

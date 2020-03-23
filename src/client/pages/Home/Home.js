@@ -22,7 +22,8 @@ class Home extends Component {
 
     this.state = {
       productsBestsellers: [],
-      productsSale: []
+      productsSale: [],
+      productsNew: []
     }
   }
 
@@ -36,6 +37,7 @@ class Home extends Component {
   componentDidMount () {
     this.productsBestsellers()
     this.productsSale()
+    this.productsNew()
     this.props.postStore.getPosts()
   }
 
@@ -59,16 +61,25 @@ class Home extends Component {
     this.setState(() => ({ productsSale: productsSale }))
   }
 
+  productsNew = async () => {
+    const productsNew = await this.props.productsStore.getProducts({
+      page: 1,
+      per_page: this.props.productsStore.countProducts,
+      'filter[limit]': this.props.productsStore.countProducts,
+      category: normalizeCategory('new')
+    })
+    this.setState(() => ({ productsNew: productsNew }))
+  }
+
   render () {
-    const { productsBestsellers, productsSale } = this.state
+    const { productsBestsellers, productsSale, productsNew } = this.state
 
     return (
       <React.Fragment>
         <Helmet>
-          <title>{`Home Page`}</title>
+          <title>{`Top Fashion`}</title>
         </Helmet>
         <HomeSlider />
-        <BannerFeatures layout='boxed' />
         {productsBestsellers
           ? <ProductsCarouselTabbs
             title={this.messages('bestsellers')}
@@ -87,6 +98,17 @@ class Home extends Component {
             group='sale'
             allProducts
             key='sale'
+            layout='grid-5'
+          /> : null
+        }
+        <BannerFeatures layout='boxed' />
+        {productsNew
+          ? <ProductsCarouselTabbs
+            title={this.messages('new')}
+            products={productsNew}
+            group='new'
+            allProducts
+            key='new'
             layout='grid-5'
           /> : null
         }

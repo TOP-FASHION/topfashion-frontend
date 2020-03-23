@@ -2,18 +2,41 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
-// widgets
 import WidgetFilters from '../WidgetFilters'
-// import WidgetProducts from '../../containers/WidgetProducts'
-
-// data stubs
+import WidgetProducts from '../WidgetProducts'
 import filters from '../../../data/shopFilters'
+import normalizeCategory from '../../../utils/normalizeCategory'
 import './CategorySidebar.scss'
 
-@inject('mobileMenuStore')
+@inject('mobileMenuStore', 'productsStore')
 @observer
 class CategorySidebar extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      productsBestsellers: []
+    }
+  }
+
+  static propTypes = {
+    productsStore: PropTypes.any
+  }
+
+  componentDidMount () {
+    this.productsBestsellers()
+  }
+
+  productsBestsellers = async () => {
+    const productsBestsellers = await this.props.productsStore.getProducts({
+      page: 1,
+      per_page: 4,
+      'filter[limit]': this.props.productsStore.countProducts,
+      category: normalizeCategory('bestsellers')
+    })
+    this.setState(() => ({ productsBestsellers: productsBestsellers }))
+  }
+
   close = () => {
     this.props.mobileMenuStore.closeMobileFilter()
   }
@@ -39,6 +62,11 @@ class CategorySidebar extends Component {
           <div className='block-sidebar__item'>
             <WidgetFilters title='Filters' filters={filters} offcanvas={this.props.offcanvas} />
           </div>
+          {this.props.offcanvas !== 'always' && (
+            <div className='block-sidebar__item d-none d-lg-block'>
+              <WidgetProducts title='Latest Products' products={this.state.productsBestsellers} />
+            </div>
+          )}
         </div>
       </div>
     )

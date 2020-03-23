@@ -185,8 +185,8 @@ class ProductsView extends Component {
                   name=''
                   onChange={this.filter}
                 >
-                  <option value='9'>9</option>
                   <option value='12'>12</option>
+                  <option value='16'>16</option>
                 </Form.Control>
               </div>
             </div>

@@ -10,24 +10,17 @@
 .product-gallery__featured {
   padding: 2px;
   border-radius: $product-gallery-item-border-radius;
-  box-shadow: $product-gallery-item-default-shadow;
 
   a {
     display: block;
-    padding: 20px;
     vertical-align: middle;
   }
 }
 
 .product-gallery__carousel {
-  margin-top: 16px;
-
   .slick-list {
+    max-height: 640px;
     margin: 0 -5px;
-  }
-
-  .slick-slide {
-    padding: 0 5px;
   }
 
   .slick-track {
@@ -37,15 +30,14 @@
 
 .product-gallery__carousel-item {
   display: block;
-  padding: 12px;
+  padding: 7px;
   vertical-align: middle;
   background: transparent;
   border: none;
   border-radius: $product-gallery-item-border-radius;
-  box-shadow: $product-gallery-item-default-shadow;
   cursor: pointer;
 }
 
-.product-gallery__carousel-item--active {
+.product-gallery__carousel-item--active .product-gallery__carousel-image {
   box-shadow: $product-gallery-item-active-shadow;
 }

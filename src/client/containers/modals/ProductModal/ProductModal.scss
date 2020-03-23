@@ -5,7 +5,7 @@ $local-close-button-size: 50px;
 
 .quickview {
   position: relative;
-  padding: 60px;
+  padding: 20px;
 }
 
 .quickview__close {
@@ -37,12 +37,12 @@ $local-close-button-size: 50px;
 
 @media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(lg-end)) {
   .quickview {
-    padding: 30px;
+    padding: 15px;
   }
 }
 
 @media (max-width: breakpoint(xs-end)) {
   .quickview {
-    padding: 20px;
+    padding: 10px;
   }
 }

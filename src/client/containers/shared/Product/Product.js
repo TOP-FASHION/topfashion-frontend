@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-// import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
 import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
+import Fragment from '../../../components/Fragment'
 import InputNumber from '../../../components/InputNumber'
 import ProductGallery from '../ProductGallery'
 import Rating from '../../../components/Rating'
@@ -18,9 +18,7 @@ class Product extends Component {
   static propTypes = {
     currencyStore: PropTypes.any.isRequired,
     cartAddProductStore: PropTypes.any.isRequired,
-    /** product object */
     product: PropTypes.object.isRequired,
-    /** one of ['standard', 'sidebar', 'columnar', 'quickview'] (default: 'standard') */
     layout: PropTypes.oneOf(['standard', 'sidebar', 'columnar', 'quickview'])
   }
 
@@ -48,9 +46,8 @@ class Product extends Component {
     return images
   }
 
-  render () {
-    const { product, layout } = this.props
-    const { quantity } = this.state
+  get prices () {
+    const { product } = this.props
     const { currency } = this.props.currencyStore
     let prices
 
@@ -77,6 +74,105 @@ class Product extends Component {
         currency: this.currencies(currency)
       })
     }
+
+    return prices
+  }
+
+  get brands () {
+    const brands = this.props.product.brands
+
+    return brands ? brands.map((item, index) => {
+      return (
+        <Link key={index} to='/'>{item.name}</Link>
+      )
+    }) : null
+  }
+
+  get attributeSize () {
+    const product = this.props.product
+    let attributeSize = []
+    product.attributes.map((item, index) => {
+      if (item.name === 'Size') {
+        attributeSize = item.options
+      }
+    })
+
+    const options = ['40', '41', '42', '43', '44'].map((size, index) => {
+      return (
+        <label key={index}>
+          <input type='radio' name='material' disabled={['42', '43', '44'].includes(size) ? 'disabled' : null} />
+          <span>{size}</span>
+        </label>
+      )
+    })
+
+    return attributeSize.length ? (
+      <Fragment>
+        <div className='product__option-label'>Size</div>
+        <div className='input-radio-label'>
+          <div className='input-radio-label__list'>
+            {options}
+          </div>
+        </div>
+      </Fragment>
+    ) : null
+  }
+
+  get attributeColor () {
+    const product = this.props.product
+    const attributeColor = []
+    product.attributes.map((item) => {
+      if (item.name === 'Color') {
+        item.options.map((item, index) => {
+          attributeColor.push(
+            <label
+              key={index}
+              className='input-radio-color__item input-radio-color__item'
+              style={{ color: item }}
+              data-toggle='tooltip'
+              title='White'
+            >
+              <input type='radio' name='color' />
+              <span />
+            </label>
+          )
+        })
+      }
+    })
+
+    return attributeColor.length ? (
+      <Fragment>
+        <div className='product__option-label'>Color</div>
+        <div className='input-radio-color'>
+          <div className='input-radio-color__list'>
+            {attributeColor}
+          </div>
+        </div>
+      </Fragment>
+    ) : null
+  }
+
+  get categories () {
+    const categories = this.props.product.categories
+
+    const tags = categories ? categories.map((item, index) => {
+      return (
+        <Link key={index} to={`/category/${item.name.toLowerCase()}`}>{item.name}</Link>
+      )
+    }) : null
+
+    return (
+      <div className='product__tags tags'>
+        <div className='tags__list'>
+          {tags}
+        </div>
+      </div>
+    )
+  }
+
+  render () {
+    const { product, layout } = this.props
+    const { quantity } = this.state
 
     return (
       <div className={`product product--layout--${layout}`}>
@@ -120,82 +216,21 @@ class Product extends Component {
                 <span className='text-success'>{product.stock_status}</span>
               </li>
               <li>
-                Brand:
-                <Link to='/'>Wakita</Link>
+                Brand: {this.brands}
               </li>
-              <li>SKU: 83690/32</li>
+              <li>SKU: {this.props.product.sku}</li>
             </ul>
           </div>
 
           <div className='product__sidebar'>
-            <div className='product__availability'>
-              Availability: <span className='text-success'>In Stock</span>
-            </div>
-
-            <div className='product__prices'>{prices}</div>
+            <div className='product__prices'>{this.prices}</div>
 
             <form className='product__options'>
               <div className='form-group product__option'>
-                <div className='product__option-label'>Color</div>
-                <div className='input-radio-color'>
-                  <div className='input-radio-color__list'>
-                    <label
-                      className='input-radio-color__item input-radio-color__item--white'
-                      style={{ color: '#fff' }}
-                      data-toggle='tooltip'
-                      title='White'
-                    >
-                      <input type='radio' name='color' />
-                      <span />
-                    </label>
-                    <label
-                      className='input-radio-color__item'
-                      style={{ color: '#ffd333' }}
-                      data-toggle='tooltip'
-                      title='Yellow'
-                    >
-                      <input type='radio' name='color' />
-                      <span />
-                    </label>
-                    <label
-                      className='input-radio-color__item'
-                      style={{ color: '#ff4040' }}
-                      data-toggle='tooltip'
-                      title='Red'
-                    >
-                      <input type='radio' name='color' />
-                      <span />
-                    </label>
-                    <label
-                      className='input-radio-color__item input-radio-color__item--disabled'
-                      style={{ color: '#4080ff' }}
-                      data-toggle='tooltip'
-                      title='Blue'
-                    >
-                      <input type='radio' name='color' disabled />
-                      <span />
-                    </label>
-                  </div>
-                </div>
+                {this.attributeColor}
               </div>
               <div className='form-group product__option'>
-                <div className='product__option-label'>Material</div>
-                <div className='input-radio-label'>
-                  <div className='input-radio-label__list'>
-                    <label>
-                      <input type='radio' name='material' />
-                      <span>Metal</span>
-                    </label>
-                    <label>
-                      <input type='radio' name='material' />
-                      <span>Wood</span>
-                    </label>
-                    <label>
-                      <input type='radio' name='material' disabled />
-                      <span>Plastic</span>
-                    </label>
-                  </div>
-                </div>
+                {this.attributeSize}
               </div>
               <div className='form-group product__option'>
                 <label
@@ -241,13 +276,7 @@ class Product extends Component {
           </div>
 
           <div className='product__footer'>
-            <div className='product__tags tags'>
-              <div className='tags__list'>
-                <Link to='/'>Mounts</Link>
-                <Link to='/'>Electrodes</Link>
-                <Link to='/'>Chainsaws</Link>
-              </div>
-            </div>
+            {this.categories}
 
             <div className='product__share-links share-links'>
               <ul className='share-links__list'>

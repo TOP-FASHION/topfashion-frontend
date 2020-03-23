@@ -7,14 +7,43 @@ import './FooterNewsletter.scss'
 class FooterNewsletter extends Component {
   messages = setMessages(this, messages, 'app.footer.newsletter.')
 
+  socialLinks = [
+    {
+      key: 'facebook',
+      url: '/',
+      iconClass: 'fab fa-facebook-f'
+    },
+    {
+      key: 'twitter',
+      url: '/',
+      iconClass: 'fab fa-twitter'
+    },
+    {
+      key: 'youtube',
+      url: '/',
+      iconClass: 'fab fa-youtube'
+    },
+    {
+      key: 'instagram',
+      url: '/',
+      iconClass: 'fab fa-instagram'
+    }
+  ];
+
+  get socialLinksList () {
+    return this.socialLinks.map((item) => (
+      <li key={item.key} className={`footer-social__social-link footer-social__social-link--${item.key}`}>
+        <a href={item.url} target='_blank' rel='noopener noreferrer'>
+          <i className={item.iconClass} />
+        </a>
+      </li>
+    ))
+  }
+
   render () {
     return (
       <div className='site-footer__widget footer-newsletter'>
         <div className='row'>
-          <div className='col-xs-12 col-md-6'>
-            <h4>{this.messages('title')}</h4>
-            <p>{this.messages('templates')}</p>
-          </div>
           <div className='col-xs-12 col-md-6'>
             <form action='' className='footer-newsletter__form'>
               <label className='sr-only' htmlFor='footer-newsletter-address'>{this.messages('email')}</label>
@@ -26,6 +55,11 @@ class FooterNewsletter extends Component {
               />
               <button type='submit' className='footer-newsletter__form-button btn btn-lg btn-primary'>{this.messages('subscribe')}</button>
             </form>
+          </div>
+          <div className='col-xs-12 col-md-6'>
+            <ul className='footer-social__social-links'>
+              {this.socialLinksList}
+            </ul>
           </div>
         </div>
       </div>
