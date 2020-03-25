@@ -11,6 +11,7 @@
   },
   "include": [
     "src/client/components/FilterCategories",
+    "src/client/containers/shared/WidgetCategories",
     "src/client/shared/NavLinks",
     "types"
   ]

@@ -11,35 +11,27 @@ import './WidgetProducts.scss'
 @observer
 class WidgetProducts extends Component {
   static propTypes = {
-    /**
-     * widget title
-     */
     title: PropTypes.node,
-    /**
-     * array of product objects
-     */
-    products: PropTypes.array,
     currencyStore: PropTypes.any.isRequired
-  }
-
-  static defaultProps = {
-    products: []
   }
 
   currencies = setCurrencies(this)
 
   render () {
-    const { title, products } = this.props
+    const { title } = this.props
     const { currency } = this.props.currencyStore
 
-    const productsList = products.map((product) => {
+    let lastProducts = window.localStorage.getItem('lastProducts')
+    lastProducts = JSON.parse(lastProducts)
+
+    const productsList = lastProducts.map((product) => {
       let image
       let price
 
       if (product.images && product.images.length > 0) {
         image = (
           <div className='widget-products__image'>
-            <Link to='/'><img src={product.images[0].src} alt='' /></Link>
+            <Link to={`/category/product/${product.id}`}><img src={product.images[0].src} alt='' /></Link>
           </div>
         )
       }
@@ -78,7 +70,7 @@ class WidgetProducts extends Component {
           {image}
           <div className='widget-products__info'>
             <div className='widget-products__name'>
-              <Link to='/'>{product.name}</Link>
+              <Link to={`/category/product/${product.id}`}>{product.name}</Link>
             </div>
             <div className='widget-products__prices'>
               {price}

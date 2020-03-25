@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { inject, observer } from 'mobx-react'
-import { toJS } from 'mobx'
+import { reaction, toJS } from 'mobx'
 import PageHeader from '../../containers/shared/PageHeader'
 import Product from '../../containers/shared/Product'
 import ProductTabs from '../../containers/shared/ProductTabs'
@@ -42,7 +42,13 @@ class ProductPage extends Component {
   }
 
   componentDidMount () {
-    this.props.productStore.getProduct(this.props.match.params.productId)
+    reaction(() => this.props.match.params.productId, async () => {
+      try {
+        this.props.productStore.getProduct(this.props.match.params.productId)
+      } catch {
+        console.log('error')
+      }
+    }, { fireImmediately: true })
     this.productsBestsellers()
   }
 
@@ -111,7 +117,7 @@ class ProductPage extends Component {
               <WidgetCategories categories={categories} location='shop' />
             </div>
             <div className='block-sidebar__item d-none d-lg-block'>
-              <WidgetProducts title='Latest Products' products={this.state.productsBestsellers.slice(0, 5)} />
+              <WidgetProducts title='Latest Products' />
             </div>
           </div>
         </div>

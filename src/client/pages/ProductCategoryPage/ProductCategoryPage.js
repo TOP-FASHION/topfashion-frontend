@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 import { reaction } from 'mobx'
 import { inject, observer } from 'mobx-react'
 import PageHeader from '../../containers/shared/PageHeader'
 import ProductsView from '../../containers/shared/ProductsView'
 import CategorySidebar from '../../containers/shared/CategorySidebar'
-// import BlockProductsCarousel from '../blocks/BlockProductsCarousel'
 // import WidgetCategories from '../widgets/WidgetCategories'
-// import WidgetProducts from '../widgets/WidgetProducts'
-// import categories from '../../data/shopWidgetCategories'
 import normalizeCategory from '../../utils/normalizeCategory'
 import normalizeParentCategory from '../../utils/normalizeParentCategory'
 import './ProductCategoryPage.scss'
@@ -113,6 +110,9 @@ class ProductCategoryPage extends Component {
   render () {
     return (
       <React.Fragment>
+        <Helmet>
+          <title>{`Category Page`}</title>
+        </Helmet>
         <PageHeader header='Category' breadcrumb={this.breadcrumb} />
         {this.content}
       </React.Fragment>

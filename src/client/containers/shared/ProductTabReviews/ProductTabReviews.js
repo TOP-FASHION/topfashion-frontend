@@ -93,7 +93,7 @@ class ProductTabReviews extends Component {
           </div>
         </div>
 
-        <form className='reviews-view__form'>
+        <div className='reviews-view__form'>
           <h3 className='reviews-view__header'>Write A Review</h3>
           <div className='row'>
             <div className='col-12 col-lg-9 col-xl-8'>
@@ -129,7 +129,7 @@ class ProductTabReviews extends Component {
               </Form>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     )
   }

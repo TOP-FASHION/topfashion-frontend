@@ -12,19 +12,19 @@ class Footer extends Component {
   messages = setMessages(this, messages, 'app.footer.')
 
   informationLinks = [
-    { title: this.messages('information.aboutUs'), url: '' },
-    { title: this.messages('information.policy'), url: '' },
-    { title: this.messages('information.brands'), url: '' },
-    { title: this.messages('information.contactUs'), url: '' },
-    { title: this.messages('information.siteMap'), url: '' }
+    { title: this.messages('information.aboutUs'), url: '/about-us' },
+    { title: this.messages('information.policy'), url: '/policy' },
+    { title: this.messages('information.brands'), url: '/brands' },
+    { title: this.messages('information.contactUs'), url: '/contact-us' },
+    { title: this.messages('information.siteMap'), url: '/site-map' }
   ]
 
   accountLinks = [
-    { title: this.messages('myAccount.storeLocation'), url: '' },
-    { title: this.messages('myAccount.orderHistory'), url: '' },
-    { title: this.messages('myAccount.wishList'), url: '' },
-    { title: this.messages('myAccount.newsletter'), url: '' },
-    { title: this.messages('myAccount.specials'), url: '' }
+    { title: this.messages('myAccount.storeLocation'), url: '/store-location' },
+    { title: this.messages('myAccount.orderHistory'), url: '/order-history' },
+    { title: this.messages('myAccount.wishList'), url: '/wishList' },
+    { title: this.messages('myAccount.newsletter'), url: '/newsletter' },
+    { title: this.messages('myAccount.specials'), url: '/specials' }
   ]
 
   render () {

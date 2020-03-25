@@ -63,7 +63,7 @@ class MainDecorator extends Component {
               <Route path='/search' component={SearchPage} exact />
               <Route path='/promotions-news' render={(props) => (<BlogCategoryPage {...props} layout='grid' />)} exact />
               <Route path='/promotions-news/post' render={(props) => (<BlogPostPage {...props} layout='full' />)} exact />
-              {['about', 'contact-us'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
+              {['about-us', 'contact-us'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
               <Route component={NotFound} />
             </SwitchLang>
           </Group>

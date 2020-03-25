@@ -5,38 +5,11 @@ import PropTypes from 'prop-types'
 import WidgetFilters from '../WidgetFilters'
 import WidgetProducts from '../WidgetProducts'
 import filters from '../../../data/shopFilters'
-import normalizeCategory from '../../../utils/normalizeCategory'
 import './CategorySidebar.scss'
 
-@inject('mobileMenuStore', 'productsStore')
+@inject('mobileMenuStore')
 @observer
 class CategorySidebar extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      productsBestsellers: []
-    }
-  }
-
-  static propTypes = {
-    productsStore: PropTypes.any
-  }
-
-  componentDidMount () {
-    this.productsBestsellers()
-  }
-
-  productsBestsellers = async () => {
-    const productsBestsellers = await this.props.productsStore.getProducts({
-      page: 1,
-      per_page: 4,
-      'filter[limit]': this.props.productsStore.countProducts,
-      category: normalizeCategory('bestsellers')
-    })
-    this.setState(() => ({ productsBestsellers: productsBestsellers }))
-  }
-
   close = () => {
     this.props.mobileMenuStore.closeMobileFilter()
   }
@@ -64,7 +37,7 @@ class CategorySidebar extends Component {
           </div>
           {this.props.offcanvas !== 'always' && (
             <div className='block-sidebar__item d-none d-lg-block'>
-              <WidgetProducts title='Latest Products' products={this.state.productsBestsellers} />
+              <WidgetProducts title='Latest Products' />
             </div>
           )}
         </div>
