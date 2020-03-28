@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import MobileLinks from '../MobileLinks'
 import './MobileMenu.scss'
 
-import mobileMenuLinks from '../../../data/mobileMenu'
+import menuLinks from '../../../settings/menuLinks'
 
 @inject('mobileMenuStore')
 @observer
@@ -60,7 +60,7 @@ class MobileMenu extends Component {
             </button>
           </div>
           <div className='mobilemenu__content'>
-            <MobileLinks links={mobileMenuLinks} onItemClick={handleItemClick} />
+            <MobileLinks links={menuLinks} onItemClick={handleItemClick} />
           </div>
         </div>
       </div>

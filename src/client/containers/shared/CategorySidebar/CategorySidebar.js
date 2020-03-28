@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import WidgetFilters from '../WidgetFilters'
 import WidgetProducts from '../WidgetProducts'
-import filters from '../../../data/shopFilters'
+import filters from '../../../settings/shopFilters'
 import './CategorySidebar.scss'
 
 @inject('mobileMenuStore')

@@ -17,7 +17,7 @@ function WidgetFilters (props) {
     if (filter.type === 'categories') {
       filterView = <FilterCategories />
     } else if (filter.type === 'checkbox') {
-      filterView = <FilterCheckbox items={filter.options.items} />
+      filterView = <FilterCheckbox />
     } else if (filter.type === 'color') {
       filterView = <FilterColor />
     } else if (filter.type === 'price') {
@@ -76,17 +76,8 @@ function WidgetFilters (props) {
 }
 
 WidgetFilters.propTypes = {
-  /**
-   * widget title
-   */
   title: PropTypes.node,
-  /**
-   * array of filters
-   */
   filters: PropTypes.array,
-  /**
-   * indicates when sidebar bar should be off canvas
-   */
   offcanvas: PropTypes.oneOf(['always', 'mobile'])
 }
 

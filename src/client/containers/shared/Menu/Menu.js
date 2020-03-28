@@ -33,7 +33,7 @@ class Menu extends Component {
         link = (
           <AppLink
             {...item.props}
-            to={`/category/${item.label.toLowerCase()}`}
+            to={`/${item.url}`}
             onClick={() => onClick(item)}
           >
             {content}

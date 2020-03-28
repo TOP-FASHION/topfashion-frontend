@@ -19,7 +19,7 @@ type MyType = {
         count: string;
       }
     ]
-  };
+  }
 }
 
 type IFilterCategoryProp = {

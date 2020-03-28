@@ -9,7 +9,6 @@ import ProductTabs from '../../containers/shared/ProductTabs'
 import ProductsCarousel from '../../containers/shared/ProductsCarousel'
 import WidgetCategories from '../../containers/shared/WidgetCategories'
 import WidgetProducts from '../../containers/shared/WidgetProducts'
-import categories from '../../data/shopWidgetCategories'
 import normalizeCategory from '../../utils/normalizeCategory'
 import './ProductPage.scss'
 
@@ -114,7 +113,7 @@ class ProductPage extends Component {
         <div className='shop-layout__sidebar'>
           <div className='block block-sidebar'>
             <div className='block-sidebar__item'>
-              <WidgetCategories categories={categories} location='shop' />
+              <WidgetCategories location='shop' />
             </div>
             <div className='block-sidebar__item d-none d-lg-block'>
               <WidgetProducts title='Latest Products' />

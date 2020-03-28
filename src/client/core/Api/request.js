@@ -1,7 +1,7 @@
 import axios from 'axios'
 import isPlainObject from 'lodash/isPlainObject'
 import { Base64 } from 'js-base64'
-import Config from '../../config'
+import woocommerceApiKeys from '../../settings/woocommerceApiKeys'
 
 /**
  * Requests a URL, returning a promise.
@@ -19,7 +19,7 @@ export default async function request (url, options) {
     const newOptions = { ...defaultOptions, ...options }
 
     newOptions.headers = {
-      Authorization: `Basic ${Base64.encode(`${Config.WooCommerce.API_KEY}:${Config.WooCommerce.API_SECRET}`)}`
+      Authorization: `Basic ${Base64.encode(`${woocommerceApiKeys.API_KEY}:${woocommerceApiKeys.API_SECRET}`)}`
     }
     if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
       if (typeof window !== 'undefined' && !(newOptions.data instanceof window.FormData)) {
