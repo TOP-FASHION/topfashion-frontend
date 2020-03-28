@@ -9,8 +9,8 @@ $local-item-margin: 0;
   font-size: 14px;
   line-height: 14px;
   color: $topbar-font-color;
-  background: #f1efef;
-  border-bottom: 1px solid #e9e8ea;
+  background: $light-opposite-muted-color;
+  border-bottom: 1px solid $light-divider-color;
   box-shadow: $topbar-shadow;
 }
 

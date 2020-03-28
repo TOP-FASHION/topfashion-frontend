@@ -30,11 +30,11 @@
   justify-content: center;
   width: 42px;
   padding: 0;
-  color: #ccc;
+  color: $light-divider-color;
   background: transparent;
   border: none;
   cursor: pointer;
-  fill: #bfbfbf;
+  fill: $light-opposite-muted-color;
 
   &:hover,
   &:focus {
@@ -49,8 +49,8 @@
   padding: 0 17px;
   font-size: 15px;
   color: $search-input-default-font-color;
-  background: #fff;
-  border: 1px solid #dbdbdb;
+  background: $light-color;
+  border: 1px solid $light-divider-color;
   border-radius: 30px;
   transition: color 0.15s;
 

@@ -57,7 +57,7 @@
 }
 
 .page-item.active .page-link {
-  color: #fff;
+  color: $light-color;
   background: $pagination-current-bg;
   cursor: default;
 }

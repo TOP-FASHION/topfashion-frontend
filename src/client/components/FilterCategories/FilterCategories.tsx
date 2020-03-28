@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CATEGORIES } from '../../queries/categories'
 import classNames from 'classnames'
+import './FilterCategories.scss'
 
 type MyType = {
   id: number;

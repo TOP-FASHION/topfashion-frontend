@@ -1,0 +1,69 @@
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Circe';
+  src: url('/assets/fonts/Circe/Circe-Regular.woff2');
+  src:
+    local('Circe'),
+    url('/assets/fonts/Circe/Circe-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 100;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat Hairline'),
+    local('Montserrat-Hairline'),
+    url('/assets/fonts/montserrat/montserrathairline.woff2') format('woff2'),
+    url('/assets/fonts/montserrat/montserrathairline.woff') format('woff'),
+    url('/assets/fonts/montserrat/montserrathairline.ttf') format('truetype');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 300;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat Light'),
+    local('Montserrat-Light'),
+    url('/assets/fonts/montserrat/montserratlight.woff2') format('woff2'),
+    url('/assets/fonts/montserrat/montserratlight.woff') format('woff'),
+    url('/assets/fonts/montserrat/montserratlight.ttf') format('truetype');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat'),
+    local('Montserrat-Regular'),
+    url('/assets/fonts/montserrat/montserrat.woff2') format('woff2'),
+    url('/assets/fonts/montserrat/montserrat.woff') format('woff'),
+    url('/assets/fonts/montserrat/montserrat.ttf') format('truetype');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat Bold'),
+    local('Montserrat-Bold'),
+    url('/assets/fonts/montserrat/montserratbold.woff2') format('woff2'),
+    url('/assets/fonts/montserrat/montserratbold.woff') format('woff'),
+    url('/assets/fonts/montserrat/montserratbold.ttf') format('truetype');
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 900;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat Black'),
+    local('Montserrat-Black'),
+    url('/assets/fonts/montserrat/montserratblack.woff2') format('woff2'),
+    url('/assets/fonts/montserrat/montserratblack.woff') format('woff'),
+    url('/assets/fonts/montserrat/montserratblack.ttf') format('truetype');
+}

@@ -88,7 +88,7 @@
 }
 
 .product-card__color-item--White {
-  border: 1px solid #ccc;
+  border: 1px solid $light-divider-color;
 }
 
 .product-card__buttons {
@@ -107,7 +107,7 @@
     height: 35px !important;
     padding: 5px !important;
     font-size: 16px !important;
-    color: #696868;
+    color: $light-opposite-muted-color;
     background: transparent;
     border: none;
     cursor: pointer;

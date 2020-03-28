@@ -46,7 +46,7 @@ $local-open-transition-duration: 0.2s;
   padding: 0 5px;
   font-weight: $font-weight-bold;
   font-size: 10px;
-  color: #fff;
+  color: $light-color;
 
   &::after {
     content: attr(data-count);
@@ -61,9 +61,9 @@ $local-open-transition-duration: 0.2s;
     font-size: 14px;
     line-height: 26px;
     text-align: center;
-    color: #fff;
+    color: $light-color;
     text-decoration: none;
-    background: #c92f67;
+    background: $accent-color;
     border-radius: 50%;
   }
 }
@@ -90,7 +90,7 @@ $local-open-transition-duration: 0.2s;
 }
 
 .indicator__area > i:hover {
-  color: #c92f67;
+  color: $accent-color;
 }
 
 .indicator--trigger--click.indicator--opened,

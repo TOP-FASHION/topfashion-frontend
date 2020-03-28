@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../../utils/setMessages'
 import messages from './DropdownLanguage.messages'
 import Dropdown from '../../../components/Dropdown'
-import { inject, observer } from 'mobx-react'
 
 @inject('changeLanguageStore')
 @observer

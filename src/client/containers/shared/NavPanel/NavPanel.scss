@@ -4,7 +4,7 @@
 .nav-panel {
   height: $nav-panel-height;
   color: $nav-panel-font-color;
-  border-bottom: 1px solid #e9e8ea;
+  border-bottom: 1px solid $light-opposite-muted-color;
   box-shadow: $nav-panel-shadow;
 }
 
