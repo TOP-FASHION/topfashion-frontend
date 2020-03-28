@@ -21,17 +21,15 @@ class Search extends Component {
   }
 
   componentDidMount () {
-    reaction(() => this.props.productSearchStore.productBySearch, async (data) => {
-      try {
-        if (data.length > 0) {
+    reaction(
+      () => this.props.productSearchStore.productBySearch,
+      data => {
+        if (data) {
           this.props.history.push(`/search?name=${this.props.productSearchStore.form.fields.search.value}`)
-        } else if (data.length === 0) {
-          console.log('ytn')
         }
-      } catch {
-        console.log('error')
-      }
-    }, { fireImmediately: true })
+      },
+      { fireImmediately: true }
+    )
   }
 
   search = () => {
