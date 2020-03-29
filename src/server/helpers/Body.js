@@ -21,10 +21,10 @@ class Body extends React.Component {
     const { className, scripts, state, noScriptText, html } = this.props
 
     return (
-      <body className={`initializing ${className}`.trim()}>
+      <body className={`initializing preloading ${className}`.trim()}>
         <noscript>{noScriptText}</noscript>
         <div id='root' dangerouslySetInnerHTML={{ __html: html }} />
-        <div id='site-preloader' />
+        <div id='preloader' />
         <AppScripts list={scripts} state={state} />
         <script
           dangerouslySetInnerHTML={{
