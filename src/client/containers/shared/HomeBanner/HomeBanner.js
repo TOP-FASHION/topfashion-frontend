@@ -7,7 +7,7 @@ class HomeBanner extends Component {
   render () {
     return (
       <div className='block block-banner'>
-        <div className='container'>
+        <div className='container-fluid'>
           <Link to='/' className='block-banner__body'>
             <div
               className='block-banner__image block-banner__image--desktop'

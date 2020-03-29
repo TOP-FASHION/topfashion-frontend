@@ -17,7 +17,7 @@ class BannerFeatures extends Component {
 
     return (
       <div className={`block block-features block-features--layout--${layout}`}>
-        <div className='container'>
+        <div className='container-fluid'>
           <div className='block-features__list'>
             <div className='block-features__item'>
               <div className='block-features__icon'>

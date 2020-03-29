@@ -30,7 +30,7 @@ class Footer extends Component {
   render () {
     return (
       <div className='site-footer'>
-        <div className='container'>
+        <div className='container-fluid'>
           <FooterNewsletter />
           <div className='site-footer__widgets'>
             <div className='row'>

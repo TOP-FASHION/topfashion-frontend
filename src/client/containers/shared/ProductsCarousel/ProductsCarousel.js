@@ -201,7 +201,7 @@ class ProductsCarousel extends Component {
       'block-products-carousel--loading': loading
     })
     const containerClasses = classNames({
-      container: !withSidebar
+      'container-fluid': !withSidebar
     })
 
     return products ? (

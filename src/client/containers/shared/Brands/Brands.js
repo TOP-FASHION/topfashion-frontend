@@ -61,7 +61,7 @@ export default function BlockBrands () {
 
   return (
     <div className='block block-brands'>
-      <div className='container'>
+      <div className='container-fluid'>
         <div className='block-brands__slider'>
           <SlickWithPreventSwipeClick {...slickSettings}>
             {brandsList}

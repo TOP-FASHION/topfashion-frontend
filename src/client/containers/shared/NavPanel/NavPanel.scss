@@ -2,10 +2,10 @@
 @import '../../../styles/functions';
 
 .nav-panel {
-  height: $nav-panel-height;
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
   color: $nav-panel-font-color;
-  border-bottom: 1px solid $light-opposite-muted-color;
-  box-shadow: $nav-panel-shadow;
 }
 
 .nav-panel--stuck {
@@ -17,6 +17,7 @@
 }
 
 .nav-panel__container {
+  width: 100%;
   height: 100%;
 }
 
@@ -42,6 +43,7 @@
 }
 
 .nav-panel__nav-links {
+  width: 100%;
   margin-right: 18px;
 }
 

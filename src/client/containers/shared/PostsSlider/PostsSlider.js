@@ -72,7 +72,7 @@ class PostsSlider extends Component {
     const postsList = posts.map((post) => <PostCard key={post.id} post={post} />)
     return (
       <div className={`block block-posts block-posts--layout--${layout}`} data-layout={layout}>
-        <div className='container'>
+        <div className='container-fluid'>
           <ProductsBlockHeader
             arrows
             title={title}

@@ -12,7 +12,11 @@ export default class MobileMenuStore {
   @observable isOpenMobileFilter
 
   @action openMobileMenu () {
-    this.isOpenMobileMenu = true
+    if (this.isOpenMobileMenu) {
+      this.isOpenMobileMenu = false
+    } else {
+      this.isOpenMobileMenu = true
+    }
     return Promise.resolve()
   }
 

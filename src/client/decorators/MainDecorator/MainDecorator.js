@@ -7,7 +7,6 @@ import { SwitchLang } from '../routing'
 // components
 import Group from '../../components/Group'
 import MobileMenu from '../../containers/shared/MobileMenu'
-import MobileHeader from '../MobileHeader'
 import Header from '../Header'
 import Footer from '../Footer'
 import RedirectToHome from '../../containers/shared/RedirectToHome'
@@ -44,10 +43,7 @@ class MainDecorator extends Component {
     return (
       <Group id='main'>
         <Group className='main-decorator__wrapper'>
-          <header className='site__header d-lg-none'>
-            <MobileHeader />
-          </header>
-          <header className='site__header d-lg-block d-none'>
+          <header className='site__header'>
             <Header />
           </header>
           <MobileMenu />

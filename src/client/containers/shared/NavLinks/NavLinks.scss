@@ -1,7 +1,7 @@
 @import '../../../styles/var';
 @import '../../../styles/functions';
 
-$item-padding: 25px;
+$item-padding: 15px;
 
 .nav-links {
   height: 100%;
@@ -10,6 +10,7 @@ $item-padding: 25px;
 .nav-links__list {
   z-index: 10;
   display: flex;
+  justify-content: space-around;
   height: inherit;
   margin: 0;
   padding: 0;
@@ -20,14 +21,25 @@ $item-padding: 25px;
   height: 100%;
 
   & > a {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
-    font-weight: $nav-links-item-font-weight;
     font-size: 16px;
     color: $nav-links-item-default-font-color;
     text-transform: uppercase;
     letter-spacing: 0.02em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: $light-opposite-color;
+      transition: width 0.2s ease-in-out;
+    }
 
     span {
       background: $nav-links-item-default-bg;
@@ -52,9 +64,13 @@ $item-padding: 25px;
   &:hover > a {
     color: $nav-links-item-hover-font-color;
 
+    &::before {
+      width: 100%;
+    }
+
     span {
+      text-shadow: 0 0 1px $light-opposite-color;
       background: $nav-links-item-hover-bg;
-      box-shadow: $nav-links-item-hover-shadow;
     }
 
     svg {

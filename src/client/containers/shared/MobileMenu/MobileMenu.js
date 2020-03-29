@@ -51,14 +51,7 @@ class MobileMenu extends Component {
 
     return (
       <div className={classes}>
-        <div className='mobilemenu__backdrop' onClick={() => this.props.mobileMenuStore.closeMobileMenu()} />
         <div className='mobilemenu__body'>
-          <div className='mobilemenu__header'>
-            <div className='mobilemenu__title'>Menu</div>
-            <button type='button' className='mobilemenu__close' onClick={() => this.props.mobileMenuStore.closeMobileMenu()}>
-              <i className='fas fa-times' />
-            </button>
-          </div>
           <div className='mobilemenu__content'>
             <MobileLinks links={menuLinks} onItemClick={handleItemClick} />
           </div>

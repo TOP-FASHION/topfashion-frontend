@@ -1,4 +1,5 @@
 @import '../../../styles/var';
+@import '../../../styles/functions';
 
 $local-transition-duration: 0.3s;
 
@@ -11,6 +12,10 @@ $local-transition-duration: 0.3s;
   height: 100%;
   visibility: hidden;
   transition: visibility 0s $local-transition-duration;
+
+  @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    top: 105px;
+  }
 }
 
 .mobilemenu__backdrop {
@@ -78,7 +83,6 @@ $local-transition-duration: 0.3s;
 
 .mobilemenu__content {
   flex-grow: 1;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 

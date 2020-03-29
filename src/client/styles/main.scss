@@ -29,17 +29,17 @@ body {
   &.preloading #preloader::before {
     content: '';
     position: fixed;
-    width: $preloading-width;
-    height: $preloading-height;
     top: 45%;
     left: 50%;
+    z-index: 100000;
+    box-sizing: border-box;
+    width: $preloading-width;
+    height: $preloading-height;
     margin-top: 60px;
     margin-left: -($preloading-width/2);
     background: #eee;
     border-left: 0 solid $accent-color;
-    z-index: 100000;
-    animation: preloading $preloading-time cubic-bezier(0.5, 0.5, 0.5, 1.000) both;
-    box-sizing: border-box;
+    animation: preloading $preloading-time cubic-bezier(0.5, 0.5, 0.5, 1) both;
   }
 }
 
@@ -47,6 +47,7 @@ body {
   0% {
     border-left: 0 solid $accent-color;
   }
+
   100% {
     border-left: $preloading-width solid $accent-color;
   }
@@ -60,4 +61,8 @@ body {
   .container {
     max-width: 1400px;
   }
+}
+
+.container-fluid {
+  max-width: 1400px;
 }

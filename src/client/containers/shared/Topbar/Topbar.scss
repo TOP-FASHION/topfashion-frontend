@@ -45,3 +45,12 @@ $local-item-margin: 0;
 .topbar__item--link + .topbar__item--link {
   margin-left: 16px;
 }
+
+.topbar__call-phone {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 18px;
+  color: $light-opposite-color;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}

@@ -5,8 +5,8 @@
 // ----------------------------------------
    // light
    $light-color:                    #fff                  !default;
-   $light-opposite-color:           #3d464d               !default;
-   $light-opposite-muted-color:     #999                  !default;
+   $light-opposite-color:           #242424               !default;
+   $light-opposite-muted-color:     #fafafa               !default;
    $light-opposite-alt-color:       #6c757d               !default;
    $light-divider-color:            #ebebeb               !default;
    // dark
@@ -73,7 +73,7 @@
    // ----------------------------------------
    // -- .topbar
    // ----------------------------------------
-      $topbar-height:        32px    !default;
+      $topbar-height:        35px    !default;
       $topbar-bg:            #f7f7f7 !default;
       $topbar-shadow:        none    !default;
       $topbar-border-bottom: none    !default;

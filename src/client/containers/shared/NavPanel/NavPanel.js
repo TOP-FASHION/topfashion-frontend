@@ -30,7 +30,7 @@ class NavPanel extends Component {
 
     return (
       <div className='nav-panel'>
-        <div className='nav-panel__container container'>
+        <div className='nav-panel__container'>
           <div className='nav-panel__row'>
             {logo}
             <div className='nav-panel__nav-links nav-links'>

@@ -128,6 +128,10 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 }
 
 .block-slideshow--layout--full {
+  .container-fluid {
+    max-width: 100%;
+  }
+
   .colCustom {
     padding: 0;
   }
