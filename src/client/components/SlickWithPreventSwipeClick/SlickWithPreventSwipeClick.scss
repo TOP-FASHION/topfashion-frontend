@@ -8,17 +8,19 @@
   top: 50%;
   z-index: 999;
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   font-size: 0;
   line-height: 0;
   color: transparent;
-  background: transparent;
+  background: $light-divider-color;
+  border-radius: 100%;
   border: none;
   outline: none;
   transform: translate(0, -50%);
   cursor: pointer;
+  opacity: 0.3;
 }
 
 .slick-prev:hover,
@@ -26,8 +28,8 @@
 .slick-next:hover,
 .slick-next:focus {
   color: transparent;
-  background: transparent;
   outline: none;
+  opacity: 1;
 }
 
 .slick-prev:hover::before,
@@ -45,10 +47,10 @@
 .slick-prev::before,
 .slick-next::before {
   font-weight: 900;
-  font-size: 30px;
+  font-size: 16px;
   line-height: 1;
   font-family: 'Font Awesome 5 Free';
-  color: $accent-color;
+  color: $light-opposite-alt-color;
   opacity: 0.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
