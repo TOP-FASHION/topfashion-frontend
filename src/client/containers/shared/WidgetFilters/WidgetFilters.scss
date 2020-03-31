@@ -58,13 +58,13 @@ $local-expand-transition-duration: 0.3s;
   line-height: 18px;
   text-align: left;
   color: inherit;
+  text-transform: uppercase;
   background: $filter-title-default-bg;
   border: none;
   border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.2s, fill 0.2s;
   fill: $filter-title-default-arrow-color;
-  text-transform: uppercase;
 
   &:focus,
   &:hover {
@@ -101,12 +101,6 @@ $local-expand-transition-duration: 0.3s;
   }
 }
 
-.filter--opened {
-  .filter__title::after {
-    transform: rotateZ(90deg);
-  }
-}
-
 .filter__arrow {
   position: absolute;
   top: 6px;
@@ -131,6 +125,10 @@ $local-expand-transition-duration: 0.3s;
 }
 
 .filter--opened {
+  .filter__title::after {
+    transform: rotateZ(90deg);
+  }
+
   .filter__body {
     height: auto;
     visibility: visible;

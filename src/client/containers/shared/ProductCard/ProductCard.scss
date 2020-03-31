@@ -123,17 +123,17 @@
 
 .product-card__quick {
   position: relative;
+  bottom: 0;
   width: 100%;
   margin-top: -30px;
   margin-bottom: 0;
   text-align: center;
-  transform: translateY(100%);
-  opacity: .7;
-  filter: alpha(Opacity=70);
-  cursor: pointer;
-  bottom: 0;
   color: #000;
-  transition: transform .2s ease-in-out,color .2s ease-in-out;
+  transform: translateY(100%);
+  cursor: pointer;
+  opacity: 0.7;
+  filter: alpha(Opacity=70);
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .product-card__quickview {

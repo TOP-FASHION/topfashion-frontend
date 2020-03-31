@@ -2,21 +2,21 @@
 @import '../../../styles/functions';
 
 .block-header {
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 18px;
-  position: relative;
 }
 
 .block-header__title {
-  margin-bottom: 0;
   width: 100%;
+  margin-bottom: 0;
   text-align: center;
   text-transform: uppercase;
 
   a {
-    color: inherit;
     font-weight: 200;
+    color: inherit;
   }
 }
 
@@ -70,9 +70,9 @@
 }
 
 .block-header__arrows-list {
-  display: flex;
   position: absolute;
   right: 0;
+  display: flex;
 }
 
 .block-header__arrow {
