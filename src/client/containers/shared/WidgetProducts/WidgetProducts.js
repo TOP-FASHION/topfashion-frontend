@@ -80,14 +80,14 @@ class WidgetProducts extends Component {
       )
     })
 
-    return (
+    return lastProducts ? (
       <div className='widget-products widget'>
         <h4 className='widget__title'>{title}</h4>
         <div className='widget-products__list'>
           {productsList}
         </div>
       </div>
-    )
+    ) : null
   }
 }
 

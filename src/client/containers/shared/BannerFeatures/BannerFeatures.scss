@@ -52,8 +52,6 @@
 .block-features--layout--boxed {
   $local-margin: 14px;
 
-  margin-top: -($block-margin-bottom - $local-margin);
-
   .block-features__list {
     border: none;
     border-top: 2px solid $block-features-boxed-bg;

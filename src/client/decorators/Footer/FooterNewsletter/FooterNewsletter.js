@@ -43,23 +43,25 @@ class FooterNewsletter extends Component {
   render () {
     return (
       <div className='site-footer__widget footer-newsletter'>
-        <div className='row'>
-          <div className='col-xs-12 col-md-6'>
-            <form action='' className='footer-newsletter__form'>
-              <label className='sr-only' htmlFor='footer-newsletter-address'>{this.messages('email')}</label>
-              <input
-                type='text'
-                className='footer-newsletter__form-input form-control form-control-lg'
-                id='footer-newsletter-address'
-                placeholder={this.messages('email')}
-              />
-              <button type='submit' className='footer-newsletter__form-button btn btn-lg btn-primary'>{this.messages('subscribe')}</button>
-            </form>
-          </div>
-          <div className='col-xs-12 col-md-6'>
-            <ul className='footer-social__social-links'>
-              {this.socialLinksList}
-            </ul>
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-xs-12 col-md-6'>
+              <form action='' className='footer-newsletter__form'>
+                <label className='sr-only' htmlFor='footer-newsletter-address'>{this.messages('email')}</label>
+                <input
+                  type='text'
+                  className='footer-newsletter__form-input form-control form-control-lg'
+                  id='footer-newsletter-address'
+                  placeholder={this.messages('email')}
+                />
+                <button type='submit' className='footer-newsletter__form-button btn btn-lg btn-primary'>{this.messages('subscribe')}</button>
+              </form>
+            </div>
+            <div className='col-xs-12 col-md-6'>
+              <ul className='footer-social__social-links'>
+                {this.socialLinksList}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

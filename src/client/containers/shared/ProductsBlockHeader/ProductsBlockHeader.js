@@ -9,7 +9,6 @@ class ProductsBlockHeader extends Component {
     title: PropTypes.string,
     arrows: PropTypes.bool,
     group: PropTypes.string,
-    allProducts: PropTypes.bool,
     onNext: PropTypes.func,
     onPrev: PropTypes.func
   }
@@ -27,22 +26,12 @@ class ProductsBlockHeader extends Component {
     ) : null
   }
 
-  get groupsList () {
-    return this.props.allProducts ? (
-      <ul className='block-header__groups-list'>
-        <li>
-          <Link className='block-header__group' to={`/category/${this.props.group}`}>All products</Link>
-        </li>
-      </ul>
-    ) : null
-  }
-
   render () {
     return (
       <div className='block-header'>
-        <h3 className='block-header__title'>{this.props.title}</h3>
-        <div className='block-header__divider' />
-        {this.groupsList}
+        <h3 className='block-header__title'>
+          <Link className='link' to={`/category/${this.props.group}`}>{this.props.title}</Link>
+        </h3>
         {this.arrows}
       </div>
     )

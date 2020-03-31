@@ -46,7 +46,7 @@ class BlogCategoryPage extends Component {
 
     const breadcrumb = [
       { title: 'Home', url: '' },
-      { title: 'Blog', url: '' },
+      { title: 'Promotions', url: '' },
       { title: 'Latest News', url: '' }
     ]
 

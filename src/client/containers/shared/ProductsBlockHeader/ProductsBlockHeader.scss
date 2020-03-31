@@ -5,10 +5,19 @@
   display: flex;
   align-items: center;
   margin-bottom: 18px;
+  position: relative;
 }
 
 .block-header__title {
   margin-bottom: 0;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+
+  a {
+    color: inherit;
+    font-weight: 200;
+  }
 }
 
 .block-header__divider {
@@ -62,6 +71,8 @@
 
 .block-header__arrows-list {
   display: flex;
+  position: absolute;
+  right: 0;
 }
 
 .block-header__arrow {

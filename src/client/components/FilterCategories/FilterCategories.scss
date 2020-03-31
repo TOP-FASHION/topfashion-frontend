@@ -25,7 +25,7 @@ $local-item-padding-left: 25px;
 
   & > a {
     flex-grow: 1;
-    padding-right: 10px;
+    padding: 3px 0;
   }
 }
 
@@ -35,6 +35,7 @@ $local-item-padding-left: 25px;
 
 .filter-categories__item--current > a {
   font-weight: $font-weight-bold;
+  color: $accent-color;
 }
 
 .filter-categories__item--child {
@@ -60,5 +61,4 @@ $local-item-padding-left: 25px;
   font-weight: $font-weight-normal;
   font-size: 12px;
   line-height: 12px;
-  color: $card-font-muted-color;
 }

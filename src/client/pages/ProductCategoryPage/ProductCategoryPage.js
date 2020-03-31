@@ -66,7 +66,7 @@ class ProductCategoryPage extends Component {
 
     if (this.props.columns > 4) {
       content = (
-        <div className='container'>
+        <div className='container-fluid'>
           <div className='block'>
             <ProductsView
               products={products}
@@ -85,7 +85,7 @@ class ProductCategoryPage extends Component {
       )
 
       content = (
-        <div className='container'>
+        <div className='container-fluid'>
           <div className={`shop-layout shop-layout--sidebar--${this.props.sidebarPosition}`}>
             {this.props.sidebarPosition === 'start' && sidebar}
             <div className='shop-layout__content'>

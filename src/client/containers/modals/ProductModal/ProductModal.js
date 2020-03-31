@@ -37,7 +37,7 @@ class ProductModal extends Component {
       <Modal
         centered
         size='xl'
-        className='login-modal'
+        className='product-modal'
         show={openModalProduct}
         onHide={this.close}
       >

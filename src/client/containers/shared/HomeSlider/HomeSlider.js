@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import Fragment from '../../../components/Fragment'
 import departmentsAria from '../../../utils/departmentsArea'
 import SlickWithPreventSwipeClick from '../../../components/SlickWithPreventSwipeClick'
 import './HomeSlider.scss'
@@ -22,12 +23,12 @@ class HomeSlider extends Component {
 
   slides = [
     {
-      title: 'Big choice of dresses',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-      url: '/category/new',
-      image_classic: '/assets/img/slides/slide-1.jpg',
-      image_full: '/assets/img/slides/slide-1-full.jpg',
-      image_mobile: '/assets/img/slides/slide-1-mobile.jpg'
+      title: '',
+      text: '',
+      url: '',
+      image_classic: '/assets/img/slides/slide-2.jpg',
+      image_full: '/assets/img/slides/slide-4.jpg',
+      image_mobile: '/assets/img/slides/slide-2-mobile.jpg'
     },
     {
       title: 'Accessories <br> Perfume, costume jewelry',
@@ -125,9 +126,11 @@ class HomeSlider extends Component {
                 className='block-slideshow__slide-text'
                 dangerouslySetInnerHTML={{ __html: slide.text }}
               />
-              <div className='block-slideshow__slide-button'>
-                <Link to={slide.url} className='btn btn-primary btn-lg'>Shop Now</Link>
-              </div>
+              <Fragment hidden={!slide.url}>
+                <div className='block-slideshow__slide-button'>
+                  <Link to={slide.url} className='btn btn-primary btn-lg'>Shop Now</Link>
+                </div>
+              </Fragment>
             </div>
           </div>
         </div>

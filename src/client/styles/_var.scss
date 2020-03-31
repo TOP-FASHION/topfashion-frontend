@@ -422,7 +422,7 @@
       // primary
          // default
          $btn-primary-bg-color:          $accent-color                 !default;
-         $btn-primary-font-color:        $accent-opposite-color        !default;
+         $btn-primary-font-color:        $light-color                  !default;
          $btn-primary-icon-color:        $btn-primary-font-color       !default;
          // hover
          $btn-primary-hover-bg-color:    $dark-color                   !default;
@@ -767,7 +767,7 @@
    // ----------------------------------------
    // -- .block
    // ----------------------------------------
-      $block-margin-bottom:    46px    !default;
+      $block-margin-bottom:    45px    !default;
       $block-margin-bottom-md: 30px    !default;
       $block-highlighted-bg:   #f9f9f9 !default;
 

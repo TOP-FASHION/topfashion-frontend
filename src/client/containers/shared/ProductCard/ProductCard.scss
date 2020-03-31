@@ -12,17 +12,16 @@
   background: $product-card-bg;
 
   &:hover::before {
-    box-shadow: $product-card-hover-shadow;
     transition-duration: 0s;
+  }
+
+  &:hover .product-card__quick {
+    transform: translateY(0);
+    opacity: 1;
   }
 
   &:hover .product-card__quickview {
     background: $product-card-quickview-default-bg;
-    opacity: 1;
-
-    &:not(.product-card__quickview--preload) {
-      color: $product-card-quickview-default-color;
-    }
 
     &:not(.product-card__quickview--preload):hover {
       color: $product-card-quickview-hover-color;
@@ -46,7 +45,6 @@
     width: 100%;
     height: 100%;
     border-radius: $product-card-border-radius;
-    box-shadow: $product-card-default-shadow;
     transition: box-shadow 0.2s;
     pointer-events: none;
   }
@@ -55,6 +53,7 @@
 .product-card__image {
   flex-shrink: 0;
   padding: 18px;
+  overflow: hidden;
 
   a {
     position: relative;
@@ -69,7 +68,7 @@
   }
 
   img.product-card__image--optional {
-    display: none;
+    opacity: 0;
   }
 }
 
@@ -94,7 +93,6 @@
 .product-card__buttons {
   position: absolute;
   right: 0;
-  right: -40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -106,7 +104,7 @@
     width: 35px;
     height: 35px !important;
     padding: 5px !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
     color: $light-opposite-muted-color;
     background: transparent;
     border: none;
@@ -126,15 +124,22 @@
 .product-card__quick {
   position: relative;
   width: 100%;
-  margin-top: -75px;
-  margin-bottom: 45px;
+  margin-top: -30px;
+  margin-bottom: 0;
   text-align: center;
+  transform: translateY(100%);
+  opacity: .7;
+  filter: alpha(Opacity=70);
+  cursor: pointer;
+  bottom: 0;
+  color: #000;
+  transition: transform .2s ease-in-out,color .2s ease-in-out;
 }
 
 .product-card__quickview {
   position: relative;
   z-index: 2;
-  width: 120px;
+  width: 100%;
   height: 30px;
   padding: 7px;
   font-size: 16px;
@@ -144,7 +149,6 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  opacity: 0;
   transition: opacity 0.5s ease-out;
 
   &:focus {
@@ -196,7 +200,7 @@
 }
 
 .product-card__prices {
-  margin-top: 14px;
+  margin-top: 10px;
   padding-bottom: 5px;
   font-weight: $font-weight-bold;
   font-size: 18px;
@@ -204,15 +208,10 @@
   color: $price-color;
 }
 
-.product-card__new-price {
-  color: $price-new-color;
-}
-
 .product-card__old-price {
   font-weight: $font-weight-normal;
   font-size: 16px;
   color: $price-old-color;
-  text-decoration: line-through;
 }
 
 .product-card__features-list {

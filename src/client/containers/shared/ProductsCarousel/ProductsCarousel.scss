@@ -4,11 +4,11 @@
 @import '../../../styles/mixin/preloader';
 
 .block-products-carousel {
-  padding-top: 25px;
+  //padding-top: 25px;
 
-  .slick-track {
-    padding-bottom: 25px;
-  }
+  //.slick-track {
+  //  padding-bottom: 25px;
+  //}
 
   .slick-list {
     margin: 0 -5px;
@@ -19,7 +19,7 @@
   }
 
   .slick-slide {
-    padding: 0 5px;
+    padding: 0 10px;
   }
 
   .slick-prev,
@@ -44,7 +44,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 56px;
+  bottom: 0;
   left: 0;
   z-index: 2;
   background: $block-products-carousel-preloader-bg;

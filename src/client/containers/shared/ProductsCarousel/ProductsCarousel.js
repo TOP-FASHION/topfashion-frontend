@@ -81,19 +81,19 @@ const slickSettings = {
       {
         breakpoint: 1429,
         settings: {
-          slidesToShow: 4
+          slidesToShow: 5
         }
       },
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 4
         }
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 2
+          slidesToShow: 3
         }
       },
       {
@@ -195,7 +195,7 @@ class ProductsCarousel extends Component {
   }
 
   render () {
-    const { products, layout, title, withSidebar, group, allProducts, loading } = this.props
+    const { products, layout, title, withSidebar, group, loading } = this.props
 
     const blockClasses = classNames('block block-products-carousel', {
       'block-products-carousel--loading': loading
@@ -209,7 +209,6 @@ class ProductsCarousel extends Component {
         <div className={containerClasses}>
           <ProductsBlockHeader
             title={title}
-            allProducts={allProducts}
             group={group}
           />
 

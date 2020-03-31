@@ -8,7 +8,6 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
 .block-slideshow {
   position: relative;
-  margin-bottom: $block-margin-bottom;
   padding-top: 0;
 
   .slick-dots {
@@ -139,7 +138,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
   @media (min-width: breakpoint(md-start)) {
     .block-slideshow__body,
     .block-slideshow__slide {
-      height: 550px;
+      height: 650px;
     }
 
     .block-slideshow__slide-content {

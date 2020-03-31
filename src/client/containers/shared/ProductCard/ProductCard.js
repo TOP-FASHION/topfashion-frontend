@@ -72,6 +72,14 @@ class ProductCard extends Component {
           <img className='product-card__image--primary' src={product.images[0].src} alt='' />
           <img className='product-card__image--optional' src={product.images[1].src} alt='' />
         </Link>
+        <div className='product-card__quick'>
+          <button
+            onClick={() => this.props.modalStore.openProduct(product.id)}
+            className={'product-card__quickview'}
+          >
+            Quick view
+          </button>
+        </div>
       </div>
     ) : (
       <div className='product-card__image'>
@@ -167,12 +175,14 @@ class ProductCard extends Component {
     return (
       <div className={this.containerClasses}>
         <div className='product-card__buttons'>
+          {/*
           <Button
             className={'btn__addtocart'}
             onClick={() => this.props.cartAddProductStore.addProduct(product.id)}
           >
             <i className='fas fa-shopping-cart' />
           </Button>
+          */}
           <Button
             className={'btn__wishlist'}
             onClick={() => (
@@ -187,23 +197,17 @@ class ProductCard extends Component {
         {this.badges}
         {this.image}
         {this.attributeColor}
-        <div className='product-card__quick'>
-          <button
-            onClick={() => this.props.modalStore.openProduct(product.id)}
-            className={'product-card__quickview'}
-          >
-            Quick view
-          </button>
-        </div>
         <div className='product-card__info'>
           <div className='product-card__name'>
             <Link to={`/category/product/${product.id}`}>{product.name}</Link>
           </div>
           {this.price}
+          {/*
           <div className='product-card__rating'>
             <div className=' product-card__rating-legend'>{`Review: ${product.rating_count}`}</div>
             <Rating value={product.rating_count} />
           </div>
+          */}
           {this.features}
         </div>
       </div>

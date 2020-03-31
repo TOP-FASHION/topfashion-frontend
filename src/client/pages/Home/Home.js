@@ -6,8 +6,10 @@ import HomeSlider from '../../containers/shared/HomeSlider'
 import BannerFeatures from '../../containers/shared/BannerFeatures'
 import ProductsCarouselTabbs from '../../containers/shared/ProductsCarouselTabbs'
 import HomeBanner from '../../containers/shared/HomeBanner'
+import HomeBannerSlider from '../../containers/shared/HomeBannerSlider'
 import Brands from '../../containers/shared/Brands'
 import PostsSlider from '../../containers/shared/PostsSlider'
+import AboutCompany from '../../components/AboutCompany'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../utils/setMessages'
 import messages from './Home.messages'
@@ -21,9 +23,7 @@ class Home extends Component {
     super(props)
 
     this.state = {
-      productsBestsellers: [],
-      productsSale: [],
-      productsNew: []
+      productsBestsellers: []
     }
   }
 
@@ -36,8 +36,6 @@ class Home extends Component {
 
   componentDidMount () {
     this.productsBestsellers()
-    this.productsSale()
-    this.productsNew()
     this.props.postStore.getPosts()
   }
 
@@ -51,28 +49,8 @@ class Home extends Component {
     this.setState(() => ({ productsBestsellers: productsBestsellers }))
   }
 
-  productsSale = async () => {
-    const productsSale = await this.props.productsStore.getProducts({
-      page: 1,
-      per_page: this.props.productsStore.countProducts,
-      'filter[limit]': this.props.productsStore.countProducts,
-      category: normalizeCategory('sale')
-    })
-    this.setState(() => ({ productsSale: productsSale }))
-  }
-
-  productsNew = async () => {
-    const productsNew = await this.props.productsStore.getProducts({
-      page: 1,
-      per_page: this.props.productsStore.countProducts,
-      'filter[limit]': this.props.productsStore.countProducts,
-      category: normalizeCategory('new')
-    })
-    this.setState(() => ({ productsNew: productsNew }))
-  }
-
   render () {
-    const { productsBestsellers, productsSale, productsNew } = this.state
+    const { productsBestsellers } = this.state
 
     return (
       <React.Fragment>
@@ -80,6 +58,8 @@ class Home extends Component {
           <title>{`Top Fashion`}</title>
         </Helmet>
         <HomeSlider />
+        <HomeBannerSlider />
+        <HomeBanner />
         {productsBestsellers
           ? <ProductsCarouselTabbs
             title={this.messages('bestsellers')}
@@ -90,35 +70,14 @@ class Home extends Component {
             layout='grid-5'
           /> : null
         }
-        <HomeBanner />
-        {productsSale
-          ? <ProductsCarouselTabbs
-            title={this.messages('sale')}
-            products={productsSale}
-            group='sale'
-            allProducts
-            key='sale'
-            layout='grid-5'
-          /> : null
-        }
         <BannerFeatures layout='boxed' />
-        {productsNew
-          ? <ProductsCarouselTabbs
-            title={this.messages('new')}
-            products={productsNew}
-            group='new'
-            allProducts
-            key='new'
-            layout='grid-5'
-          /> : null
-        }
         {this.props.postStore.posts
           ? <PostsSlider
             title='Latest News'
             layout='grid-nl'
             posts={this.props.postStore.posts}
           /> : null}
-        <Brands />
+        <AboutCompany />
       </React.Fragment>
     )
   }

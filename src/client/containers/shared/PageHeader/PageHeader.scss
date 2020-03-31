@@ -2,7 +2,7 @@
 @import '../../../styles/functions';
 
 .page-header__container {
-  padding-bottom: 32px;
+  padding-bottom: 25px;
 }
 
 .page-header__breadcrumb {
@@ -10,10 +10,13 @@
 }
 
 .page-header__title {
-  padding-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
 
   h1 {
     margin-bottom: 0;
+    font-weight: 400;
   }
 }
 

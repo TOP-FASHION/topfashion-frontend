@@ -40,7 +40,6 @@ function WidgetFilters (props) {
             <div className='filter filter--opened' ref={setItemRef}>
               <button type='button' className='filter__title' onClick={toggle}>
                 {filter.name}
-                <i className='fas fa-angle-down filter__arrow' />
               </button>
               <div className='filter__body' ref={setContentRef}>
                 <div className='filter__container'>
@@ -65,11 +64,6 @@ function WidgetFilters (props) {
 
       <div className='widget-filters__list'>
         {filtersList}
-      </div>
-
-      <div className='widget-filters__actions d-flex'>
-        <button type='button' className='btn btn-primary'>Filter</button>
-        <button type='button' className='btn btn-secondary ml-2'>Reset</button>
       </div>
     </div>
   )

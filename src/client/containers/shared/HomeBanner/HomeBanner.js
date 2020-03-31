@@ -9,23 +9,10 @@ class HomeBanner extends Component {
       <div className='block block-banner'>
         <div className='container-fluid'>
           <Link to='/' className='block-banner__body'>
-            <div
-              className='block-banner__image block-banner__image--desktop'
-              style={{ backgroundImage: 'url("/assets/img/banners/banner-1.jpg")' }}
-            />
-            <div
-              className='block-banner__image block-banner__image--mobile'
-              style={{ backgroundImage: 'url("/assets/img/banners/banner-1-mobile.jpg")' }}
-            />
-            <div className='block-banner__title'>
-              Cocktail Dresses
-            </div>
-            <div className='block-banner__text'>
-              The most beautiful finds for parties, <br /> weddings and premieres
-            </div>
-            <div className='block-banner__button'>
-              <span className='btn btn-sm btn-primary'>Shop Now</span>
-            </div>
+            <picture>
+              <source className='block-banner__image block-banner__image--mobile' srcSet='/assets/img/banners/banner-1-mobile.jpg' media='(max-width: 550px)' />
+              <img className='block-banner__image block-banner__image--desktop' src='/assets/img/banners/banner-1.jpg' />
+            </picture>
           </Link>
         </div>
       </div>

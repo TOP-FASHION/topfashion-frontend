@@ -48,5 +48,29 @@ export default defineMessages({
   'app.footer.myAccount.specials': {
     id: 'app.footer.myAccount.specials',
     defaultMessage: 'Specials'
+  },
+  'app.footer.catalog.title': {
+    id: 'app.footer.catalog.title',
+    defaultMessage: 'Catalog'
+  },
+  'app.footer.catalog.new': {
+    id: 'app.footer.catalog.new',
+    defaultMessage: 'News'
+  },
+  'app.footer.catalog.woman': {
+    id: 'app.footer.catalog.woman',
+    defaultMessage: 'Woman'
+  },
+  'app.footer.catalog.man': {
+    id: 'app.footer.catalog.man',
+    defaultMessage: 'Man'
+  },
+  'app.footer.catalog.perfume': {
+    id: 'app.footer.catalog.perfume',
+    defaultMessage: 'Perfume'
+  },
+  'app.footer.catalog.accessource': {
+    id: 'app.footer.catalog.accessource',
+    defaultMessage: 'Accessource'
   }
 })
