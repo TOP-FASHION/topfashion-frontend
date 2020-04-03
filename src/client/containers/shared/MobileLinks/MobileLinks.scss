@@ -33,9 +33,8 @@ $local-expand-transition-duration: 0.3s;
     outline: none;
   }
 
-  &,
-  &:hover {
-    color: inherit;
+  &.active {
+    color: $accent-color;
   }
 }
 

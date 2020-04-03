@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AppLink from '../../../components/AppLink'
+import { NavLink } from 'react-router-dom'
 import Collapse from '../../../components/Collapse'
 import './MobileLinks.scss'
 
@@ -45,13 +45,13 @@ function MobileLinks (props) {
 
             if (link.type === 'link') {
               linkOrButton = (
-                <AppLink
+                <NavLink
                   to={link.url}
                   className='mobile-links__item-link'
                   onClick={() => handleItemClick(link)}
                 >
                   {link.label}
-                </AppLink>
+                </NavLink>
               )
             } else {
               linkOrButton = (
