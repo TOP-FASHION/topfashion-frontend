@@ -61,6 +61,7 @@ $item-padding: 15px;
     }
   }
 
+  a.active,
   &:hover > a {
     color: $nav-links-item-hover-font-color;
 

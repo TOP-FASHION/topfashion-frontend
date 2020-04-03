@@ -6,6 +6,6 @@ export default function normalizeParentCategory (id) {
   } else if ([18, 19].includes(normalizeCategory(id))) {
     return 'man'
   } else {
-    return ''
+    return undefined
   }
 }

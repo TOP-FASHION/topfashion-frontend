@@ -4,7 +4,7 @@ import ProductCard from '../ProductCard'
 
 class ProductsList extends Component {
   static propTypes = {
-    products: PropTypes.any
+    products: PropTypes.array
   }
 
   render () {

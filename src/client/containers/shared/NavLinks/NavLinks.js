@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import AppLink from '../../../components/AppLink'
+import { NavLink } from 'react-router-dom'
 import MegaMenu from '../MegaMenu'
 import Menu from '../Menu'
 import { injectIntl } from 'react-intl'
@@ -62,12 +62,12 @@ class NavLinks extends Component {
 
         return (
           <li key={index} className={classes} onMouseEnter={handleMouseEnter}>
-            <AppLink to={item.url} {...item.props}>
+            <NavLink to={item.url} {...item.props}>
               <span>
                 {item.label}
                 {arrow}
               </span>
-            </AppLink>
+            </NavLink>
             {submenu}
           </li>
         )

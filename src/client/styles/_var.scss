@@ -411,10 +411,10 @@
    // ----------------------------------------
    // -- .breadcrumb
    // ----------------------------------------
-      $breadcrumb-link-default-color: inherit                !default;
-      $breadcrumb-link-hover-color:   $link-hover-color      !default;
-      $breadcrumb-link-active-color:  $body-font-muted-color !default;
-      $breadcrumb-arrow-color:        #d1d1d1                !default;
+      $breadcrumb-link-default-color: inherit                   !default;
+      $breadcrumb-link-hover-color:   $link-hover-color         !default;
+      $breadcrumb-link-active-color:  $light-opposite-alt-color !default;
+      $breadcrumb-arrow-color:        #d1d1d1                   !default;
 
    // ----------------------------------------
    // -- .btn
@@ -694,7 +694,7 @@
    // ----------------------------------------
       $product-gallery-item-border-radius:  2px                           !default;
       $product-gallery-item-default-shadow: 0 0 0 2px #f2f2f2 inset       !default;
-      $product-gallery-item-active-shadow:  0 0 0 2px $accent-color inset !default;
+      $product-gallery-item-active-shadow:  0 0 0 2px $accent-color       !default;
 
    // ----------------------------------------
    // -- .product-tabs

@@ -10,7 +10,7 @@ export default class ProductsStore {
 
   pagesProducts
 
-  countProducts = 9
+  countProducts = 12
 
   isLoadingProducts = false
 

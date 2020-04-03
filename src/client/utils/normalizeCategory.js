@@ -8,7 +8,7 @@ export default function normalizeCategory (id = '') {
       return 50
     case 'dresses':
       return 48
-    case 'jackets':
+    case 'overalls':
       return 49
     case 'jumpers':
       return 19

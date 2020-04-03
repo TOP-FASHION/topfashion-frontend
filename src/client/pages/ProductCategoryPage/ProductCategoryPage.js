@@ -113,7 +113,7 @@ class ProductCategoryPage extends Component {
         <Helmet>
           <title>{`Category Page`}</title>
         </Helmet>
-        <PageHeader header='Category' breadcrumb={this.breadcrumb} />
+        <PageHeader header={this.props.match.params.categoryId || 'Category'} breadcrumb={this.breadcrumb} />
         {this.content}
       </React.Fragment>
     )

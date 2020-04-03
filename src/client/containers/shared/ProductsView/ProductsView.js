@@ -7,6 +7,7 @@ import { inject, observer } from 'mobx-react'
 // import messages from './ProductCard.messages'
 import ProductsList from '../ProductsList'
 import Pagination from '../Pagination'
+import Fragment from '../../../components/Fragment'
 import { Form } from 'react-bootstrap'
 import normalizeCategory from '../../../utils/normalizeCategory'
 import { withRouter } from 'react-router'
@@ -132,7 +133,8 @@ class ProductsView extends Component {
 
   get loadClasses () {
     return classNames('products-list__body', {
-      'products-list__body--loading': this.props.productsStore.isLoadingProducts
+      'products-list__body--loading': this.props.productsStore.isLoadingProducts,
+      'products-list__not-found': this.props.products.length === 0
     })
   }
 
@@ -199,18 +201,23 @@ class ProductsView extends Component {
           data-with-features={layout === 'grid-with-features' ? 'true' : 'false'}
         >
           <div className={this.loadClasses}>
-            <ProductsList products={products} layout='grid-sm' />
+            {products.length > 0
+              ? <ProductsList products={products} layout='grid-sm' />
+              : 'ничего нет'
+            }
           </div>
         </div>
 
-        <div className='products-view__pagination'>
-          <Pagination
-            current={page}
-            siblings={2}
-            total={this.totalPage}
-            onPageChange={this.handlePageChange}
-          />
-        </div>
+        <Fragment hidden={products.length === 0}>
+          <div className='products-view__pagination'>
+            <Pagination
+              current={page}
+              siblings={2}
+              total={this.totalPage}
+              onPageChange={this.handlePageChange}
+            />
+          </div>
+        </Fragment>
       </div>
     )
   }

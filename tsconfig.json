@@ -12,7 +12,7 @@
   "include": [
     "src/client/components/FilterCategories",
     "src/client/containers/shared/WidgetCategories",
-    "src/client/shared/NavLinks",
+    "src/client/containers/shared/NavLinks",
     "types"
   ]
 }
