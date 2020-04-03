@@ -102,7 +102,7 @@ class ProductsView extends Component {
 
     const viewModes = [
       { key: 'grid', title: 'Grid', icon: <i className='fas fa-th-large' /> },
-      { key: 'list', title: 'List', icon: <i className='fas fa-equals' /> }
+      { key: 'list', title: 'List', icon: <i className='fas fa-th' /> }
     ]
 
     return viewModes.map((viewMode) => {
