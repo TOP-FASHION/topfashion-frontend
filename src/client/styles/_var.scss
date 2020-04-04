@@ -254,6 +254,18 @@
       $dropcart-divider-color:    $light-divider-color        !default;
 
    // ----------------------------------------
+   // -- .account-menu
+   // ----------------------------------------
+      $account-menu-bg:                         $light-color                !default;
+      $account-menu-shadow:                     0 1px 15px rgba(#000, .25)  !default;
+      $account-menu-font-color:                 $light-opposite-color       !default;
+      $account-menu-font-alt-color:             $light-opposite-alt-color   !default;
+      $account-menu-font-muted-color:           $light-opposite-muted-color !default;
+      $account-menu-divider-color:              $light-divider-color        !default;
+      $account-menu-item-hover-bg:              #f2f2f2                     !default;
+
+
+   // ----------------------------------------
    // -- .menu
    // ----------------------------------------
       $menu-bg:               $light-color               !default;
