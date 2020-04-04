@@ -72,7 +72,7 @@ class RegistrationForm extends Component {
             className={'btn'}
             disabled={!form.meta.isValid}
           >
-            {this.messages('login.button')}
+            {this.messages('register.button')}
           </Button>
         </div>
       </Form>

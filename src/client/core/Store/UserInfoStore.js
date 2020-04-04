@@ -5,6 +5,8 @@ import Cookies from 'js-cookie'
 export default class UserInfoStore {
   @observable user
 
+  @observable customer
+
   constructor (rootStore) {
     this.rootStore = rootStore
   }
@@ -20,6 +22,18 @@ export default class UserInfoStore {
           this.rootStore.wishlistByUserStore.getWishlistByUser(this.user.id)
           this.rootStore.wishlistGetProductsStore.getProducts()
         }
+      })
+      .catch(error => {
+        console.log('Error====', error)
+      })
+  }
+
+  @action getCustomerInfo () {
+    const userId = this.user.id
+
+    return Api.Woocommerce.Customer(userId)
+      .then(res => {
+        this.customer = res.data
       })
       .catch(error => {
         console.log('Error====', error)

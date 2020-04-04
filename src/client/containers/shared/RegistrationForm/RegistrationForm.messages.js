@@ -21,8 +21,8 @@ export default defineMessages({
     id: 'app.form.registration.password.placeholder',
     defaultMessage: 'Password'
   },
-  'app.form.registration.login.button': {
-    id: 'app.form.registration.login.button',
-    defaultMessage: 'Log In'
+  'app.form.registration.register.button': {
+    id: 'app.form.registration.register.button',
+    defaultMessage: 'Register'
   }
 })

@@ -106,6 +106,10 @@
   }
 }
 
+.posts-view__pagination {
+  padding-top: 38px;
+}
+
 .post-card--layout--grid {
   @include post-card-grid();
 

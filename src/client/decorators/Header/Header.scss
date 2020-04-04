@@ -276,3 +276,152 @@
 .indicator--mobile-search .indicator__area {
   padding-right: 10px;
 }
+
+.account-menu {
+  width: 280px;
+  overflow-y: auto;
+  color: $account-menu-font-color;
+  background: $account-menu-bg;
+  box-shadow: $account-menu-shadow;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
+.account-menu__form {
+  padding: 0 30px 32px;
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
+.account-menu__form-title {
+  padding: 30px 0 26px;
+  font-weight: $font-weight-bold;
+  text-align: center;
+}
+
+.account-menu__form-button {
+  margin-top: 32px;
+  text-align: center;
+
+  .btn {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+}
+
+.account-menu__form-link {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+
+  a {
+    color: $account-menu-font-alt-color;
+    transition: color 0.1s;
+  }
+
+  a:hover {
+    color: inherit;
+  }
+}
+
+.account-menu__form-forgot {
+  position: relative;
+}
+
+.account-menu__form-forgot-link {
+  $local-offset: 5px;
+
+  position: absolute;
+  top: $local-offset;
+  bottom: $local-offset;
+  display: flex;
+  align-items: center;
+  padding: 0 7px;
+  padding-right: $local-offset;
+  font-weight: $font-weight-medium;
+  font-size: 12px;
+  color: $btn-light-font-color;
+  background: $btn-light-bg-color;
+  border-radius: 2px;
+  transition:
+    background 0.1s,
+    color 0.1s;
+
+  &:hover {
+    color: $btn-light-hover-font-color;
+    background: $btn-light-hover-bg-color;
+  }
+
+  &:active {
+    color: $btn-light-active-font-color;
+    background: $btn-light-active-bg-color;
+  }
+}
+
+.account-menu__divider {
+  height: 1px;
+  background: $account-menu-divider-color;
+}
+
+.account-menu__user {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+    background: $account-menu-item-hover-bg;
+  }
+}
+
+.account-menu__user-avatar {
+  flex-shrink: 0;
+  width: 44px;
+  margin-right: 14px;
+
+  img {
+    max-width: 100%;
+    border-radius: 100%;
+  }
+}
+
+.account-menu__user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.account-menu__user-name {
+  font-weight: $font-weight-medium;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.account-menu__user-email {
+  margin-top: 1px;
+  font-size: 14px;
+  line-height: 18px;
+  color: $account-menu-font-muted-color;
+}
+
+.account-menu__links {
+  margin: 0;
+  padding: 12px 0;
+  list-style: none;
+
+  a {
+    display: block;
+    padding: 5px 20px;
+    font-weight: $font-weight-medium;
+    font-size: 15px;
+    color: inherit;
+  }
+
+  a:hover {
+    background: $account-menu-item-hover-bg;
+  }
+}

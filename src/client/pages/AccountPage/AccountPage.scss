@@ -1,0 +1,80 @@
+@import '../../styles/var';
+@import '../../styles/functions';
+
+.account-nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.account-nav__item a {
+  display: block;
+  font-size: 15px;
+  color: $body-font-alt-color;
+
+  &:hover {
+    background-color: #f7f7f7;
+  }
+}
+
+@media (min-width: breakpoint(lg-start)) {
+  .account-nav {
+    border: $card-border;
+    border-radius: $card-border-radius;
+
+    ul {
+      padding-bottom: 18px;
+    }
+  }
+
+  .account-nav__title {
+    margin-bottom: 1rem;
+    padding: 24px 26px 0;
+    font-size: 20px;
+  }
+
+  .account-nav__item a {
+    margin-left: -2px;
+    padding: 5px 26px;
+    border-left: $card-border-width solid $card-border-color;
+  }
+
+  .account-nav__item--active a {
+    font-weight: $font-weight-medium;
+    color: $body-font-color;
+    border-left: $card-border-width solid $accent-color;
+  }
+}
+
+@media (max-width: breakpoint(md-end)) {
+  .account-nav__title {
+    display: none;
+  }
+
+  .account-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    ul {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      white-space: nowrap;
+      border-bottom: $card-border-width solid $card-border-color;
+    }
+  }
+
+  .account-nav__item a {
+    margin-bottom: -2px;
+    padding: 8px 16px;
+    border-bottom: $card-border-width solid $card-border-color;
+  }
+
+  .account-nav__item--active a {
+    font-weight: $font-weight-medium;
+    color: $body-font-color;
+    border-color: $accent-color;
+  }
+}

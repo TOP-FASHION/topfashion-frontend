@@ -8,6 +8,7 @@ import ProductAttributes from './ProductAttributes'
 import ProductAttributeTerms from './ProductAttributeTerms'
 import ProductSearch from './ProductSearch'
 import Brands from './Brands'
+import Customer from './Customer'
 
 const Woocommerce = {
   Currency,
@@ -19,7 +20,8 @@ const Woocommerce = {
   ProductAttributes,
   ProductAttributeTerms,
   ProductSearch,
-  Brands
+  Brands,
+  Customer
 }
 
 export default Woocommerce

@@ -24,7 +24,7 @@ function PostCard (props) {
   return (
     <div className={cardClasses}>
       <div className='post-card__image'>
-        <Link to='/promotions-news/post'>
+        <Link to={`/promotions-news/${post.id}`}>
           <img src={post.better_featured_image.media_details.sizes.shop_single.source_url} alt='' />
         </Link>
       </div>
@@ -36,13 +36,9 @@ function PostCard (props) {
           <Link to='/promotions-news/post'>{post.title.rendered}</Link>
         </div>
         <div className='post-card__date'>{post.date}</div>
-        <div className='post-card__content'>
-          In one general sense, philosophy is associated with wisdom,
-          intellectual culture and a search for knowledge.
-          In that sense, all cultures...
-        </div>
+        <div className='post-card__content d-none'>{post.slug}</div>
         <div className='post-card__read-more'>
-          <Link to='/' className='btn btn-secondary btn-sm'>Read More</Link>
+          <Link to={`/promotions-news/${post.id}`} className='btn btn-secondary btn-sm'>Read More</Link>
         </div>
       </div>
     </div>

@@ -12,10 +12,6 @@ import './BlogCategoryPage.scss'
 class BlogCategoryPage extends Component {
   static propTypes = {
     postStore: PropTypes.any,
-    /**
-     * blog layout
-     * one of ['classic', 'grid', 'list'] (default: 'classic')
-     */
     layout: PropTypes.oneOf(['classic', 'grid', 'list'])
   }
 
@@ -40,14 +36,17 @@ class BlogCategoryPage extends Component {
     this.setState(() => ({ page }))
   };
 
+  get totalPage () {
+    return parseFloat(this.props.postStore.pagesPosts)
+  }
+
   render () {
     const { layout } = this.props
     const { page } = this.state
 
     const breadcrumb = [
-      { title: 'Home', url: '' },
-      { title: 'Promotions', url: '' },
-      { title: 'Latest News', url: '' }
+      { title: 'Home', url: '/' },
+      { title: 'Promotions', url: '' }
     ]
 
     const postsList = this.props.postStore.posts ? this.props.postStore.posts.map((post) => {
@@ -86,7 +85,7 @@ class BlogCategoryPage extends Component {
                     <Pagination
                       current={page}
                       siblings={2}
-                      total={10}
+                      total={this.totalPage}
                       onPageChange={this.handlePageChange}
                     />
                   </div>

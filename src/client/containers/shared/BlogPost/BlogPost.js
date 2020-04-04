@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 import './BlogPost.scss'
 
 export default function BlogPost (props) {
-  const { layout } = props
+  const { layout, content } = props
 
   const postClasses = classNames('post__content typography', {
     'typography--expanded': layout === 'full'
   })
-
+  console.log('content', content)
   // const relatedPostsList = posts.slice(0, 2).map((relatedPost) => (
   //   <div key={relatedPost.id} className='related-posts__item post-card post-card--layout--related'>
   //     <div className='post-card__image'>
@@ -31,36 +31,15 @@ export default function BlogPost (props) {
     <div className={`block post post--layout--${layout}`}>
       <div className={`post__header post-header post-header--layout--${layout}`}>
         <div className='post-header__categories'>
-          <Link to='/'>Latest news</Link>
+          <Link to='/promotions-news'>Latest news</Link>
         </div>
-        <h1 className='post-header__title'>Morbi Interdum Velit Quis Magna Placerat Lobortis Eget</h1>
+        <h1 className='post-header__title'>{content.title.rendered}</h1>
         <div className='post-header__meta'>
-          <div className='post-header__meta-item'>
-            By
-            <Link to='/'>Jessica Moore</Link>
-          </div>
-          <div className='post-header__meta-item'><Link to='/'>November 30, 2018</Link></div>
-          <div className='post-header__meta-item'><Link to='/'>4 Comments</Link></div>
+          <div className='post-header__meta-item'><Link to='/'>{content.date_gmt}</Link></div>
         </div>
       </div>
 
-      <div className={postClasses}>
-        <p>
-          Vestibulum sagittis justo sit amet nisl semper, et pulvinar elit maximus. Morbi
-          interdum velit quis magna placerat lobortis eget pharetra magna. Nulla
-          tristique sollicitudin turpis, eget maximus risus faucibus non. Nulla
-          vestibulum ipsum risus, vitae maximus nunc bibendum quis.
-        </p>
-        <p>
-          raesent eu consequat nibh. Quisque
-          <i>ullamcorper</i>
-          , augue eu fringillasodales, leo metus volutpat risus, at suscipit ipsum
-          diam eget sem. Maecenas dictum elit in enim molestie,
-          <Link to='/'>vel sollicitudin erat ultricies</Link>
-          . Sed risus tellus, molestie finibus
-          dui quis, suscipit consequat ex.
-        </p>
-      </div>
+      <div className={postClasses} dangerouslySetInnerHTML={{ __html: content.content.rendered }} />
 
       <div className='post__footer'>
         <div className='post__tags-share-links'>
@@ -81,21 +60,6 @@ export default function BlogPost (props) {
             </ul>
           </div>
         </div>
-        <div className='post-author'>
-          <div className='post-author__avatar'>
-            <Link to='/'><img src='images/avatars/avatar-1.jpg' alt='' /></Link>
-          </div>
-          <div className='post-author__info'>
-            <div className='post-author__name'>
-              <Link to='/'>Jessica Moore</Link>
-            </div>
-            <div className='post-author__about'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              suscipit suscipit mi, non tempor nulla finibus eget. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit.
-            </div>
-          </div>
-        </div>
       </div>
       <section className='post__section'>
         <h4 className='post__section-title'>Related Posts</h4>
@@ -114,7 +78,8 @@ BlogPost.propTypes = {
    * post layout
    * one of ['classic', 'full'] (default: 'classic')
    */
-  layout: PropTypes.oneOf(['classic', 'full'])
+  layout: PropTypes.oneOf(['classic', 'full']),
+  content: PropTypes.any
 }
 
 BlogPost.defaultProps = {

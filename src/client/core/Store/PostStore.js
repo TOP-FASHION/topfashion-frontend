@@ -7,11 +7,15 @@ export default class PostStore {
 
   posts
 
+  totalPosts
+
+  pagesPosts
+
   getPost (id) {
     const lang = Cookies.get('_lang')
     return Api.Wordpress.Post(id, lang).then(res => {
       if (res.data) {
-        this.setPage(res.data)
+        this.setPost(res.data)
       }
     })
   }
@@ -20,6 +24,8 @@ export default class PostStore {
     return Api.Wordpress.Posts().then(res => {
       if (res.data) {
         this.setPosts(res.data)
+        this.totalPosts = res.headers['x-wp-total']
+        this.pagesPosts = res.headers['x-wp-totalpages']
       }
     })
   }
@@ -37,5 +43,7 @@ decorate(PostStore, {
   postContent: observable,
   posts: observable,
   setPost: action,
-  setPosts: action
+  setPosts: action,
+  totalPosts: observable,
+  pagesPosts: observable
 })

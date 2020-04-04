@@ -22,8 +22,6 @@
 
 @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
   .page-header__title {
-    padding-top: 4px;
-
     h1 {
       margin-bottom: 0;
     }
@@ -36,8 +34,6 @@
   }
 
   .page-header__title {
-    padding-top: 2px;
-
     h1 {
       margin-bottom: 0;
       font-size: 30px;

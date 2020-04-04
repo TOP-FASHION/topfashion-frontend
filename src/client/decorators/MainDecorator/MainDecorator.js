@@ -23,6 +23,8 @@ import BlogCategoryPage from '../../pages/BlogCategoryPage'
 import BlogPostPage from '../../pages/BlogPostPage'
 import StaticPage from '../../pages/StaticPage'
 import SearchPage from '../../pages/SearchPage'
+import AccountPage from '../../pages/AccountPage'
+import ContactUsPage from '../../pages/ContactUsPage'
 
 @inject('loginStore')
 @observer
@@ -58,8 +60,10 @@ class MainDecorator extends Component {
               <Route path='/wishlist' component={WishlistPage} exact />
               <Route path='/search' component={SearchPage} exact />
               <Route path='/promotions-news' render={(props) => (<BlogCategoryPage {...props} layout='grid' />)} exact />
-              <Route path='/promotions-news/post' render={(props) => (<BlogPostPage {...props} layout='full' />)} exact />
-              {['about-us', 'contact-us'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
+              <Route path='/promotions-news/:postId' render={(props) => (<BlogPostPage {...props} layout='full' />)} exact />
+              {['about-us', 'policy'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
+              <Route path='/account' component={AccountPage} />
+              <Route path='/contact-us' component={ContactUsPage} exact />
               <Route component={NotFound} />
             </SwitchLang>
           </Group>

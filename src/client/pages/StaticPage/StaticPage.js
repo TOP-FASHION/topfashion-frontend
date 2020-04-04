@@ -14,6 +14,11 @@ class StaticPage extends Component {
       <Fragment>
         <div id='static-page__anchor' />
         <div className='static-page__container container'>
+          <div className='static-page__menu' xs={12} md={3}>
+            <div className='static-page-menu'>
+              {/* <AsideMenuItems id='menuAsideStatic' scrollTo='#static-page__anchor' className='static-page-menu__item' /> */}
+            </div>
+          </div>
           <div className='static-page__content'>
             <Static page={page} />
           </div>

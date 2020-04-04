@@ -8,7 +8,7 @@ import setMessages from '../../../utils/setMessages'
 import { setCurrencies } from '../../../translations/currencies.messages'
 import messages from './ProductCard.messages'
 import Button from '../../../components/Button'
-import Rating from '../../../components/Rating'
+// import Rating from '../../../components/Rating'
 import './ProductCard.scss'
 
 @inject('currencyStore', 'cartAddProductStore', 'modalStore', 'loginStore', 'wishlistAddProductStore')

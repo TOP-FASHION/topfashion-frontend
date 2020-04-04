@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
-import classNames from "classnames"
+import classNames from 'classnames'
 import setMessages from '../../utils/setMessages'
 import NavPanel from '../../containers/shared/NavPanel'
 import Search from '../../containers/shared/Search'
 import Topbar from '../../containers/shared/Topbar'
 import Indicator from '../../components/Indicator'
 import IndicatorCart from '../../containers/shared/IndicatorCart'
+import LoginForm from '../../containers/shared/LoginForm'
+import RegistrationForm from '../../containers/shared/RegistrationForm'
 import Fragment from '../../components/Fragment'
-import Dropdown from '../../components/Dropdown'
 import messages from './Header.messages'
 import './Header.scss'
 
@@ -22,7 +23,8 @@ class Header extends Component {
     super(props)
 
     this.state = {
-      searchOpen: false
+      searchOpen: false,
+      currentTab: 'login'
     }
   }
 
@@ -41,14 +43,9 @@ class Header extends Component {
 
   messages = setMessages(this, messages, 'app.header.')
 
-  accountLinks = [
-    { title: 'Dashboard', url: '/account/dashboard' },
-    { title: 'Edit Profile', url: '/account/profile' },
-    { title: 'Order History', url: '/account/orders' },
-    { title: 'Addresses', url: '/account/addresses' },
-    { title: 'Password', url: '/account/password' },
-    { title: 'Logout', url: '/logout' }
-  ];
+  setTab = (newTab) => {
+    this.setState(() => ({ currentTab: newTab }))
+  };
 
   openLoginModal = () => {
     this.props.modalStore.openLogin()
@@ -61,6 +58,69 @@ class Header extends Component {
   handleCloseSearch = () => {
     this.setState(() => ({ searchOpen: false }))
   };
+
+  get dropdownLogin () {
+    const { currentTab } = this.state
+
+    const tabs = [
+      { key: 'login', title: 'Login' },
+      { key: 'registration', title: 'Create An Account' }
+    ]
+
+    const tabsButtons = tabs.map((tab) => {
+      const classes = classNames('modal-title__item', {
+        'modal-title__item--active': currentTab === tab.key
+      })
+
+      return <span key={tab.key} onClick={() => this.setTab(tab.key)} className={classes}>{tab.title}</span>
+    })
+
+    const content = !this.props.loginStore.loggedIn ? (
+      <div className='account-menu'>
+        <div className='account-menu__form'>
+          <Fragment hidden={currentTab === 'registration'}>
+            <div className='account-menu__form-title'>Log In to Your Account</div>
+            <LoginForm />
+          </Fragment>
+          <Fragment hidden={currentTab === 'login'}>
+            <div className='account-menu__form-title'>Register</div>
+            <RegistrationForm />
+          </Fragment>
+          <div className='account-menu__form-link'>
+            {tabsButtons}
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div>
+        <div className='account-menu__divider' />
+        <Link to='/account/dashboard' className='account-menu__user'>
+          <div className='account-menu__user-avatar'>
+            <img src='/assets/img/avatar.png' alt='' />
+          </div>
+          <div className='account-menu__user-info'>
+            <div className='account-menu__user-name'>Helena Garcia</div>
+            <div className='account-menu__user-email'>stroyka@example.com</div>
+          </div>
+        </Link>
+        <div className='account-menu__divider' />
+        <ul className='account-menu__links'>
+          <li><Link to='/account/dashboard'>Dashboard</Link></li>
+          <li><Link to='/account/password'>Password</Link></li>
+        </ul>
+        <div className='account-menu__divider' />
+        <ul className='account-menu__links'>
+          <li><Link to='/logout'>Logout</Link></li>
+        </ul>
+      </div>
+    )
+
+    return (
+      <div className='account-menu'>
+        {content}
+      </div>
+    )
+  }
 
   get header () {
     const { layout } = this.props
@@ -92,14 +152,6 @@ class Header extends Component {
             <NavPanel layout={layout} />
           </div>
           <div className='site-header__actions'>
-            <Fragment hidden={!this.props.loginStore.loggedIn}>
-              <div className='site-header__item'>
-                <Dropdown
-                  title={this.messages('myAccount')}
-                  items={this.accountLinks}
-                />
-              </div>
-            </Fragment>
             <Indicator
               className='d-md-block d-lg-block d-xl-block d-none'
               onClick={this.handleOpenSearch}
@@ -107,8 +159,8 @@ class Header extends Component {
             />
             <Indicator
               className='d-md-block d-lg-block d-xl-block d-none'
-              onClick={this.openLoginModal}
               icon={<i className='far fa-user' />}
+              dropdown={this.dropdownLogin}
             />
             <Indicator
               url='/wishlist'
