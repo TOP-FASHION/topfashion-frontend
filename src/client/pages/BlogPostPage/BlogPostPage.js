@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { inject, observer } from 'mobx-react'
 import { reaction } from 'mobx'
 import PageHeader from '../../containers/shared/PageHeader'
-import BlogPost from '../../containers/shared/BlogPost'
+import BlogPost from '../../containers/promotions/BlogPost'
 
 @inject('postStore')
 @observer

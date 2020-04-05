@@ -1,0 +1,68 @@
+@import '../../styles/var';
+
+.pagination {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.page-link {
+  height: 33px;
+  margin: 0 2px;
+  padding: 9px 10px 8px;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  color: $pagination-font-color;
+  background: $pagination-bg;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.page-link:hover,
+.page-link:focus {
+  color: $pagination-hover-font-color;
+  background: $pagination-hover-bg;
+  box-shadow: none;
+}
+
+.page-link--with-arrow {
+  position: relative;
+  width: 29px;
+
+  .page-link__arrow {
+    position: absolute;
+    top: 10px;
+    transform: scaleX(1 * 1);
+    fill: currentColor;
+  }
+
+  .page-link__arrow--left {
+    left: 10px;
+  }
+
+  .page-link__arrow--right {
+    left: 11px;
+  }
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-radius: 2px;
+}
+
+.page-item:last-child .page-link {
+  margin-right: 0;
+  border-radius: 2px;
+}
+
+.page-item.active .page-link {
+  color: $light-color;
+  background: $pagination-current-bg;
+  cursor: default;
+}
+
+.page-item.disabled .page-link {
+  color: $pagination-disabled-font-color;
+  background: $pagination-disabled-bg;
+}

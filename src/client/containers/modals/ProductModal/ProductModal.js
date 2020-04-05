@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Modal } from 'react-bootstrap'
-import Product from '../../shared/Product'
+import Product from '../../product/Product'
 import { injectIntl } from 'react-intl'
 import messages from './ProductModal.messages'
 import setMessages from '../../../utils/setMessages'

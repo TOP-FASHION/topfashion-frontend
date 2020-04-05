@@ -6,13 +6,13 @@ import { SwitchLang } from '../routing'
 
 // components
 import Group from '../../components/Group'
-import MobileMenu from '../../containers/shared/MobileMenu'
+import MobileMenu from '../../containers/header/MobileMenu'
 import Header from '../Header'
 import Footer from '../Footer'
 import RedirectToHome from '../../containers/shared/RedirectToHome'
 
 // pages
-import Home from '../../pages/Home'
+import HomePage from '../../pages/HomePage'
 import NotFound from '../../pages/NotFound'
 import Logout from '../../pages/Logout'
 import ProductPage from '../../pages/ProductPage'
@@ -51,7 +51,7 @@ class MainDecorator extends Component {
           <MobileMenu />
           <Group className='main-decorator__content'>
             <SwitchLang>
-              <Route path='/' component={Home} exact />
+              <Route path='/' component={HomePage} exact />
               <Route path='/logout' component={MainDecorator.isLoggedIn(this.props.loginStore, Logout)} exact />
               <Route path='/category/product/:productId' component={ProductPage} exact />
               <Route path='/category' render={(props) => (<ProductCategoryPage {...props} columns={4} viewMode='grid' sidebarPosition='start' />)} exact />
@@ -62,7 +62,7 @@ class MainDecorator extends Component {
               <Route path='/promotions-news' render={(props) => (<BlogCategoryPage {...props} layout='grid' />)} exact />
               <Route path='/promotions-news/:postId' render={(props) => (<BlogPostPage {...props} layout='full' />)} exact />
               {['about-us', 'policy'].map(page => <Route key={page} path={'/' + page} component={() => <StaticPage page={page} />} exact />)}
-              <Route path='/account' component={AccountPage} />
+              <Route path='/account' component={MainDecorator.isLoggedIn(this.props.loginStore, AccountPage)} />
               <Route path='/contact-us' component={ContactUsPage} exact />
               <Route component={NotFound} />
             </SwitchLang>

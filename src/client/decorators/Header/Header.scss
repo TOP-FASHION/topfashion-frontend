@@ -405,7 +405,6 @@
   margin-top: 1px;
   font-size: 14px;
   line-height: 18px;
-  color: $account-menu-font-muted-color;
 }
 
 .account-menu__links {
@@ -413,6 +412,7 @@
   padding: 12px 0;
   list-style: none;
 
+  span,
   a {
     display: block;
     padding: 5px 20px;
@@ -421,7 +421,9 @@
     color: inherit;
   }
 
+  span:hover,
   a:hover {
     background: $account-menu-item-hover-bg;
+    cursor: pointer;
   }
 }

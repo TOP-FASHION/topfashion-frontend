@@ -65,11 +65,12 @@ body {
 
 .container-fluid {
   max-width: 1400px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-//.row {
-//  margin-right: -20px;
-//  margin-left: -20px;
-//}
+/* photoswipe */
+$pswp__assets-path: "/assets/img/";
+
+@import "~photoswipe/src/css/main";
+@import "~photoswipe/src/css/default-skin/default-skin";

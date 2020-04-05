@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { observer, inject } from 'mobx-react'
 import PageHeader from '../../containers/shared/PageHeader'
-import Pagination from '../../containers/shared/Pagination'
-import PostCard from '../../components/PostCard'
+import Pagination from '../../components/Pagination'
+import PostCard from '../../containers/promotions/PostCard'
 import './BlogCategoryPage.scss'
 
 @inject('postStore')

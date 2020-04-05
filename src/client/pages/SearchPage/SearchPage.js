@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 // import { Helmet } from 'react-helmet';
 import PageHeader from '../../containers/shared/PageHeader'
 import { inject, observer } from 'mobx-react'
-import ProductsView from '../../containers/shared/ProductsView/ProductsView'
+import ProductsView from '../../containers/productList/ProductsView/ProductsView'
 
 @inject('productSearchStore')
 @observer

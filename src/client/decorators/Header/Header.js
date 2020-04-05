@@ -5,18 +5,18 @@ import { inject, observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import classNames from 'classnames'
 import setMessages from '../../utils/setMessages'
-import NavPanel from '../../containers/shared/NavPanel'
-import Search from '../../containers/shared/Search'
-import Topbar from '../../containers/shared/Topbar'
+import NavPanel from '../../containers/header/NavPanel'
+import Search from '../../containers/header/Search'
+import Topbar from '../../containers/header/Topbar'
 import Indicator from '../../components/Indicator'
-import IndicatorCart from '../../containers/shared/IndicatorCart'
-import LoginForm from '../../containers/shared/LoginForm'
-import RegistrationForm from '../../containers/shared/RegistrationForm'
+import IndicatorCart from '../../containers/header/IndicatorCart'
+import LoginForm from '../../containers/forms/LoginForm'
+import RegistrationForm from '../../containers/forms/RegistrationForm'
 import Fragment from '../../components/Fragment'
 import messages from './Header.messages'
 import './Header.scss'
 
-@inject('modalStore', 'loginStore', 'wishlistGetProductsStore', 'mobileMenuStore')
+@inject('modalStore', 'loginStore', 'wishlistGetProductsStore', 'mobileMenuStore', 'userInfoStore')
 @observer
 class Header extends Component {
   constructor (props) {
@@ -33,6 +33,7 @@ class Header extends Component {
     loginStore: PropTypes.any,
     wishlistGetProductsStore: PropTypes.any,
     mobileMenuStore: PropTypes.any,
+    userInfoStore: PropTypes.any,
     /** one of ['default', 'compact'] (default: 'default') */
     layout: PropTypes.oneOf(['default', 'compact'])
   }
@@ -59,6 +60,10 @@ class Header extends Component {
     this.setState(() => ({ searchOpen: false }))
   };
 
+  get user () {
+    return this.props.userInfoStore.user
+  }
+
   get dropdownLogin () {
     const { currentTab } = this.state
 
@@ -69,14 +74,14 @@ class Header extends Component {
 
     const tabsButtons = tabs.map((tab) => {
       const classes = classNames('modal-title__item', {
-        'modal-title__item--active': currentTab === tab.key
+        'd-none': currentTab === tab.key
       })
 
       return <span key={tab.key} onClick={() => this.setTab(tab.key)} className={classes}>{tab.title}</span>
     })
 
     const content = !this.props.loginStore.loggedIn ? (
-      <div className='account-menu'>
+      <Fragment>
         <div className='account-menu__form'>
           <Fragment hidden={currentTab === 'registration'}>
             <div className='account-menu__form-title'>Log In to Your Account</div>
@@ -90,17 +95,20 @@ class Header extends Component {
             {tabsButtons}
           </div>
         </div>
-      </div>
+      </Fragment>
     ) : (
-      <div>
-        <div className='account-menu__divider' />
+      <Fragment>
         <Link to='/account/dashboard' className='account-menu__user'>
           <div className='account-menu__user-avatar'>
             <img src='/assets/img/avatar.png' alt='' />
           </div>
           <div className='account-menu__user-info'>
-            <div className='account-menu__user-name'>Helena Garcia</div>
-            <div className='account-menu__user-email'>stroyka@example.com</div>
+            {this.user ? (
+              <Fragment>
+                <div className='account-menu__user-name'>{this.user.firstname} {this.user.lastname}</div>
+                <div className='account-menu__user-email'>{this.user.email}</div>
+              </Fragment>
+            ) : null}
           </div>
         </Link>
         <div className='account-menu__divider' />
@@ -110,9 +118,9 @@ class Header extends Component {
         </ul>
         <div className='account-menu__divider' />
         <ul className='account-menu__links'>
-          <li><Link to='/logout'>Logout</Link></li>
+          <li><span onClick={() => this.props.loginStore.logout()}>Logout</span></li>
         </ul>
-      </div>
+      </Fragment>
     )
 
     return (

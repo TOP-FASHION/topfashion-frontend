@@ -2,8 +2,8 @@ import React from 'react'
 import classNames from 'classnames'
 import { Link, matchPath, Redirect, Switch, Route } from 'react-router-dom'
 import PageHeader from '../../containers/shared/PageHeader'
-import AccountPageDashboard from '../../containers/shared/AccountPageDashboard'
-import AccountPagePassword from '../../containers/shared/AccountPagePassword'
+import AccountDashboard from '../../containers/account/AccountDashboard'
+import AccountPassword from '../../containers/account/AccountPassword'
 import './AccountPage.scss'
 
 export default function AccountPage (props) {
@@ -47,8 +47,8 @@ export default function AccountPage (props) {
             <div className='col-12 col-lg-9 mt-4 mt-lg-0'>
               <Switch>
                 <Redirect exact from={match.path} to={`${match.path}/dashboard`} />
-                <Route exact path={`${match.path}/dashboard`} component={AccountPageDashboard} />
-                <Route exact path={`${match.path}/password`} component={AccountPagePassword} />
+                <Route exact path={`${match.path}/dashboard`} component={AccountDashboard} />
+                <Route exact path={`${match.path}/password`} component={AccountPassword} />
               </Switch>
             </div>
           </div>

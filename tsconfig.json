@@ -10,9 +10,9 @@
     "experimentalDecorators": true
   },
   "include": [
-    "src/client/components/FilterCategories",
-    "src/client/containers/shared/WidgetCategories",
-    "src/client/containers/shared/NavLinks",
+    "src/client/containers/productList/FilterCategories",
+    "src/client/containers/widgets/WidgetCategories",
+    "src/client/containers/header/NavLinks",
     "types"
   ]
 }
