@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import { NavLink } from 'react-router-dom'
-import MegaMenu from '../MegaMenu'
 import Menu from '../Menu'
 import { injectIntl } from 'react-intl'
 import setMessages from '../../../utils/setMessages'
@@ -44,14 +43,6 @@ class NavLinks extends Component {
           submenu = (
             <div className='nav-links__menu'>
               <Menu items={item.children} />
-            </div>
-          )
-        }
-
-        if (item.submenu && item.submenu.type === 'megamenu') {
-          submenu = (
-            <div className={`nav-links__megamenu nav-links__megamenu--size--${item.submenu.menu.size}`}>
-              <MegaMenu menu={item.submenu.menu} />
             </div>
           )
         }

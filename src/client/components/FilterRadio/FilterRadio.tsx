@@ -1,10 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
-function FilterRadio (props) {
-  const { items, name } = props
+interface Props {
+  items?: Array<any>,
+  name?: string
+}
 
+function FilterRadio ({ items, name }: Props) {
   const itemsList = items.map((item) => {
     let count
 
@@ -38,11 +40,6 @@ function FilterRadio (props) {
       </div>
     </div>
   )
-}
-
-FilterRadio.propTypes = {
-  items: PropTypes.array,
-  name: PropTypes.string
 }
 
 export default FilterRadio

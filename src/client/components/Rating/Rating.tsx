@@ -1,11 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import './Rating.scss'
 
-function Rating (props) {
-  const { value } = props
+interface Props {
+  value?: number
+}
 
+function Rating ({ value = 0 }: Props) {
   const stars = [1, 2, 3, 4, 5].map(rating => {
     const rootClasses = classNames('rating__star', {
       'rating__star--active': value >= rating
@@ -19,13 +20,6 @@ function Rating (props) {
       <div className='rating__body'>{stars}</div>
     </div>
   )
-}
-
-Rating.propTypes = {
-  value: PropTypes.number
-}
-Rating.defaultProps = {
-  value: 0
 }
 
 export default Rating

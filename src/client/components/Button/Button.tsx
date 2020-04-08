@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import * as React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-function Button (props) {
-  const { children, variant, className, disabled, onClick } = props
-  const [isLoading, setLoading] = useState(false)
+interface Props {
+  variant?: 'primary' | 'secondary',
+  className?: string,
+  disabled?: boolean,
+  onClick?: Function,
+  children?: React.ReactNode
+}
+
+function Button ({ children, variant, className, disabled, onClick }: Props) {
+  const [isLoading, setLoading] = React.useState(false)
 
   const classes = classNames(className, {
     'btn-loading': isLoading
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isLoading) {
       onClick().then(() => {
         setLoading(false)
@@ -31,21 +37,6 @@ function Button (props) {
       {children}
     </ReactBootstrap.Button>
   )
-}
-
-Button.propTypes = {
-  variant: PropTypes.string,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  children: PropTypes.node
-}
-
-Button.defaultProps = {
-  variant: '',
-  classNames: '',
-  disabled: false,
-  onClick: () => {}
 }
 
 export default Button

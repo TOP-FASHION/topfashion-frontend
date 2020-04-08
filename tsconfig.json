@@ -13,6 +13,7 @@
     "src/client/containers/productList/FilterCategories",
     "src/client/containers/widgets/WidgetCategories",
     "src/client/containers/header/NavLinks",
+    "src/client/components/*",
     "types"
   ]
 }

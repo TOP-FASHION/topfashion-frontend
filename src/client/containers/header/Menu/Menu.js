@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import AppLink from '../../../components/AppLink'
+import { Link } from 'react-router-dom'
 import './Menu.scss'
 
 class Menu extends Component {
@@ -31,19 +31,19 @@ class Menu extends Component {
 
       if (item.post_name) {
         link = (
-          <AppLink
+          <Link
             {...item.props}
             to={`/${item.url}`}
             onClick={() => onClick(item)}
           >
             {content}
-          </AppLink>
+          </Link>
         )
       } else if (item.url) {
         link = (
-          <AppLink {...item.props} to={item.url} onClick={() => onClick(item)}>
+          <Link {...item.props} to={item.url} onClick={() => onClick(item)}>
             {content}
-          </AppLink>
+          </Link>
         )
       } else {
         link = (

@@ -110,7 +110,6 @@ export default class LoginStore {
   }
 
   @action logout () {
-    console.log('this.loggedIn', this.loggedIn)
     this.loggedIn = false
     Cookies.remove('auth')
   }
