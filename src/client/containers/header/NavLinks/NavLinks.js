@@ -10,7 +10,7 @@ import './NavLinks.scss'
 import menuLinks from '../../../settings/menuLinks'
 
 class NavLinks extends Component {
-  messages = setMessages(this, messages, 'app.nav.link.')
+  //messages = setMessages(this, messages, 'app.nav.link.')
 
   render () {
     const handleMouseEnter = (event) => {

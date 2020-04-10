@@ -22,7 +22,7 @@ interface Props {
 
 function Indicator ({ value, dropdown, icon, url, onOpen, onClose, onClick, className }: Props) {
   const [isOpen, setOpen] = React.useState(false)
-  let wrapperRef
+  let wrapperRef: any
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick)
@@ -41,17 +41,17 @@ function Indicator ({ value, dropdown, icon, url, onOpen, onClose, onClick, clas
     }
   }, [isOpen])
 
-  const setWrapperRef = node => {
+  const setWrapperRef = (node: any) => {
     wrapperRef = node
   }
 
-  const handleOutsideClick = event => {
+  const handleOutsideClick = (event: any) => {
     if (wrapperRef && !wrapperRef.contains(event.target) && isOpen) {
       close()
     }
   }
 
-  const handleButtonClick = event => {
+  const handleButtonClick = (event: any) => {
     if (dropdown) {
       event.preventDefault()
     }

@@ -1,6 +1,6 @@
 /* global history, location */
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
+import * as PropTypes from 'prop-types'
 import { hot } from 'react-hot-loader/root'
 import { SwitchLang, SetLang } from './routing'
 import { Route } from 'react-router-dom'
@@ -9,14 +9,14 @@ import searchParse from '../utils/text/url/searchParse'
 import sessionTabStorage from '../utils/sessionTabStorage'
 import MainDecorator from './MainDecorator'
 import EmptyDecorator from './EmptyDecorator'
-import Modals from '../containers/modals'
-import Notifications from '../containers/notifications'
+// import Modals from '../containers/modals'
+// import Notifications from '../containers/notifications'
 import Fragment from '../components/Fragment'
 // import DevTools from 'mobx-react-devtools'
 
 @observer
 class AppRoot extends React.Component {
-  constructor (props) {
+  constructor (props: any) {
     super(props)
     this.state = {}
   }
@@ -78,7 +78,7 @@ class AppRoot extends React.Component {
         search.modal &&
         this.url.history[this.url.position + 1] === url
       ) {
-        const closeButton = document.querySelector('.modal-buttonRoot')
+        const closeButton = document.querySelector('.modal-buttonRoot') as HTMLElement
         if (closeButton) {
           closeButton.click()
         }
@@ -92,7 +92,7 @@ class AppRoot extends React.Component {
     }
   }
 
-  push (url) {
+  push (url: any) {
     this.url.position++
     if (this.url.position === this.url.history.length) {
       this.url.history.push(url)
@@ -109,8 +109,8 @@ class AppRoot extends React.Component {
     return (
       <Fragment>
         {/* <DevTools /> */}
-        <Notifications />
-        <Modals />
+        {/* <Notifications /> */}
+        {/* <Modals /> */}
         <SetLang langList={['en', 'ru']}>
           <SwitchLang>
             <Route path='/blocked' component={EmptyDecorator} exact />

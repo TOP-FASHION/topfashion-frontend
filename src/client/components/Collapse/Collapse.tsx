@@ -7,8 +7,8 @@ interface Props {
 }
 
 function Collapse ({ toggleClass, render, open }: Props) {
-  let content
-  let item
+  let content: any
+  let item: any
 
   React.useEffect(() => {
     if (!content) {
@@ -34,7 +34,7 @@ function Collapse ({ toggleClass, render, open }: Props) {
     }
   })
 
-  const handleTransitionEnd = (event) => {
+  const handleTransitionEnd = (event: any) => {
     if (content && event.propertyName === 'height') {
       content.style.height = ''
     }
@@ -52,11 +52,11 @@ function Collapse ({ toggleClass, render, open }: Props) {
     }
   }
 
-  const setItemRef = (ref) => {
+  const setItemRef = (ref: any) => {
     item = ref
   }
 
-  const setContentRef = (ref) => {
+  const setContentRef = (ref: any) => {
     content = ref
   }
 

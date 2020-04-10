@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import * as React from 'react'
+// @ts-ignore
 import { addLocaleData, IntlProvider } from 'react-intl'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { observer } from 'mobx-react'
@@ -9,10 +10,8 @@ const messages = window.__data.messages
 const locale = window.__data.locale || 'en'
 addLocaleData(window.__data.localeData)
 
-@observer
-class Root extends Component {
-  componentDidMount () {
-    // preloader
+const Root = observer(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       window.addEventListener('login', (event) => {
         if (event.detail) {
@@ -20,17 +19,15 @@ class Root extends Component {
         }
       })
     })
-  }
+  }, [])
 
-  render () {
-    return (
-      <IntlProvider locale={locale} messages={messages}>
-        <BrowserRouter forceRefresh={!supportsHistory}>
-          <Route component={App} />
-        </BrowserRouter>
-      </IntlProvider>
-    )
-  }
-}
+  return (
+    <IntlProvider locale={locale} messages={messages}>
+      <BrowserRouter forceRefresh={!supportsHistory}>
+        <Route component={App} />
+      </BrowserRouter>
+    </IntlProvider>
+  )
+})
 
 export default Root

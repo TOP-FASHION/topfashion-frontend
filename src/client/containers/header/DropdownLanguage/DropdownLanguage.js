@@ -13,7 +13,7 @@ class DropdownLanguage extends React.Component {
     intl: PropTypes.object
   }
 
-  messages = setMessages(this, messages, 'app.languages.')
+  //messages = setMessages(this, messages, 'app.languages.')
 
   render () {
     const { intl } = this.props
@@ -21,13 +21,13 @@ class DropdownLanguage extends React.Component {
 
     const languages = [
       {
-        label: this.messages('en'),
+        label: 'en',
         locale: 'en',
         icon: '/assets/img/languages//language-1.png',
         icon_srcset: '/assets/img/languages/language-1.png 1x, images/languages/language-1@2x.png 2x'
       },
       {
-        label: this.messages('ru'),
+        label: 'ru',
         locale: 'ru',
         icon: '/assets/img/languages//language-2.png',
         icon_srcset: '/assets/img/languages/language-2.png 1x, images/languages/language-2@2x.png 2x'

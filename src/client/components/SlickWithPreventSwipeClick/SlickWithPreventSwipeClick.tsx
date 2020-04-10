@@ -9,7 +9,7 @@ interface Props {
 }
 
 function SlickWithPreventSwipeClick ({ children, forwardRef, ...otherProps }: Props) {
-  let element
+  let element: any
   const [preventClick, setSreventClick] = React.useState(false)
 
   React.useEffect(() => {
@@ -26,15 +26,15 @@ function SlickWithPreventSwipeClick ({ children, forwardRef, ...otherProps }: Pr
     }
   })
 
-  const setRef = (ref) => {
+  const setRef = (ref: any) => {
     element = ref
   }
 
-  const onMousedown = (event) => {
+  const onMousedown = (event: any) => {
     const downX = event.screenX
     const downY = event.screenY
 
-    const onMousemove = (moveEvent) => {
+    const onMousemove = (moveEvent: any) => {
       if (preventClick) {
         return
       }

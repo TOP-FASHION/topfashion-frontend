@@ -16,7 +16,7 @@ class LoginForm extends Component {
     loginStore: PropTypes.any.isRequired
   }
 
-  messages = setMessages(this, messages, 'app.form.login.')
+  //messages = setMessages(this, messages, 'app.form.login.')
 
   render () {
     const { onFieldChange, form } = this.props.loginStore
@@ -25,13 +25,13 @@ class LoginForm extends Component {
       <Form>
         <Field
           className='login__field'
-          label={this.messages('email')}
+          label={'email'}
           error={form.fields.email.error}
         >
           <Input
             autoFocus
             type='text'
-            placeholder={this.messages('email.placeholder')}
+            placeholder={'email.placeholder'}
             onChange={onFieldChange}
             value={form.fields.email.value}
             name='email'
@@ -39,13 +39,13 @@ class LoginForm extends Component {
         </Field>
         <Field
           className='login__field'
-          label={this.messages('password')}
+          label={'password'}
           error={form.fields.password.error}
         >
           <Input
             autoFocus
             type='password'
-            placeholder={this.messages('password.placeholder')}
+            placeholder={'password.placeholder'}
             onChange={onFieldChange}
             value={form.fields.password.value}
             name='password'
@@ -58,7 +58,7 @@ class LoginForm extends Component {
             className={'btn'}
             disabled={!form.meta.isValid}
           >
-            {this.messages('login.button')}
+            {'login.button'}
           </Button>
         </div>
       </Form>

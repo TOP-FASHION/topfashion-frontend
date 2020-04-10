@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Field ({ children, error, label, className }: Props) {
-  const modifyChildren = (child) => {
+  const modifyChildren = (child: any) => {
     const classes = classNames({
       'is-invalid': error
     })

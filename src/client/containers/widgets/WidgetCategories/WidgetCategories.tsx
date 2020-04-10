@@ -41,6 +41,8 @@ const WidgetCategories = ({ match }: TParams) => {
   if (error) return null
 
   const categoriesList = data.productCategories.nodes.map((category) => {
+    // @ts-ignore
+    // eslint-disable-next-line react/prop-types
     const renderCategory = ({ toggle, setItemRef, setContentRef }) => {
       let expander
       let children

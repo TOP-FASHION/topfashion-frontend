@@ -7,7 +7,7 @@ const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
 
 const res = (p) => path.resolve(__dirname, p)
-const entryFile = res('../src/client/client.js')
+const entryFile = res('../src/client/client')
 const outputFolder = res('../tmp/client')
 const outputFile = '[name].js'
 
@@ -41,8 +41,8 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -85,6 +85,10 @@ module.exports = {
     ]
   },
   resolve: {
+    modules: ['node_modules'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    },
     extensions: ['.js', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [

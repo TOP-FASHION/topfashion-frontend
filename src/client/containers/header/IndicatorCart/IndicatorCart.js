@@ -26,7 +26,7 @@ class IndicatorCart extends Component {
     cartCountProductsStore: PropTypes.object.isRequired
   }
 
-  currencies = setCurrencies(this)
+  //currencies = setCurrencies(this)
 
   componentDidMount () {
     this.props.cartProductsStore.getProductCart()
@@ -50,19 +50,19 @@ class IndicatorCart extends Component {
         <tr>
           <th>Shiping</th>
           <td>
-            {this.currencies('value', {
-              value: productsCartInfoTotal.shipping_total,
-              currency: this.currencies(currency)
-            })}
+            {/*{this.currencies('value', {*/}
+            {/*  value: productsCartInfoTotal.shipping_total,*/}
+            {/*  currency: this.currencies(currency)*/}
+            {/*})}*/}
           </td>
         </tr>
         <tr>
           <th>Total</th>
           <td>
-            {this.currencies('value', {
-              value: productsCartInfoTotal.total,
-              currency: this.currencies(currency)
-            })}
+            {/*{this.currencies('value', {*/}
+            {/*  value: productsCartInfoTotal.total,*/}
+            {/*  currency: this.currencies(currency)*/}
+            {/*})}*/}
           </td>
         </tr>
       </Fragment>

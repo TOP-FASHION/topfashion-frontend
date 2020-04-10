@@ -41,7 +41,7 @@ const FilterCategories = ({ match }: TParams) => {
   if (!data) return null
   if (error) return null
 
-  const classes = (slug, count) => classNames('filter-categories__item', {
+  const classes = (slug: any, count: any) => classNames('filter-categories__item', {
     'filter-categories__item--current': match.params.categoryId === slug,
     'd-none': count === null
   })

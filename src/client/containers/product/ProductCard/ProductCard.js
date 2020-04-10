@@ -31,9 +31,9 @@ class ProductCard extends Component {
     layout: PropTypes.oneOf(['grid-sm', 'grid-nl', 'grid-lg', 'list', 'horizontal'])
   }
 
-  messages = setMessages(this, messages, 'app.productCard.')
+  //messages = setMessages(this, messages, 'app.productCard.')
 
-  currencies = setCurrencies(this)
+  //currencies = setCurrencies(this)
 
   get containerClasses () {
     return classNames('product-card', {
@@ -90,34 +90,34 @@ class ProductCard extends Component {
     )
   }
 
-  get price () {
-    const { currency } = this.props.currencyStore
-    const product = this.props.product
-
-    return product.sale_price ? (
-      <div className='product-card__prices'>
-        <span className='product-card__new-price'>
-          {this.currencies('value', {
-            value: product.regular_price,
-            currency: this.currencies(currency)
-          })}
-        </span>{' '}
-        <span className='product-card__old-price'>
-          {this.currencies('value', {
-            value: product.sale_price,
-            currency: this.currencies(currency)
-          })}
-        </span>
-      </div>
-    ) : (
-      <div className='product-card__prices'>
-        {this.currencies('value', {
-          value: product.price,
-          currency: this.currencies(currency)
-        })}
-      </div>
-    )
-  }
+  // get price () {
+  //   const { currency } = this.props.currencyStore
+  //   const product = this.props.product
+  //
+  //   return product.sale_price ? (
+  //     <div className='product-card__prices'>
+  //       <span className='product-card__new-price'>
+  //         {this.currencies('value', {
+  //           value: product.regular_price,
+  //           currency: this.currencies(currency)
+  //         })}
+  //       </span>{' '}
+  //       <span className='product-card__old-price'>
+  //         {this.currencies('value', {
+  //           value: product.sale_price,
+  //           currency: this.currencies(currency)
+  //         })}
+  //       </span>
+  //     </div>
+  //   ) : (
+  //     <div className='product-card__prices'>
+  //       {this.currencies('value', {
+  //         value: product.price,
+  //         currency: this.currencies(currency)
+  //       })}
+  //     </div>
+  //   )
+  // }
 
   get features () {
     const product = this.props.product
@@ -201,7 +201,7 @@ class ProductCard extends Component {
           <div className='product-card__name'>
             <Link to={`/category/product/${product.id}`}>{product.name}</Link>
           </div>
-          {this.price}
+          {/*{this.price}*/}
           {/*
           <div className='product-card__rating'>
             <div className=' product-card__rating-legend'>{`Review: ${product.rating_count}`}</div>

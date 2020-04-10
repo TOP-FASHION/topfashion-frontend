@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import classNames from 'classnames'
 import { Link, matchPath, Redirect, Switch, Route } from 'react-router-dom'
 import PageHeader from '../../containers/shared/PageHeader'
@@ -6,7 +6,7 @@ import AccountDashboard from '../../containers/account/AccountDashboard'
 import AccountPassword from '../../containers/account/AccountPassword'
 import './AccountPage.scss'
 
-export default function AccountPage (props) {
+const AccountPage = (props: any) => {
   const { match, location } = props
 
   const breadcrumb = [
@@ -57,3 +57,5 @@ export default function AccountPage (props) {
     </React.Fragment>
   )
 }
+
+export default AccountPage

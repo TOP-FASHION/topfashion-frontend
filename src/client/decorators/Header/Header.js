@@ -42,8 +42,6 @@ class Header extends Component {
     layout: 'default'
   }
 
-  messages = setMessages(this, messages, 'app.header.')
-
   setTab = (newTab) => {
     this.setState(() => ({ currentTab: newTab }))
   };

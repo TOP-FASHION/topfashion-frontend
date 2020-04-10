@@ -2,18 +2,19 @@
   "compilerOptions": {
     "outDir": "./tmp/",
     "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ]
   },
   "include": [
-    "src/client/containers/productList/FilterCategories",
-    "src/client/containers/widgets/WidgetCategories",
-    "src/client/containers/header/NavLinks",
-    "src/client/components/*",
+    "./src/**/*",
     "types"
   ]
 }

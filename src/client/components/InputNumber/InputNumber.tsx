@@ -22,7 +22,7 @@ InputNumber.defaultProps = {
 }
 
 function InputNumber (props: Props) {
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const { min, onChange } = props
     if (onChange) {
       const value = parseFloat(event.target.value)
@@ -44,7 +44,7 @@ function InputNumber (props: Props) {
   /**
    * @param direction - one of [-1, 1]
    */
-  const change = (direction) => {
+  const change = (direction: any) => {
     const { value, step, max, min, onChange } = props
     let newValue =
       (typeof value === 'string' || Number.isNaN(value) ? 0 : value) + step * direction
@@ -66,8 +66,8 @@ function InputNumber (props: Props) {
   /**
    * @param direction - one of [-1, 1]
    */
-  const changeByTimer = (direction) => {
-    let interval
+  const changeByTimer = (direction: any) => {
+    let interval: any
     const timer = setTimeout(() => {
       interval = setInterval(() => this.change(direction), 50)
     }, 300)
