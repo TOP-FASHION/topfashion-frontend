@@ -14,7 +14,7 @@ function Button ({ children, variant, className, disabled, onClick }: Props) {
   const [isLoading, setLoading] = React.useState(false)
 
   const classes = classNames(className, {
-    'btn-loading': isLoading
+    'btn-loading jkhk': isLoading
   })
 
   React.useEffect(() => {

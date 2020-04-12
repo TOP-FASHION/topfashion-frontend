@@ -1,12 +1,13 @@
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
+// @ts-ignore
 import { injectIntl } from 'react-intl'
 import setMessages from '../../../utils/setMessages'
 import messages from './Topbar.messages'
 import DropdownLanguage from '../DropdownLanguage'
 import './Topbar.scss'
 
-const Topbar = (props) => {
+const Topbar = (props: any) => {
   const message = setMessages(props, messages, 'app.topbar.')
 
   const links = [
@@ -36,7 +37,6 @@ const Topbar = (props) => {
       </div>
     </div>
   )
-
 }
 
 export default injectIntl(Topbar)

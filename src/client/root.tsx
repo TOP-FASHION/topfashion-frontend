@@ -13,7 +13,7 @@ addLocaleData(window.__data.localeData)
 const Root = observer(() => {
   React.useEffect(() => {
     setTimeout(() => {
-      window.addEventListener('login', (event) => {
+      window.addEventListener('login', (event: any) => {
         if (event.detail) {
           document.body.classList.remove('preloading')
         }

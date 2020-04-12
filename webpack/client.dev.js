@@ -35,14 +35,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
-      },
-      {
-        test: /\.tsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -85,10 +80,6 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ['node_modules'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    },
     extensions: ['.js', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [

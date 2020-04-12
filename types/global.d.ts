@@ -5,3 +5,5 @@ interface Window {
 }
 
 declare module 'serviceworker-webpack-plugin/lib/runtime'
+
+declare module 'react-intl'

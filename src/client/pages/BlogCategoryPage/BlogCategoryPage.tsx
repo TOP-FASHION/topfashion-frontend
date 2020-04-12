@@ -12,7 +12,6 @@ interface Props {
 }
 
 const BlogCategoryPage = observer(({ layout = 'classic' }: Props) => {
-console.log('dsfsd')
   const { postStore } = React.useContext(AppContext)
   const [page, setPage] = React.useState(1)
 

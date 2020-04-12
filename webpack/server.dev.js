@@ -51,12 +51,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.tsx$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
@@ -92,10 +87,6 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ['node_modules'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    },
     extensions: ['.js', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [

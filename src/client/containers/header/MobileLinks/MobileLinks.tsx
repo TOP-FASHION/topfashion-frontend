@@ -1,25 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import Collapse from '../../../components/Collapse'
 import './MobileLinks.scss'
 
-function MobileLinks (props) {
-  const { links, level, onItemClick } = props
+interface Props {
+  links?: Array<any>,
+  level?: number,
+  onItemClick: Function
+}
 
-  const handleItemClick = (item) => {
+function MobileLinks ({ links = [], level = 0, onItemClick = () => {} }: Props) {
+  const handleItemClick = (item: any) => {
     if (onItemClick) {
       onItemClick(item)
     }
   }
 
-  const linksList = links.map((link, index) => {
+  const linksList = links.map((link: any, index) => {
     let item
 
     if (link.type === 'link' || link.type === 'button') {
       item = (
         <Collapse
           toggleClass='mobile-links__item--open'
+          // @ts-ignore
           render={({ toggle, setItemRef, setContentRef }) => {
             let arrow
             let subLinks
@@ -89,17 +93,6 @@ function MobileLinks (props) {
       {linksList}
     </ul>
   )
-}
-
-MobileLinks.propTypes = {
-  links: PropTypes.array,
-  level: PropTypes.number,
-  onItemClick: PropTypes.func
-}
-
-MobileLinks.defaultProps = {
-  links: [],
-  level: 0
 }
 
 export default MobileLinks
