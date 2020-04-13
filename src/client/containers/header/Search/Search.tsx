@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withRouter } from 'react-router'
+import { withRouter, RouteComponentProps } from 'react-router'
 import { observer } from 'mobx-react'
 import { reaction } from 'mobx'
 import { Form } from 'react-bootstrap'
@@ -9,14 +9,17 @@ import Button from '../../../components/Button'
 import Input from '../../../components/Input'
 import './Search.scss'
 
-interface Props {
-  history?: any,
+interface MatchParams {
+  history: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams> {
   onClose?: ({}) => void | Function,
   className?: string,
   context?: string
 }
 
-const Search = observer(({ history, onClose = () => {}, className, context }: Props) => {
+const Search = observer(({ onClose = () => {}, className, context, ...otherProps }: Props) => {
   const { productSearchStore } = React.useContext(AppContext)
 
   React.useEffect(() => {
@@ -24,7 +27,7 @@ const Search = observer(({ history, onClose = () => {}, className, context }: Pr
       () => productSearchStore.productBySearch,
       data => {
         if (data) {
-          history.push(`/search?name=${productSearchStore.form.fields.search.value}`)
+          otherProps.history.push(`/search?name=${productSearchStore.form.fields.search.value}`)
         }
       },
       { fireImmediately: true }

@@ -5,8 +5,8 @@ import LoginForm from '../../forms/LoginForm'
 import RegistrationForm from '../../forms/RegistrationForm'
 import Fragment from '../../../components/Fragment'
 import { injectIntl } from 'react-intl'
-import messages from './LoginModal.messages'
-import setMessages from '../../../utils/setMessages'
+// import messages from './LoginModal.messages'
+// import setMessages from '../../../utils/setMessages'
 import { inject, observer } from 'mobx-react'
 import classNames from 'classnames'
 import './LoginModal.scss'
@@ -26,7 +26,7 @@ class LoginModal extends Component {
     }
   }
 
-  messages = setMessages(this, messages, 'modals.login.')
+  // messages = setMessages(this, messages, 'modals.login.')
 
   setTab = (newTab) => {
     this.setState(() => ({ currentTab: newTab }))
@@ -41,8 +41,8 @@ class LoginModal extends Component {
     const { openModalLogin } = this.props.modalStore
 
     const tabs = [
-      { key: 'login', title: this.messages('title') },
-      { key: 'registration', title: this.messages('signUp') }
+      { key: 'login', title: "this.messages('title')" },
+      { key: 'registration', title: "this.messages('signUp')" }
     ]
 
     const tabsButtons = tabs.map((tab) => {

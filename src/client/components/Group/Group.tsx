@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   classNames?: any,
   children?: React.ReactNode
 }
 
 function Group ({ classNames = {}, children, ...otherProps }: Props) {
   return (
-    <div className={classNames.root} {...otherProps}>
+    <div className={classNames} {...otherProps}>
       {children}
     </div>
   )

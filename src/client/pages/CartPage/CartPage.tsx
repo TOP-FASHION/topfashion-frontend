@@ -1,51 +1,42 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 // import classNames from 'classnames'
 import { Link } from 'react-router-dom'
-import { inject, observer } from 'mobx-react'
+import { observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
+import { AppContext } from '../../core/Store/context'
 import InputNumber from '../../components/InputNumber'
 import PageHeader from '../../containers/shared/PageHeader'
 import Button from '../../components/Button/Button'
 import { setCurrencies } from '../../translations/currencies.messages'
 import './CartPage.scss'
 
-@inject('cartProductsStore', 'cartCountProductsStore', 'currencyStore', 'cartInfoTotalProductsStore', 'cartRemoveProductStore', 'cartUpdateProductStore')
-@observer
-class CartPage extends Component {
-  constructor (props) {
-    super(props)
+const CartPage = observer((props: any) => {
+  const {
+    cartProductsStore,
+    cartCountProductsStore,
+    currencyStore,
+    cartInfoTotalProductsStore,
+    cartRemoveProductStore,
+    cartUpdateProductStore
+  } = React.useContext(AppContext)
+  const { productsCart }: any = cartProductsStore
+  const { currency } = currencyStore
 
-    this.state = {
-      quantities: []
-    }
-  }
+  const [quantities, setQuantities]: any = React.useState([])
+  const currencies = setCurrencies(props)
 
-  static propTypes = {
-    cartProductsStore: PropTypes.any,
-    cartCountProductsStore: PropTypes.any,
-    currencyStore: PropTypes.any,
-    cartInfoTotalProductsStore: PropTypes.any,
-    cartRemoveProductStore: PropTypes.any,
-    cartUpdateProductStore: PropTypes.any
-  }
+  React.useEffect(() => {
+    cartProductsStore.getProductCart()
+  }, [])
 
-  currencies = setCurrencies(this)
-
-  componentDidMount () {
-    this.props.cartProductsStore.getProductCart()
-  }
-
-  getItemQuantity (item) {
-    const { quantities } = this.state
-    const quantity = quantities.find((x) => x.itemId === item.product_id)
-
+  const getItemQuantity = (item: any) => {
+    const quantity = quantities.find((x: any) => x.itemId === item.product_id)
     return quantity ? quantity.value : item.quantity
   }
 
-  handleChangeQuantity = (item, quantity) => {
-    this.setState((state) => {
-      const stateQuantity = state.quantities.find((x) => x.itemId === item.product_id)
+  const handleChangeQuantity = (item: any, quantity: any) => {
+    setQuantities((state: any) => {
+      const stateQuantity = state.quantities.find((x:any) => x.itemId === item.product_id)
       if (!stateQuantity) {
         state.quantities.push({ itemId: item.product_id, value: quantity })
       } else {
@@ -55,30 +46,21 @@ class CartPage extends Component {
         quantities: state.quantities
       }
     })
-  };
-
-  cartNeedUpdate () {
-    const { quantities } = this.state
-    const { productsCart } = this.props.cartProductsStore
-
-    quantities.map((x) => {
-      Object.keys(productsCart).map((item) => {
-        if (x.itemId === productsCart[item].product_id) {
-          const data = {
-            cart_item_key: productsCart[item].key,
-            quantity: x.value
-          }
-
-          return this.props.cartUpdateProductStore.updateProduct(data)
-        }
-      })
-    })
   }
 
-  renderItems () {
-    const { productsCart } = this.props.cartProductsStore
-    const { currency } = this.props.currencyStore
+  const cartNeedUpdate = quantities.map((x: any) => {
+    Object.keys(productsCart).map((item: any) => {
+      if (x.itemId === productsCart[item].product_id) {
+        const data = {
+          cart_item_key: productsCart[item].key,
+          quantity: x.value
+        }
+        return cartUpdateProductStore.updateProduct(data)
+      }
+    })
+  })
 
+  const renderItems = () => {
     return productsCart ? Object.keys(productsCart).map((item) => {
       let image
       // let options
@@ -87,7 +69,8 @@ class CartPage extends Component {
         image = <Link to={`/category/product/${productsCart[item].product_id}`}><img src={productsCart[item].product_image} alt='' /></Link>
       }
 
-      /*      if (item.options.length > 0) {
+      /*
+      if (item.options.length > 0) {
         options = (
           <ul className="cart-table__options">
             {item.options.map((option, index) => (
@@ -95,7 +78,8 @@ class CartPage extends Component {
             ))}
           </ul>
         );
-      } */
+      }
+      */
 
       return (
         <tr key={productsCart[item].product_id} className='cart-table__row'>
@@ -113,21 +97,21 @@ class CartPage extends Component {
           </td>
           <td className='cart-table__column cart-table__column--quantity' data-title='Quantity'>
             <InputNumber
-              onChange={(quantity) => this.handleChangeQuantity(productsCart[item], quantity)}
-              value={this.getItemQuantity(productsCart[item])}
+              onChange={(quantity) => handleChangeQuantity(productsCart[item], quantity)}
+              value={getItemQuantity(productsCart[item])}
               min={1}
             />
           </td>
           <td className='cart-table__column cart-table__column--total' data-title='Total'>
-            {this.currencies('value', {
+            {currencies('value', {
               value: productsCart[item].line_total,
-              currency: this.currencies(currency)
+              currency: currencies(currency)
             })}
           </td>
           <td className='cart-table__column cart-table__column--remove'>
             <Button
               variant='primary'
-              onClick={() => this.props.cartRemoveProductStore.removeProductCart(productsCart[item].key)}
+              onClick={() => cartRemoveProductStore.removeProductCart(productsCart[item].key)}
               className={'btn btn-light btn-sm btn-svg-icon'}
             >
               <i className='fas fa-times' />
@@ -138,9 +122,8 @@ class CartPage extends Component {
     }) : null
   }
 
-  renderTotals () {
-    const { productsCartInfoTotal } = this.props.cartInfoTotalProductsStore
-    const { currency } = this.props.currencyStore
+  const renderTotals = () => {
+    const { productsCartInfoTotal } = cartInfoTotalProductsStore
 
     /* if (cart.extraLines.length <= 0) {
       return null;
@@ -170,9 +153,9 @@ class CartPage extends Component {
           <tr>
             <th>Subtotal</th>
             <td>
-              {this.currencies('value', {
+              {currencies('value', {
                 value: productsCartInfoTotal.subtotal,
-                currency: this.currencies(currency)
+                currency: currencies(currency)
               })}
             </td>
           </tr>
@@ -184,9 +167,8 @@ class CartPage extends Component {
     ) : null
   }
 
-  renderCart () {
-    const { productsCartInfoTotal } = this.props.cartInfoTotalProductsStore
-    const { currency } = this.props.currencyStore
+  const renderCart = () => {
+    const { productsCartInfoTotal } = cartInfoTotalProductsStore
 
     return productsCartInfoTotal ? (
       <div className='cart block'>
@@ -203,7 +185,7 @@ class CartPage extends Component {
               </tr>
             </thead>
             <tbody className='cart-table__body'>
-              {this.renderItems()}
+              {renderItems()}
             </tbody>
           </table>
           <div className='cart__actions'>
@@ -215,7 +197,7 @@ class CartPage extends Component {
             <div className='cart__buttons'>
               <Link to='/' className='btn btn-light'>Continue Shopping</Link>
               <button
-                onClick={() => this.cartNeedUpdate()}
+                onClick={() => cartNeedUpdate()}
                 className={'btn btn-primary cart__update-button'}
               >
                 Update Cart
@@ -229,14 +211,14 @@ class CartPage extends Component {
                 <div className='card-body'>
                   <h3 className='card-title'>Cart Totals</h3>
                   <table className='cart__totals'>
-                    {this.renderTotals()}
+                    {renderTotals()}
                     <tfoot className='cart__totals-footer'>
                       <tr>
                         <th>Total</th>
                         <td>
-                          {this.currencies('value', {
+                          {currencies('value', {
                             value: productsCartInfoTotal.total,
-                            currency: this.currencies(currency)
+                            currency: currencies(currency)
                           })}
                         </td>
                       </tr>
@@ -254,39 +236,37 @@ class CartPage extends Component {
     ) : null
   }
 
-  render () {
-    const { productsCartCountItems } = this.props.cartCountProductsStore
-    const breadcrumb = [
-      { title: 'Home', url: '' },
-      { title: 'Shopping Cart', url: '' }
-    ]
+  const { productsCartCountItems } = cartCountProductsStore
+  const breadcrumb = [
+    { title: 'Home', url: '' },
+    { title: 'Shopping Cart', url: '' }
+  ]
 
-    let content
+  let content
 
-    if (productsCartCountItems) {
-      content = this.renderCart()
-    } else {
-      content = (
-        <div className='block block-empty'>
-          <div className='container'>
-            <div className='block-empty__body'>
-              <div className='block-empty__message'>Your shopping cart is empty!</div>
-              <div className='block-empty__actions'>
-                <Link to='/' className='btn btn-primary btn-sm'>Continue</Link>
-              </div>
+  if (productsCartCountItems) {
+    content = renderCart()
+  } else {
+    content = (
+      <div className='block block-empty'>
+        <div className='container'>
+          <div className='block-empty__body'>
+            <div className='block-empty__message'>Your shopping cart is empty!</div>
+            <div className='block-empty__actions'>
+              <Link to='/' className='btn btn-primary btn-sm'>Continue</Link>
             </div>
           </div>
         </div>
-      )
-    }
-
-    return (
-      <React.Fragment>
-        <PageHeader header='Shopping Cart' breadcrumb={breadcrumb} />
-        {content}
-      </React.Fragment>
+      </div>
     )
   }
-}
+
+  return (
+    <React.Fragment>
+      <PageHeader header='Shopping Cart' breadcrumb={breadcrumb} />
+      {content}
+    </React.Fragment>
+  )
+})
 
 export default injectIntl(CartPage)

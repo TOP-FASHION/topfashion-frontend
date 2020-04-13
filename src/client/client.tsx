@@ -7,10 +7,8 @@ import './styles/main.scss'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { Provider } from 'mobx-react'
 // import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 import App from './decorators'
-import RootStore from './core/Store'
 import Root from './root'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-boost'
@@ -29,9 +27,7 @@ const render = (App: (() => any) | any) =>
     <AppContainer>
       <ApolloProvider client={client}>
         <AppContext.Provider value={stores}>
-          <Provider {...RootStore}>
-            <Root />
-          </Provider>
+          <Root />
         </AppContext.Provider>,
       </ApolloProvider>
     </AppContainer>,

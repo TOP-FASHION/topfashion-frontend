@@ -1,19 +1,20 @@
-import { decorate, observable, action, computed, toJS } from 'mobx'
+import { observable, action, computed, toJS } from 'mobx'
 import Api from '../Api'
 
 export default class ProductsStore {
-  products = []
+  @observable products = []
 
-  allLoadedProducts = []
+  @observable allLoadedProducts = []
 
-  totalProducts
+  @observable totalProducts
 
-  pagesProducts
+  @observable pagesProducts
 
-  countProducts = 12
+  @observable countProducts = 12
 
-  isLoadingProducts = false
+  @observable isLoadingProducts = false
 
+  @action
   getProducts (data) {
     this.isLoadingProducts = true
     return Api.Woocommerce.Products(data)
@@ -29,22 +30,13 @@ export default class ProductsStore {
       })
   }
 
+  @action
   setProducts = data => {
     this.products = data
   }
 
+  @computed
   get allProducts () {
-    this.allLoadedProducts = this.allLoadedProducts.concat(toJS(this.products))
-    return this.allLoadedProducts
+    return this.allLoadedProducts.concat(toJS(this.products))
   }
 }
-
-decorate(ProductsStore, {
-  products: observable,
-  totalProducts: observable,
-  pagesProducts: observable,
-  countProducts: observable,
-  isLoadingProducts: observable,
-  setData: action,
-  allProducts: computed
-})

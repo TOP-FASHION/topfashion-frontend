@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
 import ProductsBlockHeader from '../ProductsBlockHeader'
 import ProductCard from '../../product/ProductCard'
 import SlickWithPreventSwipeClick from '../../../components/SlickWithPreventSwipeClick'
 import './ProductsCarousel.scss'
 
-const slickSettings = {
+const slickSettings: any = {
   'grid-4': {
     dots: false,
     arrows: true,
@@ -136,36 +135,32 @@ const slickSettings = {
   }
 }
 
-class ProductsCarousel extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    layout: PropTypes.oneOf(['grid-4', 'grid-4-sm', 'grid-5', 'horizontal']),
-    rows: PropTypes.number,
-    products: PropTypes.array,
-    group: PropTypes.string,
-    allProducts: PropTypes.bool,
-    withSidebar: PropTypes.bool,
-    loading: PropTypes.bool,
-    onGroupClick: PropTypes.func
-  }
+interface Props {
+  title: string,
+  layout: 'grid-4' | 'grid-4-sm' | 'grid-5' | 'horizontal',
+  rows: number,
+  products: any,
+  group: string,
+  allProducts: boolean,
+  withSidebar: boolean,
+  loading: boolean,
+  onGroupClick: Function
+}
 
-  static defaultProps = {
-    layout: 'grid-4',
-    rows: 1,
-    products: [],
-    allProducts: false,
-    withSidebar: false,
-    loading: false
-  }
+const ProductsCarousel = (props: Props) => {
+  let {
+    title,
+    layout = 'grid-4',
+    rows = 1,
+    products = [],
+    allProducts = false,
+    withSidebar = false,
+    loading = false,
+    group
+  } = props
 
-  setSlickRef = (ref) => {
-    this.slickRef = ref
-  };
-
-  productsColumns () {
+  const productsColumns = () => {
     const columns = []
-    const { rows } = this.props
-    let { products } = this.props
 
     if (rows > 0) {
       products = products.slice()
@@ -178,54 +173,47 @@ class ProductsCarousel extends Component {
     return columns
   }
 
-  get columns () {
-    return this.productsColumns().map((column, index) => {
-      const products = column.map((product) => (
-        <div key={product.id} className='block-products-carousel__cell'>
-          <ProductCard product={product} />
-        </div>
-      ))
+  const columns = (productsColumns().map((column, index) => {
+    const products = column.map((product: any) => (
+      <div key={product.id} className='block-products-carousel__cell'>
+        <ProductCard product={product} />
+      </div>
+    ))
 
-      return (
-        <div key={index} className='block-products-carousel__column'>
-          {products}
-        </div>
-      )
-    })
-  }
+    return (
+      <div key={index} className='block-products-carousel__column'>
+        {products}
+      </div>
+    )
+  }))
 
-  render () {
-    const { products, layout, title, withSidebar, group, loading } = this.props
+  const blockClasses = classNames('block block-products-carousel', {
+    'block-products-carousel--loading': loading
+  })
 
-    const blockClasses = classNames('block block-products-carousel', {
-      'block-products-carousel--loading': loading
-    })
-    const containerClasses = classNames({
-      'container-fluid': !withSidebar
-    })
+  const containerClasses = classNames({
+    'container-fluid': !withSidebar
+  })
 
-    return products ? (
-      <div className={blockClasses} data-layout={layout}>
-        <div className={containerClasses}>
-          <ProductsBlockHeader
-            title={title}
-            group={group}
-          />
+  return products ? (
+    <div className={blockClasses} data-layout={layout}>
+      <div className={containerClasses}>
+        <ProductsBlockHeader
+          title={title}
+          group={group}
+        />
 
-          <div className='block-products-carousel__slider'>
-            <div className='block-products-carousel__preloader' />
-
-            <SlickWithPreventSwipeClick
-              ref={this.setSlickRef}
-              {...slickSettings[layout]}
-            >
-              {this.columns}
-            </SlickWithPreventSwipeClick>
-          </div>
+        <div className='block-products-carousel__slider'>
+          <div className='block-products-carousel__preloader' />
+          <SlickWithPreventSwipeClick
+            {...slickSettings[layout]}
+          >
+            {columns}
+          </SlickWithPreventSwipeClick>
         </div>
       </div>
-    ) : null
-  }
+    </div>
+  ) : null
 }
 
 export default injectIntl(ProductsCarousel)

@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { inject, observer } from 'mobx-react'
+import { observer } from 'mobx-react'
 import { injectIntl } from 'react-intl'
 import classNames from 'classnames'
-import setMessages from '../../utils/setMessages'
+import { AppContext } from '../../core/Store/context'
 import NavPanel from '../../containers/header/NavPanel'
 import Search from '../../containers/header/Search'
 import Topbar from '../../containers/header/Topbar'
@@ -13,58 +12,38 @@ import IndicatorCart from '../../containers/header/IndicatorCart'
 import LoginForm from '../../containers/forms/LoginForm'
 import RegistrationForm from '../../containers/forms/RegistrationForm'
 import Fragment from '../../components/Fragment'
+import setMessages from '../../utils/setMessages'
 import messages from './Header.messages'
 import './Header.scss'
 
-@inject('modalStore', 'loginStore', 'wishlistGetProductsStore', 'mobileMenuStore', 'userInfoStore')
-@observer
-class Header extends Component {
-  constructor (props) {
-    super(props)
+interface Props {
+  layout?: 'default' | 'compact'
+}
 
-    this.state = {
-      searchOpen: false,
-      currentTab: 'login'
-    }
+const Header = observer(({ layout = 'default' }: Props) => {
+  const {
+    loginStore,
+    wishlistGetProductsStore,
+    mobileMenuStore,
+    userInfoStore
+  } = React.useContext(AppContext)
+
+  const [searchOpen, setSearchOpen] = React.useState(false)
+  const [currentTab, setCurrentTab] = React.useState('login')
+
+  const setTab = (newTab: any) => {
+    setCurrentTab(newTab)
   }
 
-  static propTypes = {
-    modalStore: PropTypes.any,
-    loginStore: PropTypes.any,
-    wishlistGetProductsStore: PropTypes.any,
-    mobileMenuStore: PropTypes.any,
-    userInfoStore: PropTypes.any,
-    /** one of ['default', 'compact'] (default: 'default') */
-    layout: PropTypes.oneOf(['default', 'compact'])
+  const handleOpenSearch = () => {
+    setSearchOpen(true)
   }
 
-  static defaultProps = {
-    layout: 'default'
+  const handleCloseSearch = () => {
+    setSearchOpen(false)
   }
 
-  setTab = (newTab) => {
-    this.setState(() => ({ currentTab: newTab }))
-  };
-
-  openLoginModal = () => {
-    this.props.modalStore.openLogin()
-  }
-
-  handleOpenSearch = () => {
-    this.setState(() => ({ searchOpen: true }))
-  };
-
-  handleCloseSearch = () => {
-    this.setState(() => ({ searchOpen: false }))
-  };
-
-  get user () {
-    return this.props.userInfoStore.user
-  }
-
-  get dropdownLogin () {
-    const { currentTab } = this.state
-
+  const dropdownLogin = () => {
     const tabs = [
       { key: 'login', title: 'Login' },
       { key: 'registration', title: 'Create An Account' }
@@ -75,10 +54,10 @@ class Header extends Component {
         'd-none': currentTab === tab.key
       })
 
-      return <span key={tab.key} onClick={() => this.setTab(tab.key)} className={classes}>{tab.title}</span>
+      return <span key={tab.key} onClick={() => setTab(tab.key)} className={classes}>{tab.title}</span>
     })
 
-    const content = !this.props.loginStore.loggedIn ? (
+    const content = !loginStore.loggedIn ? (
       <Fragment>
         <div className='account-menu__form'>
           <Fragment hidden={currentTab === 'registration'}>
@@ -101,10 +80,10 @@ class Header extends Component {
             <img src='/assets/img/avatar.png' alt='' />
           </div>
           <div className='account-menu__user-info'>
-            {this.user ? (
+            {userInfoStore.user ? (
               <Fragment>
-                <div className='account-menu__user-name'>{this.user.firstname} {this.user.lastname}</div>
-                <div className='account-menu__user-email'>{this.user.email}</div>
+                <div className='account-menu__user-name'>{userInfoStore.user.firstname} {userInfoStore.user.lastname}</div>
+                <div className='account-menu__user-email'>{userInfoStore.user.email}</div>
               </Fragment>
             ) : null}
           </div>
@@ -116,7 +95,7 @@ class Header extends Component {
         </ul>
         <div className='account-menu__divider' />
         <ul className='account-menu__links'>
-          <li><span onClick={() => this.props.loginStore.logout()}>Logout</span></li>
+          <li><span onClick={() => loginStore.logout()}>Logout</span></li>
         </ul>
       </Fragment>
     )
@@ -128,16 +107,13 @@ class Header extends Component {
     )
   }
 
-  get header () {
-    const { layout } = this.props
-
-    const { searchOpen } = this.state
+  const header = () => {
     const searchClasses = classNames('mobile-header__search', {
       'mobile-header__search--opened': searchOpen
     })
 
     const mobileClasses = classNames('mobile-header__menu-button', {
-      'mobile-header__menu-button--opened': this.props.mobileMenuStore.isOpenMobileMenu
+      'mobile-header__menu-button--opened': mobileMenuStore.isOpenMobileMenu
     })
 
     return (
@@ -147,7 +123,7 @@ class Header extends Component {
             type='button'
             id='nav-toggle'
             className={`${mobileClasses} d-lg-none d-xl-none`}
-            onClick={() => this.props.mobileMenuStore.openMobileMenu()}
+            onClick={() => mobileMenuStore.openMobileMenu()}
           >
             <span className='sidebarToggle__text'>MENU</span>
           </button>
@@ -160,17 +136,17 @@ class Header extends Component {
           <div className='site-header__actions'>
             <Indicator
               className='d-md-block d-lg-block d-xl-block d-none'
-              onClick={this.handleOpenSearch}
+              onClick={handleOpenSearch}
               icon={<i className='fas fa-search' />}
             />
             <Indicator
               className='d-md-block d-lg-block d-xl-block d-none'
               icon={<i className='far fa-user' />}
-              dropdown={this.dropdownLogin}
+              dropdown={dropdownLogin()}
             />
             <Indicator
               url='/wishlist'
-              value={this.props.loginStore.loggedIn && this.props.wishlistGetProductsStore.productsWishlist ? this.props.wishlistGetProductsStore.productsWishlist.length : 0}
+              value={loginStore.loggedIn && wishlistGetProductsStore.productsWishlist ? wishlistGetProductsStore.productsWishlist.length : 0}
               icon={<i className='far fa-heart' />}
             />
             <IndicatorCart />
@@ -178,21 +154,19 @@ class Header extends Component {
           <Search
             context='mobile-header'
             className={searchClasses}
-            onClose={this.handleCloseSearch}
+            onClose={handleCloseSearch}
           />
         </div>
       </div>
     )
   }
 
-  render () {
-    return (
-      <div className='site-header'>
-        <Topbar />
-        {this.header}
-      </div>
-    )
-  }
-}
+  return (
+    <div className='site-header'>
+      <Topbar />
+      {header()}
+    </div>
+  )
+})
 
 export default injectIntl(Header)

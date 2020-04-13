@@ -9,10 +9,9 @@ import searchParse from '../utils/text/url/searchParse'
 import sessionTabStorage from '../utils/sessionTabStorage'
 import MainDecorator from './MainDecorator'
 import EmptyDecorator from './EmptyDecorator'
-// import Modals from '../containers/modals'
+import Modals from '../containers/modals'
 // import Notifications from '../containers/notifications'
 import Fragment from '../components/Fragment'
-// import DevTools from 'mobx-react-devtools'
 
 @observer
 class AppRoot extends React.Component {
@@ -108,9 +107,8 @@ class AppRoot extends React.Component {
   render () {
     return (
       <Fragment>
-        {/* <DevTools /> */}
         {/* <Notifications /> */}
-        {/* <Modals /> */}
+        <Modals />
         <SetLang langList={['en', 'ru']}>
           <SwitchLang>
             <Route path='/blocked' component={EmptyDecorator} exact />
