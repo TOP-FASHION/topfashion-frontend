@@ -1,18 +1,15 @@
 import { decorate, observable, action } from 'mobx'
 import Api from '../Api'
+import { stores } from './context'
 
 export default class WishlistRemoveProductStore {
   // eslint-disable-next-line camelcase
   product_id
 
-  constructor (rootStore) {
-    this.rootStore = rootStore
-  }
-
   removeProduct (data) {
     return Api.Wishlist.WishlistRemoveProduct(data)
       .then(res => {
-        this.rootStore.wishlistGetProductsStore.getProducts()
+        stores.wishlistGetProductsStore.getProducts()
         return res.data
       })
       .catch(error => {

@@ -3,7 +3,7 @@ import Fragment from '../../components/Fragment'
 import Static from '../../containers/shared/Static'
 
 interface Props {
-  page: any
+  page: any;
 }
 
 const StaticPage = ({ page }: Props) => {

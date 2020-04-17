@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx'
 import Api from '../Api'
+import { stores } from './context'
 
 export default class ProductReviewsAddStore {
   @observable review
@@ -10,10 +11,6 @@ export default class ProductReviewsAddStore {
   @observable reviewer_email
 
   @observable rating
-
-  constructor (rootStore) {
-    this.rootStore = rootStore
-  }
 
   @action.bound onReviewerChange (event) {
     this.reviewer = event.target.value
@@ -52,6 +49,6 @@ export default class ProductReviewsAddStore {
   }
 
   setReviewAfterAdd = data => {
-    this.rootStore.productReviewsStore.productReviews = data
+    stores.productReviewsStore.productReviews = data
   }
 }

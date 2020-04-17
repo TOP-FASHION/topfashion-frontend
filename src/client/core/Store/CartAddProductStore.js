@@ -1,5 +1,6 @@
 import { decorate, observable, action } from 'mobx'
 import Api from '../Api'
+import { stores } from './context'
 
 export default class CartAddProductStore {
   isProductAddCart
@@ -7,8 +8,7 @@ export default class CartAddProductStore {
   // eslint-disable-next-line camelcase
   product_id
 
-  constructor (rootStore) {
-    this.rootStore = rootStore
+  constructor () {
     this.isProductAddCart = false
   }
 
@@ -21,8 +21,8 @@ export default class CartAddProductStore {
     return Api.CoCart.CartAddProduct(postData)
       .then(res => {
         this.setProductAfterAddCart(res.data)
-        this.rootStore.cartInfoTotalProductsStore.getProductsCartInfoTotal()
-        this.rootStore.cartCountProductsStore.getProductsCartCountItems()
+        stores.cartInfoTotalProductsStore.getProductsCartInfoTotal()
+        stores.cartCountProductsStore.getProductsCartCountItems()
         this.isProductAddCart = true
         return res.data
       })
@@ -32,7 +32,7 @@ export default class CartAddProductStore {
   }
 
   setProductAfterAddCart = data => {
-    this.rootStore.cartProductsStore.productsCart = data
+    stores.cartProductsStore.productsCart = data
   }
 
   get productId () {

@@ -1,5 +1,4 @@
 import * as React from 'react'
-// @ts-ignore
 import { addLocaleData, IntlProvider } from 'react-intl'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { observer } from 'mobx-react'

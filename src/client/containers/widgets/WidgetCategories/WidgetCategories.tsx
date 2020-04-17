@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CATEGORIES } from '../../../queries/categories'
 import Collapse from '../../../components/Collapse/index'
@@ -31,9 +31,7 @@ interface IFilterCategoriesProps {
   match: string;
 }
 
-type TParams = RouteComponentProps<any>
-
-const WidgetCategories = ({ match }: TParams) => {
+const WidgetCategories = (props: any) => {
   const { loading, data, error } = useQuery<IFilterCategoriesProps>(GET_CATEGORIES)
 
   if (loading) return null

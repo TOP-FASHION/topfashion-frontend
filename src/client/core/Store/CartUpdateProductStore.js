@@ -1,11 +1,11 @@
 import { decorate, observable, action } from 'mobx'
 import Api from '../Api'
+import { stores } from './context'
 
 export default class CartUpdateProductStore {
   isProductUpdateCart
 
-  constructor (rootStore) {
-    this.rootStore = rootStore
+  constructor () {
     this.isProductUpdateCart = false
   }
 
@@ -18,8 +18,8 @@ export default class CartUpdateProductStore {
     return Api.CoCart.CartUpdateProduct(postData)
       .then(res => {
         this.setProductAfterUpdateCart(res.data)
-        this.rootStore.cartInfoTotalProductsStore.getProductsCartInfoTotal()
-        this.rootStore.cartCountProductsStore.getProductsCartCountItems()
+        stores.cartInfoTotalProductsStore.getProductsCartInfoTotal()
+        stores.cartCountProductsStore.getProductsCartCountItems()
         this.isProductUpdateCart = true
       })
       .catch(error => {
@@ -28,7 +28,7 @@ export default class CartUpdateProductStore {
   }
 
   setProductAfterUpdateCart = data => {
-    this.rootStore.cartProductsStore.productsCart = data
+    stores.cartProductsStore.productsCart = data
   }
 
   clear () {

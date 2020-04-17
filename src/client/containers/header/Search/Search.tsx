@@ -10,12 +10,12 @@ import Input from '../../../components/Input'
 import './Search.scss'
 
 interface MatchParams {
-  history: string;
+  history: string
 }
 
 interface Props extends RouteComponentProps<MatchParams> {
-  onClose?: ({}) => void | Function,
-  className?: string,
+  onClose?: () => void | Function
+  className?: string
   context?: string
 }
 

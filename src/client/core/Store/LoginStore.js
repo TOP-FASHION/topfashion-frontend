@@ -3,6 +3,7 @@ import { observable, action, computed, autorun, runInAction, toJS } from 'mobx'
 import Api from '../Api'
 import Cookies from 'js-cookie'
 import Validator from 'validatorjs'
+import { stores } from './context'
 
 export default class LoginStore {
   @observable token
@@ -33,9 +34,8 @@ export default class LoginStore {
     }
   }
 
-  constructor (rootStore) {
+  constructor () {
     document.body.classList.add('preloading')
-    this.rootStore = rootStore
     this.token = Cookies.get('auth')
     autorun(() => this.validateAuth())
   }
@@ -49,7 +49,7 @@ export default class LoginStore {
       new Event('login')
       const event = new CustomEvent('login', { detail: { status: value.data.valid } })
       window.dispatchEvent(event)
-      this.rootStore.userInfoStore.getUserInfo()
+      stores.userInfoStore.getUserInfo()
     } catch (error) {
       runInAction(() => {
         this.status = 'error'
@@ -95,8 +95,8 @@ export default class LoginStore {
           this.loggedIn = true
           this.messageStatusLogin = res.data.status
           this.statusLogin = res.data.status
-          this.rootStore.modalStore.isOpenModalLogin = false
-          this.rootStore.userInfoStore.getUserInfo()
+          stores.modalStore.isOpenModalLogin = false
+          stores.userInfoStore.getUserInfo()
         }
         if (res.data.status === 'error') {
           this.messageStatusLogin = res.data.error

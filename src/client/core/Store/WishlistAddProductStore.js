@@ -1,19 +1,16 @@
 import { decorate, action } from 'mobx'
 import Api from '../Api'
+import { stores } from './context'
 
 export default class WishlistAddProductStore {
-  constructor (rootStore) {
-    this.rootStore = rootStore
-  }
-
   addProduct (data) {
     // eslint-disable-next-line camelcase
-    const share_key = this.rootStore.wishlistByUserStore.wishlistUser[0].share_key
+    const share_key = stores.wishlistByUserStore.wishlistUser[0].share_key
     const postData = {}
     postData.product_id = data
     return Api.Wishlist.WishlistAddProduct(postData, share_key)
       .then(res => {
-        this.rootStore.wishlistGetProductsStore.getProducts()
+        stores.wishlistGetProductsStore.getProducts()
         return res.data
       })
       .catch(error => {

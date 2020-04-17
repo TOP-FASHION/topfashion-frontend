@@ -1,11 +1,11 @@
 import { observable, action, computed } from 'mobx'
+import { stores } from './context'
 
 export default class ModalStore {
-  constructor (rootStore) {
+  constructor () {
     // this.isOpenModalLogin = false
     this.isOpenModalRegistration = false
     this.openModalProduct = false
-    this.rootStore = rootStore
   }
 
   @observable isOpenModalLogin = false
@@ -30,7 +30,7 @@ export default class ModalStore {
 
   @computed
   get openModalLogin () {
-    return !this.rootStore.loginStore.loggedIn && this.isOpenModalLogin
+    return !stores.loginStore.loggedIn && this.isOpenModalLogin
   }
 
   // REGASTRATION
@@ -46,7 +46,7 @@ export default class ModalStore {
 
   @computed
   get openModalRegistration () {
-    return !this.rootStore.loginStore.loggedIn && this.isOpenModalRegistration
+    return !stores.loginStore.loggedIn && this.isOpenModalRegistration
   }
 
   // PRODUCT

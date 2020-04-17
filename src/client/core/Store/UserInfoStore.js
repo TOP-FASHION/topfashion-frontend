@@ -1,15 +1,12 @@
 import { observable, action } from 'mobx'
 import Api from '../Api'
 import Cookies from 'js-cookie'
+import { stores } from './context'
 
 export default class UserInfoStore {
   @observable user
 
   @observable customer
-
-  constructor (rootStore) {
-    this.rootStore = rootStore
-  }
 
   @action getUserInfo () {
     const postData = {}
@@ -19,8 +16,8 @@ export default class UserInfoStore {
       .then(res => {
         if (res.data.status === 'ok') {
           this.user = res.data.user
-          this.rootStore.wishlistByUserStore.getWishlistByUser(this.user.id)
-          this.rootStore.wishlistGetProductsStore.getProducts()
+          stores.wishlistByUserStore.getWishlistByUser(this.user.id)
+          stores.wishlistGetProductsStore.getProducts()
         }
       })
       .catch(error => {

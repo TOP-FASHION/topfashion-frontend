@@ -7,8 +7,8 @@ import PageHeader from '../../containers/shared/PageHeader'
 import Product from '../../containers/product/Product'
 import ProductTabs from '../../containers/product/ProductTabs'
 import ProductsCarousel from '../../containers/productList/ProductsCarousel'
-// import WidgetCategories from '../../containers/widgets/WidgetCategories'
-// import WidgetProducts from '../../containers/widgets/WidgetProducts'
+import WidgetCategories from '../../containers/widgets/WidgetCategories'
+import WidgetProducts from '../../containers/widgets/WidgetProducts'
 import normalizeCategory from '../../utils/normalizeCategory'
 import './ProductPage.scss'
 
@@ -44,7 +44,10 @@ const ProductPage = observer(({ layout = 'sidebar', sidebarPosition = 'start', m
       setProductsBestsellers(itemsBestsellers)
     }
     getBestsellers()
-    // lastProducts()
+
+    return () => {
+      lastProducts()
+    }
   }, [])
 
   const lastProducts = () => {
@@ -58,17 +61,17 @@ const ProductPage = observer(({ layout = 'sidebar', sidebarPosition = 'start', m
       Object.keys(objLastProducts).map(item => {
         const itemLastProduct = objLastProducts[item]
         Object.keys(itemLastProduct).map(item => {
-          if (itemLastProduct.id === product.id) {
+          if (itemLastProduct.id === productStore.product.id) {
             isAdd = false
           }
         })
       })
       // eslint-disable-next-line no-unused-expressions
-      isAdd ? arr.unshift(toJS(product)) : null
+      isAdd ? arr.unshift(toJS(productStore.product)) : null
       // eslint-disable-next-line no-unused-expressions
       isAdd ? window.localStorage.setItem('lastProducts', JSON.stringify(arr.slice(0, 5))) : null
     } else {
-      window.localStorage.setItem('lastProducts', JSON.stringify([product]))
+      window.localStorage.setItem('lastProducts', JSON.stringify([productStore.product]))
     }
   }
 
@@ -84,14 +87,10 @@ const ProductPage = observer(({ layout = 'sidebar', sidebarPosition = 'start', m
         <div className='shop-layout__sidebar'>
           <div className='block block-sidebar'>
             <div className='block-sidebar__item'>
-              {/*
-              <WidgetCategories location='shop' />
-              */}
+              <WidgetCategories />
             </div>
             <div className='block-sidebar__item d-none d-lg-block'>
-              {/*
               <WidgetProducts title='Latest Products' />
-              */}
             </div>
           </div>
         </div>

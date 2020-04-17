@@ -1,5 +1,6 @@
 import { decorate, observable, action } from 'mobx'
 import Api from '../Api'
+import { stores } from './context'
 
 export default class CartRemoveProductStore {
   isProductRemoveCart
@@ -7,8 +8,7 @@ export default class CartRemoveProductStore {
   // eslint-disable-next-line camelcase
   cart_item_key
 
-  constructor (rootStore) {
-    this.rootStore = rootStore
+  constructor () {
     this.isProductRemoveCart = false
   }
 
@@ -20,8 +20,8 @@ export default class CartRemoveProductStore {
     return Api.CoCart.CartRemoveProduct(postData)
       .then(res => {
         this.updateProductCartAfterRemove(res.data)
-        this.rootStore.cartInfoTotalProductsStore.getProductsCartInfoTotal()
-        this.rootStore.cartCountProductsStore.getProductsCartCountItems()
+        stores.cartInfoTotalProductsStore.getProductsCartInfoTotal()
+        stores.cartCountProductsStore.getProductsCartCountItems()
         this.isProductRemoveCart = true
       })
       .catch(error => {
@@ -30,7 +30,7 @@ export default class CartRemoveProductStore {
   }
 
   updateProductCartAfterRemove = data => {
-    this.rootStore.cartProductsStore.productsCart = data
+    stores.cartProductsStore.productsCart = data
   }
 
   get cartItemKkey () {

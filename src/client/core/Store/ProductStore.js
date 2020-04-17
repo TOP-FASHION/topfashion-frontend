@@ -1,9 +1,10 @@
-import { decorate, observable, action } from 'mobx'
+import { observable, action } from 'mobx'
 import Api from '../Api'
 
 export default class ProductStore {
-  product
+  @observable product
 
+  @action
   getProduct (id) {
     return Api.Woocommerce.Product(id).then(res => {
       if (res.data) {
@@ -12,12 +13,8 @@ export default class ProductStore {
     })
   }
 
+  @action
   setProduct = data => {
     this.product = data
   }
 }
-
-decorate(ProductStore, {
-  product: observable,
-  setData: action
-})

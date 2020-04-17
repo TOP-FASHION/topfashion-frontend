@@ -10,7 +10,7 @@ import sessionTabStorage from '../utils/sessionTabStorage'
 import MainDecorator from './MainDecorator'
 import EmptyDecorator from './EmptyDecorator'
 import Modals from '../containers/modals'
-// import Notifications from '../containers/notifications'
+import Notifications from '../containers/notifications'
 import Fragment from '../components/Fragment'
 
 @observer
@@ -107,7 +107,7 @@ class AppRoot extends React.Component {
   render () {
     return (
       <Fragment>
-        {/* <Notifications /> */}
+        <Notifications />
         <Modals />
         <SetLang langList={['en', 'ru']}>
           <SwitchLang>

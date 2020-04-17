@@ -3,30 +3,30 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import { observer } from 'mobx-react'
 import { reaction } from 'mobx'
+import { useParams } from 'react-router'
 import { AppContext } from '../../core/Store/context'
 import PageHeader from '../../containers/shared/PageHeader'
 import BlogPost from '../../containers/promotions/BlogPost'
 
 interface Props {
-  layout?: 'classic' | 'full',
-  match: any
+  layout?: 'classic' | 'full'
 }
 
-const BlogPostPage = observer(({ layout = 'classic', match }: Props) => {
+const BlogPostPage = observer(({ layout = 'classic' }: Props) => {
   const { postStore } = React.useContext(AppContext)
+  const params: any = useParams()
+  const post = postStore.postContent
+  let content
 
   React.useEffect(() => {
-    reaction(() => match.params.postId, async () => {
+    reaction(() => params.postId, async () => {
       try {
-        postStore.getPost(match.params.postId)
+        postStore.getPost(params.postId)
       } catch {
         console.log('error')
       }
     }, { fireImmediately: true })
-  }, [])
-
-  const post = postStore.postContent
-  let content
+  }, [params.postId])
 
   if (post) {
     if (layout === 'classic') {

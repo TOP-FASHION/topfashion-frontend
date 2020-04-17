@@ -1,10 +1,10 @@
 import { observable, action, computed } from 'mobx'
+import { stores } from './context'
 
 export default class MobileMenuStore {
-  constructor (rootStore) {
+  constructor () {
     this.isOpenMobileMenu = false
     this.isOpenMobileFilter = false
-    this.rootStore = rootStore
   }
 
   @observable isOpenMobileMenu
@@ -34,6 +34,6 @@ export default class MobileMenuStore {
   }
 
   @computed get openModalLogin () {
-    return !this.rootStore.loginStore.loggedIn && this.isOpenMobileMenu
+    return !stores.loginStore.loggedIn && this.isOpenMobileMenu
   }
 }

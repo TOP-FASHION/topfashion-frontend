@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import { reaction } from 'mobx'
 import { observer } from 'mobx-react'
+import { useParams } from 'react-router'
 import { AppContext } from '../../core/Store/context'
 import PageHeader from '../../containers/shared/PageHeader'
 import ProductsView from '../../containers/productList/ProductsView'
@@ -12,36 +13,37 @@ import normalizeParentCategory from '../../utils/normalizeParentCategory'
 import './ProductCategoryPage.scss'
 
 interface Props {
-  columns?: number,
-  viewMode?: 'grid' | 'grid-with-features' | 'list',
-  sidebarPosition?: 'start' | 'end',
-  match?: any
+  columns?: number
+  viewMode?: 'grid' | 'grid-with-features' | 'list'
+  sidebarPosition?: 'start' | 'end'
 }
 
-const ProductCategoryPage = observer(({ columns = 4, viewMode = 'grid', sidebarPosition = 'start', match }: Props) => {
+const ProductCategoryPage = observer(({ columns = 4, viewMode = 'grid', sidebarPosition = 'start' }: Props) => {
   const { productsStore, productsCategoriesStore } = React.useContext(AppContext)
+  const params: any = useParams()
 
   React.useEffect(() => {
-    reaction(() => match.params.categoryId, async (data) => {
+    reaction(() => params.categoryId, async () => {
       try {
         productsStore.getProducts({
           page: 1,
+          // eslint-disable-next-line @typescript-eslint/camelcase
           per_page: productsStore.countProducts,
           'filter[limit]': productsStore.countProducts,
-          category: normalizeCategory(match.params.categoryId)
+          category: normalizeCategory(params.categoryId)
         })
-        productsCategoriesStore.categoryId = normalizeCategory(match.params.categoryId)
+        productsCategoriesStore.categoryId = normalizeCategory(params.categoryId)
       } catch {
         console.log('error')
       }
     }, { fireImmediately: true })
-  }, [])
+  }, [params.categoryId])
 
   const breadcrumb = [
     { title: 'Home', url: '' },
     { title: 'Category', url: '/category' },
-    { title: normalizeParentCategory(match.params.categoryId), url: normalizeParentCategory(match.params.categoryId) },
-    { title: match.params.categoryId, url: match.params.categoryId }
+    { title: normalizeParentCategory(params.categoryId), url: normalizeParentCategory(params.categoryId) },
+    { title: params.categoryId, url: params.categoryId }
   ]
 
   const content = () => {
@@ -57,8 +59,7 @@ const ProductCategoryPage = observer(({ columns = 4, viewMode = 'grid', sidebarP
             <ProductsView
               products={products}
               layout={viewMode}
-              grid={`grid-${columns}-full`}
-              limit={15}
+              grid={`grid-4-full`}
               offcanvas={offcanvas}
             />
           </div>
@@ -79,8 +80,7 @@ const ProductCategoryPage = observer(({ columns = 4, viewMode = 'grid', sidebarP
                 <ProductsView
                   products={products}
                   layout={viewMode}
-                  grid={`grid-${columns}-sidebar`}
-                  limit={15}
+                  grid={`grid-3-sidebar`}
                   offcanvas={offcanvas}
                 />
               </div>
@@ -98,8 +98,8 @@ const ProductCategoryPage = observer(({ columns = 4, viewMode = 'grid', sidebarP
       <Helmet>
         <title>{`Category Page`}</title>
       </Helmet>
-      <PageHeader header={match.params.categoryId || 'Category'} breadcrumb={breadcrumb} />
-      {content}
+      <PageHeader header={params.categoryId || 'Category'} breadcrumb={breadcrumb} />
+      {content()}
     </React.Fragment>
   )
 })

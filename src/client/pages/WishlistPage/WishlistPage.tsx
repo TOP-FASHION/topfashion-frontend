@@ -17,7 +17,7 @@ const WishlistPage = observer((props: any) => {
     wishlistRemoveProductStore
   } = React.useContext(AppContext)
 
-  const currencies = setCurrencies(this)
+  const currencies = setCurrencies(props)
   const { productsWishlist } = wishlistGetProductsStore
   const { currency } = currencyStore
 
