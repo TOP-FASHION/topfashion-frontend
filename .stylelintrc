@@ -1,13 +1,22 @@
 {
   "extends": [
-    "stylelint-config-standard"
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss",
+    "stylelint-config-prettier"
   ],
   "plugins": [
-    "stylelint-order"
+    "stylelint-order",
+    "stylelint-scss",
+    "stylelint-prettier"
+  ],
+  "ignoreFiles": [
+    "public/assets/**/*.css",
+    "coverage/**/*.css"
   ],
   "rules": {
     "at-rule-no-unknown": null,
     "no-descending-specificity": null,
+    "prettier/prettier": true,
     "order/order": [
       "declarations",
       {

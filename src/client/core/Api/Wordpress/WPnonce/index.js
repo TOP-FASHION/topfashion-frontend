@@ -1,1 +1,1 @@
-export { default } from './WPnonce'
+export { default } from './WPnonce';

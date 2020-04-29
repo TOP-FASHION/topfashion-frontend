@@ -1,4 +1,4 @@
-import cleanObject from './cleanObject'
+import cleanObject from './cleanObject';
 
 /**
  * Copies all properties from one object to another. (light version)
@@ -8,12 +8,13 @@ import cleanObject from './cleanObject'
  */
 export default (dest: any = {}, src: any = {}) => {
   if (src !== dest) {
-    cleanObject(dest)
+    cleanObject(dest);
     for (const prop in src) {
-      if (src.hasOwnProperty(prop)) { // eslint-disable-line no-prototype-builtins
-        dest[prop] = src[prop]
+      if (src.hasOwnProperty(prop)) {
+        // eslint-disable-line no-prototype-builtins
+        dest[prop] = src[prop];
       }
     }
   }
-  return dest
-}
+  return dest;
+};

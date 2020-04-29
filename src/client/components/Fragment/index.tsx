@@ -1,1 +1,1 @@
-export { default } from './Fragment'
+export { default } from './Fragment';

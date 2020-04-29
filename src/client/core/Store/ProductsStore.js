@@ -1,42 +1,41 @@
-import { observable, action, computed, toJS } from 'mobx'
-import Api from '../Api'
+import { observable, action, computed, toJS } from 'mobx';
+import Api from '../Api';
 
 export default class ProductsStore {
-  @observable products = []
+  @observable products = [];
 
-  @observable allLoadedProducts = []
+  @observable allLoadedProducts = [];
 
-  @observable totalProducts
+  @observable totalProducts;
 
-  @observable pagesProducts
+  @observable pagesProducts;
 
-  @observable countProducts = 12
+  @observable countProducts = 12;
 
-  @observable isLoadingProducts = false
+  @observable isLoadingProducts = false;
 
   @action
-  getProducts (data) {
-    this.isLoadingProducts = true
-    return Api.Woocommerce.Products(data)
-      .then((res) => {
-        if (res.data) {
-          this.isLoadingProducts = false
-          this.setProducts(res.data)
+  getProducts(data) {
+    this.isLoadingProducts = true;
+    return Api.Woocommerce.Products(data).then((res) => {
+      if (res.data) {
+        this.isLoadingProducts = false;
+        this.setProducts(res.data);
 
-          this.totalProducts = res.headers['x-wp-total']
-          this.pagesProducts = res.headers['x-wp-totalpages']
-          return res.data
-        }
-      })
+        this.totalProducts = res.headers['x-wp-total'];
+        this.pagesProducts = res.headers['x-wp-totalpages'];
+        return res.data;
+      }
+    });
   }
 
   @action
-  setProducts = data => {
-    this.products = data
-  }
+  setProducts = (data) => {
+    this.products = data;
+  };
 
   @computed
-  get allProducts () {
-    return this.allLoadedProducts.concat(toJS(this.products))
+  get allProducts() {
+    return this.allLoadedProducts.concat(toJS(this.products));
   }
 }

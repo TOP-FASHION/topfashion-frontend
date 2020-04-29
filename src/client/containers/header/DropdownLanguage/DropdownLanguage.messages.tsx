@@ -1,108 +1,108 @@
-import { defineMessages } from 'react-intl'
+import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   'app.languages.ar': {
     id: 'app.languages.ar',
-    defaultMessage: 'العربية'
+    defaultMessage: 'العربية',
   },
   'app.languages.bg': {
     id: 'app.languages.bg',
-    defaultMessage: 'Български'
+    defaultMessage: 'Български',
   },
   'app.languages.da': {
     id: 'app.languages.da',
-    defaultMessage: 'Dansk'
+    defaultMessage: 'Dansk',
   },
   'app.languages.de': {
     id: 'app.languages.de',
-    defaultMessage: 'Deutsch'
+    defaultMessage: 'Deutsch',
   },
   'app.languages.el': {
     id: 'app.languages.el',
-    defaultMessage: 'Ελληνικά'
+    defaultMessage: 'Ελληνικά',
   },
   'app.languages.en': {
     id: 'app.languages.en',
-    defaultMessage: 'English'
+    defaultMessage: 'English',
   },
   'app.languages.en_uk': {
     id: 'app.languages.en_uk',
-    defaultMessage: 'English (GB)'
+    defaultMessage: 'English (GB)',
   },
   'app.languages.es': {
     id: 'app.languages.es',
-    defaultMessage: 'Español'
+    defaultMessage: 'Español',
   },
   'app.languages.es_419': {
     id: 'app.languages.es_419',
-    defaultMessage: 'Español (Latin America)'
+    defaultMessage: 'Español (Latin America)',
   },
   'app.languages.fa': {
     id: 'app.languages.fa',
-    defaultMessage: 'فارسی'
+    defaultMessage: 'فارسی',
   },
   'app.languages.fi': {
     id: 'app.languages.fi',
-    defaultMessage: 'Suomi'
+    defaultMessage: 'Suomi',
   },
   'app.languages.fr': {
     id: 'app.languages.fr',
-    defaultMessage: 'Français'
+    defaultMessage: 'Français',
   },
   'app.languages.hu': {
     id: 'app.languages.hu',
-    defaultMessage: 'Magyar'
+    defaultMessage: 'Magyar',
   },
   'app.languages.id': {
     id: 'app.languages.id',
-    defaultMessage: 'Indonesia'
+    defaultMessage: 'Indonesia',
   },
   'app.languages.it': {
     id: 'app.languages.it',
-    defaultMessage: 'Italiano'
+    defaultMessage: 'Italiano',
   },
   'app.languages.ja': {
     id: 'app.languages.ja',
-    defaultMessage: '日本語'
+    defaultMessage: '日本語',
   },
   'app.languages.nl': {
     id: 'app.languages.nl',
-    defaultMessage: 'Nederlands'
+    defaultMessage: 'Nederlands',
   },
   'app.languages.no': {
     id: 'app.languages.no',
-    defaultMessage: 'Norsk'
+    defaultMessage: 'Norsk',
   },
   'app.languages.pl': {
     id: 'app.languages.pl',
-    defaultMessage: 'Polski'
+    defaultMessage: 'Polski',
   },
   'app.languages.pt': {
     id: 'app.languages.pt',
-    defaultMessage: 'Português'
+    defaultMessage: 'Português',
   },
   'app.languages.pt_br': {
     id: 'app.languages.pt_br',
-    defaultMessage: 'Português (Brazil)'
+    defaultMessage: 'Português (Brazil)',
   },
   'app.languages.ru': {
     id: 'app.languages.ru',
-    defaultMessage: 'Русский'
+    defaultMessage: 'Русский',
   },
   'app.languages.sv': {
     id: 'app.languages.sv',
-    defaultMessage: 'Svenska'
+    defaultMessage: 'Svenska',
   },
   'app.languages.tr': {
     id: 'app.languages.tr',
-    defaultMessage: 'Türkçe'
+    defaultMessage: 'Türkçe',
   },
   'app.languages.zh': {
     id: 'app.languages.zh',
-    defaultMessage: '中文'
+    defaultMessage: '中文',
   },
   'app.languages.ro': {
     id: 'app.languages.ro',
-    defaultMessage: 'Românesc'
-  }
-})
+    defaultMessage: 'Românesc',
+  },
+});

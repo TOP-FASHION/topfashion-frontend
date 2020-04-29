@@ -1,23 +1,23 @@
-import { decorate, observable, action } from 'mobx'
-import Api from '../Api'
-import { stores } from './context'
+import { decorate, observable, action } from 'mobx';
+import Api from '../Api';
+import { stores } from './context';
 
 export default class WishlistByUserStore {
-  wishlistUser
+  wishlistUser;
 
-  getWishlistByUser (id) {
+  getWishlistByUser(id) {
     Api.Wishlist.WishlistByUser(id)
-      .then(res => {
-        this.wishlistUser = res.data
-        stores.wishlistGetProductsStore.getProducts()
+      .then((res) => {
+        this.wishlistUser = res.data;
+        stores.wishlistGetProductsStore.getProducts();
       })
-      .catch(error => {
-        console.log('Error====', error)
-      })
+      .catch((error) => {
+        console.log('Error====', error);
+      });
   }
 }
 
 decorate(WishlistByUserStore, {
   wishlistUser: observable,
-  getWishlistByUser: action
-})
+  getWishlistByUser: action,
+});

@@ -1,28 +1,28 @@
-import { observable, action, autorun, runInAction } from 'mobx'
-import Api from '../Api'
+import { observable, action, autorun, runInAction } from 'mobx';
+import Api from '../Api';
 
 export default class CurrencyStores {
-  @observable currency
+  @observable currency;
 
-  constructor () {
-    autorun(() => this.getCurrency())
+  constructor() {
+    autorun(() => this.getCurrency());
   }
 
-  getCurrency () {
+  getCurrency() {
     return Api.Woocommerce.Currency()
-      .then(res => {
+      .then((res) => {
         if (res && res.data) {
           runInAction(() => {
-            this.setCurrency(res.data.code)
-          })
+            this.setCurrency(res.data.code);
+          });
         }
       })
-      .catch(error => {
-        console.log('Error====', error)
-      })
+      .catch((error) => {
+        console.log('Error====', error);
+      });
   }
 
-  @action setCurrency = data => {
-    this.currency = data
-  }
+  @action setCurrency = (data) => {
+    this.currency = data;
+  };
 }

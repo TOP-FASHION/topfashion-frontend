@@ -1,1 +1,1 @@
-export { default } from './ProductsCarouselTabbs'
+export { default } from './ProductsCarouselTabbs';

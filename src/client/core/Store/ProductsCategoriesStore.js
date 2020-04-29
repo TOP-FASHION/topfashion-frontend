@@ -1,26 +1,26 @@
-import { decorate, observable, action } from 'mobx'
-import Api from '../Api'
+import { decorate, observable, action } from 'mobx';
+import Api from '../Api';
 
 export default class ProductsCategoriesStore {
-  categories
+  categories;
 
-  categoryId
+  categoryId;
 
-  getCategories (data) {
-    return Api.Woocommerce.ProductsCategories(data).then(res => {
+  getCategories(data) {
+    return Api.Woocommerce.ProductsCategories(data).then((res) => {
       if (res.data) {
-        this.setProduct(res.data)
+        this.setProduct(res.data);
       }
-    })
+    });
   }
 
-  setProduct = data => {
-    this.categories = data
-  }
+  setProduct = (data) => {
+    this.categories = data;
+  };
 }
 
 decorate(ProductsCategoriesStore, {
   categories: observable,
   categoryId: observable,
-  setData: action
-})
+  setData: action,
+});

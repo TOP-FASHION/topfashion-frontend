@@ -127,8 +127,7 @@ $local-transition-duration: 0.2s;
   background: $input-radio-circle-bg;
   border-radius: $local-circle-size / 2;
   box-shadow: $input-radio-circle-shadow;
-  transition:
-    background $local-transition-duration,
+  transition: background $local-transition-duration,
     box-shadow $local-transition-duration;
 
   &::after {
@@ -143,8 +142,7 @@ $local-transition-duration: 0.2s;
     border-radius: $local-inner-circle-size / 2;
     transform: scale(0);
     visibility: hidden;
-    transition:
-      background $local-transition-duration,
+    transition: background $local-transition-duration,
       transform $local-transition-duration,
       visibility 0s $local-transition-duration;
   }
@@ -211,8 +209,7 @@ $local-transition-duration: 0.15s;
   background: $input-check-box-bg;
   border-radius: $local-border-radius;
   box-shadow: $input-check-box-shadow;
-  transition:
-    background $local-transition-duration,
+  transition: background $local-transition-duration,
     box-shadow $local-transition-duration;
 }
 
@@ -221,8 +218,7 @@ $local-transition-duration: 0.15s;
   top: 2px;
   left: 2px;
   transform: scale(0);
-  transition:
-    fill $local-transition-duration,
+  transition: fill $local-transition-duration,
     transform $local-transition-duration,
     visibility 0s $local-transition-duration;
   pointer-events: none;
@@ -282,10 +278,9 @@ $local-item-margin: 2px;
   cursor: pointer;
 
   &:hover input:enabled ~ span {
-    transform:
-      scale(
-        #{round(($local-item-size * 0.875) / 2) / $local-item-size * 2}
-      );
+    transform: scale(
+      #{round(($local-item-size * 0.875) / 2) / $local-item-size * 2}
+    );
   }
 
   input {
@@ -301,10 +296,9 @@ $local-item-margin: 2px;
     height: $local-item-size;
     background: currentColor;
     border-radius: $local-item-size / 2;
-    transform:
-      scale(
-        #{round(($local-item-size * 0.75) / 2) / $local-item-size * 2}
-      );
+    transform: scale(
+      #{round(($local-item-size * 0.75) / 2) / $local-item-size * 2}
+    );
     transition: transform 0.2s;
 
     &::before,
@@ -364,13 +358,11 @@ $local-item-margin: 2px;
 
 .input-radio-color__item--white {
   span {
-    box-shadow:
-      inset 0 0 0 $local-white-border-width
+    box-shadow: inset 0 0 0 $local-white-border-width
       $input-radio-color-white-border-color;
 
     &::after {
-      box-shadow:
-        inset 0 0 0 $local-white-border-width
+      box-shadow: inset 0 0 0 $local-white-border-width
         $input-radio-color-white-border-color;
     }
   }

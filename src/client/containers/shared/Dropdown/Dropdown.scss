@@ -40,10 +40,8 @@ $local-button-padding: 10px;
   transform-origin: top;
   visibility: hidden;
   opacity: 0;
-  transition:
-    transform $local-transition-duration,
-    opacity $local-transition-duration,
-    visibility 0s $local-transition-duration;
+  transition: transform $local-transition-duration,
+    opacity $local-transition-duration, visibility 0s $local-transition-duration;
 }
 
 .dropdown--opened .topbar-dropdown__btn,

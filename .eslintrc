@@ -1,41 +1,81 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": [
-    "standard",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+  "plugins": [
+    "@typescript-eslint",
+    "testing-library",
+    "jest-dom",
+    "prettier"
   ],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:testing-library/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {},
+      "webpack": {
+        "config": "./tools/webpack/config.babel.js"
+      }
+    }
+  },
   "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
     "jest": true
   },
-  "plugins": ["@typescript-eslint"],
-  "settings": {
-    "react": {
-      "pragma": "React",
-      "version": "detect",
-      "flowVersion": "0.53"
-    }
-  },
-  "overrides": [
-    {
-      "files": ["*.js", "*.jsx"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off"
-      }
-    }
-  ],
   "rules": {
-    "@typescript-eslint/member-delimiter-style": ["error", {
-      "multiline": {
-        "delimiter": "none",
-        "requireLast": true
-      },
-      "singleline": {
-        "delimiter": "semi",
-        "requireLast": false
+    "global-require": "off",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
       }
-    }],
-    "@typescript-eslint/no-explicit-any": 0
+    ],
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+      }
+    ],
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-var-requires": "off"
+  },
+  "globals": {
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DEV__": true
   }
 }

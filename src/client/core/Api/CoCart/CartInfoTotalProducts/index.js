@@ -1,1 +1,1 @@
-export { default } from './CartInfoTotalProducts'
+export { default } from './CartInfoTotalProducts';

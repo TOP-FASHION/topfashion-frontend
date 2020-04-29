@@ -1,1 +1,1 @@
-export { default } from './PostsSlider'
+export { default } from './PostsSlider';

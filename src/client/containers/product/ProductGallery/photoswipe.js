@@ -1,5 +1,5 @@
-import _PhotoSwipe from 'photoswipe/dist/photoswipe'
-import _PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default'
+import _PhotoSwipe from 'photoswipe/dist/photoswipe';
+import _PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
 
 const template = `
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -45,7 +45,6 @@ div.innerHTML = template;
 const element = div.firstElementChild;
 
 document.body.appendChild(element);
-
 
 // eslint-disable-next-line import/prefer-default-export
 export function createGallery(images, options) {

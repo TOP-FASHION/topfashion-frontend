@@ -107,8 +107,7 @@ $local-expand-transition-duration: 0.2s;
   line-height: 26px;
   visibility: hidden;
   opacity: 0;
-  transition:
-    height $local-expand-transition-duration,
+  transition: height $local-expand-transition-duration,
     opacity $local-expand-transition-duration,
     visibility 0s $local-expand-transition-duration;
 

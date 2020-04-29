@@ -1,1 +1,1 @@
-export { default } from './ProductsBlockHeader'
+export { default } from './ProductsBlockHeader';

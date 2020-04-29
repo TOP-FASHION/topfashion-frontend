@@ -1,121 +1,123 @@
-import { defineMessages } from 'react-intl'
-import setMessages from '../utils/setMessages'
+import { defineMessages } from 'react-intl';
+import setMessages from '../utils/setMessages';
 
 const currencies = defineMessages({
   'app.currencies.value': {
     id: 'app.currencies.value',
-    defaultMessage: '{currency} {value}'
+    defaultMessage: '{currency} {value}',
   },
   'app.currencies.USD': {
     id: 'app.currencies.USD',
-    defaultMessage: '$'
+    defaultMessage: '$',
   },
   'app.currencies.EUR': {
     id: 'app.currencies.EUR',
-    defaultMessage: '€'
+    defaultMessage: '€',
   },
   'app.currencies.BT1': {
     id: 'app.currencies.BT1',
-    defaultMessage: 'µBTC'
+    defaultMessage: 'µBTC',
   },
   'app.currencies.BT2': {
     id: 'app.currencies.BT2',
-    defaultMessage: 'mBTC'
+    defaultMessage: 'mBTC',
   },
   'app.currencies.BTC': {
     id: 'app.currencies.BTC',
-    defaultMessage: 'BTC'
+    defaultMessage: 'BTC',
   },
   'app.currencies.GBP': {
     id: 'app.currencies.GBP',
-    defaultMessage: '£'
+    defaultMessage: '£',
   },
   'app.currencies.SEK': {
     id: 'app.currencies.SEK',
-    defaultMessage: 'kr'
+    defaultMessage: 'kr',
   },
   'app.currencies.BGN': {
     id: 'app.currencies.BGN',
-    defaultMessage: 'BGN'
+    defaultMessage: 'BGN',
   },
   'app.currencies.CNY': {
     id: 'app.currencies.CNY',
-    defaultMessage: '¥'
+    defaultMessage: '¥',
   },
   'app.currencies.IDR': {
     id: 'app.currencies.IDR',
-    defaultMessage: 'IDR'
+    defaultMessage: 'IDR',
   },
   'app.currencies.AUD': {
     id: 'app.currencies.AUD',
-    defaultMessage: 'AUD$'
+    defaultMessage: 'AUD$',
   },
   'app.currencies.HUF': {
     id: 'app.currencies.HUF',
-    defaultMessage: 'HUF'
+    defaultMessage: 'HUF',
   },
   'app.currencies.IRT': {
     id: 'app.currencies.IRT',
-    defaultMessage: 'IRT'
+    defaultMessage: 'IRT',
   },
   'app.currencies.NOK': {
     id: 'app.currencies.NOK',
-    defaultMessage: 'NOK'
+    defaultMessage: 'NOK',
   },
   'app.currencies.CAD': {
     id: 'app.currencies.CAD',
-    defaultMessage: 'CAD'
+    defaultMessage: 'CAD',
   },
   'app.currencies.RUB': {
     id: 'app.currencies.RUB',
-    defaultMessage: '₽'
+    defaultMessage: '₽',
   },
   'app.currencies.MXN': {
     id: 'app.currencies.MXN',
-    defaultMessage: 'MXN$'
+    defaultMessage: 'MXN$',
   },
   'app.currencies.WST': {
     id: 'app.currencies.WST',
-    defaultMessage: 'WS$'
+    defaultMessage: 'WS$',
   },
   'app.currencies.TRY': {
     id: 'app.currencies.TRY',
-    defaultMessage: '₤'
+    defaultMessage: '₤',
   },
   'app.currencies.HKD': {
     id: 'app.currencies.HKD',
-    defaultMessage: 'HKD$'
+    defaultMessage: 'HKD$',
   },
   'app.currencies.JPY': {
     id: 'app.currencies.JPY',
-    defaultMessage: '¥'
+    defaultMessage: '¥',
   },
   'app.currencies.RON': {
     id: 'app.currencies.RON',
-    defaultMessage: 'RON'
+    defaultMessage: 'RON',
   },
   'app.currencies.DKK': {
     id: 'app.currencies.DKK',
-    defaultMessage: 'DKK'
+    defaultMessage: 'DKK',
   },
   'app.currencies.MGA': {
     id: 'app.currencies.MGA',
-    defaultMessage: 'Ar'
+    defaultMessage: 'Ar',
   },
   'app.currencies.XAF': {
     id: 'app.currencies.XAF',
-    defaultMessage: 'XAF'
-  }
-})
+    defaultMessage: 'XAF',
+  },
+});
 
-export function setCurrencies (target) {
-  const messages = setMessages(target, currencies, 'app.currencies.')
-  return (...args) => {
+export function setCurrencies(target: any) {
+  const messages = setMessages(target, currencies, 'app.currencies.');
+  return (...args: any) => {
     if (args[0] === 'value') {
-      args[1].value = Number.parseFloat(args[1].value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+      args[1].value = Number.parseFloat(args[1].value)
+        .toFixed(2)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
     }
-    return messages(...args)
-  }
+    return messages(...args);
+  };
 }
 
-export default currencies
+export default currencies;

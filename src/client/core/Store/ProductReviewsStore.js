@@ -1,25 +1,25 @@
-import { decorate, observable, action, runInAction } from 'mobx'
-import Api from '../Api'
+import { decorate, observable, action, runInAction } from 'mobx';
+import Api from '../Api';
 
 export default class ProductReviewsStore {
-  productReviews
+  productReviews;
 
-  getProductReviews (id, page) {
-    Api.Woocommerce.ProductReviews(id, page).then(res => {
+  getProductReviews(id, page) {
+    Api.Woocommerce.ProductReviews(id, page).then((res) => {
       if (res.data) {
         runInAction(() => {
-          this.setData(res.data)
-        })
+          this.setData(res.data);
+        });
       }
-    })
+    });
   }
 
-  setData = data => {
-    this.productReviews = data
-  }
+  setData = (data) => {
+    this.productReviews = data;
+  };
 }
 
 decorate(ProductReviewsStore, {
   productReviews: observable,
-  setData: action
-})
+  setData: action,
+});

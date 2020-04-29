@@ -1,8 +1,8 @@
-import React from 'react'
-import PostCard from '../PostCard'
-import ProductsBlockHeader from '../../productList/ProductsBlockHeader'
-import SlickWithPreventSwipeClick from '../../../components/SlickWithPreventSwipeClick'
-import './PostsSlider.scss'
+import React from 'react';
+import PostCard from '../PostCard';
+import ProductsBlockHeader from '../../productList/ProductsBlockHeader';
+import SlickWithPreventSwipeClick from '../../../components/SlickWithPreventSwipeClick';
+import './PostsSlider.scss';
 
 const slickSettings: any = {
   'grid-nl': {
@@ -17,24 +17,24 @@ const slickSettings: any = {
         breakpoint: 991,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
-        }
+          slidesToScroll: 2,
+        },
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
-        }
+          slidesToScroll: 2,
+        },
       },
       {
         breakpoint: 575,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   },
   'list-sm': {
     dots: false,
@@ -48,42 +48,45 @@ const slickSettings: any = {
         breakpoint: 991,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
-}
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  },
+};
 
 interface Props {
-  title?: string,
-  layout?: 'list-sm' | 'grid-nl',
-  posts?: Array<any>
+  title?: string;
+  layout?: 'list-sm' | 'grid-nl';
+  posts?: Array<any>;
 }
 
 const PostsSlider = ({ title, layout = 'list-sm', posts = [] }: Props) => {
-  let slickRef: any
+  let slickRef: any;
 
   const handleNextClick = () => {
     if (slickRef) {
-      slickRef.slickNext()
+      slickRef.slickNext();
     }
-  }
+  };
 
   const handlePrevClick = () => {
     if (slickRef) {
-      slickRef.slickPrev()
+      slickRef.slickPrev();
     }
-  }
+  };
 
   const setSlickRef = (ref: any) => {
-    slickRef = ref
-  }
+    slickRef = ref;
+  };
 
-  const postsList = posts.map((post) => <PostCard key={post.id} post={post} />)
+  const postsList = posts.map((post) => <PostCard key={post.id} post={post} />);
   return (
-    <div className={`block block-posts block-posts--layout--${layout}`} data-layout={layout}>
-      <div className='container-fluid'>
+    <div
+      className={`block block-posts block-posts--layout--${layout}`}
+      data-layout={layout}
+    >
+      <div className="container-fluid">
         <ProductsBlockHeader
           arrows
           title={title}
@@ -91,7 +94,7 @@ const PostsSlider = ({ title, layout = 'list-sm', posts = [] }: Props) => {
           onPrev={handlePrevClick}
         />
 
-        <div className='block-posts__slider'>
+        <div className="block-posts__slider">
           <SlickWithPreventSwipeClick
             ref={setSlickRef}
             {...slickSettings[layout]}
@@ -101,7 +104,7 @@ const PostsSlider = ({ title, layout = 'list-sm', posts = [] }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PostsSlider
+export default PostsSlider;

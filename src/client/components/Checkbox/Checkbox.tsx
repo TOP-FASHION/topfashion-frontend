@@ -1,18 +1,18 @@
-import * as React from 'react'
-import { Form } from 'react-bootstrap'
+import * as React from 'react';
+import { Form } from 'react-bootstrap';
 
 interface Props {
-  label?: string,
-  handleCheckboxChange?: Function
+  label?: string;
+  handleCheckboxChange?: Function;
 }
 
-function Checkbox ({ label, handleCheckboxChange }: Props) {
-  const [isChecked, setChecked] = React.useState(false)
+function Checkbox({ label, handleCheckboxChange }: Props) {
+  const [isChecked, setChecked] = React.useState(false);
 
   const toggleCheckboxChange = () => {
-    setChecked(isChecked)
-    handleCheckboxChange(label)
-  }
+    setChecked(isChecked);
+    handleCheckboxChange(label);
+  };
 
   return (
     <Form.Check
@@ -20,9 +20,9 @@ function Checkbox ({ label, handleCheckboxChange }: Props) {
       name={label}
       label={label}
       onChange={() => toggleCheckboxChange}
-      id='validationFormik0'
+      id="validationFormik0"
     />
-  )
+  );
 }
 
-export default Checkbox
+export default Checkbox;

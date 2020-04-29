@@ -1,8 +1,8 @@
-import request from '../../request'
+import request from '../../request';
 
-export default async function ValidateAuthCookie (cookie) {
+export default async function ValidateAuthCookie(cookie) {
   return request('/api/auth/validate_auth_cookie/', {
     method: 'POST',
-    data: cookie
-  })
+    data: cookie,
+  });
 }

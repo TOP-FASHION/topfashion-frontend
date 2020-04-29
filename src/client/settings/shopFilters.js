@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     name: 'Categories',
-    type: 'categories'
+    type: 'categories',
   },
   {
     id: 2,
@@ -12,17 +12,17 @@ export default [
       min: 10,
       max: 100,
       from: 15,
-      to: 90
-    }
+      to: 90,
+    },
   },
   {
     id: 3,
     name: 'Brand',
-    type: 'checkbox'
+    type: 'checkbox',
   },
   {
     id: 5,
     name: 'Color',
-    type: 'color'
-  }
-]
+    type: 'color',
+  },
+];

@@ -1,23 +1,26 @@
-import React from 'react'
-import { observer } from 'mobx-react'
-import { injectIntl } from 'react-intl'
-import { Link } from 'react-router-dom'
-import { AppContext } from '../../../core/Store/context'
+import React from 'react';
+import { observer } from 'mobx-react';
+import { injectIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
+import { AppContext } from '../../../core/Store/context';
 // import setMessages from '../../../utils/setMessages'
-import { setCurrencies } from '../../../translations/currencies.messages'
-import './WidgetProducts.scss'
+import { setCurrencies } from '../../../translations/currencies.messages';
+import './WidgetProducts.scss';
 
 interface Props {
-  title?: any
+  title?: any;
 }
 
 const WidgetProducts = observer(({ title, ...otherProps }: Props) => {
-  const { currencyStore } = React.useContext(AppContext)
-  const currencies = setCurrencies(otherProps)
-  let lastProducts: any = window.localStorage.getItem('lastProducts')
-  lastProducts = JSON.parse(lastProducts)
+  const { currencyStore } = React.useContext(AppContext);
+  const currencies = setCurrencies(otherProps);
+  let lastProducts: any;
+  if (typeof window !== 'undefined') {
+    lastProducts = window.localStorage.getItem('lastProducts');
+    lastProducts = JSON.parse(lastProducts);
+  }
 
-  const productsList = lastProducts.map((product: any) => {
+  const productsList = lastProducts ? (lastProducts.map((product: any) => {
     let image
     let price
 
@@ -71,16 +74,14 @@ const WidgetProducts = observer(({ title, ...otherProps }: Props) => {
         </div>
       </div>
     )
-  })
+  })) : null
 
   return lastProducts ? (
-    <div className='widget-products widget'>
-      <h4 className='widget__title'>{title}</h4>
-      <div className='widget-products__list'>
-        {productsList}
-      </div>
+    <div className="widget-products widget">
+      <h4 className="widget__title">{title}</h4>
+      <div className="widget-products__list">{productsList}</div>
     </div>
-  ) : null
-})
+  ) : null;
+});
 
-export default injectIntl(WidgetProducts)
+export default injectIntl(WidgetProducts);

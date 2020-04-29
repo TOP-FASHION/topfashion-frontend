@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
-require('dotenv').config()
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
-const https = require('https')
+require('dotenv').config();
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
+const https = require('https');
 // const path = require('path')
 
-const clientConfig = require('../webpack/client.dev')
-const serverConfig = require('../webpack/server.dev')
+const clientConfig = require('../webpack/dev.client');
+const serverConfig = require('../webpack/dev.server');
 
-const publicPath = clientConfig.output.publicPath
-const compiler = webpack([clientConfig, serverConfig])
-const clientCompiler = compiler.compilers[0]
-const options = { publicPath, stats: { colors: true } }
+const { publicPath } = clientConfig.output;
+const compiler = webpack([clientConfig, serverConfig]);
+const clientCompiler = compiler.compilers[0];
+const options = { publicPath, stats: { colors: true } };
 
 // To make it trusted by Chrome browser you should copy the certificate into a file *.crt and then import it in Chrome
 // (Settings > Manage certificates > Authorities)
@@ -40,7 +40,7 @@ Hz5rcOJ4enb021XrsJutrZP28cGNC1wfI9tMW1lI/mVk/71vZ1+RwYOpTlPojXm/
 nXyHjW3riH1s+VBnllSpYn1/f0U7ogZDUcybQhVMdQNe/xnuUSaxUZS0CpPDifMZ
 N3A6lQH5KCUVDjLuMNOg25QXxGluJdzg/z8lbY1irRs=
 -----END CERTIFICATE-----
-`
+`;
 
 const serverKey = `
 -----BEGIN PRIVATE KEY-----
@@ -71,47 +71,47 @@ fhBqHCPhJKe2I977+ce4RYh4XXcabMy5Evk+qn9/AoGAfeITTLCDCQ6+hwYI/qVn
 gzCGalYDpgAhGyN2SNA6ashQ+xzthXDsu7xPGl4FQWlsg0+zAUnqsuGxt5XFBlcW
 rpLlgdytPG1YDUGdwnZiSmI=
 -----END PRIVATE KEY-----
-`
+`;
 
-const DEBUG_MODE = process.env.DEBUG_MODE === 'true'
+const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
-const webpackDevMiddlewareCreated = webpackDevMiddleware(compiler, options)
-const webpackHotMiddlewareCreated = webpackHotMiddleware(clientCompiler)
-const webpackHotServerMiddlewareCreated = webpackHotServerMiddleware(compiler)
+const webpackDevMiddlewareCreated = webpackDevMiddleware(compiler, options);
+const webpackHotMiddlewareCreated = webpackHotMiddleware(clientCompiler);
+const webpackHotServerMiddlewareCreated = webpackHotServerMiddleware(compiler);
 
-let isBuilt = false
+let isBuilt = false;
 
 compiler.plugin('done', () => {
   if (!isBuilt) {
-    isBuilt = true
+    isBuilt = true;
 
-    const app = require('../tmp/server/app.js').app
+    const { app } = require('../tmp/server/app.js');
 
-    app.use(webpackDevMiddlewareCreated)
-    app.use(webpackHotMiddlewareCreated)
-    app.use(webpackHotServerMiddlewareCreated)
+    app.use(webpackDevMiddlewareCreated);
+    app.use(webpackHotMiddlewareCreated);
+    app.use(webpackHotServerMiddlewareCreated);
 
     // Error handler
     app.use((err, req, res, next) => {
       // eslint-disable-next-line no-console
-      console.error(DEBUG_MODE ? err : '' + err)
-    })
+      console.error(DEBUG_MODE ? err : `${err}`);
+    });
 
     if (process.env.HTTPS === 'true') {
       const options = {
         key: serverKey,
-        cert: serverCrt
-      }
+        cert: serverCrt,
+      };
 
       https.createServer(options, app).listen(process.env.HTTPS_PORT, () => {
         // eslint-disable-next-line no-console
-        console.log(`Listening @ https://localhost:${process.env.HTTPS_PORT}/`)
-      })
+        console.log(`Listening @ https://localhost:${process.env.HTTPS_PORT}/`);
+      });
     } else {
       app.listen(process.env.APP_PORT, () => {
         // eslint-disable-next-line no-console
-        console.log(`Listening @ http://localhost:${process.env.APP_PORT}/`)
-      })
+        console.log(`Listening @ http://localhost:${process.env.APP_PORT}/`);
+      });
     }
   }
-})
+});

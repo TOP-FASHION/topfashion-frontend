@@ -1,1 +1,1 @@
-export { default } from './ProductAddCartNotification'
+export { default } from './ProductAddCartNotification';

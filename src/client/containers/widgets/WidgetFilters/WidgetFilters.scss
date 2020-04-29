@@ -114,10 +114,8 @@ $local-expand-transition-duration: 0.3s;
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition:
-    height $local-transition-duration,
-    opacity $local-transition-duration,
-    visibility 0s $local-transition-duration;
+  transition: height $local-transition-duration,
+    opacity $local-transition-duration, visibility 0s $local-transition-duration;
 }
 
 .filter__container {

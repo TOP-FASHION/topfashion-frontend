@@ -1,1 +1,1 @@
-export { default } from './ProductAttributeTerms'
+export { default } from './ProductAttributeTerms';

@@ -1,82 +1,82 @@
 export default {
-  has (elem: any, classNames: any) {
+  has(elem: any, classNames: any) {
     const classNamesArray = normalizeClassNamesArgument(
       classNames,
       elem.className
-    )
+    );
     if (!classNamesArray.length) {
-      return false
+      return false;
     }
     for (let i = 0, l = classNamesArray.length; i < l; i++) {
-      const className = classNamesArray[i]
+      const className = classNamesArray[i];
       if (!has(className)) {
-        return false
+        return false;
       }
     }
-    return true
+    return true;
 
-    function has (className: any) {
+    function has(className: any) {
       if (className) {
-        return createClassNameRegexp(className).test(elem.className)
+        return createClassNameRegexp(className).test(elem.className);
       }
-      return false
+      return false;
     }
   },
-  add (elem: any, classNames: any) {
+  add(elem: any, classNames: any) {
     const classNamesArray = normalizeClassNamesArgument(
       classNames,
       elem.className
-    )
+    );
     if (!classNamesArray.length) {
-      return
+      return;
     }
     for (let i = 0, l = classNamesArray.length; i < l; i++) {
-      const className = classNamesArray[i]
+      const className = classNamesArray[i];
       if (!this.has(elem, className)) {
-        elem.className += elem.className ? ` ${className}` : className
+        elem.className += elem.className ? ` ${className}` : className;
       }
     }
   },
-  remove (elem: any, classNames: any) {
+  remove(elem: any, classNames: any) {
     const classNamesArray = normalizeClassNamesArgument(
       classNames,
       elem.className
-    )
+    );
     if (!classNamesArray.length) {
-      return
+      return;
     }
     for (let i = 0, l = classNamesArray.length; i < l; i++) {
-      const className = classNamesArray[i]
+      const className = classNamesArray[i];
       if (this.has(elem, className)) {
         elem.className = elem.className
           .replace(createClassNameRegexp(className), '$1')
-          .trim()
+          .trim();
       }
     }
-  }
-}
+  },
+};
 
 // Returns array of class names
-function normalizeClassNamesArgument (classNames: any, originClassNames: any) {
+function normalizeClassNamesArgument(classNames: any, originClassNames: any) {
   if (classNames instanceof RegExp) {
-    const classNameRegexp = classNames
-    classNames = []
+    const classNameRegexp = classNames;
+    classNames = [];
     const originClassNamesArray =
-      originClassNames == null ? [] : `${originClassNames}`.split(/\s+/)
+      originClassNames == null ? [] : `${originClassNames}`.split(/\s+/);
     if (!originClassNamesArray.length) {
-      return []
+      return [];
     }
     for (let i = 0, l = originClassNamesArray.length; i < l; i++) {
-      const classNameOrigin = originClassNamesArray[i]
+      const classNameOrigin = originClassNamesArray[i];
       if (classNameOrigin && classNameRegexp.test(classNameOrigin)) {
-        classNames.push(classNameOrigin)
+        classNames.push(classNameOrigin);
       }
     }
-    return classNames
+    return classNames;
   }
-  return classNames == null ? [] : `${classNames}`.split(/\s+/)
+  return classNames == null ? [] : `${classNames}`.split(/\s+/);
 }
 
-function createClassNameRegexp (className: any) {
-  return new RegExp(`(\\s|^)${className}(\\s|$)`)
+function createClassNameRegexp(className: any) {
+  return new RegExp(`(\\s|^)${className}(\\s|$)`);
 }

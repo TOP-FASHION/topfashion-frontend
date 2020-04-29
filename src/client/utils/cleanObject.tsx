@@ -5,9 +5,10 @@
  */
 export default (obj: any = {}) => {
   for (const prop in obj) {
-    if (obj.hasOwnProperty(prop)) { // eslint-disable-line no-prototype-builtins
-      delete obj[prop]
+    if (obj.hasOwnProperty(prop)) {
+      // eslint-disable-line no-prototype-builtins
+      delete obj[prop];
     }
   }
-  return obj
-}
+  return obj;
+};

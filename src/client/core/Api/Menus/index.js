@@ -1,7 +1,7 @@
-import Menu from './Menu'
+import Menu from './Menu';
 
 const Menus = {
-  Menu
-}
+  Menu,
+};
 
-export default Menus
+export default Menus;

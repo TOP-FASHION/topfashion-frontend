@@ -1,1 +1,1 @@
-export { default } from './ValidateAuthCookie'
+export { default } from './ValidateAuthCookie';

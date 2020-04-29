@@ -1,31 +1,31 @@
-import * as React from 'react'
-import * as ReactBootstrap from 'react-bootstrap'
-import classNames from 'classnames'
+import * as React from 'react';
+import * as ReactBootstrap from 'react-bootstrap';
+import classNames from 'classnames';
 
 interface Props {
-  variant?: 'primary' | 'secondary',
-  className?: string,
-  disabled?: boolean,
-  onClick?: Function,
-  children?: React.ReactNode
+  variant?: 'primary' | 'secondary';
+  className?: string;
+  disabled?: boolean;
+  onClick?: Function;
+  children?: React.ReactNode;
 }
 
-function Button ({ children, variant, className, disabled, onClick }: Props) {
-  const [isLoading, setLoading] = React.useState(false)
+function Button({ children, variant, className, disabled, onClick }: Props) {
+  const [isLoading, setLoading] = React.useState(false);
 
   const classes = classNames(className, {
-    'btn-loading jkhk': isLoading
-  })
+    'btn-loading jkhk': isLoading,
+  });
 
   React.useEffect(() => {
     if (isLoading) {
       onClick().then(() => {
-        setLoading(false)
-      })
+        setLoading(false);
+      });
     }
-  }, [isLoading])
+  }, [isLoading]);
 
-  const handleClick = () => setLoading(true)
+  const handleClick = () => setLoading(true);
 
   return (
     <ReactBootstrap.Button
@@ -36,7 +36,7 @@ function Button ({ children, variant, className, disabled, onClick }: Props) {
     >
       {children}
     </ReactBootstrap.Button>
-  )
+  );
 }
 
-export default Button
+export default Button;

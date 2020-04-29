@@ -1,1 +1,1 @@
-export { default } from './BannerFeatures'
+export { default } from './BannerFeatures';

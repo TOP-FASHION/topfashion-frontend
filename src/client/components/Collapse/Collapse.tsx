@@ -1,110 +1,110 @@
-import * as React from 'react'
+import * as React from 'react';
 
 interface Props {
-  toggleClass?: string,
-  render?: Function,
-  open?: boolean,
+  toggleClass?: string;
+  render?: Function;
+  open?: boolean;
 }
 
-function Collapse ({ toggleClass, render, open }: Props) {
-  let content: any
-  let item: any
+function Collapse({ toggleClass, render, open }: Props) {
+  let content: any;
+  let item: any;
 
   React.useEffect(() => {
     if (!content) {
-      return
+      return;
     }
 
-    content.addEventListener('transitionend', handleTransitionEnd)
+    content.addEventListener('transitionend', handleTransitionEnd);
 
     if (open === true) {
-      expand(true)
+      expand(true);
     }
     if (open === false) {
-      collapse(true)
+      collapse(true);
     }
 
-    return function cleanup () {
+    return function cleanup() {
       // Код отписки
       if (!content) {
-        return
+        return;
       }
 
-      content.removeEventListener('transitionend', handleTransitionEnd)
-    }
-  })
+      content.removeEventListener('transitionend', handleTransitionEnd);
+    };
+  });
 
   const handleTransitionEnd = (event: any) => {
     if (content && event.propertyName === 'height') {
-      content.style.height = ''
+      content.style.height = '';
     }
-  }
+  };
 
   const handleToggle = () => {
     if (!item || !content || !toggleClass) {
-      return
+      return;
     }
 
     if (item.classList.contains(toggleClass)) {
-      collapse()
+      collapse();
     } else {
-      expand()
+      expand();
     }
-  }
+  };
 
   const setItemRef = (ref: any) => {
-    item = ref
-  }
+    item = ref;
+  };
 
   const setContentRef = (ref: any) => {
-    content = ref
-  }
+    content = ref;
+  };
 
   const expand = (immediate = false) => {
     if (!item || !content || !toggleClass) {
-      return
+      return;
     }
 
     if (immediate) {
-      item.classList.add(toggleClass)
-      content.style.height = ''
+      item.classList.add(toggleClass);
+      content.style.height = '';
     } else {
-      const startHeight = content.getBoundingClientRect().height
+      const startHeight = content.getBoundingClientRect().height;
 
-      item.classList.add(toggleClass)
+      item.classList.add(toggleClass);
 
-      const endHeight = content.getBoundingClientRect().height
+      const endHeight = content.getBoundingClientRect().height;
 
-      content.style.height = `${startHeight}px`
-      content.getBoundingClientRect() // force reflow
-      content.style.height = `${endHeight}px`
+      content.style.height = `${startHeight}px`;
+      content.getBoundingClientRect(); // force reflow
+      content.style.height = `${endHeight}px`;
     }
-  }
+  };
 
   const collapse = (immediate = false) => {
     if (immediate) {
-      item.classList.remove(toggleClass)
-      content.style.height = ''
+      item.classList.remove(toggleClass);
+      content.style.height = '';
     } else {
-      const startHeight = content.getBoundingClientRect().height
+      const startHeight = content.getBoundingClientRect().height;
 
-      content.style.height = `${startHeight}px`
-      item.classList.remove(toggleClass)
+      content.style.height = `${startHeight}px`;
+      item.classList.remove(toggleClass);
 
-      content.getBoundingClientRect() // force reflow
-      content.style.height = ''
+      content.getBoundingClientRect(); // force reflow
+      content.style.height = '';
     }
-  }
+  };
 
   if (render) {
     return render({
       toggle: handleToggle,
-      setItemRef: setItemRef,
-      setContentRef: setContentRef
-    })
+      setItemRef,
+      setContentRef,
+    });
   }
 
-  return null
+  return null;
 }
 
-export default Collapse
+export default Collapse;

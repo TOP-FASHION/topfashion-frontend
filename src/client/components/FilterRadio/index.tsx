@@ -1,1 +1,1 @@
-export { default } from './FilterRadio'
+export { default } from './FilterRadio';

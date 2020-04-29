@@ -150,7 +150,7 @@
 
   span::before,
   span::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 99;
     display: block;
@@ -346,9 +346,7 @@
   color: $btn-light-font-color;
   background: $btn-light-bg-color;
   border-radius: 2px;
-  transition:
-    background 0.1s,
-    color 0.1s;
+  transition: background 0.1s, color 0.1s;
 
   &:hover {
     color: $btn-light-hover-font-color;

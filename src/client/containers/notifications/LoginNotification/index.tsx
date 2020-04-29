@@ -1,1 +1,1 @@
-export { default } from './LoginNotification'
+export { default } from './LoginNotification';

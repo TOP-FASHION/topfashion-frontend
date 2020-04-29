@@ -1,42 +1,42 @@
-import { decorate, observable, action } from 'mobx'
-import Api from '../Api'
-import Cookies from 'js-cookie'
+import { decorate, observable, action } from 'mobx';
+import Cookies from 'js-cookie';
+import Api from '../Api';
 
 export default class PostStore {
-  postContent
+  postContent;
 
-  posts
+  posts;
 
-  totalPosts
+  totalPosts;
 
-  pagesPosts
+  pagesPosts;
 
-  getPost (id) {
-    const lang = Cookies.get('_lang')
-    return Api.Wordpress.Post(id, lang).then(res => {
+  getPost(id) {
+    const lang = Cookies.get('_lang');
+    return Api.Wordpress.Post(id, lang).then((res) => {
       if (res.data) {
-        this.setPost(res.data)
+        this.setPost(res.data);
       }
-    })
+    });
   }
 
-  getPosts () {
-    return Api.Wordpress.Posts().then(res => {
+  getPosts() {
+    return Api.Wordpress.Posts().then((res) => {
       if (res.data) {
-        this.setPosts(res.data)
-        this.totalPosts = res.headers['x-wp-total']
-        this.pagesPosts = res.headers['x-wp-totalpages']
+        this.setPosts(res.data);
+        this.totalPosts = res.headers['x-wp-total'];
+        this.pagesPosts = res.headers['x-wp-totalpages'];
       }
-    })
+    });
   }
 
-  setPost = data => {
-    this.postContent = data
-  }
+  setPost = (data) => {
+    this.postContent = data;
+  };
 
-  setPosts = data => {
-    this.posts = data
-  }
+  setPosts = (data) => {
+    this.posts = data;
+  };
 }
 
 decorate(PostStore, {
@@ -45,5 +45,5 @@ decorate(PostStore, {
   setPost: action,
   setPosts: action,
   totalPosts: observable,
-  pagesPosts: observable
-})
+  pagesPosts: observable,
+});

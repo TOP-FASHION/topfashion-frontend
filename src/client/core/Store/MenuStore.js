@@ -1,26 +1,26 @@
-import { decorate, observable, action } from 'mobx'
-import Api from '../Api'
+import { decorate, observable, action } from 'mobx';
+import Api from '../Api';
 
 export default class MenuStore {
-  menu
+  menu;
 
-  getMenu () {
+  getMenu() {
     return Api.Menus.Menu()
-      .then(res => {
-        this.setMenu(res.data.items)
-        return res.data.items
+      .then((res) => {
+        this.setMenu(res.data.items);
+        return res.data.items;
       })
-      .catch(error => {
-        console.log('Error====', error)
-      })
+      .catch((error) => {
+        console.log('Error====', error);
+      });
   }
 
-  setMenu = data => {
-    this.menu = data
-  }
+  setMenu = (data) => {
+    this.menu = data;
+  };
 }
 
 decorate(MenuStore, {
   menu: observable,
-  setMenu: action
-})
+  setMenu: action,
+});

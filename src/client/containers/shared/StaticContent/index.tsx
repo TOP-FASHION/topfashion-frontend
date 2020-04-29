@@ -1,1 +1,1 @@
-export { default } from './StaticContent'
+export { default } from './StaticContent';

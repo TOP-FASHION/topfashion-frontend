@@ -1,3 +1,8 @@
+/* Set your postcss-loader configuration here */
+
 module.exports = {
-  plugins: [require('postcss-preset-env')()],
+  plugins: [
+    // Add "-ms-" prefixes for Grid Layout
+    require('autoprefixer')({ grid: true }),
+  ],
 };

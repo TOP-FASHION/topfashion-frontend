@@ -1,1 +1,1 @@
-export { default } from './AccountPassword'
+export { default } from './AccountPassword';

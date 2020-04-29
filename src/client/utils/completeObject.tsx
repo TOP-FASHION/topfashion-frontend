@@ -4,14 +4,14 @@
  * @param {object} donor - object-donor
  * @returns {object} acceptor
  */
-export default function completeObject (acceptor: any, donor: any) {
-  acceptor = acceptor || {}
-  donor = donor || {}
+export default function completeObject(acceptor: any, donor: any) {
+  acceptor = acceptor || {};
+  donor = donor || {};
   for (const prop in donor) {
     // eslint-disable-next-line no-prototype-builtins
     if (donor.hasOwnProperty(prop) && !acceptor.hasOwnProperty(prop)) {
-      acceptor[prop] = donor[prop]
+      acceptor[prop] = donor[prop];
     }
   }
-  return acceptor
+  return acceptor;
 }

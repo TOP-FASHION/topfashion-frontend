@@ -1,1 +1,1 @@
-export { default } from './FooterContacts'
+export { default } from './FooterContacts';

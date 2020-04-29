@@ -1,1 +1,1 @@
-export { default } from './FailedImport'
+export { default } from './FailedImport';

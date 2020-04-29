@@ -1,25 +1,13 @@
 {
   "compilerOptions": {
-    "outDir": "./tmp/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "esnext",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "allowJs": true,
-    "noEmit": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "types"
-    ],
-    "resolveJsonModule": true
-  },
-  "include": [
-    "./src/**/*",
-    "types"
-  ]
+    "outDir": "public/assets",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react"
+  }
 }
-

@@ -1,7 +1,9 @@
-import enMessages from './locales/en.json'
-import ruMessages from './locales/ru.json'
+// @ts-ignore
+import enMessages from './locales/en.json';
+// @ts-ignore
+import ruMessages from './locales/ru.json';
 
 export default {
   en: enMessages,
-  ru: ruMessages
-}
+  ru: ruMessages,
+};

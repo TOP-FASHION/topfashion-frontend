@@ -1,1 +1,1 @@
-export { default } from './FilterColor'
+export { default } from './FilterColor';

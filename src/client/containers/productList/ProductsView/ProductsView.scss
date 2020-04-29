@@ -10,9 +10,7 @@
   .products-list__item {
     @if ($columns == 1) {
       width: 100%;
-    }
-
-    @else {
+    } @else {
       width: calc(#{100% / $columns} - #{$margin-horizontal * 2});
     }
 

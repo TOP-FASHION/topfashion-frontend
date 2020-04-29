@@ -1,27 +1,27 @@
-import { decorate, observable, action, autorun, runInAction } from 'mobx'
-import Api from '../Api'
+import { decorate, observable, action, autorun, runInAction } from 'mobx';
+import Api from '../Api';
 
 export default class CartCountProductsStore {
-  productsCartCountItems
+  productsCartCountItems;
 
-  constructor () {
-    autorun(() => this.getProductsCartCountItems())
+  constructor() {
+    autorun(() => this.getProductsCartCountItems());
   }
 
-  getProductsCartCountItems () {
-    return Api.CoCart.CartCountProducts().then(res => {
+  getProductsCartCountItems() {
+    return Api.CoCart.CartCountProducts().then((res) => {
       runInAction(() => {
-        this.getProductsCartCountItemsAfterUpfate(res.data)
-      })
-    })
+        this.getProductsCartCountItemsAfterUpfate(res.data);
+      });
+    });
   }
 
-  getProductsCartCountItemsAfterUpfate = data => {
-    this.productsCartCountItems = data
-  }
+  getProductsCartCountItemsAfterUpfate = (data) => {
+    this.productsCartCountItems = data;
+  };
 }
 
 decorate(CartCountProductsStore, {
   productsCartCountItems: observable,
-  setData: action
-})
+  setData: action,
+});

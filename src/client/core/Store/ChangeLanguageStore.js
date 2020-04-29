@@ -1,13 +1,13 @@
-import { observable, action } from 'mobx'
+import { observable, action } from 'mobx';
 
 export default class ChangeLanguageStore {
-  @observable language
+  @observable language;
 
-  constructor () {
-    this.language = 'en'
+  constructor() {
+    this.language = 'en';
   }
 
-  @action changeLanguage (values) {
-    this.language = values
+  @action changeLanguage(values) {
+    this.language = values;
   }
 }

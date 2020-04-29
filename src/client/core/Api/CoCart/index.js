@@ -1,9 +1,9 @@
-import CartProducts from './CartProducts'
-import CartAddProduct from './CartAddProduct'
-import CartRemoveProduct from './CartRemoveProduct'
-import CartUpdateProduct from './CartUpdateProduct'
-import CartInfoTotalProducts from './CartInfoTotalProducts'
-import CartCountProducts from './CartCountProducts'
+import CartProducts from './CartProducts';
+import CartAddProduct from './CartAddProduct';
+import CartRemoveProduct from './CartRemoveProduct';
+import CartUpdateProduct from './CartUpdateProduct';
+import CartInfoTotalProducts from './CartInfoTotalProducts';
+import CartCountProducts from './CartCountProducts';
 
 const CoCart = {
   CartProducts,
@@ -11,7 +11,7 @@ const CoCart = {
   CartRemoveProduct,
   CartUpdateProduct,
   CartInfoTotalProducts,
-  CartCountProducts
-}
+  CartCountProducts,
+};
 
-export default CoCart
+export default CoCart;

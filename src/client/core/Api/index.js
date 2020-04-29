@@ -1,15 +1,15 @@
-import Wordpress from './Wordpress'
-import Woocommerce from './Woocommerce'
-import CoCart from './CoCart'
-import Menus from './Menus'
-import Wishlist from './TIWishlist'
+import Wordpress from './Wordpress';
+import Woocommerce from './Woocommerce';
+import CoCart from './CoCart';
+import Menus from './Menus';
+import Wishlist from './TIWishlist';
 
 const Api = {
   Wordpress,
   Woocommerce,
   CoCart,
   Menus,
-  Wishlist
-}
+  Wishlist,
+};
 
-export default Api
+export default Api;

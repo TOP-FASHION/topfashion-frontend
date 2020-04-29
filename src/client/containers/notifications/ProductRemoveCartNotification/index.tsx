@@ -1,1 +1,1 @@
-export { default } from './ProductRemoveCartNotification'
+export { default } from './ProductRemoveCartNotification';

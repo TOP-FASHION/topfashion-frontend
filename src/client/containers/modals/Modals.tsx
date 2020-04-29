@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { observer } from 'mobx-react'
+import * as React from 'react';
+import { observer } from 'mobx-react';
 // import LoginModal from './LoginModal'
-import ProductModal from './ProductModal'
-import Fragment from '../../components/Fragment'
-import './Modals.scss'
+import ProductModal from './ProductModal';
+import Fragment from '../../components/Fragment';
+import './Modals.scss';
 
 const Modals = observer(() => {
   return (
@@ -13,7 +13,7 @@ const Modals = observer(() => {
       */}
       <ProductModal />
     </Fragment>
-  )
-})
+  );
+});
 
-export default Modals
+export default Modals;

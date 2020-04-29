@@ -1,1 +1,1 @@
-export { default } from './IndicatorCart'
+export { default } from './IndicatorCart';

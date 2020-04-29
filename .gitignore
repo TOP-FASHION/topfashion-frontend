@@ -11,3 +11,7 @@ _build_prod/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+coverage
+public/*
+!public/favicon.ico

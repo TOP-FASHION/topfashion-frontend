@@ -1,20 +1,20 @@
-import { defineMessages } from 'react-intl'
+import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   'app.topbar.aboutUs': {
     id: 'app.topbar.aboutUs',
-    defaultMessage: 'About us'
+    defaultMessage: 'About us',
   },
   'app.topbar.contacts': {
     id: 'app.topbar.contacts',
-    defaultMessage: 'Contact Us'
+    defaultMessage: 'Contact Us',
   },
   'app.topbar.promotions': {
     id: 'app.topbar.promotions',
-    defaultMessage: 'Promotions and news'
+    defaultMessage: 'Promotions and news',
   },
   'app.topbar.trackOrder': {
     id: 'app.topbar.trackOrder',
-    defaultMessage: 'Track order'
-  }
-})
+    defaultMessage: 'Track order',
+  },
+});

@@ -1,1 +1,1 @@
-export { default } from './WidgetCategories'
+export { default } from './WidgetCategories';
