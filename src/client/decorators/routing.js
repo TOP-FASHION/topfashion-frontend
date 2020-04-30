@@ -17,7 +17,7 @@ export class SetLang extends React.Component {
     }
   }
 
-  componentWillMount () {
+  unsafe_componentWillMount () {
     this.langList = this.props.langList
   }
 

@@ -10,7 +10,7 @@ export default class CartInfoTotalProductsStore {
 
   getProductsCartInfoTotal() {
     return Api.CoCart.CartInfoTotalProducts().then((res) => {
-      if (res.data) {
+      if (res) {
         runInAction(() => {
           this.setProductsCartInfoTotal(res.data);
         });

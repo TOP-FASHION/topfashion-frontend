@@ -10,9 +10,11 @@ export default class CartCountProductsStore {
 
   getProductsCartCountItems() {
     return Api.CoCart.CartCountProducts().then((res) => {
-      runInAction(() => {
-        this.getProductsCartCountItemsAfterUpfate(res.data);
-      });
+      if (res) {
+        runInAction(() => {
+          this.getProductsCartCountItemsAfterUpfate(res.data);
+        });
+      }
     });
   }
 

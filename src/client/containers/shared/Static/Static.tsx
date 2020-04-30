@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { observer } from 'mobx-react';
 import { AppContext } from '../../../core/Store/context';
 import PageHeader from '../PageHeader';
