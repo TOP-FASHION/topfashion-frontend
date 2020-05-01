@@ -7,8 +7,8 @@ interface Props {
 }
 
 function Collapse({ toggleClass, render, open }: Props) {
-  let content: any;
-  let item: any;
+  let content: HTMLElement;
+  let item: HTMLElement;
 
   React.useEffect(() => {
     if (!content) {
@@ -24,8 +24,7 @@ function Collapse({ toggleClass, render, open }: Props) {
       collapse(true);
     }
 
-    return function cleanup() {
-      // Код отписки
+    return () => {
       if (!content) {
         return;
       }
@@ -34,7 +33,7 @@ function Collapse({ toggleClass, render, open }: Props) {
     };
   });
 
-  const handleTransitionEnd = (event: any) => {
+  const handleTransitionEnd = (event: TransitionEvent) => {
     if (content && event.propertyName === 'height') {
       content.style.height = '';
     }
@@ -52,11 +51,11 @@ function Collapse({ toggleClass, render, open }: Props) {
     }
   };
 
-  const setItemRef = (ref: any) => {
+  const setItemRef = (ref: HTMLElement) => {
     item = ref;
   };
 
-  const setContentRef = (ref: any) => {
+  const setContentRef = (ref: HTMLElement) => {
     content = ref;
   };
 

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './InputNumber.scss';
 
 interface Props {
-  onChange?: ({}) => void | Function;
+  onChange?: (event: any) => void | Function;
   size?: 'sm' | 'lg';
   step?: number;
   min?: number;
@@ -22,10 +22,10 @@ InputNumber.defaultProps = {
 };
 
 function InputNumber(props: Props) {
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.FormEvent<any>) => {
     const { min, onChange } = props;
     if (onChange) {
-      const value = parseFloat(event.target.value);
+      const value = parseFloat(event.currentTarget.value);
 
       onChange(Number.isNaN(value) ? min || 0 : value);
     }
@@ -44,7 +44,7 @@ function InputNumber(props: Props) {
   /**
    * @param direction - one of [-1, 1]
    */
-  const change = (direction: any) => {
+  const change = (direction: number) => {
     const { value, step, max, min, onChange } = props;
     let newValue =
       (typeof value === 'string' || Number.isNaN(value) ? 0 : value) +
@@ -67,10 +67,10 @@ function InputNumber(props: Props) {
   /**
    * @param direction - one of [-1, 1]
    */
-  const changeByTimer = (direction: any) => {
+  const changeByTimer = (direction: number) => {
     let interval: any;
     const timer = setTimeout(() => {
-      interval = setInterval(() => this.change(direction), 50);
+      interval = setInterval(() => change(direction), 50);
     }, 300);
 
     const documentMouseUp = () => {

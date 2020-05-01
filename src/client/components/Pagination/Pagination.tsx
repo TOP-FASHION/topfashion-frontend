@@ -16,7 +16,7 @@ Pagination.defaultProps = {
 };
 
 function Pagination(props: Props) {
-  const setPage = (value: any) => {
+  const setPage = (value: number) => {
     const { total, current, onPageChange } = props;
 
     if (value < 1 || value > total || value === current) {

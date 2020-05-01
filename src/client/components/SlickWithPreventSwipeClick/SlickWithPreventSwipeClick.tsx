@@ -13,7 +13,7 @@ function SlickWithPreventSwipeClick({
   forwardRef,
   ...otherProps
 }: Props) {
-  let element: any;
+  let element: HTMLElement;
   const [preventClick, setSreventClick] = React.useState(false);
 
   React.useEffect(() => {
@@ -30,7 +30,7 @@ function SlickWithPreventSwipeClick({
     };
   });
 
-  const setRef = (ref: any) => {
+  const setRef = (ref: HTMLElement) => {
     element = ref;
   };
 
@@ -38,7 +38,7 @@ function SlickWithPreventSwipeClick({
     const downX = event.screenX;
     const downY = event.screenY;
 
-    const onMousemove = (moveEvent: any) => {
+    const onMousemove = (moveEvent: MouseEvent) => {
       if (preventClick) {
         return;
       }

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import * as React from 'react';
 
 interface Props {
@@ -16,16 +15,13 @@ function Fragment(props: Props) {
   };
 
   const isShown = () => {
-    if (props.hasOwnProperty('hidden')) {
-      // eslint-disable-line no-prototype-builtins
+    if (Object.prototype.hasOwnProperty.call(props, 'hidden')) {
       return !props.hidden;
     }
-    if (props.hasOwnProperty('show')) {
-      // eslint-disable-line no-prototype-builtins
+    if (Object.prototype.hasOwnProperty.call(props, 'show')) {
       return props.show;
     }
-    if (props.hasOwnProperty('hide')) {
-      // eslint-disable-line no-prototype-builtins
+    if (Object.prototype.hasOwnProperty.call(props, 'hide')) {
       return !props.hide;
     }
     return true;

@@ -7,7 +7,7 @@ interface Props {
   /** indicator value */
   value?: number | React.ReactNode;
   /** the component that will be shown in the dropdown */
-  dropdown?: any;
+  dropdown?: React.ReactElement;
   /** indicator icon */
   icon?: React.ReactNode;
   /** indicator url */
@@ -50,7 +50,7 @@ function Indicator({
     }
   }, [isOpen]);
 
-  const setWrapperRef = (node: any) => {
+  const setWrapperRef = (node: HTMLElement) => {
     wrapperRef = node;
   };
 

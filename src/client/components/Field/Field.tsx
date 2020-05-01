@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Field({ children, error, label, className }: Props) {
-  const modifyChildren = (child: any) => {
+  const modifyChildren = (child: React.ReactElement<any>) => {
     const classes = classNames({
       'is-invalid': error,
     });
@@ -25,7 +25,9 @@ function Field({ children, error, label, className }: Props) {
   return (
     <ReactBootstrap.Form.Group className={className}>
       <ReactBootstrap.Form.Label>{label}</ReactBootstrap.Form.Label>
-      {React.Children.map(children, (child) => modifyChildren(child))}
+      {React.Children.map(children, (child) =>
+        modifyChildren(child as React.ReactElement<any>)
+      )}
       <ReactBootstrap.Form.Control.Feedback type="invalid">
         {error}
       </ReactBootstrap.Form.Control.Feedback>

@@ -37,6 +37,9 @@
     "jest": true
   },
   "rules": {
+    "consistent-return": "off",
+    "no-param-reassign": [1, { "props": false }],
+    "react/no-array-index-key": "off",
     "global-require": "off",
     "no-console": "off",
     "no-underscore-dangle": "off",
