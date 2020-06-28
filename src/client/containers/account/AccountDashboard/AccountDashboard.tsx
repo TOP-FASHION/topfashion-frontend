@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { reaction } from 'mobx';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 // import addresses from '../../data/accountAddresses'
 // import allOrders from '../../data/accountOrders'
 import './AccountDashboard.scss';
 
-const AccountDashboard = observer((props: any) => {
+const AccountDashboard = observer(() => {
   const { userInfoStore } = React.useContext(AppContext);
 
   React.useEffect(() => {

@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { reaction } from 'mobx';
 import { Form } from 'react-bootstrap';
 import classNames from 'classnames';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import './Search.scss';
@@ -20,7 +20,7 @@ interface Props extends RouteComponentProps<MatchParams> {
 }
 
 const Search = observer(
-  ({ onClose = () => {}, className, context, ...otherProps }: Props) => {
+  ({ onClose, className, context, ...otherProps }: Props) => {
     const { productSearchStore } = React.useContext(AppContext);
 
     React.useEffect(() => {

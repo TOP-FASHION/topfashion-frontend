@@ -38,14 +38,30 @@
   },
   "rules": {
     "consistent-return": "off",
-    "no-param-reassign": [1, { "props": false }],
+    "no-param-reassign": [0],
     "react/no-array-index-key": "off",
     "global-require": "off",
     "no-console": "off",
+    "no-shadow": "off",
     "no-underscore-dangle": "off",
-    "react/prop-types": "off",
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "react/static-property-placement": 0,
+    "jsx-a11y/alt-text": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/no-static-element-interactions": [
+      "error",
+      {
+        "handlers": [
+          "onClick",
+          "onKeyPress",
+          "onKeyDown",
+          "onKeyUp"
+        ]
+      }
+    ],
+    "react/jsx-props-no-spreading": 0,
     "react-hooks/exhaustive-deps": "off",
-    "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [
       "error",
       {
@@ -74,7 +90,8 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/camelcase": "off"
   },
   "globals": {
     "__CLIENT__": true,

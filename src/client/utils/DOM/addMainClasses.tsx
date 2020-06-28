@@ -1,6 +1,5 @@
 import htmlClass from '../htmlClass';
 
-// @ts-ignore
 export default function addMainClasses(core: any) {
   const deviceType = core.item('settings').item('be').item('deviceType');
   const deviceTypeName =

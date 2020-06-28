@@ -2,7 +2,7 @@ import * as React from 'react';
 import { injectIntl } from 'react-intl';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Fragment from '../../../components/Fragment';
 import InputNumber from '../../../components/InputNumber';
 import ProductGallery from '../ProductGallery';
@@ -71,10 +71,11 @@ const Product = observer(
 
     const attributeSize = () => {
       let attributeSize = [];
-      product.attributes.map((item: any, index: any) => {
+      product.attributes.map((item: any) => {
         if (item.name === 'Size') {
           attributeSize = item.options;
         }
+        return null;
       });
 
       const options = ['40', '41', '42', '43', '44'].map((size, index) => {
@@ -101,7 +102,7 @@ const Product = observer(
       product.attributes.map((item: any) => {
         if (item.name === 'Color') {
           item.options.map((item: any, index: any) => {
-            attributeColor.push(
+            return attributeColor.push(
               <label
                 key={index}
                 className="input-radio-color__item input-radio-color__item"
@@ -115,6 +116,7 @@ const Product = observer(
             );
           });
         }
+        return null;
       });
 
       return attributeColor.length ? (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import PageHeader from '../../containers/shared/PageHeader';
 import Pagination from '../../components/Pagination';
 import PostCard from '../../containers/promotions/PostCard';

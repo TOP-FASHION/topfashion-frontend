@@ -1,10 +1,11 @@
 import React from 'react';
 import './AboutCompany.scss';
 
-function AboutCompany(props: any) {
+function AboutCompany() {
   return (
     <div className="block about-company">
       <div className="container-fluid">
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <h4>FASHIONAL WOMEN'S CLOTHING ONLINE STORE 'TOP-FASHION'</h4>
         <p>
           The official online store of one of the leading Russian brands for

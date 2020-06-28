@@ -7,7 +7,7 @@ export default {
     if (!classNamesArray.length) {
       return false;
     }
-    for (let i = 0, l = classNamesArray.length; i < l; i++) {
+    for (let i = 0, l = classNamesArray.length; i < l; i += 1) {
       const className = classNamesArray[i];
       if (!has(className)) {
         return false;
@@ -30,7 +30,7 @@ export default {
     if (!classNamesArray.length) {
       return;
     }
-    for (let i = 0, l = classNamesArray.length; i < l; i++) {
+    for (let i = 0, l = classNamesArray.length; i < l; i += 1) {
       const className = classNamesArray[i];
       if (!this.has(elem, className)) {
         elem.className += elem.className ? ` ${className}` : className;
@@ -45,7 +45,7 @@ export default {
     if (!classNamesArray.length) {
       return;
     }
-    for (let i = 0, l = classNamesArray.length; i < l; i++) {
+    for (let i = 0, l = classNamesArray.length; i < l; i += 1) {
       const className = classNamesArray[i];
       if (this.has(elem, className)) {
         elem.className = elem.className
@@ -66,7 +66,7 @@ function normalizeClassNamesArgument(classNames: any, originClassNames: any) {
     if (!originClassNamesArray.length) {
       return [];
     }
-    for (let i = 0, l = originClassNamesArray.length; i < l; i++) {
+    for (let i = 0, l = originClassNamesArray.length; i < l; i += 1) {
       const classNameOrigin = originClassNamesArray[i];
       if (classNameOrigin && classNameRegexp.test(classNameOrigin)) {
         classNames.push(classNameOrigin);

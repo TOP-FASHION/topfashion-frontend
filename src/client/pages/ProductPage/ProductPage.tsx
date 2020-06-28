@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { observer } from 'mobx-react';
 import { reaction, toJS } from 'mobx';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import PageHeader from '../../containers/shared/PageHeader';
 import Product from '../../containers/product/Product';
 import ProductTabs from '../../containers/product/ProductTabs';
@@ -68,8 +68,11 @@ const ProductPage = observer(
           Object.keys(itemLastProduct).map((item) => {
             if (itemLastProduct.id === productStore.product.id) {
               isAdd = false;
+              return isAdd;
             }
+            return isAdd;
           });
+          return isAdd;
         });
         // eslint-disable-next-line no-unused-expressions
         isAdd ? arr.unshift(toJS(productStore.product)) : null;

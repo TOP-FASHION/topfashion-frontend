@@ -26,13 +26,13 @@ type IFilterCategoryProp = {
   nodes: Array<MyType>;
 };
 
-interface IFilterCategoriesProps {
+interface FilterCategoriesProps {
   productCategories: IFilterCategoryProp;
   match: string;
 }
 
-const WidgetCategories = (props: any) => {
-  const { loading, data, error } = useQuery<IFilterCategoriesProps>(
+const WidgetCategories = () => {
+  const { loading, data, error } = useQuery<FilterCategoriesProps>(
     GET_CATEGORIES
   );
 

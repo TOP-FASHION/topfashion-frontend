@@ -147,18 +147,15 @@ interface Props {
   onGroupClick: Function;
 }
 
-const ProductsCarousel = (props: Props) => {
-  let {
-    title,
-    layout = 'grid-4',
-    rows = 1,
-    products = [],
-    allProducts = false,
-    withSidebar = false,
-    loading = false,
-    group,
-  } = props;
-
+const ProductsCarousel = ({
+  title,
+  layout = 'grid-4',
+  rows = 1,
+  products = [],
+  withSidebar = false,
+  loading = false,
+  group,
+}: Props) => {
   const productsColumns = () => {
     const columns = [];
 

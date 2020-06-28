@@ -2,10 +2,10 @@ import React from 'react';
 import { injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Fragment from '../../../components/Fragment';
 
-const ProductRemoveCartNotification = observer((props: any) => {
+const ProductRemoveCartNotification = observer(() => {
   const { cartRemoveProductStore } = React.useContext(AppContext);
 
   const notify = (text: any) => {

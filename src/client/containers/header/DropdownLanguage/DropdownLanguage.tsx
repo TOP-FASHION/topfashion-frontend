@@ -14,14 +14,14 @@ const DropdownLanguage = observer((props: any) => {
       label: message('en'),
       locale: 'en',
       icon: '/assets/img/languages//language-1.png',
-      icon_srcset:
+      iconSrcset:
         '/assets/img/languages/language-1.png 1x, images/languages/language-1@2x.png 2x',
     },
     {
       label: message('ru'),
       locale: 'ru',
       icon: '/assets/img/languages//language-2.png',
-      icon_srcset:
+      iconSrcset:
         '/assets/img/languages/language-2.png 1x, images/languages/language-2@2x.png 2x',
     },
   ];

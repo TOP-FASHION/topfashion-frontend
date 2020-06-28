@@ -32,6 +32,8 @@ function Indicator({
 }: Props) {
   const [isOpen, setOpen] = React.useState(false);
   let wrapperRef: any;
+  let getDropdown = dropdown;
+  let getValue = value;
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
@@ -83,13 +85,13 @@ function Indicator({
   let button;
 
   if (value !== undefined) {
-    value = <span className="indicator__value" data-count={value} />;
+    getValue = <span className="indicator__value" data-count={value} />;
   }
 
   const title = (
     <span className="indicator__area">
       {icon}
-      {value}
+      {getValue}
     </span>
   );
 
@@ -112,7 +114,7 @@ function Indicator({
   }
 
   if (dropdown) {
-    dropdown = <div className="indicator__dropdown">{dropdown}</div>;
+    getDropdown = <div className="indicator__dropdown">{dropdown}</div>;
   }
 
   const classes = classNames(
@@ -125,7 +127,7 @@ function Indicator({
   return (
     <div className={classes} ref={setWrapperRef}>
       {button}
-      {dropdown}
+      {getDropdown}
     </div>
   );
 }

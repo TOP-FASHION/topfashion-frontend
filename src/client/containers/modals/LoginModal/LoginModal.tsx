@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import LoginForm from '../../forms/LoginForm';
 import RegistrationForm from '../../forms/RegistrationForm';
 import Fragment from '../../../components/Fragment';
@@ -30,7 +30,12 @@ const LoginModal = observer((props: any) => {
     });
 
     return (
-      <span key={tab.key} onClick={() => setTab(tab.key)} className={classes}>
+      <span
+        key={tab.key}
+        onClick={() => setTab(tab.key)}
+        className={classes}
+        aria-hidden="true"
+      >
         {tab.title}
       </span>
     );

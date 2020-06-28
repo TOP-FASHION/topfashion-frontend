@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import PageHeader from '../../containers/shared/PageHeader';
 import Rating from '../../components/Rating';
 import Button from '../../components/Button';

@@ -27,7 +27,8 @@ type IFilterCategoryProp = {
   nodes: Array<MyType>;
 };
 
-interface IFilterCategoriesProps {
+// eslint-disable-next-line @typescript-eslint/interface-name-prefix
+interface FilterCategoriesProps {
   productCategories: IFilterCategoryProp;
   match: string;
 }
@@ -35,7 +36,7 @@ interface IFilterCategoriesProps {
 type TParams = RouteComponentProps<any>;
 
 const FilterCategories = ({ match }: TParams) => {
-  const { loading, data, error } = useQuery<IFilterCategoriesProps>(
+  const { loading, data, error } = useQuery<FilterCategoriesProps>(
     GET_CATEGORIES
   );
 

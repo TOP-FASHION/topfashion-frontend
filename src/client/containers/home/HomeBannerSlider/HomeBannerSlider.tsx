@@ -42,7 +42,7 @@ const slickSettings: any = {
   ],
 };
 
-const HomeBannerSlider = (props: any) => {
+const HomeBannerSlider = () => {
   const slidesSource: any = [
     {
       url: '/category/new',

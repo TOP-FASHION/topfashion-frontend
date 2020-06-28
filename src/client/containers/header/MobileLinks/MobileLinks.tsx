@@ -9,7 +9,7 @@ interface Props {
   onItemClick: Function;
 }
 
-function MobileLinks({ links = [], level = 0, onItemClick = () => {} }: Props) {
+function MobileLinks({ links = [], level = 0, onItemClick }: Props) {
   const handleItemClick = (item: any) => {
     if (onItemClick) {
       onItemClick(item);

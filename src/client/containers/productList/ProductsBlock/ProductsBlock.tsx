@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import ProductsBlockHeader from '../ProductsBlockHeader';
 import ProductCard from '../../product/ProductCard';
 import './ProductsBlock.scss';

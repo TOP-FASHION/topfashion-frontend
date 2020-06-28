@@ -12,7 +12,7 @@ export default function searchParse(search: any, prefix = '?') {
     search = search.slice(prefix.length);
   }
   const result: any = {};
-  let match;
+  let match: any;
   while ((match = SEARCH.exec(search))) {
     result[decode(match[1])] = decode(match[2]);
   }

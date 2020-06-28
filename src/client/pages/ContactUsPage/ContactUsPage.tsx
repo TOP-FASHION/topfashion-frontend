@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import PageHeader from '../../containers/shared/PageHeader';
 import './ContactUsPage.scss';
 
-const ContactUsPage = (props: any) => {
+const ContactUsPage = () => {
   const breadcrumb = [
     { title: 'Home', url: '/' },
     { title: 'Contact Us', url: '' },

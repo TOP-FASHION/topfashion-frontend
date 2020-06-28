@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { observer } from 'mobx-react';
 import { Form } from 'react-bootstrap';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 // import { injectIntl } from 'react-intl'
 // import setMessages from '../../utils/setMessages'
 // import messages from './ProductCard.messages'
@@ -30,7 +30,6 @@ const ProductsView = observer(
     layout = 'grid',
     grid = 'grid-4-sidebar',
     offcanvas = 'mobile',
-    ...otherProps
   }: Props) => {
     const {
       productsStore,

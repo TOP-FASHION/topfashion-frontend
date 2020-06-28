@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { injectIntl } from 'react-intl';
 import './BannerFeatures.scss';
 

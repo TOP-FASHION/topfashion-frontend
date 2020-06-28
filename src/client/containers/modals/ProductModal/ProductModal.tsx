@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Modal } from 'react-bootstrap';
 import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Product from '../../product/Product';
 // import messages from './ProductModal.messages'
 // import setMessages from '../../../utils/setMessages'
 import './ProductModal.scss';
 
-const ProductModal = observer((props: any) => {
+const ProductModal = observer(() => {
   const { modalStore, productsStore } = React.useContext(AppContext);
   // const message = setMessages(props, messages, 'modals.login.')
   const { allProducts } = productsStore;

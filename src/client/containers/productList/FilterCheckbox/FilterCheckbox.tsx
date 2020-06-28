@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 
-const FilterCheckbox = observer((props: any) => {
+const FilterCheckbox = observer(() => {
   const { brandsStore } = React.useContext(AppContext);
 
   React.useEffect(() => {

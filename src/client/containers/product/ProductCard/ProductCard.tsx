@@ -3,10 +3,10 @@ import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../../../core/Store/context';
-import setMessages from '../../../utils/setMessages';
+import { AppContext } from '../../../store/context';
+// import setMessages from '../../../utils/setMessages';
 import { setCurrencies } from '../../../translations/currencies.messages';
-import messages from './ProductCard.messages';
+// import messages from './ProductCard.messages';
 import Button from '../../../components/Button';
 // import Rating from '../../../components/Rating'
 import './ProductCard.scss';
@@ -25,7 +25,7 @@ const ProductCard = observer(({ product, layout, ...otherProps }: Props) => {
     wishlistAddProductStore,
   } = React.useContext(AppContext);
 
-  const message = setMessages(otherProps, messages, 'app.productCard.');
+  // const message = setMessages(otherProps, messages, 'app.productCard.');
   const currencies = setCurrencies(otherProps);
 
   const containerClasses = () => {
@@ -74,6 +74,7 @@ const ProductCard = observer(({ product, layout, ...otherProps }: Props) => {
         </Link>
         <div className="product-card__quick">
           <button
+            type="button"
             onClick={() => modalStore.openProduct(product.id)}
             className="product-card__quickview"
           >
@@ -124,9 +125,10 @@ const ProductCard = observer(({ product, layout, ...otherProps }: Props) => {
       </ul>
     ) : null;
 
+  /*
   const attributeSize = () => {
     let attributeSize: any = [];
-    product.attributes.map((item: any, index: any) => {
+    product.attributes.map((item: any) => {
       if (item.name === 'Size') {
         attributeSize = item.options;
       }
@@ -136,13 +138,14 @@ const ProductCard = observer(({ product, layout, ...otherProps }: Props) => {
       <div className="product-card__size">Size: {attributeSize.join(', ')}</div>
     ) : null;
   };
+  */
 
   const attributeColor = () => {
     const attributeColor: any = [];
-    product.attributes.map((item: any, index: any) => {
+    product.attributes.map((item: any) => {
       if (item.name === 'Color') {
         item.options.map((item: any, index: any) => {
-          attributeColor.push(
+          return attributeColor.push(
             <span
               key={index}
               className={`product-card__color-item product-card__color-item--${item}`}
@@ -152,6 +155,7 @@ const ProductCard = observer(({ product, layout, ...otherProps }: Props) => {
           );
         });
       }
+      return null;
     });
 
     return attributeColor.length ? (

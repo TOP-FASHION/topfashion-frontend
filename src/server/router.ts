@@ -7,9 +7,8 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import logger from 'morgan';
-import favicon from 'serve-favicon';
 
-export function router(app: express.Application) {
+export default function router(app: express.Application) {
   const proxy = httpProxy.createProxyServer();
 
   app.disable('x-powered-by');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import PageHeader from '../PageHeader';
 import StaticContent from '../StaticContent';
 import Loading from '../../../components/Loading';

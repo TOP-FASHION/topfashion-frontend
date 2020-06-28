@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Helmet } from 'react-helmet';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import HomeSlider from '../../containers/home/HomeSlider';
 import BannerFeatures from '../../containers/home/BannerFeatures';
 import ProductsCarouselTabbs from '../../containers/productList/ProductsCarouselTabbs';

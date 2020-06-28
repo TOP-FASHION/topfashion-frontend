@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 import './HomeBanner.scss';
 
-const HomeBanner = (props: any) => {
+const HomeBanner = () => {
   return (
     <div className="block block-banner">
       <div className="container-fluid">

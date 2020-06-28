@@ -2,7 +2,7 @@ import React from 'react';
 import { injectIntl } from 'react-intl';
 import { observer } from 'mobx-react';
 import { toast } from 'react-toastify';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import messages from './LoginNotification.messages';
 import setMessages from '../../../utils/setMessages';
 import Fragment from '../../../components/Fragment';

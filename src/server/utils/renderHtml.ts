@@ -16,9 +16,19 @@ export default (
         <!--[if IE]>
           <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
         <![endif]-->
-
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+        <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+        <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="shortcut icon" href="/favicon.ico">
+        <link rel='manifest' href='/manifest.json' />
+        <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
+        <meta name='apple-mobile-web-app-title' content={siteName} />
+        <meta name='application-name' content={siteName} />
+        <meta name='msapplication-TileColor' content='#ffffff' />
+        <meta name='msapplication-TileImage' content='/mstile-144x144.png' />
+        <meta name='theme-color' content='#ffffff' />
+        <meta name='description' content={siteDescription} data-react-helmet='true' />
 
         ${head.title.toString()}
         ${head.base.toString()}

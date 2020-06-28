@@ -47,10 +47,7 @@ const BlogPost = ({ layout = 'classic', content }: Props) => {
         </div>
       </div>
 
-      <div
-        className={postClasses}
-        dangerouslySetInnerHTML={{ __html: content.content.rendered }}
-      />
+      <div className={postClasses}>{content.content.rendered}</div>
 
       <div className="post__footer">
         <div className="post__tags-share-links">

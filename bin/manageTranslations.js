@@ -18,7 +18,7 @@ const out = require('cli-output');
 //
 // SETTINGS
 //
-
+/* eslint-disable @typescript-eslint/camelcase */
 const googleCredentials = {
   type: 'service_account',
   project_id: 'test-translations-252615',
@@ -33,6 +33,8 @@ const googleCredentials = {
   client_x509_cert_url:
     'https://www.googleapis.com/robot/v1/metadata/x509/translations%40test-translations-252615.iam.gserviceaccount.com',
 };
+/* eslint-enable @typescript-eslint/camelcase */
+
 const googleSheetId = 0;
 const googleSheetName = 'ALL';
 const googleBackupSheetId = 999;
@@ -198,7 +200,8 @@ async function run() {
   }
 
   async function readSpreadsheetProps(options = {}) {
-    const hasDataFilters = (options.resource || {}).hasOwnProperty(
+    const hasDataFilters = Object.prototype.hasOwnProperty.call(
+      options.resource || {},
       'dataFilters'
     );
     const props = await spreadsheetManager(
@@ -249,15 +252,15 @@ async function run() {
     const uniqueKeys = new Set();
 
     // Update rows
-    for (let i = 0, l = rows.length; i < l; i++) {
+    for (let i = 0, l = rows.length; i < l; i += 1) {
       const row = rows[i];
       const [date, status, key, translation] = row;
 
       // Remove duplicates
       if (uniqueKeys.has(key)) {
         rows.splice(i, 1);
-        i--;
-        l--;
+        i -= 1;
+        l -= 1;
         continue;
       }
 
@@ -396,7 +399,7 @@ async function run() {
       const backgroundColor = color[statusColor[status] || 'white'];
 
       // Update cells format (with appending the missing cells)
-      for (let i = 0; i < columnsNumber; i++) {
+      for (let i = 0; i < columnsNumber; i += 1) {
         const cell = cells[i] || {}; // CellData
         cell.userEnteredFormat = {
           backgroundColor,

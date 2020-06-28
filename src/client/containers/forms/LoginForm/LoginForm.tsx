@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
 import { Form } from 'react-bootstrap';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Field from '../../../components/Field';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';

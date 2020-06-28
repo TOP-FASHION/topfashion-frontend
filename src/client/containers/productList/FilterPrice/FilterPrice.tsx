@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import InputRange from 'react-input-range';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import { setCurrencies } from '../../../translations/currencies.messages';
 import './FilterPrice.scss';
 
@@ -39,11 +39,14 @@ const FilterPrice = observer(
 
     const submit = (from: any, to: any) => {
       productsStore.getProducts({
+        // eslint-disable-next-line @typescript-eslint/camelcase
         per_page: productsStore.countProducts,
         'filter[limit]': productsStore.countProducts,
         order: 'desc',
         category: productsCategoriesStore.categoryId,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         min_price: from,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         max_price: to,
       });
     };

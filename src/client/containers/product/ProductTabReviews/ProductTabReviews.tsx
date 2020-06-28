@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Form, Col } from 'react-bootstrap';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Pagination from '../../../components/Pagination';
 import Rating from '../../../components/Rating';
 import Button from '../../../components/Button';
@@ -21,6 +21,7 @@ const ProductTabReviews = observer(({ product }: Props) => {
     rating,
     review,
     reviewer,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     reviewer_email,
     onReviewerChange,
     onReviewerEmailChange,
@@ -116,7 +117,6 @@ const ProductTabReviews = observer(({ product }: Props) => {
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox" as={Col} md={4}>
                   <Form.Label>Email Address</Form.Label>
-                  {/* eslint-disable-next-line camelcase */}
                   <Form.Control
                     type="email"
                     placeholder="Email Address"

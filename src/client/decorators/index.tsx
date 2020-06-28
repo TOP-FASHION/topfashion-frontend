@@ -11,14 +11,10 @@ import Notifications from '../containers/notifications';
 import Fragment from '../components/Fragment';
 import searchParse from '../utils/text/url/searchParse';
 import sessionTabStorage from '../utils/sessionTabStorage';
+import 'mobx-react/batchingForReactDom';
 
 @observer
 class AppRoot extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
-
   static propTypes = {
     history: PropTypes.shape({
       listen: PropTypes.func,
@@ -38,6 +34,11 @@ class AppRoot extends React.Component {
     sessionTabStorage.get('url') || '{"history": [], "position": -1}'
   );
 
+  constructor(props: any) {
+    super(props);
+    this.state = {};
+  }
+
   getChildContext() {
     return {
       url: {
@@ -46,9 +47,6 @@ class AppRoot extends React.Component {
       },
     };
   }
-
-  save = (state = this.url) =>
-    sessionTabStorage.set('url', JSON.stringify(state));
 
   componentDidMount() {
     const pushState = history.pushState.bind(history);
@@ -90,7 +88,18 @@ class AppRoot extends React.Component {
     ) {
       this.push(location.pathname + location.search);
     }
+
+    setTimeout(() => {
+      window.addEventListener('login', (event: any) => {
+        if (event.detail) {
+          document.body.classList.remove('preloading');
+        }
+      });
+    });
   }
+
+  save = (state = this.url) =>
+    sessionTabStorage.set('url', JSON.stringify(state));
 
   push(url: any) {
     this.url.position++;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import classNames from 'classnames';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import WidgetFilters from '../../widgets/WidgetFilters';
 import WidgetProducts from '../../widgets/WidgetProducts';
 import filters from '../../../settings/shopFilters';

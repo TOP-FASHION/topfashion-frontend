@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 // @ts-ignore
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import MobileLinks from '../MobileLinks';
 import './MobileMenu.scss';
 

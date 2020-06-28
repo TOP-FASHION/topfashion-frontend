@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import './FilterColor.scss';
 
-const FilterColor = observer((props: any) => {
+const FilterColor = observer(() => {
   const { productAttributesStore } = React.useContext(AppContext);
 
   React.useEffect(() => {

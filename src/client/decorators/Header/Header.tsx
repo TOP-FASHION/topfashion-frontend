@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
 import classNames from 'classnames';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import NavPanel from '../../containers/header/NavPanel';
 import Search from '../../containers/header/Search';
 import Topbar from '../../containers/header/Topbar';
@@ -12,8 +12,8 @@ import IndicatorCart from '../../containers/header/IndicatorCart';
 import LoginForm from '../../containers/forms/LoginForm';
 import RegistrationForm from '../../containers/forms/RegistrationForm';
 import Fragment from '../../components/Fragment';
-import setMessages from '../../utils/setMessages';
-import messages from './Header.messages';
+// import setMessages from '../../utils/setMessages';
+// import messages from './Header.messages';
 import './Header.scss';
 
 interface Props {
@@ -55,7 +55,12 @@ const Header = observer(({ layout = 'default' }: Props) => {
       });
 
       return (
-        <span key={tab.key} onClick={() => setTab(tab.key)} className={classes}>
+        <span
+          key={tab.key}
+          onClick={() => setTab(tab.key)}
+          className={classes}
+          aria-hidden="true"
+        >
           {tab.title}
         </span>
       );
@@ -108,7 +113,9 @@ const Header = observer(({ layout = 'default' }: Props) => {
         <div className="account-menu__divider" />
         <ul className="account-menu__links">
           <li>
-            <span onClick={() => loginStore.logout()}>Logout</span>
+            <span onClick={() => loginStore.logout()} aria-hidden="true">
+              Logout
+            </span>
           </li>
         </ul>
       </Fragment>

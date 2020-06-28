@@ -10,12 +10,7 @@ interface Props {
   onClick?: Function;
 }
 
-const Dropdown = ({
-  withIcons = false,
-  onClick = () => {},
-  title,
-  items,
-}: Props) => {
+const Dropdown = ({ withIcons = false, onClick, title, items }: Props) => {
   const [open, setOpen] = React.useState(false);
   let wrapperRef: any;
 

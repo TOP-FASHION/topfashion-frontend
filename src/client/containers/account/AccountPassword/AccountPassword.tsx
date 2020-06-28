@@ -16,6 +16,7 @@ export default function AccountPassword() {
         <div className="row no-gutters">
           <div className="col-12 col-lg-7 col-xl-6">
             <div className="form-group">
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="password-current">Current Password</label>
               <input
                 type="password"
@@ -25,6 +26,7 @@ export default function AccountPassword() {
               />
             </div>
             <div className="form-group">
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="password-new">New Password</label>
               <input
                 type="password"
@@ -34,6 +36,7 @@ export default function AccountPassword() {
               />
             </div>
             <div className="form-group">
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="password-confirm">Reenter New Password</label>
               <input
                 type="password"

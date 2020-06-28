@@ -8,14 +8,15 @@ import './styles/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { addLocaleData, IntlProvider } from 'react-intl';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { loadableReady } from '@loadable/component';
 
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-boost';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { AppContext, stores } from './core/Store/context';
-import Root from './root';
+import { AppContext, stores } from './store/context';
 import App from './decorators';
 
 const client = new ApolloClient({
@@ -23,14 +24,23 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const render = (Routes: Array<object>) => {
+const supportsHistory = 'pushState' in window.history;
+const messages = window.__INITIAL_STATE__.messages || {};
+const locale = window.__INITIAL_STATE__.locale || 'en';
+addLocaleData(window.__INITIAL_STATE__.localeData);
+
+const render = (MainComponent) => {
   const renderMethod = (module as any).hot ? ReactDOM.render : ReactDOM.hydrate;
 
   renderMethod(
     <AppContainer>
       <ApolloProvider client={client}>
         <AppContext.Provider value={stores}>
-          <Root />
+          <IntlProvider locale={locale} messages={messages}>
+            <BrowserRouter forceRefresh={!supportsHistory}>
+              <Route component={MainComponent} />
+            </BrowserRouter>
+          </IntlProvider>
         </AppContext.Provider>
       </ApolloProvider>
     </AppContainer>,
@@ -40,15 +50,14 @@ const render = (Routes: Array<object>) => {
 
 // loadable-component setup
 loadableReady(() => {
-  // @ts-ignore
   render(App);
 });
 
 if ((module as any).hot) {
   // Enable webpack hot module replacement for routes
-  (module as any).hot.accept('./root', () => {
+  (module as any).hot.accept('./decorators', () => {
     try {
-      const nextRoutes = require('./root').default;
+      const nextRoutes = require('./decorators').default;
 
       render(nextRoutes);
     } catch (error) {

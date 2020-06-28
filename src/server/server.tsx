@@ -25,22 +25,22 @@ import messages from '../client/translations';
 
 import renderHtml from './utils/renderHtml';
 import config from '../client/config';
-import { AppContext, stores } from '../client/core/Store/context';
+import { AppContext, stores } from '../client/store/context';
 import Appn from '../client/decorators';
-import { router } from './router';
+import router from './router';
 
 dotenv.config();
 
 const LOCALES = {
-  en: en,
-  ru: ru,
-}
+  en,
+  ru,
+};
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useStaticRendering(true);
 
 // Add all locales
-const AVAILABLE_LOCALES = ['en', 'ru']
+const AVAILABLE_LOCALES = ['en', 'ru'];
 
 addLocaleData([...en, ...ru]);
 
@@ -49,9 +49,9 @@ AVAILABLE_LOCALES.forEach((locale) => {
     locale
     // eslint-disable-next-line import/no-dynamic-require
   ] = require(`../client/translations/locales/${locale}.json`);
-})
+});
 
-acceptLanguage.languages(AVAILABLE_LOCALES)
+acceptLanguage.languages(AVAILABLE_LOCALES);
 
 const app = express();
 
@@ -114,7 +114,7 @@ if (__DEV__) {
   gzCGalYDpgAhGyN2SNA6ashQ+xzthXDsu7xPGl4FQWlsg0+zAUnqsuGxt5XFBlcW
   rpLlgdytPG1YDUGdwnZiSmI=
   -----END PRIVATE KEY-----
-  `
+  `;
 
   /* Run express as webpack dev server */
   const webpack = require('webpack');
@@ -136,7 +136,7 @@ if (__DEV__) {
     const options = {
       key: serverKey,
       cert: serverCrt,
-    }
+    };
 
     instance.waitUntilValid(() => {
       const url = `http://${config.host}:${config.port}`;
@@ -167,7 +167,7 @@ app.get('*', (req, res) => {
 
       const client = new ApolloClient({
         ssrMode: true,
-        link: new HttpLink({ uri: '/graphql', fetch: fetch }),
+        link: new HttpLink({ uri: '/graphql', fetch }),
         cache: new InMemoryCache(),
       });
 
@@ -205,44 +205,46 @@ app.get('*', (req, res) => {
         };
       }
 
-      function detectLanguageParams (req, languages) {
-        const langFromUrl = (req.url.split(/[/?]/) || [])[1]
+      function detectLanguageParams(req, languages) {
+        const langFromUrl = (req.url.split(/[/?]/) || [])[1];
 
         if (isCorrectLang(langFromUrl)) {
           return {
             language: langFromUrl,
-            source: 'url'
-          }
+            source: 'url',
+          };
         }
 
-        const langFromLocale = detectLocale(req)
+        const langFromLocale = detectLocale(req);
         if (isCorrectLang(langFromLocale)) {
           return {
             language: langFromLocale,
-            source: 'locale'
-          }
+            source: 'locale',
+          };
         }
 
         return {
-          language: 'en'
-        }
+          language: 'en',
+        };
 
-        function isCorrectLang (lang) {
-          return !!(lang && ~languages.indexOf(lang))
+        function isCorrectLang(lang) {
+          return !!(lang && ~languages.indexOf(lang));
         }
       }
 
       // Detects locale from cookie or from header AcceptLanguage
-      function detectLocale (req) {
-        const cookieLocale = req.cookies._lang
+      function detectLocale(req) {
+        const cookieLocale = req.cookies._lang;
         return (
-          cookieLocale || acceptLanguage.get(req.headers['accept-language']) || 'en'
-        )
+          cookieLocale ||
+          acceptLanguage.get(req.headers['accept-language']) ||
+          'en'
+        );
       }
 
       // First bytes (ASAP)
-      res.setHeader('Content-Type', 'text/html')
-      res.cookie('_lang', language, { maxAge: 900000 })
+      res.setHeader('Content-Type', 'text/html');
+      res.cookie('_lang', language, { maxAge: 900000 });
 
       const initialState = generateApplicationState();
       const htmlContent = renderToString(App);

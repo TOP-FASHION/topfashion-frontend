@@ -14,7 +14,7 @@ const Menu = ({
   layout = 'classic',
   withIcons = false,
   items = [],
-  onClick = () => {},
+  onClick,
 }: Props) => {
   const renderLink = (item: any, content: any) => {
     let link;
@@ -64,7 +64,7 @@ const Menu = ({
     if (withIcons && item.icon) {
       icon = (
         <div className="menu__icon">
-          <img src={item.icon} srcSet={item.icon_srcset} alt="" />
+          <img src={item.icon} srcSet={item.iconSrcset} alt="" />
         </div>
       );
     }

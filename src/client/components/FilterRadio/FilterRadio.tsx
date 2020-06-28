@@ -17,6 +17,7 @@ function FilterRadio({ items, name }: Props) {
     return (
       <label
         key={item.id}
+        htmlFor={item.id}
         className={classNames('filter-list__item', {
           'filter-list__item--disabled': item.disabled,
         })}
@@ -24,6 +25,7 @@ function FilterRadio({ items, name }: Props) {
         <span className="filter-list__input input-radio">
           <span className="input-radio__body">
             <input
+              id={item.id}
               className="input-radio__input"
               type="radio"
               name={name}

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { reaction } from 'mobx';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import PageHeader from '../../containers/shared/PageHeader';
 import ProductsView from '../../containers/productList/ProductsView';
 import CategorySidebar from '../../containers/product/CategorySidebar';

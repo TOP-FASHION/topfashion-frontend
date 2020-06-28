@@ -66,8 +66,8 @@ function WidgetFilters(props: any) {
 }
 
 WidgetFilters.propTypes = {
-  title: PropTypes.node,
-  filters: PropTypes.array,
+  title: PropTypes.node.isRequired,
+  filters: PropTypes.arrayOf,
   offcanvas: PropTypes.oneOf(['always', 'mobile']),
 };
 

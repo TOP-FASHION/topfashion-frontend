@@ -127,7 +127,7 @@ const ProductGallery = ({ images = [], layout = 'standard' }: Props) => {
         }
 
         const imageElement = imagesRefs[index];
-        let pageYScroll: any
+        let pageYScroll: any;
         if (typeof window !== 'undefined') {
           pageYScroll =
             window.pageYOffset || document.documentElement.scrollTop;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 
 // components
 import Group from '../../components/Group';
@@ -33,21 +33,20 @@ const MainDecorator: IPanel<any> = observer((props: any) => {
   const { loginStore } = React.useContext(AppContext);
 
   MainDecorator.isLoggedIn = (
-    loginStore: any,
-    component: any,
+    loginStore,
+    component,
     component2 = RedirectToHome
   ) => {
     return loginStore.loggedIn ? component : component2;
   };
 
   MainDecorator.isLoggedOut = (
-    loginStore: any,
-    component: any,
+    loginStore,
+    component,
     component2 = RedirectToHome
   ) => {
     return loginStore.loggedIn ? component2 : component;
   };
-
   return (
     <Group id="main">
       <Group className="main-decorator__wrapper">

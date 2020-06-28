@@ -51,7 +51,7 @@ function buildLibrary() {
 }
 
 function copyStaticFiles() {
-  return log(`Copying static files`, (resolve, reject) => {
+  return log(`Copying static files`, (resolve) => {
     shell.cp('bin/prod.server.js', '_build_prod/');
     shell.mv('_build_prod/prod.server.js', '_build_prod/index.js');
     shell.cp('-R', 'src/server/static', '_build_prod/server');
@@ -136,12 +136,12 @@ function removeFolder(folderPath, callback) {
 }
 
 function runCmd(cmd, callback, options = {}) {
-  options = {
+  const newOptions = {
     // Warning! If the "env" setting is defined then global environment variables aren't used.
     cwd: basePath,
     ...options,
   };
-  shell.exec(cmd, options, (err, stdout = '') => {
+  shell.exec(cmd, newOptions, (err, stdout = '') => {
     if (err) {
       callback(err);
       return;

@@ -3,14 +3,13 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 import Menu from '../Menu';
-// @ts-ignore
 // import setMessages from '../../../utils/setMessages'
 // import messages from './NavLinks.messages'
 import './NavLinks.scss';
 
 import menuLinks from '../../../settings/menuLinks';
 
-const NavLinks = (props: any) => {
+const NavLinks = () => {
   // const message = setMessages(props, messages, 'app.nav.link.')
 
   const handleMouseEnter = (event: any) => {
@@ -65,6 +64,7 @@ const NavLinks = (props: any) => {
         </li>
       );
     }
+    return null;
   });
   return <ul className="nav-links__list">{linksList}</ul>;
 };

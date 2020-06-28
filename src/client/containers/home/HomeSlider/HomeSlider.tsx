@@ -31,27 +31,27 @@ const HomeSlider = ({ withDepartments = false }: Props) => {
       title: '',
       text: '',
       url: '',
-      image_classic: '/assets/img/slides/slide-2.jpg',
-      image_full: '/assets/img/slides/slide-4.jpg',
-      image_mobile: '/assets/img/slides/slide-2-mobile.jpg',
+      imageClassic: '/assets/img/slides/slide-2.jpg',
+      imageFull: '/assets/img/slides/slide-4.jpg',
+      imageMobile: '/assets/img/slides/slide-2-mobile.jpg',
     },
     {
       title: 'Accessories <br> Perfume, costume jewelry',
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
       url: '/category/new',
-      image_classic: '/assets/img/slides/slide-2.jpg',
-      image_full: '/assets/img/slides/slide-2-full.jpg',
-      image_mobile: '/assets/img/slides/slide-2-mobile.jpg',
+      imageClassic: '/assets/img/slides/slide-2.jpg',
+      imageFull: '/assets/img/slides/slide-2-full.jpg',
+      imageMobile: '/assets/img/slides/slide-2-mobile.jpg',
     },
     {
       title: 'One more<br>Unique header',
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
       url: '/category/new',
-      image_classic: '/assets/img/slides/slide-3.jpg',
-      image_full: '/assets/img/slides/slide-3-full.jpg',
-      image_mobile: '/assets/img/slides/slide-3-mobile.jpg',
+      imageClassic: '/assets/img/slides/slide-3.jpg',
+      imageFull: '/assets/img/slides/slide-3-full.jpg',
+      imageMobile: '/assets/img/slides/slide-3-mobile.jpg',
     },
   ];
 
@@ -98,7 +98,7 @@ const HomeSlider = ({ withDepartments = false }: Props) => {
   });
 
   const slides = slidesSource.map((slide: any, index: any) => {
-    const image = withDepartments ? slide.image_classic : slide.image_full;
+    const image = withDepartments ? slide.imageClassic : slide.imageFull;
 
     return (
       <div key={index} className="block-slideshow__slide">
@@ -111,19 +111,13 @@ const HomeSlider = ({ withDepartments = false }: Props) => {
         <div
           className="block-slideshow__slide-image block-slideshow__slide-image--mobile"
           style={{
-            backgroundImage: `url(${slide.image_mobile})`,
+            backgroundImage: `url(${slide.imageMobile})`,
           }}
         />
         <div className="container">
           <div className="block-slideshow__slide-content">
-            <div
-              className="block-slideshow__slide-title"
-              dangerouslySetInnerHTML={{ __html: slide.title }}
-            />
-            <div
-              className="block-slideshow__slide-text"
-              dangerouslySetInnerHTML={{ __html: slide.text }}
-            />
+            <div className="block-slideshow__slide-title">{slide.title}</div>
+            <div className="block-slideshow__slide-text">{slide.text}</div>
             <Fragment hidden={!slide.url}>
               <div className="block-slideshow__slide-button">
                 <Link to={slide.url} className="btn btn-primary btn-lg">

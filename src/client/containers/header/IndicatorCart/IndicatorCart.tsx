@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // @ts-ignore
 import { injectIntl } from 'react-intl';
 import { observer } from 'mobx-react';
-import { AppContext } from '../../../core/Store/context';
+import { AppContext } from '../../../store/context';
 import Indicator from '../../../components/Indicator';
 import Fragment from '../../../components/Fragment';
 import Button from '../../../components/Button';
@@ -61,7 +61,7 @@ const IndicatorCart = observer((props: any) => {
     </Fragment>
   ) : null;
 
-  const productCart = (product: any, index: number) => {
+  const productCart = (product: any) => {
     let options;
     let image;
     if (product.options) {
@@ -120,9 +120,7 @@ const IndicatorCart = observer((props: any) => {
       <div className="dropcart">
         <div className="dropcart__products-list">
           {Object.keys(productsCart).map((key, index) => (
-            <Fragment key={index}>
-              {productCart(productsCart[key], index)}
-            </Fragment>
+            <Fragment key={index}>{productCart(productsCart[key])}</Fragment>
           ))}
         </div>
 

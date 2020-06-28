@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { injectIntl } from 'react-intl';
-import { AppContext } from '../../core/Store/context';
+import { AppContext } from '../../store/context';
 import InputNumber from '../../components/InputNumber';
 import PageHeader from '../../containers/shared/PageHeader';
 import Button from '../../components/Button/Button';
@@ -59,6 +59,7 @@ const CartPage = observer((props: any) => {
         };
         return cartUpdateProductStore.updateProduct(data);
       }
+      return null;
     });
   });
 
@@ -243,6 +244,7 @@ const CartPage = observer((props: any) => {
                 Continue Shopping
               </Link>
               <button
+                type="button"
                 onClick={() => cartNeedUpdate()}
                 className="btn btn-primary cart__update-button"
               >
