@@ -6,8 +6,10 @@
 I decided to share it with this project as it is. Maybe someone will come in handy
 
 ## DEMO
-![backend](backend.gif)
+Frontend:
 ![frontend](frontend.gif)
+Backend:
+![backend](backend.gif)
 
 ## TOC
 
