@@ -5,6 +5,9 @@
 **NOTE**: There are many different mistakes in this project, but now I don’t have time to work on fixing it and therefore 
 I decided to share it with this project as it is. Maybe someone will come in handy
 
+## DEMO
+![backend](backend.gif)
+![frontend](frontend.gif)
 
 ## TOC
 
