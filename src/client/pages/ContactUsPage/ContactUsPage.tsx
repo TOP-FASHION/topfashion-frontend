@@ -15,7 +15,7 @@ const ContactUsPage = () => {
         <title>Contact Us Alt</title>
       </Helmet>
 
-      <div className="block-map block">
+      <div className="block-map">
         <div className="block-map__body">
           <iframe
             title="Google Map"
